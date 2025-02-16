@@ -1,0 +1,12 @@
+unit Provider.Constants;
+
+interface
+
+var
+
+  iCOD_Enterprise : integer;
+  sCOMPANY_NAME : string;
+
+implementation
+
+end.

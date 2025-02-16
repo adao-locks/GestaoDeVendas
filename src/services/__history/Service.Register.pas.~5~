@@ -1,0 +1,27 @@
+unit Service.Register;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  Service.Connection;
+
+type
+  TServiceRegister = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ServiceRegister: TServiceRegister;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,19 @@
+program SalesPlus;
+
+uses
+  Vcl.Forms,
+  view.principal in 'src\views\view.principal.pas' {ViewPrincipal},
+  Service.Connection in 'src\services\Service.Connection.pas' {ServiceConnection: TDataModule},
+  Service.Register in 'src\services\Service.Register.pas' {ServiceRegister: TDataModule},
+  Provider.Constants in 'src\providers\Provider.Constants.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TViewPrincipal, ViewPrincipal);
+  Application.CreateForm(TServiceConnection, ServiceConnection);
+  Application.CreateForm(TServiceRegister, ServiceRegister);
+  Application.Run;
+end.

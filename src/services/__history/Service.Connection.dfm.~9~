@@ -1,0 +1,28 @@
+object ServiceConnection: TServiceConnection
+  OnCreate = DataModuleCreate
+  Height = 763
+  Width = 1042
+  object FDConn: TFDConnection
+    Params.Strings = (
+      'Database=C:\database\SalesPlus\DATABASE.FDB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'Protocol=TCPIP'
+      'Server=localhost'
+      'CharacterSet=win1252'
+      'DriverID=FB')
+    Connected = True
+    LoginPrompt = False
+    Left = 48
+    Top = 48
+  end
+  object WaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 160
+    Top = 64
+  end
+  object FBDriverLink: TFDPhysFBDriverLink
+    Left = 272
+    Top = 56
+  end
+end

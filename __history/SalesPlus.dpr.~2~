@@ -1,0 +1,16 @@
+program SalesPlus;
+
+uses
+  Vcl.Forms,
+  view.principal in 'src\views\view.principal.pas' {ViewPrincipal},
+  Service.Connection in 'src\services\Service.Connection.pas' {ServiceConnection: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TViewPrincipal, ViewPrincipal);
+  Application.CreateForm(TServiceConnection, ServiceConnection);
+  Application.Run;
+end.
