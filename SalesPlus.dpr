@@ -6,7 +6,9 @@ uses
   Service.Connection in 'src\services\Service.Connection.pas' {ServiceConnection: TDataModule},
   Service.Register in 'src\services\Service.Register.pas' {ServiceRegister: TDataModule},
   Provider.Constants in 'src\providers\Provider.Constants.pas',
-  view.base in 'src\views\view.base.pas' {viewBase};
+  view.base in 'src\views\view.base.pas' {viewBase},
+  view.base.lists in 'src\views\view.base.lists.pas' {viewBaseLists},
+  view.entity in 'src\views\view.entity.pas' {viewEntity};
 
 {$R *.res}
 
@@ -16,6 +18,5 @@ begin
   Application.CreateForm(TViewPrincipal, ViewPrincipal);
   Application.CreateForm(TServiceConnection, ServiceConnection);
   Application.CreateForm(TServiceRegister, ServiceRegister);
-  Application.CreateForm(TviewBase, viewBase);
   Application.Run;
 end.

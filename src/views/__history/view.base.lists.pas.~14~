@@ -1,0 +1,56 @@
+unit view.base.lists;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage, Vcl.StdCtrls, System.ImageList, Vcl.ImgList, Vcl.Buttons;
+
+type
+  TviewBaseLists = class(TviewBase)
+    pnlTop: TPanel;
+    pnlFooter: TPanel;
+    pnlLogo: TPanel;
+    imgIcon: TImage;
+    pnlCloseWindow: TPanel;
+    btnCloseWindow: TButton;
+    imgList: TImageList;
+    lblTitleWindow: TLabel;
+    btnNew: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    procedure pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  viewBaseLists: TviewBaseLists;
+
+implementation
+
+{$R *.dfm}
+
+procedure TviewBaseLists.pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
+
+  Shift: TShiftState; X, Y: Integer);
+
+const
+
+  sc_DragMove = $f012;
+
+begin
+
+  inherited;
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+
+end;
+
+end.

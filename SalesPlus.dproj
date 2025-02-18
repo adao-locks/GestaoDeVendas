@@ -107,7 +107,7 @@
         <DCC_DcuOutput>C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\dcus\</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Icon_MainIcon>..\..\..\..\Downloads\ICONES\shoppaymentorderbuy-29_icon-icons.com_73875.ico</Icon_MainIcon>
+        <Icon_MainIcon>assets\ico\shoppaymentorderbuy-29_icon-icons.com_73875.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -145,6 +145,14 @@
         <DCCReference Include="src\providers\Provider.Constants.pas"/>
         <DCCReference Include="src\views\view.base.pas">
             <Form>viewBase</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\views\view.base.lists.pas">
+            <Form>viewBaseLists</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\views\view.entity.pas">
+            <Form>viewEntity</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

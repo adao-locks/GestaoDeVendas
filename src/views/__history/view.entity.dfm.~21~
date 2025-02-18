@@ -1,0 +1,143 @@
+inherited viewEntity: TviewEntity
+  Align = alClient
+  Caption = 'Entity'
+  StyleElements = [seFont, seClient, seBorder]
+  OnCreate = FormCreate
+  TextHeight = 15
+  inherited pnlTop: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 1096
+    inherited lblTitleWindow: TLabel
+      Width = 940
+      Height = 35
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlLogo: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlCloseWindow: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitLeft = 1018
+      inherited btnCloseWindow: TButton
+        OnClick = btnCloseWindowClick
+        ExplicitLeft = 5
+        ExplicitHeight = 25
+      end
+    end
+  end
+  inherited pnlFooter: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 594
+    ExplicitWidth = 1096
+  end
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitLeft = 0
+    ExplicitTop = 35
+    ExplicitWidth = 1096
+    ExplicitHeight = 559
+    inherited CardPanelList: TCardPanel
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitLeft = 2
+      ExplicitTop = 0
+      ExplicitWidth = 1092
+      ExplicitHeight = 559
+      inherited cardSearch: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        ExplicitWidth = 1092
+        ExplicitHeight = 559
+        inherited pnlSearch: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblSearch: TLabel
+            Width = 1077
+            StyleElements = [seFont, seClient, seBorder]
+          end
+          inherited edtSearch: TSearchBox
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited DBGData: TDBGrid
+          AlignWithMargins = False
+          Left = 0
+          Top = 65
+          Width = 1092
+          Height = 494
+          Color = clBlack
+          Font.Color = clBlack
+          ParentFont = False
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'Code'
+              Width = 44
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Name'
+              Width = 160
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Type'
+              Width = 37
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CNPJ'
+              Width = 110
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Phone'
+              Width = 97
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Mail'
+              Width = 170
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Address'
+              Width = 160
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Date Birth'
+              Width = 110
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'Date Register'
+              Width = 112
+              Visible = True
+            end>
+        end
+      end
+      inherited cardRegister: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        ExplicitWidth = 1092
+        ExplicitHeight = 559
+        inherited pnlRegister: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          ExplicitTop = 0
+          inherited lblRegister: TLabel
+            Width = 1077
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+    end
+  end
+  inherited DSData: TDataSource
+    DataSet = ServiceRegister.QRYEntity
+  end
+end
