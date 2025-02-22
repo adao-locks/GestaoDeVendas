@@ -4,40 +4,36 @@ object ServiceRegister: TServiceRegister
   object QRYEntity: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'select * from entidade where entidade_id = :codigo')
-    Left = 40
-    Top = 32
+      'SELECT * FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE')
+    Left = 32
+    Top = 24
     ParamData = <
       item
-        Name = 'CODIGO'
+        Name = 'PEOPLE'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
       end>
-    object QRYEntityENTIDADE_ID: TIntegerField
-      FieldName = 'ENTIDADE_ID'
-      Origin = 'ENTIDADE_ID'
+    object QRYEntityPEOPLE_ID: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'PEOPLE_ID'
+      Origin = 'PEOPLE_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYEntityNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
+    object QRYEntityNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
       Required = True
       Size = 150
     end
-    object QRYEntityTIPO: TStringField
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-      Size = 10
+    object QRYEntityEIN_CNPJ: TStringField
+      FieldName = 'EIN_CNPJ'
+      Origin = 'EIN_CNPJ'
     end
-    object QRYEntityDOCUMENTO: TStringField
-      FieldName = 'DOCUMENTO'
-      Origin = 'DOCUMENTO'
-    end
-    object QRYEntityTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      Origin = 'TELEFONE'
+    object QRYEntityPHONE: TStringField
+      FieldName = 'PHONE'
+      Origin = 'PHONE'
       Size = 15
     end
     object QRYEntityEMAIL: TStringField
@@ -45,26 +41,86 @@ object ServiceRegister: TServiceRegister
       Origin = 'EMAIL'
       Size = 100
     end
-    object QRYEntityENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Origin = 'ENDERECO'
+    object QRYEntityDATE_BIRTH: TDateField
+      FieldName = 'DATE_BIRTH'
+      Origin = 'DATE_BIRTH'
+    end
+    object QRYEntityDATE_REGISTER: TDateField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
+    object QRYEntityCLIENT: TBooleanField
+      FieldName = 'CLIENT'
+      Origin = 'CLIENT'
+      Required = True
+    end
+    object QRYEntityEMPLOYEE: TBooleanField
+      FieldName = 'EMPLOYEE'
+      Origin = 'EMPLOYEE'
+      Required = True
+    end
+    object QRYEntitySUPPLIER: TBooleanField
+      FieldName = 'SUPPLIER'
+      Origin = 'SUPPLIER'
+      Required = True
+    end
+    object QRYEntityTRANSPORT: TBooleanField
+      FieldName = 'TRANSPORT'
+      Origin = 'TRANSPORT'
+      Required = True
+    end
+    object QRYEntitySTREET: TStringField
+      FieldName = 'STREET'
+      Origin = 'STREET'
+      Size = 150
+    end
+    object QRYEntityNUMBER_ADDRESS: TStringField
+      FieldName = 'NUMBER_ADDRESS'
+      Origin = 'NUMBER_ADDRESS'
+      Size = 10
+    end
+    object QRYEntityCOMPLEMENT: TStringField
+      FieldName = 'COMPLEMENT'
+      Origin = 'COMPLEMENT'
       Size = 255
     end
-    object QRYEntityDATA_NASCIMENTO: TDateField
-      FieldName = 'DATA_NASCIMENTO'
-      Origin = 'DATA_NASCIMENTO'
+    object QRYEntityCITY: TStringField
+      FieldName = 'CITY'
+      Origin = 'CITY'
+      Size = 100
     end
-    object QRYEntityDATA_CRIACAO: TDateField
-      FieldName = 'DATA_CRIACAO'
-      Origin = 'DATA_CRIACAO'
+    object QRYEntityNEIGHBORHOOD: TStringField
+      FieldName = 'NEIGHBORHOOD'
+      Origin = 'NEIGHBORHOOD'
+      Size = 100
+    end
+    object QRYEntitySTATE: TStringField
+      FieldName = 'STATE'
+      Origin = 'STATE'
+      Size = 2
+    end
+    object QRYEntityZIP_CODE: TStringField
+      FieldName = 'ZIP_CODE'
+      Origin = 'ZIP_CODE'
+      Size = 10
+    end
+    object QRYEntityFANTASY: TStringField
+      FieldName = 'FANTASY'
+      Origin = 'FANTASY'
+      Size = 150
+    end
+    object QRYEntityOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 255
     end
   end
   object QRYStock: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM estoque WHERE estoque_id = :item')
-    Left = 120
-    Top = 48
+      'SELECT * FROM STOCK WHERE STOCK_ID = :ITEM')
+    Left = 32
+    Top = 136
     ParamData = <
       item
         Name = 'ITEM'
@@ -72,46 +128,86 @@ object ServiceRegister: TServiceRegister
         ParamType = ptInput
         Value = Null
       end>
-    object QRYStockESTOQUE_ID: TIntegerField
-      FieldName = 'ESTOQUE_ID'
-      Origin = 'ESTOQUE_ID'
+    object QRYStockSTOCK_ID: TIntegerField
+      FieldName = 'STOCK_ID'
+      Origin = 'STOCK_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYStockPRODUTO_ID: TIntegerField
-      FieldName = 'PRODUTO_ID'
-      Origin = 'PRODUTO_ID'
+    object QRYStockPROD_ID: TIntegerField
+      FieldName = 'PROD_ID'
+      Origin = 'PROD_ID'
+      Required = True
     end
-    object QRYStockQUANTIDADE: TIntegerField
-      FieldName = 'QUANTIDADE'
-      Origin = 'QUANTIDADE'
+    object QRYStockQTDE: TIntegerField
+      FieldName = 'QTDE'
+      Origin = 'QTDE'
     end
-    object QRYStockPRECO_COMPRA: TFMTBCDField
-      FieldName = 'PRECO_COMPRA'
-      Origin = 'PRECO_COMPRA'
+    object QRYStockCOST_PRICE: TFMTBCDField
+      FieldName = 'COST_PRICE'
+      Origin = 'COST_PRICE'
       Precision = 18
       Size = 2
     end
-    object QRYStockPRECO_VENDA: TFMTBCDField
-      FieldName = 'PRECO_VENDA'
-      Origin = 'PRECO_VENDA'
+    object QRYStockSALE_PRICE: TFMTBCDField
+      FieldName = 'SALE_PRICE'
+      Origin = 'SALE_PRICE'
       Precision = 18
       Size = 2
     end
-    object QRYStockDATA_ATUALIZACAO: TSQLTimeStampField
-      FieldName = 'DATA_ATUALIZACAO'
-      Origin = 'DATA_ATUALIZACAO'
+    object QRYStockDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
+    end
+    object QRYStockSKU: TStringField
+      FieldName = 'SKU'
+      Origin = 'SKU'
+      Size = 50
+    end
+    object QRYStockEAN13: TStringField
+      FieldName = 'EAN13'
+      Origin = 'EAN13'
+      Size = 100
+    end
+    object QRYStockMIN_QTDE: TIntegerField
+      FieldName = 'MIN_QTDE'
+      Origin = 'MIN_QTDE'
+    end
+    object QRYStockMAX_QTDE: TIntegerField
+      FieldName = 'MAX_QTDE'
+      Origin = 'MAX_QTDE'
+    end
+    object QRYStockBATCH: TStringField
+      FieldName = 'BATCH'
+      Origin = 'BATCH'
+    end
+    object QRYStockWEIGHT: TIntegerField
+      FieldName = 'WEIGHT'
+      Origin = 'WEIGHT'
+    end
+    object QRYStockCOLOR: TIntegerField
+      FieldName = 'COLOR'
+      Origin = 'COLOR'
+    end
+    object QRYStockSIZE: TStringField
+      FieldName = 'SIZE'
+      Origin = '"SIZE"'
+      Size = 10
+    end
+    object QRYStockEMP_ID: TIntegerField
+      FieldName = 'EMP_ID'
+      Origin = 'EMP_ID'
     end
   end
   object QRYSaleItens: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM itens_venda WHERE item_id = :itemsale')
-    Left = 208
-    Top = 56
+      'SELECT * FROM ITEMS_SALE WHERE ITEM_ID = :CODE')
+    Left = 160
+    Top = 24
     ParamData = <
       item
-        Name = 'ITEMSALE'
+        Name = 'CODE'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
@@ -122,22 +218,22 @@ object ServiceRegister: TServiceRegister
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYSaleItensVENDA_ID: TIntegerField
-      FieldName = 'VENDA_ID'
-      Origin = 'VENDA_ID'
+    object QRYSaleItensSALE_ID: TIntegerField
+      FieldName = 'SALE_ID'
+      Origin = 'SALE_ID'
     end
-    object QRYSaleItensPRODUTO_ID: TIntegerField
-      FieldName = 'PRODUTO_ID'
-      Origin = 'PRODUTO_ID'
+    object QRYSaleItensPROD_ID: TIntegerField
+      FieldName = 'PROD_ID'
+      Origin = 'PROD_ID'
     end
-    object QRYSaleItensQUANTIDADE: TIntegerField
-      FieldName = 'QUANTIDADE'
-      Origin = 'QUANTIDADE'
+    object QRYSaleItensQTDE: TIntegerField
+      FieldName = 'QTDE'
+      Origin = 'QTDE'
       Required = True
     end
-    object QRYSaleItensPRECO_UNITARIO: TFMTBCDField
-      FieldName = 'PRECO_UNITARIO'
-      Origin = 'PRECO_UNITARIO'
+    object QRYSaleItensUNIT_PRICE: TFMTBCDField
+      FieldName = 'UNIT_PRICE'
+      Origin = 'UNIT_PRICE'
       Precision = 18
       Size = 2
     end
@@ -147,13 +243,34 @@ object ServiceRegister: TServiceRegister
       Precision = 18
       Size = 2
     end
+    object QRYSaleItensDISCOUNT: TIntegerField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+    end
+    object QRYSaleItensADDITION: TIntegerField
+      FieldName = 'ADDITION'
+      Origin = 'ADDITION'
+    end
+    object QRYSaleItensSUBTOTAL: TIntegerField
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+    end
+    object QRYSaleItensOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 255
+    end
+    object QRYSaleItensDATE_REGISTER: TSQLTimeStampField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
   end
   object QRYSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM venda WHERE venda_id = :sale')
-    Left = 280
-    Top = 48
+      'SELECT * FROM SALE WHERE SALE_ID = :SALE')
+    Left = 32
+    Top = 80
     ParamData = <
       item
         Name = 'SALE'
@@ -161,23 +278,23 @@ object ServiceRegister: TServiceRegister
         ParamType = ptInput
         Value = Null
       end>
-    object QRYSaleVENDA_ID: TIntegerField
-      FieldName = 'VENDA_ID'
-      Origin = 'VENDA_ID'
+    object QRYSaleSALE_ID: TIntegerField
+      FieldName = 'SALE_ID'
+      Origin = 'SALE_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYSaleCLIENTE_ID: TIntegerField
-      FieldName = 'CLIENTE_ID'
-      Origin = 'CLIENTE_ID'
+    object QRYSaleCLIENT_ID: TIntegerField
+      FieldName = 'CLIENT_ID'
+      Origin = 'CLIENT_ID'
     end
-    object QRYSaleFUNCIONARIO_ID: TIntegerField
-      FieldName = 'FUNCIONARIO_ID'
-      Origin = 'FUNCIONARIO_ID'
+    object QRYSaleEMPLOYEE_ID: TIntegerField
+      FieldName = 'EMPLOYEE_ID'
+      Origin = 'EMPLOYEE_ID'
     end
-    object QRYSaleDATA_VENDA: TSQLTimeStampField
-      FieldName = 'DATA_VENDA'
-      Origin = 'DATA_VENDA'
+    object QRYSaleDATE_SALE: TSQLTimeStampField
+      FieldName = 'DATE_SALE'
+      Origin = 'DATE_SALE'
     end
     object QRYSaleTOTAL: TFMTBCDField
       FieldName = 'TOTAL'
@@ -185,30 +302,83 @@ object ServiceRegister: TServiceRegister
       Precision = 18
       Size = 2
     end
-    object QRYSalePAGAMENTO_STATUS: TStringField
-      FieldName = 'PAGAMENTO_STATUS'
-      Origin = 'PAGAMENTO_STATUS'
+    object QRYSalePAYMENT_DATE: TSQLTimeStampField
+      FieldName = 'PAYMENT_DATE'
+      Origin = 'PAYMENT_DATE'
     end
-    object QRYSaleDATA_PAGAMENTO: TSQLTimeStampField
-      FieldName = 'DATA_PAGAMENTO'
-      Origin = 'DATA_PAGAMENTO'
-    end
-    object QRYSaleFORMA_PAGAMENTO: TStringField
-      FieldName = 'FORMA_PAGAMENTO'
-      Origin = 'FORMA_PAGAMENTO'
+    object QRYSalePAYMENT_METHOD: TStringField
+      FieldName = 'PAYMENT_METHOD'
+      Origin = 'PAYMENT_METHOD'
       Size = 50
     end
-    object QRYSaleEMPRESA_ID: TIntegerField
-      FieldName = 'EMPRESA_ID'
-      Origin = 'EMPRESA_ID'
+    object QRYSaleCOM_ID: TIntegerField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+    end
+    object QRYSaleBUDGET: TBooleanField
+      FieldName = 'BUDGET'
+      Origin = 'BUDGET'
+    end
+    object QRYSaleINSTALLMENT: TBooleanField
+      FieldName = 'INSTALLMENT'
+      Origin = 'INSTALLMENT'
+    end
+    object QRYSaleCASH: TBooleanField
+      FieldName = 'CASH'
+      Origin = 'CASH'
+    end
+    object QRYSaleSUBTOTAL: TIntegerField
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+    end
+    object QRYSalePAID: TBooleanField
+      FieldName = 'PAID'
+      Origin = 'PAID'
+    end
+    object QRYSaleDISCOUNT: TIntegerField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+    end
+    object QRYSaleADDITION: TIntegerField
+      FieldName = 'ADDITION'
+      Origin = 'ADDITION'
+    end
+    object QRYSaleCHANGE: TIntegerField
+      FieldName = 'CHANGE'
+      Origin = 'CHANGE'
+    end
+    object QRYSaleINSTALLMENT_AMOUNT: TIntegerField
+      FieldName = 'INSTALLMENT_AMOUNT'
+      Origin = 'INSTALLMENT_AMOUNT'
+    end
+    object QRYSaleINSTALLMENT_VALUE: TIntegerField
+      FieldName = 'INSTALLMENT_VALUE'
+      Origin = 'INSTALLMENT_VALUE'
+    end
+    object QRYSaleSQLTimeStampField1ST_INSTALLMENT: TSQLTimeStampField
+      FieldName = '1ST_INSTALLMENT'
+      Origin = '"1ST_INSTALLMENT"'
+    end
+    object QRYSaleLATE_DATE: TSQLTimeStampField
+      FieldName = 'LATE_DATE'
+      Origin = 'LATE_DATE'
+    end
+    object QRYSaleUPDATE_DATE: TSQLTimeStampField
+      FieldName = 'UPDATE_DATE'
+      Origin = 'UPDATE_DATE'
+    end
+    object QRYSaleOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 255
     end
   end
   object QRYProduct: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM produto WHERE PRODUTO_ID = :product')
-    Left = 376
-    Top = 64
+      'SELECT * FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+    Left = 160
+    Top = 80
     ParamData = <
       item
         Name = 'PRODUCT'
@@ -216,40 +386,76 @@ object ServiceRegister: TServiceRegister
         ParamType = ptInput
         Value = Null
       end>
-    object QRYProductPRODUTO_ID: TIntegerField
-      FieldName = 'PRODUTO_ID'
-      Origin = 'PRODUTO_ID'
+    object QRYProductPROD_ID: TIntegerField
+      FieldName = 'PROD_ID'
+      Origin = 'PROD_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYProductNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
+    object QRYProductNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
       Required = True
       Size = 150
     end
-    object QRYProductDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
+    object QRYProductDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
       Size = 255
     end
-    object QRYProductCATEGORIA: TStringField
-      FieldName = 'CATEGORIA'
-      Origin = 'CATEGORIA'
+    object QRYProductCATEGORY: TStringField
+      FieldName = 'CATEGORY'
+      Origin = 'CATEGORY'
       Size = 50
     end
-    object QRYProductFORNECEDOR: TStringField
-      FieldName = 'FORNECEDOR'
-      Origin = 'FORNECEDOR'
+    object QRYProductSUPPLIER: TStringField
+      FieldName = 'SUPPLIER'
+      Origin = 'SUPPLIER'
       Size = 100
     end
-    object QRYProductIMAGEM: TBlobField
-      FieldName = 'IMAGEM'
-      Origin = 'IMAGEM'
+    object QRYProductACTIVE: TBooleanField
+      FieldName = 'ACTIVE'
+      Origin = '"ACTIVE"'
     end
-    object QRYProductDATA_CRIACAO: TSQLTimeStampField
-      FieldName = 'DATA_CRIACAO'
-      Origin = 'DATA_CRIACAO'
+    object QRYProductDATE_REGISTER: TSQLTimeStampField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
+    object QRYProductBRAND: TStringField
+      FieldName = 'BRAND'
+      Origin = 'BRAND'
+      Size = 60
+    end
+    object QRYProductUN: TStringField
+      FieldName = 'UN'
+      Origin = 'UN'
+      Size = 10
+    end
+    object QRYProductDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
+    end
+    object QRYProductUSER_ID: TIntegerField
+      FieldName = 'USER_ID'
+      Origin = 'USER_ID'
+    end
+    object QRYProductUSER_UPDATE: TIntegerField
+      FieldName = 'USER_UPDATE'
+      Origin = 'USER_UPDATE'
+    end
+  end
+  object QRYIDPeople: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT max(PEOPLE_ID) MAXID FROM PEOPLE')
+    Left = 256
+    Top = 24
+    object QRYIDPeopleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

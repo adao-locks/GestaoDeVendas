@@ -35,13 +35,24 @@ type
     WaitCursor: TFDGUIxWaitCursor;
     FBDriverLink: TFDPhysFBDriverLink;
     QRYEnterprise: TFDQuery;
-    QRYEnterpriseEMPRESA_ID: TIntegerField;
-    QRYEnterpriseNOME: TStringField;
-    QRYEnterpriseCNPJ: TStringField;
-    QRYEnterpriseTELEFONE: TStringField;
+    QRYEnterpriseCOM_ID: TIntegerField;
+    QRYEnterpriseACTIVE: TBooleanField;
+    QRYEnterpriseHEADQUARTERS: TBooleanField;
+    QRYEnterpriseCOMPANY_NAME: TStringField;
+    QRYEnterpriseFANTASY: TStringField;
+    QRYEnterpriseEIN_CNPJ: TStringField;
+    QRYEnterprisePHONE: TStringField;
     QRYEnterpriseEMAIL: TStringField;
-    QRYEnterpriseENDERECO: TStringField;
-    QRYEnterpriseDATA_CRIACAO: TDateField;
+    QRYEnterpriseDATE_REGISTER: TDateField;
+    QRYEnterpriseSTREET: TStringField;
+    QRYEnterpriseCITY: TStringField;
+    QRYEnterpriseSTATE: TStringField;
+    QRYEnterpriseZIP: TStringField;
+    QRYEnterpriseADDRESS_NUMBER: TStringField;
+    QRYEnterpriseSITE: TStringField;
+    QRYEnterpriseDATE_UPDATE: TSQLTimeStampField;
+    QRYEnterpriseUSER_UPDATE: TIntegerField;
+    QRYEnterpriseUSER_ID: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -101,11 +112,11 @@ begin
   end;
 
   QRYEnterprise.Close;
-  QRYEnterprise.Params[0].AsInteger := 2;
+  QRYEnterprise.Params[0].AsInteger := 1;
   QRYEnterprise.Open();
 
-  iCOD_COMPANY  := QRYEnterpriseEMPRESA_ID.AsInteger;
-  sCOMPANY_NAME := QRYEnterpriseNOME.AsString;
+  iCOD_COMPANY  := QRYEnterpriseCOM_ID.AsInteger;
+  sCOMPANY_NAME := QRYEnterpriseCOMPANY_NAME.AsString;
 
 end;
 

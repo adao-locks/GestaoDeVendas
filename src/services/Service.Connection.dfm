@@ -28,7 +28,7 @@ object ServiceConnection: TServiceConnection
   object QRYEnterprise: TFDQuery
     Connection = FDConn
     SQL.Strings = (
-      'select * from empresa where empresa_id = :codigo')
+      'SELECT * FROM COMPANY WHERE COM_ID = :CODIGO')
     Left = 208
     Top = 160
     ParamData = <
@@ -38,26 +38,40 @@ object ServiceConnection: TServiceConnection
         ParamType = ptInput
         Value = Null
       end>
-    object QRYEnterpriseEMPRESA_ID: TIntegerField
-      FieldName = 'EMPRESA_ID'
-      Origin = 'EMPRESA_ID'
+    object QRYEnterpriseCOM_ID: TIntegerField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYEnterpriseNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 150
+    object QRYEnterpriseACTIVE: TBooleanField
+      FieldName = 'ACTIVE'
+      Origin = '"ACTIVE"'
     end
-    object QRYEnterpriseCNPJ: TStringField
-      FieldName = 'CNPJ'
-      Origin = 'CNPJ'
+    object QRYEnterpriseHEADQUARTERS: TBooleanField
+      FieldName = 'HEADQUARTERS'
+      Origin = 'HEADQUARTERS'
+    end
+    object QRYEnterpriseCOMPANY_NAME: TStringField
+      FieldName = 'COMPANY_NAME'
+      Origin = 'COMPANY_NAME'
+      Required = True
+      Size = 255
+    end
+    object QRYEnterpriseFANTASY: TStringField
+      FieldName = 'FANTASY'
+      Origin = 'FANTASY'
+      Required = True
+      Size = 255
+    end
+    object QRYEnterpriseEIN_CNPJ: TStringField
+      FieldName = 'EIN_CNPJ'
+      Origin = 'EIN_CNPJ'
       Required = True
     end
-    object QRYEnterpriseTELEFONE: TStringField
-      FieldName = 'TELEFONE'
-      Origin = 'TELEFONE'
+    object QRYEnterprisePHONE: TStringField
+      FieldName = 'PHONE'
+      Origin = 'PHONE'
       Size = 15
     end
     object QRYEnterpriseEMAIL: TStringField
@@ -65,14 +79,51 @@ object ServiceConnection: TServiceConnection
       Origin = 'EMAIL'
       Size = 100
     end
-    object QRYEnterpriseENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Origin = 'ENDERECO'
+    object QRYEnterpriseDATE_REGISTER: TDateField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
+    object QRYEnterpriseSTREET: TStringField
+      FieldName = 'STREET'
+      Origin = 'STREET'
+      Size = 100
+    end
+    object QRYEnterpriseCITY: TStringField
+      FieldName = 'CITY'
+      Origin = 'CITY'
+      Size = 60
+    end
+    object QRYEnterpriseSTATE: TStringField
+      FieldName = 'STATE'
+      Origin = 'STATE'
+      Size = 60
+    end
+    object QRYEnterpriseZIP: TStringField
+      FieldName = 'ZIP'
+      Origin = 'ZIP'
+      Size = 9
+    end
+    object QRYEnterpriseADDRESS_NUMBER: TStringField
+      FieldName = 'ADDRESS_NUMBER'
+      Origin = 'ADDRESS_NUMBER'
+      Size = 10
+    end
+    object QRYEnterpriseSITE: TStringField
+      FieldName = 'SITE'
+      Origin = 'SITE'
       Size = 255
     end
-    object QRYEnterpriseDATA_CRIACAO: TDateField
-      FieldName = 'DATA_CRIACAO'
-      Origin = 'DATA_CRIACAO'
+    object QRYEnterpriseDATE_UPDATE: TSQLTimeStampField
+      FieldName = 'DATE_UPDATE'
+      Origin = 'DATE_UPDATE'
+    end
+    object QRYEnterpriseUSER_UPDATE: TIntegerField
+      FieldName = 'USER_UPDATE'
+      Origin = 'USER_UPDATE'
+    end
+    object QRYEnterpriseUSER_ID: TIntegerField
+      FieldName = 'USER_ID'
+      Origin = 'USER_ID'
     end
   end
 end

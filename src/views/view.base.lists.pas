@@ -35,10 +35,10 @@ type
     imgList: TImageList;
     lblTitleWindow: TLabel;
     btnNew: TSpeedButton;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
+    btnEdit: TSpeedButton;
+    btnSave: TSpeedButton;
+    btnCancel: TSpeedButton;
+    btnDelete: TSpeedButton;
     pnlBackground: TPanel;
     CardPanelList: TCardPanel;
     cardSearch: TCard;

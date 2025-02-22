@@ -1,18 +1,18 @@
 inherited viewBaseLists: TviewBaseLists
   BorderStyle = bsNone
   Caption = 'viewBaseLists'
-  ClientHeight = 629
-  ClientWidth = 1096
+  ClientHeight = 550
+  ClientWidth = 1024
   Position = poMainFormCenter
   StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
-  ExplicitWidth = 1096
-  ExplicitHeight = 629
+  ExplicitWidth = 1024
+  ExplicitHeight = 550
   TextHeight = 15
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1096
+    Width = 1024
     Height = 35
     Align = alTop
     BevelOuter = bvNone
@@ -20,11 +20,11 @@ inherited viewBaseLists: TviewBaseLists
     ParentBackground = False
     TabOrder = 0
     OnMouseDown = pnlTopMouseDown
-    ExplicitWidth = 910
+    ExplicitWidth = 1096
     object lblTitleWindow: TLabel
       Left = 78
       Top = 0
-      Width = 940
+      Width = 868
       Height = 35
       Cursor = crHandPoint
       Align = alClient
@@ -38,7 +38,6 @@ inherited viewBaseLists: TviewBaseLists
       ParentFont = False
       Layout = tlCenter
       OnMouseDown = pnlTopMouseDown
-      ExplicitLeft = 35
       ExplicitWidth = 110
       ExplicitHeight = 21
     end
@@ -54,7 +53,7 @@ inherited viewBaseLists: TviewBaseLists
       TabOrder = 0
     end
     object pnlCloseWindow: TPanel
-      Left = 1018
+      Left = 946
       Top = 0
       Width = 78
       Height = 35
@@ -63,7 +62,7 @@ inherited viewBaseLists: TviewBaseLists
       Color = clMedGray
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 832
+      ExplicitLeft = 1018
       object btnCloseWindow: TButton
         AlignWithMargins = True
         Left = 5
@@ -82,26 +81,24 @@ inherited viewBaseLists: TviewBaseLists
         Images = imgList
         ParentBiDiMode = False
         TabOrder = 0
-        ExplicitLeft = 112
-        ExplicitHeight = 22
       end
     end
   end
   object pnlFooter: TPanel
     Left = 0
-    Top = 594
-    Width = 1096
+    Top = 515
+    Width = 1024
     Height = 35
     Align = alBottom
     BevelOuter = bvNone
     Color = clMedGray
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 8
-    ExplicitWidth = 910
+    ExplicitTop = 594
+    ExplicitWidth = 1096
     object btnNew: TSpeedButton
       AlignWithMargins = True
-      Left = 1011
+      Left = 939
       Top = 5
       Width = 80
       Height = 25
@@ -111,7 +108,6 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alRight
-      Down = True
       Caption = 'New'
       ImageIndex = 1
       Images = imgList
@@ -124,9 +120,9 @@ inherited viewBaseLists: TviewBaseLists
       ParentFont = False
       ExplicitLeft = 835
     end
-    object SpeedButton1: TSpeedButton
+    object btnEdit: TSpeedButton
       AlignWithMargins = True
-      Left = 921
+      Left = 849
       Top = 5
       Width = 80
       Height = 25
@@ -148,9 +144,9 @@ inherited viewBaseLists: TviewBaseLists
       ParentFont = False
       ExplicitLeft = 755
     end
-    object SpeedButton2: TSpeedButton
+    object btnSave: TSpeedButton
       AlignWithMargins = True
-      Left = 831
+      Left = 759
       Top = 5
       Width = 80
       Height = 25
@@ -172,9 +168,9 @@ inherited viewBaseLists: TviewBaseLists
       ParentFont = False
       ExplicitLeft = 675
     end
-    object SpeedButton3: TSpeedButton
+    object btnCancel: TSpeedButton
       AlignWithMargins = True
-      Left = 741
+      Left = 669
       Top = 5
       Width = 80
       Height = 25
@@ -196,9 +192,9 @@ inherited viewBaseLists: TviewBaseLists
       ParentFont = False
       ExplicitLeft = 595
     end
-    object SpeedButton4: TSpeedButton
+    object btnDelete: TSpeedButton
       AlignWithMargins = True
-      Left = 651
+      Left = 579
       Top = 5
       Width = 80
       Height = 25
@@ -224,23 +220,21 @@ inherited viewBaseLists: TviewBaseLists
   object pnlBackground: TPanel
     Left = 0
     Top = 35
-    Width = 1096
-    Height = 559
+    Width = 1024
+    Height = 480
     Align = alClient
     BevelOuter = bvNone
     Color = clMedGray
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 392
-    ExplicitTop = 240
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 1096
+    ExplicitHeight = 559
     object CardPanelList: TCardPanel
       AlignWithMargins = True
       Left = 2
       Top = 0
-      Width = 1092
-      Height = 559
+      Width = 1020
+      Height = 480
       Margins.Left = 2
       Margins.Top = 0
       Margins.Right = 2
@@ -251,34 +245,33 @@ inherited viewBaseLists: TviewBaseLists
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 425
-      ExplicitTop = 192
-      ExplicitWidth = 300
-      ExplicitHeight = 200
+      ExplicitWidth = 1092
+      ExplicitHeight = 559
       object cardSearch: TCard
         Left = 0
         Top = 0
-        Width = 1092
-        Height = 559
+        Width = 1020
+        Height = 480
         CardIndex = 0
         TabOrder = 0
-        ExplicitWidth = 185
-        ExplicitHeight = 41
+        ExplicitWidth = 1092
+        ExplicitHeight = 559
         object pnlSearch: TPanel
           Left = 0
           Top = 0
-          Width = 1092
+          Width = 1020
           Height = 65
           Align = alTop
           BevelOuter = bvNone
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
+          ExplicitWidth = 1092
           object lblSearch: TLabel
             AlignWithMargins = True
             Left = 15
             Top = 5
-            Width = 1077
+            Width = 1005
             Height = 25
             Margins.Left = 15
             Margins.Top = 5
@@ -292,15 +285,13 @@ inherited viewBaseLists: TviewBaseLists
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            ExplicitLeft = 0
-            ExplicitTop = 0
             ExplicitWidth = 57
           end
           object edtSearch: TSearchBox
             AlignWithMargins = True
             Left = 10
             Top = 33
-            Width = 1072
+            Width = 1000
             Height = 18
             Margins.Left = 10
             Margins.Right = 10
@@ -309,14 +300,15 @@ inherited viewBaseLists: TviewBaseLists
             BorderStyle = bsNone
             TabOrder = 0
             TextHint = 'Search here!'
+            ExplicitWidth = 1072
           end
         end
         object DBGData: TDBGrid
           AlignWithMargins = True
           Left = 5
           Top = 70
-          Width = 1082
-          Height = 484
+          Width = 1010
+          Height = 405
           Margins.Left = 5
           Margins.Top = 5
           Margins.Right = 5
@@ -336,28 +328,25 @@ inherited viewBaseLists: TviewBaseLists
       object cardRegister: TCard
         Left = 0
         Top = 0
-        Width = 1092
-        Height = 559
+        Width = 1020
+        Height = 480
         CardIndex = 1
         TabOrder = 1
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object pnlRegister: TPanel
           Left = 0
           Top = 0
-          Width = 1092
+          Width = 1020
           Height = 65
           Align = alTop
           BevelOuter = bvNone
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 8
           object lblRegister: TLabel
             AlignWithMargins = True
             Left = 15
             Top = 5
-            Width = 1077
+            Width = 1005
             Height = 25
             Margins.Left = 15
             Margins.Top = 5

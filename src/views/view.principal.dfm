@@ -2461,7 +2461,7 @@ object ViewPrincipal: TViewPrincipal
       end
       object btnSales: TSpeedButton
         Left = 0
-        Top = 90
+        Top = 135
         Width = 105
         Height = 45
         Cursor = crHandPoint
@@ -2475,7 +2475,7 @@ object ViewPrincipal: TViewPrincipal
       end
       object btnClients: TSpeedButton
         Left = 0
-        Top = 180
+        Top = 45
         Width = 105
         Height = 45
         Cursor = crHandPoint
@@ -2485,12 +2485,12 @@ object ViewPrincipal: TViewPrincipal
         Images = ImageList1
         Flat = True
         OnClick = btnClientsClick
-        ExplicitTop = 40
-        ExplicitWidth = 129
+        ExplicitLeft = 4
+        ExplicitTop = 28
       end
       object btnProducts: TSpeedButton
         Left = 0
-        Top = 45
+        Top = 90
         Width = 105
         Height = 45
         Cursor = crHandPoint
@@ -2505,7 +2505,7 @@ object ViewPrincipal: TViewPrincipal
       end
       object btnStock: TSpeedButton
         Left = 0
-        Top = 135
+        Top = 180
         Width = 105
         Height = 45
         Cursor = crHandPoint

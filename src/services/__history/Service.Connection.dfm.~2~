@@ -1,8 +1,0 @@
-object ServiceConnection: TServiceConnection
-  Height = 763
-  Width = 1042
-  object FDConn: TFDConnection
-    Left = 48
-    Top = 48
-  end
-end

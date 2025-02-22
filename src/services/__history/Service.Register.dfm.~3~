@@ -1,8 +1,0 @@
-object ServiceRegister: TServiceRegister
-  Height = 480
-  Width = 640
-  object QRYEntity: TFDQuery
-    Left = 248
-    Top = 168
-  end
-end

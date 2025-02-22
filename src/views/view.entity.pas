@@ -23,16 +23,64 @@ uses
   Vcl.WinXPanels,
   Vcl.Buttons,
   Vcl.ExtCtrls,
-  Service.Register;
+  Service.Register,
+  Vcl.Mask,
+  Vcl.DBCtrls,
+  Data.SqlExpr;
 
 type
   TviewEntity = class(TviewBaseLists)
+    lblPeopleID: TLabel;
+    edtPeopleID: TDBEdit;
+    lblName: TLabel;
+    edtName: TDBEdit;
+    lblBirth: TLabel;
+    edtBirthDate: TDBEdit;
+    lblRegDate: TLabel;
+    edtRegDate: TDBEdit;
+    lblEIN: TLabel;
+    edtEIN: TDBEdit;
+    lblPhone: TLabel;
+    edtPhone: TDBEdit;
+    lblEmail: TLabel;
+    edtEmail: TDBEdit;
+    edtClient: TDBCheckBox;
+    edtEmployee: TDBCheckBox;
+    edtSupplier: TDBCheckBox;
+    edtTransport: TDBCheckBox;
+    lblTypePeople: TLabel;
+    pnlTypePeople: TPanel;
+    pnlAddress: TPanel;
+    lblTitleAddress: TLabel;
+    lblZIPCode: TLabel;
+    edtZIPCode: TDBEdit;
+    lblComplement: TLabel;
+    edtComplement: TDBEdit;
+    lblState: TLabel;
+    edtState: TDBEdit;
+    lblCity: TLabel;
+    edtCity: TDBEdit;
+    lblNeighborhood: TLabel;
+    edtNeighborhood: TDBEdit;
+    lblStreet: TLabel;
+    edtStreet: TDBEdit;
+    lblNumberAddress: TLabel;
+    edtNumberAddress: TDBEdit;
+    lblFantasy: TLabel;
+    edtFantasy: TDBEdit;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
-    procedure GET_Entity(iTIPO: string);
+    procedure GET_Entity();
   end;
 
 var
@@ -44,25 +92,120 @@ implementation
 
 { TviewEntity }
 
+procedure TviewEntity.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYEntity.State in dsEditModes then
+  begin
+    ServiceRegister.QRYEntity.Cancel;
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
 procedure TviewEntity.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
   viewEntity.Close;
 end;
 
+procedure TviewEntity.btnDeleteClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYEntity.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYEntity.Delete;
+    ShowMessage('Record deleted successfully');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+end;
+
+procedure TviewEntity.btnEditClick(Sender: TObject);
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardRegister;
+  edtName.SetFocus;
+  ServiceRegister.QRYEntity.Edit;
+end;
+
+
+
+
+
+
+
+
+procedure TviewEntity.btnNewClick(Sender: TObject);
+var
+  maxID: Integer;
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardRegister;
+  edtName.SetFocus;
+  ServiceRegister.QRYEntity.Insert;
+  ServiceRegister.QRYIDPeople.Close;
+  ServiceRegister.QRYIDPeople.SQL.Text := 'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
+  ServiceRegister.QRYIDPeople.Open;
+  if not ServiceRegister.QRYIDPeople.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYIDPeople.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtPeopleID.Field.Value := maxID;
+  //if ServiceRegister.QRYEntity.State = dsInsert then
+  //begin
+    //edtPeopleID.ReadOnly := false;
+    //if ServiceRegister.QRYEntityPEOPLE_ID.MaxValue = 0 then
+      //edtPeopleID.Field.Value := 1
+    //else
+      //edtPeopleID.Field.Value := ServiceRegister.QRYIDPeopleMAX.Value;
+  //end;
+end;
+
+
+
+
+
+
+
+
+
+
+
+procedure TviewEntity.btnSaveClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYEntity.State in dsEditModes then
+  begin
+    ServiceRegister.QRYEntity.Post;
+    ShowMessage('Registered successfully!');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+
+
+
+
+
+
+
+
+
 procedure TviewEntity.FormShow(Sender: TObject);
 begin
   inherited;
-  GET_Entity('C');
+  GET_Entity;
 end;
 
-procedure TviewEntity.GET_Entity(iTIPO: string);
+procedure TviewEntity.GET_Entity();
 begin
 
   ServiceRegister.QRYEntity.Close;
   ServiceRegister.QRYEntity.SQL.Clear;
-  ServiceRegister.QRYEntity.SQL.Add('select * from entidade where tipo = :iTIPO');
-  ServiceRegister.QRYEntity.Params[0].AsString := iTIPO;
+  ServiceRegister.QRYEntity.SQL.Add('SELECT * FROM PEOPLE WHERE 1=1 ORDER BY 1 ASC');
   ServiceRegister.QRYEntity.Open();
 
 end;
