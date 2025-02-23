@@ -16,10 +16,11 @@ uses
 type
   TviewBase = class(TForm)
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
-    { Public declarations }
+
   end;
 
 var
@@ -28,6 +29,13 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TviewBase.FormCreate(Sender: TObject);
+begin
+  FormatSettings.ShortDateFormat := 'DD/MM/YYYY';
+  FormatSettings.DateSeparator := '/';
+  FormatSettings.DecimalSeparator := '.';
+end;
 
 procedure TviewBase.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);

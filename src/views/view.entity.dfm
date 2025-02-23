@@ -5,8 +5,6 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       StyleElements = [seFont, seClient, seBorder]
     end
     inherited pnlLogo: TPanel

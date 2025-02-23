@@ -70,7 +70,7 @@ type
   private
     procedure GET_LineMenu(Sender: TObject);
   public
-    { Public declarations }
+
   end;
 
 var

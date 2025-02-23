@@ -129,17 +129,13 @@ begin
   ServiceRegister.QRYEntity.Edit;
 end;
 
-
-
-
-
-
-
-
 procedure TviewEntity.btnNewClick(Sender: TObject);
 var
+
   maxID: Integer;
+
 begin
+
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
@@ -152,25 +148,9 @@ begin
   else
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
-  //if ServiceRegister.QRYEntity.State = dsInsert then
-  //begin
-    //edtPeopleID.ReadOnly := false;
-    //if ServiceRegister.QRYEntityPEOPLE_ID.MaxValue = 0 then
-      //edtPeopleID.Field.Value := 1
-    //else
-      //edtPeopleID.Field.Value := ServiceRegister.QRYIDPeopleMAX.Value;
-  //end;
+  edtRegDate.Text := DateToStr(Date);
+
 end;
-
-
-
-
-
-
-
-
-
-
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
 begin
@@ -184,15 +164,6 @@ begin
   end;
 
 end;
-
-
-
-
-
-
-
-
-
 
 procedure TviewEntity.FormShow(Sender: TObject);
 begin
