@@ -114,6 +114,10 @@ object ServiceRegister: TServiceRegister
       Origin = 'OBS'
       Size = 255
     end
+    object QRYEntityDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
+    end
   end
   object QRYStock: TFDQuery
     Connection = ServiceConnection.FDConn
@@ -198,6 +202,10 @@ object ServiceRegister: TServiceRegister
       FieldName = 'EMP_ID'
       Origin = 'EMP_ID'
     end
+    object QRYStockDATE_REGISTER: TSQLTimeStampField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
   end
   object QRYSaleItens: TFDQuery
     Connection = ServiceConnection.FDConn
@@ -263,6 +271,10 @@ object ServiceRegister: TServiceRegister
     object QRYSaleItensDATE_REGISTER: TSQLTimeStampField
       FieldName = 'DATE_REGISTER'
       Origin = 'DATE_REGISTER'
+    end
+    object QRYSaleItensDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
     end
   end
   object QRYSale: TFDQuery
@@ -371,6 +383,18 @@ object ServiceRegister: TServiceRegister
       FieldName = 'OBS'
       Origin = 'OBS'
       Size = 255
+    end
+    object QRYSaleDATE_PAYMENT: TSQLTimeStampField
+      FieldName = 'DATE_PAYMENT'
+      Origin = 'DATE_PAYMENT'
+    end
+    object QRYSaleDATE_LATE: TSQLTimeStampField
+      FieldName = 'DATE_LATE'
+      Origin = 'DATE_LATE'
+    end
+    object QRYSaleDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
     end
   end
   object QRYProduct: TFDQuery

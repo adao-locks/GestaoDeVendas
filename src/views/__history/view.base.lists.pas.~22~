@@ -1,0 +1,91 @@
+unit view.base.lists;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  view.base,
+  Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage,
+  Vcl.StdCtrls,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Buttons,
+  Vcl.WinXPanels,
+  Vcl.WinXCtrls,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TviewBaseLists = class(TviewBase)
+    pnlTop: TPanel;
+    pnlFooter: TPanel;
+    pnlLogo: TPanel;
+    pnlCloseWindow: TPanel;
+    btnCloseWindow: TButton;
+    imgList: TImageList;
+    lblTitleWindow: TLabel;
+    btnNew: TSpeedButton;
+    btnEdit: TSpeedButton;
+    btnSave: TSpeedButton;
+    btnCancel: TSpeedButton;
+    btnDelete: TSpeedButton;
+    pnlBackground: TPanel;
+    CardPanelList: TCardPanel;
+    cardSearch: TCard;
+    cardRegister: TCard;
+    pnlSearch: TPanel;
+    lblSearch: TLabel;
+    edtSearch: TSearchBox;
+    pnlRegister: TPanel;
+    lblRegister: TLabel;
+    DBGData: TDBGrid;
+    DSData: TDataSource;
+    procedure pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  viewBaseLists: TviewBaseLists;
+
+implementation
+
+{$R *.dfm}
+
+procedure TviewBaseLists.FormShow(Sender: TObject);
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardSearch;
+end;
+
+procedure TviewBaseLists.pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
+
+  Shift: TShiftState; X, Y: Integer);
+
+const
+
+  sc_DragMove = $f012;
+
+begin
+
+  inherited;
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+
+end;
+
+end.

@@ -45,7 +45,6 @@ type
     cardRegister: TCard;
     pnlSearch: TPanel;
     lblSearch: TLabel;
-    edtSearch: TSearchBox;
     pnlRegister: TPanel;
     lblRegister: TLabel;
     DBGData: TDBGrid;

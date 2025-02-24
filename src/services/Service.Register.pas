@@ -107,6 +107,12 @@ type
     QRYEntityOBS: TStringField;
     QRYIDPeople: TFDQuery;
     QRYIDPeopleMAXID: TIntegerField;
+    QRYEntityDATE_UPDATED: TSQLTimeStampField;
+    QRYSaleDATE_PAYMENT: TSQLTimeStampField;
+    QRYSaleDATE_LATE: TSQLTimeStampField;
+    QRYSaleDATE_UPDATED: TSQLTimeStampField;
+    QRYStockDATE_REGISTER: TSQLTimeStampField;
+    QRYSaleItensDATE_UPDATED: TSQLTimeStampField;
   private
     { Private declarations }
   public

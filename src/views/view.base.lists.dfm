@@ -20,7 +20,6 @@ inherited viewBaseLists: TviewBaseLists
     ParentBackground = False
     TabOrder = 0
     OnMouseDown = pnlTopMouseDown
-    ExplicitWidth = 1096
     object lblTitleWindow: TLabel
       Left = 78
       Top = 0
@@ -62,7 +61,6 @@ inherited viewBaseLists: TviewBaseLists
       Color = clMedGray
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 1018
       object btnCloseWindow: TButton
         AlignWithMargins = True
         Left = 5
@@ -94,8 +92,6 @@ inherited viewBaseLists: TviewBaseLists
     Color = clMedGray
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 594
-    ExplicitWidth = 1096
     object btnNew: TSpeedButton
       AlignWithMargins = True
       Left = 939
@@ -227,8 +223,6 @@ inherited viewBaseLists: TviewBaseLists
     Color = clMedGray
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 1096
-    ExplicitHeight = 559
     object CardPanelList: TCardPanel
       AlignWithMargins = True
       Left = 2
@@ -245,8 +239,6 @@ inherited viewBaseLists: TviewBaseLists
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1092
-      ExplicitHeight = 559
       object cardSearch: TCard
         Left = 0
         Top = 0
@@ -254,8 +246,6 @@ inherited viewBaseLists: TviewBaseLists
         Height = 480
         CardIndex = 0
         TabOrder = 0
-        ExplicitWidth = 1092
-        ExplicitHeight = 559
         object pnlSearch: TPanel
           Left = 0
           Top = 0
@@ -266,7 +256,6 @@ inherited viewBaseLists: TviewBaseLists
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 1092
           object lblSearch: TLabel
             AlignWithMargins = True
             Left = 15
@@ -286,21 +275,6 @@ inherited viewBaseLists: TviewBaseLists
             Font.Style = []
             ParentFont = False
             ExplicitWidth = 57
-          end
-          object edtSearch: TSearchBox
-            AlignWithMargins = True
-            Left = 10
-            Top = 33
-            Width = 1000
-            Height = 18
-            Margins.Left = 10
-            Margins.Right = 10
-            Align = alTop
-            BevelInner = bvNone
-            BorderStyle = bsNone
-            TabOrder = 0
-            TextHint = 'Search here!'
-            ExplicitWidth = 1072
           end
         end
         object DBGData: TDBGrid
