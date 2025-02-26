@@ -102,6 +102,8 @@ end;
 procedure TViewPrincipal.btnProductsClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
+
+  //
 end;
 
 procedure TViewPrincipal.btnReportsClick(Sender: TObject);

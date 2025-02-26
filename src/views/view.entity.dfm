@@ -9,7 +9,7 @@ inherited viewEntity: TviewEntity
       Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 50
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -52,7 +52,6 @@ inherited viewEntity: TviewEntity
           inherited lblSearch: TLabel
             Width = 1005
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 274
           end
           object lblDateRegAsk: TLabel
             Left = 15
@@ -1241,7 +1240,7 @@ inherited viewEntity: TviewEntity
       000000000000}
   end
   inherited DSData: TDataSource
-    DataSet = ServiceRegister.QRYEntity
+    DataSet = ServiceRegister.QRYIDPeople
     Left = 890
     Top = 65531
   end

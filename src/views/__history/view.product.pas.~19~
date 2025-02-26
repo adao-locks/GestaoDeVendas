@@ -1,0 +1,90 @@
+unit view.product;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base, Data.DB, Vcl.Buttons,
+  Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.WinXCtrls, Vcl.WinXPickers, Vcl.WinXPanels, Service.Register;
+
+type
+  TviewProduct = class(TviewBase)
+    pnlBackground: TPanel;
+    CardPanelList: TCardPanel;
+    cardSearch: TCard;
+    cardRegister: TCard;
+    pnlFooter: TPanel;
+    btnNew: TSpeedButton;
+    btnEdit: TSpeedButton;
+    btnSave: TSpeedButton;
+    btnCancel: TSpeedButton;
+    btnDelete: TSpeedButton;
+    pnlTop: TPanel;
+    lblTitleWindow: TLabel;
+    pnlLogo: TPanel;
+    pnlCloseWindow: TPanel;
+    btnCloseWindow: TButton;
+    DSData: TDataSource;
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure Get_Product();
+  end;
+
+var
+  viewProduct: TviewProduct;
+
+implementation
+
+{$R *.dfm}
+
+{ TviewBase1 }
+
+procedure TviewProduct.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYProduct.State in dsEditModes then
+  begin
+    ServiceRegister.QRYProduct.Cancel;
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewProduct.btnNewClick(Sender: TObject);
+VAR
+  maxID : integer;
+
+begin
+  inherited;
+
+  //CardPanelList.ActiveCard := cardRegister;
+  //edtName.SetFocus;
+  ServiceRegister.QRYProduct.Insert;
+  ServiceRegister.QRYProduct.Close;
+  ServiceRegister.QRYProduct.SQL.Text := 'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
+  ServiceRegister.QRYProduct.Open;
+  if not ServiceRegister.QRYProduct.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYProduct.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  //edtPeopleID.Field.Value := maxID;
+  //edtRegDate.Text := DateToStr(Date);
+
+end;
+
+procedure TviewProduct.Get_Product;
+begin
+
+  ServiceRegister.QRYProduct.Close;
+  ServiceRegister.QRYProduct.SQL.Clear;
+  ServiceRegister.QRYProduct.SQL.Add('SELECT * FROM PRODUCT WHERE 1=1');
+  ServiceRegister.QRYProduct.Open();
+
+end;
+
+end.

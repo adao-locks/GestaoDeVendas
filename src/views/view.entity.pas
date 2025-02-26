@@ -112,7 +112,6 @@ type
     procedure edtStateAskInvokeSearch(Sender: TObject);
     procedure edtCityAskInvokeSearch(Sender: TObject);
     procedure edtStreetAskInvokeSearch(Sender: TObject);
-    procedure btnResetCBClick(Sender: TObject);
     procedure checkTypeFilters;
     procedure cbTransportClick(Sender: TObject);
     procedure cbSupplierClick(Sender: TObject);
@@ -155,12 +154,14 @@ end;
 procedure TviewEntity.btnDeleteClick(Sender: TObject);
 begin
   inherited;
+
   if ServiceRegister.QRYEntity.RecordCount > 0 then
   begin
     ServiceRegister.QRYEntity.Delete;
     ShowMessage('Record deleted successfully');
     CardPanelList.ActiveCard := cardSearch;
   end;
+
 end;
 
 procedure TviewEntity.btnEditClick(Sender: TObject);
@@ -193,15 +194,6 @@ begin
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
 
-end;
-
-procedure TviewEntity.btnResetCBClick(Sender: TObject);
-begin
-  inherited;
-  cbEmployee.State := cbGrayed;
-  cbClient.State := cbGrayed;
-  cbSupplier.State := cbGrayed;
-  cbTransport.State := cbGrayed;
 end;
 
 procedure TviewEntity.btnResetTypesClick(Sender: TObject);

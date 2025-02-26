@@ -1,9 +1,10 @@
 object viewBase: TviewBase
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'ViewBase'
-  ClientHeight = 597
-  ClientWidth = 894
+  ClientHeight = 550
+  ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

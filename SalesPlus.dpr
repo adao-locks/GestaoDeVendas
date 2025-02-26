@@ -8,7 +8,8 @@ uses
   Provider.Constants in 'src\providers\Provider.Constants.pas',
   view.base in 'src\views\view.base.pas' {viewBase},
   view.base.lists in 'src\views\view.base.lists.pas' {viewBaseLists},
-  view.entity in 'src\views\view.entity.pas' {viewEntity};
+  view.entity in 'src\views\view.entity.pas' {viewEntity},
+  view.product in 'src\views\view.product.pas' {viewProduct};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TViewPrincipal, ViewPrincipal);
   Application.CreateForm(TServiceConnection, ServiceConnection);
   Application.CreateForm(TServiceRegister, ServiceRegister);
+  Application.CreateForm(TviewProduct, viewProduct);
   Application.Run;
 end.
