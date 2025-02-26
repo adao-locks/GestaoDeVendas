@@ -96,6 +96,7 @@ type
     cbClient: TCheckBox;
     cbSupplier: TCheckBox;
     cbTransport: TCheckBox;
+    btnResetTypes: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -111,10 +112,13 @@ type
     procedure edtStateAskInvokeSearch(Sender: TObject);
     procedure edtCityAskInvokeSearch(Sender: TObject);
     procedure edtStreetAskInvokeSearch(Sender: TObject);
-    procedure cbEmployeeClick(Sender: TObject);
-    procedure cbClientClick(Sender: TObject);
-    procedure cbSupplierClick(Sender: TObject);
+    procedure btnResetCBClick(Sender: TObject);
+    procedure checkTypeFilters;
     procedure cbTransportClick(Sender: TObject);
+    procedure cbSupplierClick(Sender: TObject);
+    procedure cbClientClick(Sender: TObject);
+    procedure cbEmployeeClick(Sender: TObject);
+    procedure btnResetTypesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -191,6 +195,24 @@ begin
 
 end;
 
+procedure TviewEntity.btnResetCBClick(Sender: TObject);
+begin
+  inherited;
+  cbEmployee.State := cbGrayed;
+  cbClient.State := cbGrayed;
+  cbSupplier.State := cbGrayed;
+  cbTransport.State := cbGrayed;
+end;
+
+procedure TviewEntity.btnResetTypesClick(Sender: TObject);
+begin
+  inherited;
+  cbEmployee.State := cbGrayed;
+  cbClient.State := cbGrayed;
+  cbTransport.State := cbGrayed;
+  cbSupplier.State := cbGrayed;
+end;
+
 procedure TviewEntity.btnSaveClick(Sender: TObject);
 begin
   inherited;
@@ -207,78 +229,57 @@ end;
 procedure TviewEntity.cbClientClick(Sender: TObject);
 begin
   inherited;
-  if cbClient.Checked then
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND CLIENT = :CLIENT');
-    ServiceRegister.QRYEntity.ParamByName('CLIENT').AsString := 'TRUE';
-    ServiceRegister.QRYEntity.Open;
-  end
-  else
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND CLIENT = :CLIENT');
-    ServiceRegister.QRYEntity.ParamByName('CLIENT').AsString := 'FALSE';
-    ServiceRegister.QRYEntity.Open;
-  end;
+  checkTypeFilters;
 end;
 
 procedure TviewEntity.cbEmployeeClick(Sender: TObject);
 begin
   inherited;
-  if cbEmployee.Checked then
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND EMPLOYEE = :EMPLOYEE');
-    ServiceRegister.QRYEntity.ParamByName('EMPLOYEE').AsString := 'TRUE';
-    ServiceRegister.QRYEntity.Open;
-  end
-  else
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND EMPLOYEE = :EMPLOYEE');
-    ServiceRegister.QRYEntity.ParamByName('EMPLOYEE').AsString := 'FALSE';
-    ServiceRegister.QRYEntity.Open;
-  end;
-
+  checkTypeFilters;
 end;
 
 procedure TviewEntity.cbSupplierClick(Sender: TObject);
 begin
   inherited;
-  if cbSupplier.Checked then
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND SUPPLIER = :SUPPLIER');
-    ServiceRegister.QRYEntity.ParamByName('SUPPLIER').AsString := 'TRUE';
-    ServiceRegister.QRYEntity.Open;
-  end
-  else
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND SUPPLIER = :SUPPLIER');
-    ServiceRegister.QRYEntity.ParamByName('SUPPLIER').AsString := 'FALSE';
-    ServiceRegister.QRYEntity.Open;
-  end;
+  checkTypeFilters;
 end;
 
 procedure TviewEntity.cbTransportClick(Sender: TObject);
 begin
   inherited;
-  if cbTransport.Checked then
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND TRANSPORT = :TRANSPORT');
-    ServiceRegister.QRYEntity.ParamByName('TRANSPORT').AsString := 'TRUE';
-    ServiceRegister.QRYEntity.Open;
-  end
-  else
-  begin
-    ServiceRegister.QRYEntity.Close;
-    ServiceRegister.QRYEntity.SQL.Add(' AND TRANSPORT = :TRANSPORT');
-    ServiceRegister.QRYEntity.ParamByName('TRANSPORT').AsString := 'FALSE';
-    ServiceRegister.QRYEntity.Open;
-  end;
+  checkTypeFilters;
+end;
+
+procedure TviewEntity.checkTypeFilters;
+var
+  SQLBase: string;
+  Filters: string;
+begin
+  SQLBase := 'SELECT * FROM PEOPLE WHERE 1=1';
+
+  if cbEmployee.State = cbChecked then
+    Filters := Filters + ' AND EMPLOYEE = TRUE'
+  else if cbEmployee.State = cbUnchecked then
+    Filters := Filters + ' AND EMPLOYEE = FALSE';
+
+  if cbClient.State = cbChecked then
+    Filters := Filters + ' AND CLIENT = TRUE'
+  else if cbClient.State = cbUnchecked then
+    Filters := Filters + ' AND CLIENT = FALSE';
+
+  if cbSupplier.State = cbChecked then
+    Filters := Filters + ' AND SUPPLIER = TRUE'
+  else if cbSupplier.State = cbUnchecked then
+    Filters := Filters + ' AND SUPPLIER = FALSE';
+
+  if cbTransport.State = cbChecked then
+    Filters := Filters + ' AND TRANSPORT = TRUE'
+  else if cbTransport.State = cbUnchecked then
+    Filters := Filters + ' AND TRANSPORT = FALSE';
+
+  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYEntity.SQL.Text := SQLBase + Filters;
+  ServiceRegister.QRYEntity.Open;
 end;
 
 procedure TviewEntity.edtCityAskInvokeSearch(Sender: TObject);

@@ -5,6 +5,8 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 50
@@ -40,7 +42,6 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -49,6 +50,7 @@ inherited viewEntity: TviewEntity
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 169
           inherited lblSearch: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 274
           end
@@ -400,6 +402,15 @@ inherited viewEntity: TviewEntity
             TabOrder = 13
             OnClick = cbTransportClick
           end
+          object btnResetTypes: TButton
+            Left = 528
+            Top = 133
+            Width = 97
+            Height = 25
+            Caption = 'Reset types'
+            TabOrder = 14
+            OnClick = btnResetTypesClick
+          end
         end
         inherited DBGData: TDBGrid
           AlignWithMargins = False
@@ -673,6 +684,7 @@ inherited viewEntity: TviewEntity
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             Caption = 'Register Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 119
