@@ -42,6 +42,7 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -52,7 +53,6 @@ inherited viewEntity: TviewEntity
           inherited lblSearch: TLabel
             Width = 1005
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 274
           end
           object lblDateRegAsk: TLabel
             Left = 15
@@ -367,6 +367,7 @@ inherited viewEntity: TviewEntity
             ShowHint = False
             State = cbGrayed
             TabOrder = 10
+            OnClick = cbEmployeeClick
           end
           object cbClient: TCheckBox
             Left = 528
@@ -400,6 +401,15 @@ inherited viewEntity: TviewEntity
             State = cbGrayed
             TabOrder = 13
             OnClick = cbTransportClick
+          end
+          object btnResetTypes: TButton
+            Left = 528
+            Top = 133
+            Width = 97
+            Height = 25
+            Caption = 'Reset types'
+            TabOrder = 14
+            OnClick = btnResetTypesClick
           end
         end
         inherited DBGData: TDBGrid
@@ -1231,7 +1241,7 @@ inherited viewEntity: TviewEntity
       000000000000}
   end
   inherited DSData: TDataSource
-    DataSet = ServiceRegister.QRYEntity
+    DataSet = ServiceRegister.QRYIDPeople
     Left = 890
     Top = 65531
   end

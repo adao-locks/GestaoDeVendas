@@ -9,7 +9,7 @@ inherited viewEntity: TviewEntity
       Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 868
+      ExplicitWidth = 50
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -42,6 +42,7 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -1240,8 +1241,12 @@ inherited viewEntity: TviewEntity
       000000000000}
   end
   inherited DSData: TDataSource
-    DataSet = ServiceRegister.QRYIDPeople
+    DataSet = ServiceRegister.QRYEntity
     Left = 890
     Top = 65531
+  end
+  object DSIDData: TDataSource
+    DataSet = ServiceRegister.QRYIDPeople
+    Left = 736
   end
 end

@@ -97,6 +97,7 @@ type
     cbSupplier: TCheckBox;
     cbTransport: TCheckBox;
     btnResetTypes: TButton;
+    DSIDData: TDataSource;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);

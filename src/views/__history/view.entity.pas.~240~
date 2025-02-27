@@ -96,6 +96,7 @@ type
     cbClient: TCheckBox;
     cbSupplier: TCheckBox;
     cbTransport: TCheckBox;
+    btnResetTypes: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -111,10 +112,12 @@ type
     procedure edtStateAskInvokeSearch(Sender: TObject);
     procedure edtCityAskInvokeSearch(Sender: TObject);
     procedure edtStreetAskInvokeSearch(Sender: TObject);
-    procedure btnResetCBClick(Sender: TObject);
     procedure checkTypeFilters;
     procedure cbTransportClick(Sender: TObject);
     procedure cbSupplierClick(Sender: TObject);
+    procedure cbClientClick(Sender: TObject);
+    procedure cbEmployeeClick(Sender: TObject);
+    procedure btnResetTypesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -151,12 +154,14 @@ end;
 procedure TviewEntity.btnDeleteClick(Sender: TObject);
 begin
   inherited;
+
   if ServiceRegister.QRYEntity.RecordCount > 0 then
   begin
     ServiceRegister.QRYEntity.Delete;
     ShowMessage('Record deleted successfully');
     CardPanelList.ActiveCard := cardSearch;
   end;
+
 end;
 
 procedure TviewEntity.btnEditClick(Sender: TObject);
@@ -191,13 +196,13 @@ begin
 
 end;
 
-procedure TviewEntity.btnResetCBClick(Sender: TObject);
+procedure TviewEntity.btnResetTypesClick(Sender: TObject);
 begin
   inherited;
   cbEmployee.State := cbGrayed;
   cbClient.State := cbGrayed;
-  cbSupplier.State := cbGrayed;
   cbTransport.State := cbGrayed;
+  cbSupplier.State := cbGrayed;
 end;
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
@@ -211,6 +216,18 @@ begin
     CardPanelList.ActiveCard := cardSearch;
   end;
 
+end;
+
+procedure TviewEntity.cbClientClick(Sender: TObject);
+begin
+  inherited;
+  checkTypeFilters;
+end;
+
+procedure TviewEntity.cbEmployeeClick(Sender: TObject);
+begin
+  inherited;
+  checkTypeFilters;
 end;
 
 procedure TviewEntity.cbSupplierClick(Sender: TObject);
@@ -233,24 +250,24 @@ begin
   SQLBase := 'SELECT * FROM PEOPLE WHERE 1=1';
 
   if cbEmployee.State = cbChecked then
-    Filters := Filters + ' AND EMPLOYEE = 1'
+    Filters := Filters + ' AND EMPLOYEE = TRUE'
   else if cbEmployee.State = cbUnchecked then
-    Filters := Filters + ' AND EMPLOYEE = 0';
+    Filters := Filters + ' AND EMPLOYEE = FALSE';
 
   if cbClient.State = cbChecked then
-    Filters := Filters + ' AND CLIENT = 1'
+    Filters := Filters + ' AND CLIENT = TRUE'
   else if cbClient.State = cbUnchecked then
-    Filters := Filters + ' AND CLIENT = 0';
+    Filters := Filters + ' AND CLIENT = FALSE';
 
   if cbSupplier.State = cbChecked then
-    Filters := Filters + ' AND SUPPLIER = 1'
+    Filters := Filters + ' AND SUPPLIER = TRUE'
   else if cbSupplier.State = cbUnchecked then
-    Filters := Filters + ' AND SUPPLIER = 0';
+    Filters := Filters + ' AND SUPPLIER = FALSE';
 
   if cbTransport.State = cbChecked then
-    Filters := Filters + ' AND TRANSPORT = 1'
+    Filters := Filters + ' AND TRANSPORT = TRUE'
   else if cbTransport.State = cbUnchecked then
-    Filters := Filters + ' AND TRANSPORT = 0';
+    Filters := Filters + ' AND TRANSPORT = FALSE';
 
   ServiceRegister.QRYEntity.Close;
   ServiceRegister.QRYEntity.SQL.Text := SQLBase + Filters;

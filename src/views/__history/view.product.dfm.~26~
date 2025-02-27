@@ -50,12 +50,114 @@ inherited viewProduct: TviewProduct
           Left = 0
           Top = 0
           Width = 1020
-          Height = 161
+          Height = 169
           Align = alTop
           BevelOuter = bvNone
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
+          object lblSearch: TLabel
+            AlignWithMargins = True
+            Left = 15
+            Top = 5
+            Width = 1005
+            Height = 25
+            Margins.Left = 15
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = 'Search'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitWidth = 57
+          end
+        end
+        object DBGrid1: TDBGrid
+          AlignWithMargins = True
+          Left = 3
+          Top = 172
+          Width = 1014
+          Height = 305
+          Cursor = crCross
+          Align = alClient
+          DataSource = DSData
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ACTIVE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PROD_ID'
+              Width = 60
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NAME'
+              Width = 150
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CATEGORY'
+              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SUPPLIER'
+              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'BRAND'
+              Width = 120
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'UN'
+              Width = 25
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_UPDATED'
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_REGISTER'
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER_ID'
+              Width = 75
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER_UPDATE'
+              Width = 75
+              Visible = True
+            end>
         end
       end
     end
@@ -270,6 +372,7 @@ inherited viewProduct: TviewProduct
     end
   end
   object DSData: TDataSource
+    DataSet = ServiceRegister.QRYProduct
     Left = 874
     Top = 65531
   end
