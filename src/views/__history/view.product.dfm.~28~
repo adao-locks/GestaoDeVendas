@@ -12,7 +12,6 @@ inherited viewProduct: TviewProduct
     Color = clMedGray
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -130
     object CardPanelList: TCardPanel
       AlignWithMargins = True
       Left = 2
@@ -24,7 +23,7 @@ inherited viewProduct: TviewProduct
       Margins.Right = 2
       Margins.Bottom = 0
       Align = alClient
-      ActiveCard = cardRegister
+      ActiveCard = cardSearch
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
@@ -35,7 +34,258 @@ inherited viewProduct: TviewProduct
         Width = 1020
         Height = 480
         CardIndex = 0
+        Color = cl3DLight
+        ParentBackground = False
         TabOrder = 0
+        object Label1: TLabel
+          Left = 9
+          Top = 115
+          Width = 11
+          Height = 15
+          Caption = 'ID'
+          FocusControl = edtIdProd
+        end
+        object Label2: TLabel
+          Left = 65
+          Top = 115
+          Width = 32
+          Height = 15
+          Caption = 'Name'
+          FocusControl = edtName
+        end
+        object Label3: TLabel
+          Left = 221
+          Top = 115
+          Width = 60
+          Height = 15
+          Caption = 'Description'
+          FocusControl = edtDescription
+        end
+        object Label4: TLabel
+          Left = 55
+          Top = 160
+          Width = 48
+          Height = 15
+          Caption = 'Category'
+          FocusControl = edtCategory
+        end
+        object Label5: TLabel
+          Left = 307
+          Top = 160
+          Width = 43
+          Height = 15
+          Caption = 'Supplier'
+          FocusControl = edtSupplier
+        end
+        object Label6: TLabel
+          Left = 86
+          Top = 69
+          Width = 69
+          Height = 15
+          AutoSize = False
+          Caption = 'Date Register'
+          Enabled = False
+          FocusControl = edtDateReg
+        end
+        object Label7: TLabel
+          Left = 181
+          Top = 160
+          Width = 31
+          Height = 15
+          Caption = 'Brand'
+          FocusControl = edtBrand
+        end
+        object Label8: TLabel
+          Left = 9
+          Top = 160
+          Width = 15
+          Height = 15
+          Caption = 'Un'
+          FocusControl = edtUn
+        end
+        object Label9: TLabel
+          Left = 239
+          Top = 69
+          Width = 72
+          Height = 15
+          AutoSize = False
+          Caption = 'Date Updated'
+          Enabled = False
+          FocusControl = edtDateUp
+        end
+        object Label10: TLabel
+          Left = 173
+          Top = 69
+          Width = 46
+          Height = 15
+          AutoSize = False
+          Caption = 'User Reg'
+          Enabled = False
+          FocusControl = edtUserReg
+        end
+        object Label11: TLabel
+          Left = 325
+          Top = 69
+          Width = 41
+          Height = 15
+          AutoSize = False
+          Caption = 'User Up'
+          Enabled = False
+          FocusControl = edtUserUp
+        end
+        object pnlRegister: TPanel
+          Left = 0
+          Top = 0
+          Width = 1020
+          Height = 65
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clMedGray
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitTop = 8
+          object lblRegister: TLabel
+            AlignWithMargins = True
+            Left = 15
+            Top = 5
+            Width = 1005
+            Height = 25
+            Margins.Left = 15
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = 'Register Product'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitWidth = 138
+          end
+        end
+        object edtIdProd: TDBEdit
+          Left = 9
+          Top = 131
+          Width = 50
+          Height = 23
+          DataField = 'PROD_ID'
+          DataSource = DSData
+          TabOrder = 1
+        end
+        object edtName: TDBEdit
+          Left = 65
+          Top = 131
+          Width = 150
+          Height = 23
+          DataField = 'NAME'
+          DataSource = DSData
+          TabOrder = 2
+        end
+        object edtDescription: TDBEdit
+          Left = 221
+          Top = 131
+          Width = 400
+          Height = 23
+          DataField = 'DESCRIPTION'
+          DataSource = DSData
+          TabOrder = 3
+        end
+        object edtCategory: TDBEdit
+          Left = 55
+          Top = 176
+          Width = 120
+          Height = 23
+          DataField = 'CATEGORY'
+          DataSource = DSData
+          TabOrder = 5
+        end
+        object edtSupplier: TDBEdit
+          Left = 307
+          Top = 176
+          Width = 200
+          Height = 23
+          DataField = 'SUPPLIER'
+          DataSource = DSData
+          TabOrder = 7
+        end
+        object DBCheckBox1: TDBCheckBox
+          Left = 12
+          Top = 81
+          Width = 97
+          Height = 17
+          Caption = 'ACTIVE'
+          DataField = 'ACTIVE'
+          DataSource = DSData
+          TabOrder = 8
+        end
+        object edtDateReg: TDBEdit
+          Left = 86
+          Top = 85
+          Width = 80
+          Height = 23
+          AutoSize = False
+          Color = cl3DLight
+          DataField = 'DATE_REGISTER'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 9
+        end
+        object edtBrand: TDBEdit
+          Left = 181
+          Top = 176
+          Width = 120
+          Height = 23
+          DataField = 'BRAND'
+          DataSource = DSData
+          TabOrder = 6
+        end
+        object edtUn: TDBEdit
+          Left = 9
+          Top = 176
+          Width = 40
+          Height = 23
+          DataField = 'UN'
+          DataSource = DSData
+          TabOrder = 4
+        end
+        object edtDateUp: TDBEdit
+          Left = 239
+          Top = 85
+          Width = 80
+          Height = 23
+          AutoSize = False
+          Color = cl3DLight
+          DataField = 'DATE_UPDATED'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 10
+        end
+        object edtUserReg: TDBEdit
+          Left = 173
+          Top = 85
+          Width = 60
+          Height = 23
+          AutoSize = False
+          Color = cl3DLight
+          DataField = 'USER_ID'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 11
+        end
+        object edtUserUp: TDBEdit
+          Left = 325
+          Top = 85
+          Width = 60
+          Height = 23
+          AutoSize = False
+          Color = cl3DLight
+          DataField = 'USER_UPDATE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 12
+        end
       end
       object cardRegister: TCard
         Left = 0
@@ -44,8 +294,6 @@ inherited viewProduct: TviewProduct
         Height = 480
         CardIndex = 1
         TabOrder = 1
-        ExplicitWidth = 890
-        ExplicitHeight = 527
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -77,6 +325,88 @@ inherited viewProduct: TviewProduct
             ExplicitWidth = 57
           end
         end
+        object DBGrid1: TDBGrid
+          AlignWithMargins = True
+          Left = 3
+          Top = 172
+          Width = 1014
+          Height = 305
+          Cursor = crCross
+          Align = alClient
+          DataSource = DSData
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ACTIVE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PROD_ID'
+              Width = 60
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NAME'
+              Width = 150
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CATEGORY'
+              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SUPPLIER'
+              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'BRAND'
+              Width = 120
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'UN'
+              Width = 25
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_UPDATED'
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_REGISTER'
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER_ID'
+              Width = 75
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER_UPDATE'
+              Width = 75
+              Visible = True
+            end>
+        end
       end
     end
   end
@@ -90,7 +420,6 @@ inherited viewProduct: TviewProduct
     Color = clMedGray
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = -130
     object btnNew: TSpeedButton
       AlignWithMargins = True
       Left = 939
@@ -227,7 +556,6 @@ inherited viewProduct: TviewProduct
     Color = clMedGray
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = -130
     object lblTitleWindow: TLabel
       Left = 78
       Top = 0
@@ -290,6 +618,7 @@ inherited viewProduct: TviewProduct
     end
   end
   object DSData: TDataSource
+    DataSet = ServiceRegister.QRYProduct
     Left = 874
     Top = 65531
   end

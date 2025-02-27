@@ -42,7 +42,6 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -360,7 +359,7 @@ inherited viewEntity: TviewEntity
             Width = 97
             Height = 17
             Cursor = crHandPoint
-            Caption = 'Employee'
+            Caption = 'Active'
             DoubleBuffered = True
             ParentDoubleBuffered = False
             ParentShowHint = False

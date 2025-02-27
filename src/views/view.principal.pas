@@ -19,7 +19,7 @@ uses
   Vcl.Buttons,
   Vcl.Imaging.pngimage,
   Vcl.Imaging.jpeg,
-  Provider.Constants, view.entity;
+  Provider.Constants, view.entity, view.product;
 
 type
   TViewPrincipal = class(TForm)
@@ -101,9 +101,15 @@ end;
 
 procedure TViewPrincipal.btnProductsClick(Sender: TObject);
 begin
-  GET_LineMenu(Sender);
 
-  //
+  GET_LineMenu(Sender);
+  viewProduct := TviewProduct.Create(Self);
+
+  try
+    viewProduct.ShowModal;
+  finally
+    FreeAndNil(viewProduct);
+  end;
 end;
 
 procedure TViewPrincipal.btnReportsClick(Sender: TObject);

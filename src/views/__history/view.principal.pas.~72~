@@ -70,7 +70,7 @@ type
   private
     procedure GET_LineMenu(Sender: TObject);
   public
-    { Public declarations }
+
   end;
 
 var
@@ -84,7 +84,7 @@ procedure TViewPrincipal.btnClientsClick(Sender: TObject);
 begin
 
   GET_LineMenu(Sender);
-  viewEntity := TviewEntity.Create(pnlContent);
+  viewEntity := TviewEntity.Create(Self);
 
   try
     viewEntity.ShowModal;
@@ -102,6 +102,8 @@ end;
 procedure TViewPrincipal.btnProductsClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
+
+  //
 end;
 
 procedure TViewPrincipal.btnReportsClick(Sender: TObject);
