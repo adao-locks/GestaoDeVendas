@@ -105,14 +105,16 @@ type
     QRYEntityZIP_CODE: TStringField;
     QRYEntityFANTASY: TStringField;
     QRYEntityOBS: TStringField;
-    QRYIDPeople: TFDQuery;
-    QRYIDPeopleMAXID: TIntegerField;
     QRYEntityDATE_UPDATED: TSQLTimeStampField;
     QRYSaleDATE_PAYMENT: TSQLTimeStampField;
     QRYSaleDATE_LATE: TSQLTimeStampField;
     QRYSaleDATE_UPDATED: TSQLTimeStampField;
     QRYStockDATE_REGISTER: TSQLTimeStampField;
     QRYSaleItensDATE_UPDATED: TSQLTimeStampField;
+    QRYIDPeople: TFDQuery;
+    QRYIDPeopleMAXID: TIntegerField;
+    QRYIDProd: TFDQuery;
+    QRYIDProdMAXID: TIntegerField;
   private
     { Private declarations }
   public

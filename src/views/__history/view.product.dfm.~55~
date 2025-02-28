@@ -1,0 +1,1214 @@
+inherited viewProduct: TviewProduct
+  Caption = 'Product'
+  StyleElements = [seFont, seClient, seBorder]
+  OnShow = FormShow
+  TextHeight = 15
+  object pnlBackground: TPanel
+    Left = 0
+    Top = 35
+    Width = 1024
+    Height = 480
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clMedGray
+    ParentBackground = False
+    TabOrder = 0
+    object CardPanelList: TCardPanel
+      AlignWithMargins = True
+      Left = 2
+      Top = 0
+      Width = 1020
+      Height = 480
+      Margins.Left = 2
+      Margins.Top = 0
+      Margins.Right = 2
+      Margins.Bottom = 0
+      Align = alClient
+      ActiveCard = cardRegister
+      BevelOuter = bvNone
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 0
+      object cardSearch: TCard
+        Left = 0
+        Top = 0
+        Width = 1020
+        Height = 480
+        CardIndex = 0
+        TabOrder = 1
+        object Panel1: TPanel
+          Left = 0
+          Top = 0
+          Width = 1020
+          Height = 169
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clMedGray
+          ParentBackground = False
+          TabOrder = 0
+          object lblSearch: TLabel
+            AlignWithMargins = True
+            Left = 15
+            Top = 5
+            Width = 1005
+            Height = 25
+            Margins.Left = 15
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = 'Search'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitWidth = 57
+          end
+          object lblNameAsk: TLabel
+            Left = 15
+            Top = 68
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Name: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblFantasyAsk: TLabel
+            Left = 15
+            Top = 92
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Category: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblZipAsk: TLabel
+            Left = 269
+            Top = 68
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Un: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblStateAsk: TLabel
+            Left = 269
+            Top = 92
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'User Register: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblCityAsk: TLabel
+            Left = 269
+            Top = 116
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'User Updated: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblPhoneAsk: TLabel
+            Left = 14
+            Top = 116
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Supplier: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblEmailAsk: TLabel
+            Left = 14
+            Top = 140
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Brand: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblDateBirthAsk: TLabel
+            Left = 266
+            Top = 41
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Date Updated: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblDateRegAsk: TLabel
+            Left = 15
+            Top = 41
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Date Register: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object edtFantasyAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 110
+            Top = 92
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 0
+          end
+          object edtNameAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 110
+            Top = 68
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 1
+          end
+          object edtZIPAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 363
+            Top = 68
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 2
+          end
+          object edtStateAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 363
+            Top = 92
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 3
+          end
+          object edtCityAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 363
+            Top = 116
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 4
+          end
+          object edtPhoneAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 111
+            Top = 116
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 5
+          end
+          object edtEmailAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 111
+            Top = 140
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 6
+          end
+          object cbEmployee: TCheckBox
+            Left = 528
+            Top = 41
+            Width = 97
+            Height = 17
+            Cursor = crHandPoint
+            Caption = 'Active'
+            DoubleBuffered = True
+            ParentDoubleBuffered = False
+            ParentShowHint = False
+            ShowHint = False
+            State = cbGrayed
+            TabOrder = 7
+          end
+          object edtDateBirth: TDatePicker
+            Left = 363
+            Top = 37
+            Width = 120
+            Height = 25
+            Cursor = crHandPoint
+            Date = -36522.000000000000000000
+            DateFormat = 'dd/mm/yyyy'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            TabOrder = 8
+          end
+          object DatePicker1: TDatePicker
+            Left = 111
+            Top = 37
+            Width = 120
+            Height = 25
+            Cursor = crHandPoint
+            Date = -36522.000000000000000000
+            DateFormat = 'dd/mm/yyyy'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            TabOrder = 9
+          end
+          object btnResetTypes: TButton
+            Left = 528
+            Top = 133
+            Width = 97
+            Height = 25
+            Cursor = crHandPoint
+            Caption = 'Reset types'
+            TabOrder = 10
+          end
+        end
+        object DBGrid1: TDBGrid
+          AlignWithMargins = True
+          Left = 3
+          Top = 172
+          Width = 1014
+          Height = 305
+          Cursor = crCross
+          Align = alClient
+          DataSource = DSData
+          ReadOnly = True
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ACTIVE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PROD_ID'
+              Width = 60
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NAME'
+              Width = 150
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CATEGORY'
+              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SUPPLIER'
+              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'BRAND'
+              Width = 120
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'UN'
+              Width = 25
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_UPDATED'
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_REGISTER'
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER_ID'
+              Width = 75
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER_UPDATE'
+              Width = 75
+              Visible = True
+            end>
+        end
+      end
+      object cardRegister: TCard
+        Left = 0
+        Top = 0
+        Width = 1020
+        Height = 480
+        CardIndex = 1
+        Color = cl3DLight
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitTop = -3
+        object Label1: TLabel
+          Left = 9
+          Top = 115
+          Width = 11
+          Height = 15
+          Caption = 'ID'
+          FocusControl = edtIdProd
+        end
+        object Label2: TLabel
+          Left = 65
+          Top = 115
+          Width = 32
+          Height = 15
+          Caption = 'Name'
+          FocusControl = edtName
+        end
+        object Label3: TLabel
+          Left = 9
+          Top = 160
+          Width = 60
+          Height = 15
+          Caption = 'Description'
+          FocusControl = edtDescription
+        end
+        object Label4: TLabel
+          Left = 55
+          Top = 204
+          Width = 48
+          Height = 15
+          Caption = 'Category'
+          FocusControl = edtCategory
+        end
+        object Label5: TLabel
+          Left = 307
+          Top = 204
+          Width = 43
+          Height = 15
+          Caption = 'Supplier'
+          FocusControl = edtSupplier
+        end
+        object Label6: TLabel
+          Left = 86
+          Top = 69
+          Width = 69
+          Height = 15
+          AutoSize = False
+          Caption = 'Date Register'
+          Enabled = False
+          FocusControl = edtDateReg
+        end
+        object Label7: TLabel
+          Left = 181
+          Top = 204
+          Width = 31
+          Height = 15
+          Caption = 'Brand'
+          FocusControl = edtBrand
+        end
+        object Label8: TLabel
+          Left = 9
+          Top = 204
+          Width = 15
+          Height = 15
+          Caption = 'Un'
+          FocusControl = edtUn
+        end
+        object Label9: TLabel
+          Left = 239
+          Top = 69
+          Width = 72
+          Height = 15
+          AutoSize = False
+          Caption = 'Date Updated'
+          Enabled = False
+          FocusControl = edtDateUp
+        end
+        object Label10: TLabel
+          Left = 173
+          Top = 69
+          Width = 46
+          Height = 15
+          AutoSize = False
+          Caption = 'User Reg'
+          Enabled = False
+          FocusControl = edtUserReg
+        end
+        object Label11: TLabel
+          Left = 325
+          Top = 69
+          Width = 41
+          Height = 15
+          AutoSize = False
+          Caption = 'User Up'
+          Enabled = False
+          FocusControl = edtUserUp
+        end
+        object pnlRegister: TPanel
+          Left = 0
+          Top = 0
+          Width = 1020
+          Height = 65
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clMedGray
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitTop = 8
+          object lblRegister: TLabel
+            AlignWithMargins = True
+            Left = 15
+            Top = 5
+            Width = 1005
+            Height = 25
+            Margins.Left = 15
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = 'Register Product'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitWidth = 138
+          end
+        end
+        object edtIdProd: TDBEdit
+          Left = 9
+          Top = 131
+          Width = 50
+          Height = 23
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'PROD_ID'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 1
+        end
+        object edtName: TDBEdit
+          Left = 65
+          Top = 131
+          Width = 330
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'NAME'
+          DataSource = DSData
+          TabOrder = 2
+        end
+        object edtDescription: TDBEdit
+          Left = 9
+          Top = 176
+          Width = 386
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'DESCRIPTION'
+          DataSource = DSData
+          TabOrder = 3
+        end
+        object edtCategory: TDBEdit
+          Left = 55
+          Top = 220
+          Width = 120
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'CATEGORY'
+          DataSource = DSData
+          TabOrder = 5
+        end
+        object edtSupplier: TDBEdit
+          Left = 307
+          Top = 220
+          Width = 200
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'SUPPLIER'
+          DataSource = DSData
+          TabOrder = 7
+        end
+        object cbActive: TDBCheckBox
+          Left = 12
+          Top = 82
+          Width = 70
+          Height = 17
+          Cursor = crHandPoint
+          Caption = 'ACTIVE'
+          DataField = 'ACTIVE'
+          DataSource = DSData
+          ParentShowHint = False
+          ShowHint = False
+          TabOrder = 8
+        end
+        object edtDateReg: TDBEdit
+          Left = 86
+          Top = 85
+          Width = 80
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'DATE_REGISTER'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 9
+        end
+        object edtBrand: TDBEdit
+          Left = 181
+          Top = 220
+          Width = 120
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'BRAND'
+          DataSource = DSData
+          TabOrder = 6
+        end
+        object edtUn: TDBEdit
+          Left = 9
+          Top = 220
+          Width = 40
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'UN'
+          DataSource = DSData
+          TabOrder = 4
+        end
+        object edtDateUp: TDBEdit
+          Left = 239
+          Top = 85
+          Width = 80
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'DATE_UPDATED'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 10
+        end
+        object edtUserReg: TDBEdit
+          Left = 173
+          Top = 85
+          Width = 60
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'USER_ID'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 11
+        end
+        object edtUserUp: TDBEdit
+          Left = 325
+          Top = 85
+          Width = 60
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'USER_UPDATE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 12
+        end
+      end
+    end
+  end
+  object pnlFooter: TPanel
+    Left = 0
+    Top = 515
+    Width = 1024
+    Height = 35
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clMedGray
+    ParentBackground = False
+    TabOrder = 1
+    object btnNew: TSpeedButton
+      AlignWithMargins = True
+      Left = 939
+      Top = 5
+      Width = 80
+      Height = 25
+      Cursor = crHandPoint
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alRight
+      Caption = 'New'
+      ImageIndex = 1
+      Images = imgList
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = btnNewClick
+      ExplicitLeft = 835
+    end
+    object btnEdit: TSpeedButton
+      AlignWithMargins = True
+      Left = 849
+      Top = 5
+      Width = 80
+      Height = 25
+      Cursor = crHandPoint
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alRight
+      Caption = 'Edit'
+      ImageIndex = 2
+      Images = imgList
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = btnEditClick
+      ExplicitLeft = 755
+    end
+    object btnSave: TSpeedButton
+      AlignWithMargins = True
+      Left = 759
+      Top = 5
+      Width = 80
+      Height = 25
+      Cursor = crHandPoint
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alRight
+      Caption = 'Save'
+      ImageIndex = 3
+      Images = imgList
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = btnSaveClick
+      ExplicitLeft = 675
+    end
+    object btnCancel: TSpeedButton
+      AlignWithMargins = True
+      Left = 669
+      Top = 5
+      Width = 80
+      Height = 25
+      Cursor = crHandPoint
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alRight
+      Caption = 'Cancel'
+      ImageIndex = 4
+      Images = imgList
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = btnCancelClick
+      ExplicitLeft = 595
+    end
+    object btnDelete: TSpeedButton
+      AlignWithMargins = True
+      Left = 579
+      Top = 5
+      Width = 80
+      Height = 25
+      Cursor = crHandPoint
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alRight
+      Caption = 'Delete'
+      ImageIndex = 5
+      Images = imgList
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+      OnClick = btnDeleteClick
+      ExplicitLeft = 515
+    end
+  end
+  object pnlTop: TPanel
+    Left = 0
+    Top = 0
+    Width = 1024
+    Height = 35
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clMedGray
+    ParentBackground = False
+    TabOrder = 2
+    object lblTitleWindow: TLabel
+      Left = 78
+      Top = 0
+      Width = 868
+      Height = 35
+      Cursor = crHandPoint
+      Align = alClient
+      Alignment = taCenter
+      Caption = 'Products'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      Layout = tlCenter
+      ExplicitWidth = 61
+      ExplicitHeight = 21
+    end
+    object pnlLogo: TPanel
+      Left = 0
+      Top = 0
+      Width = 78
+      Height = 35
+      Align = alLeft
+      BevelOuter = bvNone
+      Color = clMedGray
+      ParentBackground = False
+      TabOrder = 0
+    end
+    object pnlCloseWindow: TPanel
+      Left = 946
+      Top = 0
+      Width = 78
+      Height = 35
+      Align = alRight
+      BevelOuter = bvNone
+      Color = clMedGray
+      ParentBackground = False
+      TabOrder = 1
+      object btnCloseWindow: TButton
+        AlignWithMargins = True
+        Left = 5
+        Top = 5
+        Width = 68
+        Height = 25
+        Cursor = crHandPoint
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
+        Align = alRight
+        BiDiMode = bdLeftToRight
+        Caption = 'Close'
+        ImageIndex = 0
+        Images = imgList
+        ParentBiDiMode = False
+        TabOrder = 0
+        OnClick = btnCloseWindowClick
+      end
+    end
+  end
+  object DSData: TDataSource
+    DataSet = ServiceRegister.QRYProduct
+    Left = 874
+    Top = 65531
+  end
+  object imgList: TImageList
+    ColorDepth = cd32Bit
+    DrawingStyle = dsTransparent
+    Left = 816
+    Top = 65528
+    Bitmap = {
+      494C010107000800040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000002000000001002000000000000020
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00F5000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000006700000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000FB000000FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000BA0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FC00000036000000000000000000000000000000FD0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000037000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FB000000FF000000FB0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000660000000000000015000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      00000000004C000000FF000000FC000000000000000000000000000000000000
+      0001000000D4000000FF000000FF000000FF000000FF000000FF000000620000
+      0000000000FB000000FF000000FB000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000087000000FF000000F20000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000004C000000FF000000FF0000000000000053000000FF0000
+      00AD000000000000000D000000FF0000005700000000000000F7000000D70000
+      000000000000000000FF000000FF000000000000000000000000000000360000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FC00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000F3000000FF000000190000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000024000000FF000000FF000000FB000000FF000000F70000
+      000000000000000000FF000000FF00000000000000000000001F000000FF0000
+      00FF000000B3000000000000000000000000000000000000001D000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000000000
+      0000000000000000000B000000FF0000005700000000000000F7000000D60000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA000000000000000000000055000000FF000000FF000000FC000000000000
+      000000000000000000FF000000FF0000000000000000000000FF000000FF0000
+      0082000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF0000005B00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000000000
+      0000000000000000001F000000FF000000FF000000FB000000FF000000F70000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000000000000FB000000FF000000FF000000FF000000570000
+      000000000000000000FF000000FF000000000000003D000000FF000000FD0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      001D000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000000000
+      0000000000000000000000000055000000FF000000FF000000FC000000000000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000050000000FF000000FB00000057000000FF000000FF0000
+      000000000000000000FF000000FF00000000000000BC000000FF0000006D0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000000000
+      00000000000000000000000000FB000000FF000000FF000000FF000000570000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000000000000500000000000000000000000230000000D0000
+      000000000000000000FF000000FF00000000000000EE000000FF000000230000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FE000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000000000
+      0000000000000000004E000000FF000000FB00000057000000FF000000FF0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000FF00000000000000DD000000FF0000003F0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000000000
+      000000000000000000000000004F0000000000000000000000220000000E0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000FF0000000000000088000000FF000000C50000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000D2000000FF000000690000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000E60000000000000000000000FF000000FF0000
+      0005000000000000000000000000000000000000000000000000000000000000
+      00B3000000FF000000D000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000001C000000FF000000FF0000
+      00D4000000AA000000AA000000AA000000AA000000AA000000AA000000AA0000
+      00AA000000AD000000FF000000FF000000F50000000000000040000000FF0000
+      00D40000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000090000000000000000000000BD000000FF0000
+      00FF000000050000000000000000000000000000000000000000000000820000
+      00FF000000FF0000000400000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000078000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FD000000000000000000000000000000FF0000
+      00FF0000006A00000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF0000001F00000000000000000000000000000000000000F50000
+      00FF000000FF000000C50000003E000000230000006D000000FD000000FF0000
+      00FF000000480000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      003F000000550000005500000055000000550000005500000055000000550000
+      0055000000550000001500000000000000000000000000000000000000780000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF0000001F0000000000000000000000000000000000000000000000000000
+      00C4000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      0027000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      001C000000D1000000FF000000FF000000FF000000FF000000FC000000AD0000
+      0001000000000000000000000000000000000000000000000000000000000000
+      0000000000010000007F000000DF000000F8000000B800000031000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000D2000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000250000000000000000000000000000000000000000000000000000
+      00F5000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000670000000000000000000000000000002F000000FF0000
+      00FF000000FF000000FF000000FF00000000000000F6000000FF000000FF0000
+      001100000000000000000000000000000000000000000000002F000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      00EC000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000003500000000000000000000000000000000000000FD0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000370000000000000006000000FF000000FF0000
+      00FF000000FF000000FF0000009600000000000000B9000000FF000000FF0000
+      00FF0000001100000000000000000000000000000006000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00E5000000000000000000000000000000000000000000000000000000EC0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      0084000000FF000000FF00000035000000000000000000000015000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      00000000004C000000FF000000FC00000000000000BD000000FF0000009F0000
+      00000000000000000000000000000000000000000002000000FF000000FF0000
+      00FF000000FF000000110000000000000000000000BD000000FF0000009F0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000ED000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      000000000087000000FF000000FF000000250000000000000053000000FF0000
+      00AD00000000000000000000000000000096000000FF00000000000000000000
+      000000000000000000FF000000FF00000000000000FE000000FF000000030000
+      000000000000000000000000000000000000000000000000000B000000FF0000
+      00FF000000FF000000FF0000001100000000000000FE000000FF000000030000
+      00000000000000000066000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FC000000360000000000000060000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000087000000FF000000FF0000000000000055000000FF0000
+      00AA000000000000000000000000000000FF000000FF00000000000000000000
+      000000000000000000FF000000FF00000000000000FF000000FF000000000000
+      00000000000000000000000000000000000000000000000000000000000A0000
+      00FF000000FF000000FF000000FF00000013000000FF000000FF000000000000
+      0000000000BA000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000066000000E9000000FF0000002E0000
+      000000000000000000E2000000FF0000005700000000000000FB000000FF0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000097000000FF000000FF000000FF000000FF000000FF0000
+      000000000000000000FF000000FF00000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000B000000FF000000FF000000FF000000FF000000FF000000FF000000000000
+      0000000000FF000000FF0000001F000000000000000000000000000000000000
+      0000000000000000004C000000FF000000FF000000FF000000FF000000000000
+      00000000000000000050000000FF000000FF000000FB000000FF000000FB0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA00000000000000CA000000FF000000FF000000FF000000FF000000FF0000
+      000000000000000000FF000000FF00000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000B000000FF000000FF000000FF000000FF000000FF000000000000
+      0048000000FF000000C40000000000000000000000130000009D000000330000
+      00000000000000000000000000FF000000FF000000FF000000FF000000000000
+      0000000000000000000000000055000000FF000000FF000000FC000000000000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA000000000000000000000000000000FF000000FF00000000000000000000
+      000000000000000000FF000000FF00000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000009000000E600000083000000FF000000FF000000000000
+      0055000000FF000000AA0000000000000005000000FF000000FF000000FF0000
+      00400000000000000000000000FF000000FF000000FF000000FF000000000000
+      00000000000000000000000000FB000000FF000000FF000000FF0000005B0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA000000000000000000000000000000C8000000FF00000000000000000000
+      000000000000000000FF000000FF00000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000009D000000050000000000000000000000FF000000FF000000000000
+      0055000000FF000000AA000000000000004E000000FF000000FF000000FF0000
+      00A40000000000000000000000FF000000FF000000FD000000FF000000040000
+      000000000000000000E7000000FF000000FB00000057000000FF000000FF0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000FF00000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0052000000FF000000A80000000000000000000000FF000000FF000000000000
+      0055000000FF000000AA0000000000000000000000FF000000FF000000FF0000
+      001F0000000000000000000000FF000000FF000000B9000000FF000000AC0000
+      00000000000000000053000000E7000000000000000000000051000000EB0000
+      00000000000000000000000000FF000000FF0000000000000055000000FF0000
+      00AA0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000FF00000000000000FF000000FF000000000000
+      000000000000000000000000000000000012000000FF000000FF000000FF0000
+      00FF000000FF000000A10000000000000000000000FF000000FF000000000000
+      0055000000FF000000AA0000000000000000000000000000004A000000050000
+      00000000000000000000000000FF000000FF00000004000000FF000000FF0000
+      0087000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000FF000000D20000000000000055000000FF0000
+      00AA0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000E600000000000000FF000000FF000000000000
+      000000000000000000000000000000000055000000FF000000FF000000FF0000
+      00FF000000FF0000003D000000000000000000000053000000E7000000000000
+      0055000000FF000000AA00000000000000000000000000000000000000000000
+      00000000000000000000000000FF000000FF0000000000000030000000FF0000
+      00FF0000008B0000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF000000EF000000000000000000000040000000FF0000
+      00D40000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF0000000900000000000000EA000000FF0000002A0000
+      000000000000000000000000000000000055000000FF000000FF000000FF0000
+      00FF000000F70000000000000000000000000000000000000000000000000000
+      0040000000FF000000D100000000000000FF000000FF000000FF000000FF0000
+      00FF00000000000000E3000000FF000000FF0000000000000000000000320000
+      00FF000000FF000000AC000000040000000000000000000000000000002F0000
+      00FF000000FF000000ED00000000000000000000000000000000000000FF0000
+      00FF0000006A00000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF0000001F000000000000000000000068000000FF000000FF0000
+      002A00000000000000000000000000000055000000FF000000FF000000FF0000
+      00FB000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF00000067000000FF000000FF000000FF000000FF0000
+      00FF000000E3000000FF000000FF000000020000000000000000000000000000
+      0032000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000ED0000000000000000000000000000000000000000000000780000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF0000001F00000000000000000000000000000000000000F3000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FB0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000078000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000002000000000000000000000000000000000000
+      000000000004000000B9000000FE000000FF000000FF000000FF000000E80000
+      005F000000000000000000000000000000000000000000000000000000000000
+      001C000000D1000000FF000000FF000000FF000000FF000000FC000000AD0000
+      0001000000000000000000000000000000000000000000000000000000680000
+      00E9000000FF000000FF000000FF000000FF000000EE00000075000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000001C000000D1000000FF000000FF000000FF000000FF0000
+      00FF000000CB000000000000000000000000424D3E000000000000003E000000
+      2800000040000000200000000100010000000000000100000000000000000000
+      000000000000000000000000FFFFFF0000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000}
+  end
+end

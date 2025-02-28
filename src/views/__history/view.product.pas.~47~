@@ -1,0 +1,194 @@
+unit view.product;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base, Data.DB, Vcl.Buttons,
+  Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.WinXCtrls, Vcl.WinXPickers, Vcl.WinXPanels, Service.Register,
+  System.ImageList, Vcl.ImgList;
+
+type
+  TviewProduct = class(TviewBase)
+    pnlBackground: TPanel;
+    CardPanelList: TCardPanel;
+    cardRegister: TCard;
+    cardSearch: TCard;
+    pnlFooter: TPanel;
+    btnNew: TSpeedButton;
+    btnEdit: TSpeedButton;
+    btnSave: TSpeedButton;
+    btnCancel: TSpeedButton;
+    btnDelete: TSpeedButton;
+    pnlTop: TPanel;
+    lblTitleWindow: TLabel;
+    pnlLogo: TPanel;
+    pnlCloseWindow: TPanel;
+    btnCloseWindow: TButton;
+    DSData: TDataSource;
+    imgList: TImageList;
+    Panel1: TPanel;
+    lblSearch: TLabel;
+    DBGrid1: TDBGrid;
+    pnlRegister: TPanel;
+    lblRegister: TLabel;
+    Label1: TLabel;
+    edtIdProd: TDBEdit;
+    Label2: TLabel;
+    edtName: TDBEdit;
+    Label3: TLabel;
+    edtDescription: TDBEdit;
+    Label4: TLabel;
+    edtCategory: TDBEdit;
+    Label5: TLabel;
+    edtSupplier: TDBEdit;
+    DBCheckBox1: TDBCheckBox;
+    Label6: TLabel;
+    edtDateReg: TDBEdit;
+    Label7: TLabel;
+    edtBrand: TDBEdit;
+    Label8: TLabel;
+    edtUn: TDBEdit;
+    Label9: TLabel;
+    edtDateUp: TDBEdit;
+    Label10: TLabel;
+    edtUserReg: TDBEdit;
+    Label11: TLabel;
+    edtUserUp: TDBEdit;
+    lblNameAsk: TLabel;
+    lblFantasyAsk: TLabel;
+    lblZipAsk: TLabel;
+    lblStateAsk: TLabel;
+    lblCityAsk: TLabel;
+    lblPhoneAsk: TLabel;
+    lblEmailAsk: TLabel;
+    edtFantasyAsk: TSearchBox;
+    edtNameAsk: TSearchBox;
+    edtZIPAsk: TSearchBox;
+    edtStateAsk: TSearchBox;
+    edtCityAsk: TSearchBox;
+    edtPhoneAsk: TSearchBox;
+    edtEmailAsk: TSearchBox;
+    cbEmployee: TCheckBox;
+    edtDateBirth: TDatePicker;
+    lblDateBirthAsk: TLabel;
+    DatePicker1: TDatePicker;
+    lblDateRegAsk: TLabel;
+    btnResetTypes: TButton;
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure Get_Product();
+  end;
+
+var
+  viewProduct: TviewProduct;
+
+implementation
+
+{$R *.dfm}
+
+{ TviewBase1 }
+
+procedure TviewProduct.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYProduct.State in dsEditModes then
+  begin
+    ServiceRegister.QRYProduct.Cancel;
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewProduct.btnCloseWindowClick(Sender: TObject);
+begin
+  inherited;
+  viewProduct.Close;
+end;
+
+procedure TviewProduct.btnDeleteClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYProduct.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYProduct.Delete;
+    ShowMessage('Record deleted successfully');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewProduct.btnEditClick(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardRegister;
+  //edtName.SetFocus;
+  ServiceRegister.QRYProduct.Edit;
+  //edtUpDate.Text := DateToStr(Date);
+
+end;
+
+procedure TviewProduct.btnNewClick(Sender: TObject);
+VAR
+  maxID : integer;
+
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardRegister;
+  edtName.SetFocus;
+  ServiceRegister.QRYProduct.Insert;
+  ServiceRegister.QRYProduct.Close;
+  ServiceRegister.QRYProduct.SQL.Text := 'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
+  ServiceRegister.QRYProduct.Open;
+  if not ServiceRegister.QRYProduct.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYProduct.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtIdProd.Field.Value := maxID;
+  edtDateReg.Text := DateToStr(Date);
+
+end;
+
+procedure TviewProduct.btnSaveClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYProduct.State in dsEditModes then
+  begin
+    ServiceRegister.QRYProduct.Post;
+    ShowMessage('Registered successfully!');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewProduct.FormShow(Sender: TObject);
+begin
+  inherited;
+  Get_Product;
+end;
+
+procedure TviewProduct.Get_Product;
+begin
+
+  ServiceRegister.QRYProduct.Close;
+  ServiceRegister.QRYProduct.SQL.Clear;
+  ServiceRegister.QRYProduct.SQL.Add('SELECT * FROM PRODUCT WHERE 1=1');
+  ServiceRegister.QRYProduct.Open();
+
+end;
+
+end.

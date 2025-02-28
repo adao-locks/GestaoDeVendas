@@ -26,7 +26,9 @@ uses
   Service.Register,
   Vcl.Mask,
   Vcl.DBCtrls,
-  Data.SqlExpr, Vcl.WinXPickers, Vcl.CheckLst;
+  Data.SqlExpr,
+  Vcl.WinXPickers,
+  Vcl.CheckLst;
 
 type
   TviewEntity = class(TviewBaseLists)

@@ -1,6 +1,7 @@
 inherited viewProduct: TviewProduct
   Caption = 'Product'
   StyleElements = [seFont, seClient, seBorder]
+  OnShow = FormShow
   TextHeight = 15
   object pnlBackground: TPanel
     Left = 0
@@ -34,265 +35,6 @@ inherited viewProduct: TviewProduct
         Width = 1020
         Height = 480
         CardIndex = 0
-        Color = cl3DLight
-        ParentBackground = False
-        TabOrder = 0
-        object Label1: TLabel
-          Left = 9
-          Top = 115
-          Width = 11
-          Height = 15
-          Caption = 'ID'
-          FocusControl = edtIdProd
-        end
-        object Label2: TLabel
-          Left = 65
-          Top = 115
-          Width = 32
-          Height = 15
-          Caption = 'Name'
-          FocusControl = edtName
-        end
-        object Label3: TLabel
-          Left = 221
-          Top = 115
-          Width = 60
-          Height = 15
-          Caption = 'Description'
-          FocusControl = edtDescription
-        end
-        object Label4: TLabel
-          Left = 55
-          Top = 160
-          Width = 48
-          Height = 15
-          Caption = 'Category'
-          FocusControl = edtCategory
-        end
-        object Label5: TLabel
-          Left = 307
-          Top = 160
-          Width = 43
-          Height = 15
-          Caption = 'Supplier'
-          FocusControl = edtSupplier
-        end
-        object Label6: TLabel
-          Left = 86
-          Top = 69
-          Width = 69
-          Height = 15
-          AutoSize = False
-          Caption = 'Date Register'
-          Enabled = False
-          FocusControl = edtDateReg
-        end
-        object Label7: TLabel
-          Left = 181
-          Top = 160
-          Width = 31
-          Height = 15
-          Caption = 'Brand'
-          FocusControl = edtBrand
-        end
-        object Label8: TLabel
-          Left = 9
-          Top = 160
-          Width = 15
-          Height = 15
-          Caption = 'Un'
-          FocusControl = edtUn
-        end
-        object Label9: TLabel
-          Left = 239
-          Top = 69
-          Width = 72
-          Height = 15
-          AutoSize = False
-          Caption = 'Date Updated'
-          Enabled = False
-          FocusControl = edtDateUp
-        end
-        object Label10: TLabel
-          Left = 173
-          Top = 69
-          Width = 46
-          Height = 15
-          AutoSize = False
-          Caption = 'User Reg'
-          Enabled = False
-          FocusControl = edtUserReg
-        end
-        object Label11: TLabel
-          Left = 325
-          Top = 69
-          Width = 41
-          Height = 15
-          AutoSize = False
-          Caption = 'User Up'
-          Enabled = False
-          FocusControl = edtUserUp
-        end
-        object pnlRegister: TPanel
-          Left = 0
-          Top = 0
-          Width = 1020
-          Height = 65
-          Align = alTop
-          BevelOuter = bvNone
-          Color = clMedGray
-          ParentBackground = False
-          TabOrder = 0
-          ExplicitTop = 8
-          object lblRegister: TLabel
-            AlignWithMargins = True
-            Left = 15
-            Top = 5
-            Width = 1005
-            Height = 25
-            Margins.Left = 15
-            Margins.Top = 5
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = 'Register Product'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-            ExplicitWidth = 138
-          end
-        end
-        object edtIdProd: TDBEdit
-          Left = 9
-          Top = 131
-          Width = 50
-          Height = 23
-          DataField = 'PROD_ID'
-          DataSource = DSData
-          TabOrder = 1
-        end
-        object edtName: TDBEdit
-          Left = 65
-          Top = 131
-          Width = 150
-          Height = 23
-          DataField = 'NAME'
-          DataSource = DSData
-          TabOrder = 2
-        end
-        object edtDescription: TDBEdit
-          Left = 221
-          Top = 131
-          Width = 400
-          Height = 23
-          DataField = 'DESCRIPTION'
-          DataSource = DSData
-          TabOrder = 3
-        end
-        object edtCategory: TDBEdit
-          Left = 55
-          Top = 176
-          Width = 120
-          Height = 23
-          DataField = 'CATEGORY'
-          DataSource = DSData
-          TabOrder = 5
-        end
-        object edtSupplier: TDBEdit
-          Left = 307
-          Top = 176
-          Width = 200
-          Height = 23
-          DataField = 'SUPPLIER'
-          DataSource = DSData
-          TabOrder = 7
-        end
-        object DBCheckBox1: TDBCheckBox
-          Left = 12
-          Top = 81
-          Width = 97
-          Height = 17
-          Caption = 'ACTIVE'
-          DataField = 'ACTIVE'
-          DataSource = DSData
-          TabOrder = 8
-        end
-        object edtDateReg: TDBEdit
-          Left = 86
-          Top = 85
-          Width = 80
-          Height = 23
-          AutoSize = False
-          Color = cl3DLight
-          DataField = 'DATE_REGISTER'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 9
-        end
-        object edtBrand: TDBEdit
-          Left = 181
-          Top = 176
-          Width = 120
-          Height = 23
-          DataField = 'BRAND'
-          DataSource = DSData
-          TabOrder = 6
-        end
-        object edtUn: TDBEdit
-          Left = 9
-          Top = 176
-          Width = 40
-          Height = 23
-          DataField = 'UN'
-          DataSource = DSData
-          TabOrder = 4
-        end
-        object edtDateUp: TDBEdit
-          Left = 239
-          Top = 85
-          Width = 80
-          Height = 23
-          AutoSize = False
-          Color = cl3DLight
-          DataField = 'DATE_UPDATED'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 10
-        end
-        object edtUserReg: TDBEdit
-          Left = 173
-          Top = 85
-          Width = 60
-          Height = 23
-          AutoSize = False
-          Color = cl3DLight
-          DataField = 'USER_ID'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 11
-        end
-        object edtUserUp: TDBEdit
-          Left = 325
-          Top = 85
-          Width = 60
-          Height = 23
-          AutoSize = False
-          Color = cl3DLight
-          DataField = 'USER_UPDATE'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 12
-        end
-      end
-      object cardRegister: TCard
-        Left = 0
-        Top = 0
-        Width = 1020
-        Height = 480
-        CardIndex = 1
         TabOrder = 1
         object Panel1: TPanel
           Left = 0
@@ -606,6 +348,7 @@ inherited viewProduct: TviewProduct
             Top = 133
             Width = 97
             Height = 25
+            Cursor = crHandPoint
             Caption = 'Reset types'
             TabOrder = 10
           end
@@ -619,6 +362,7 @@ inherited viewProduct: TviewProduct
           Cursor = crCross
           Align = alClient
           DataSource = DSData
+          ReadOnly = True
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -691,6 +435,290 @@ inherited viewProduct: TviewProduct
               Width = 75
               Visible = True
             end>
+        end
+      end
+      object cardRegister: TCard
+        Left = 0
+        Top = 0
+        Width = 1020
+        Height = 480
+        CardIndex = 1
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitTop = -3
+        object Label1: TLabel
+          Left = 9
+          Top = 115
+          Width = 11
+          Height = 15
+          Caption = 'ID'
+          FocusControl = edtIdProd
+        end
+        object Label2: TLabel
+          Left = 65
+          Top = 115
+          Width = 32
+          Height = 15
+          Caption = 'Name'
+          FocusControl = edtName
+        end
+        object Label3: TLabel
+          Left = 9
+          Top = 160
+          Width = 60
+          Height = 15
+          Caption = 'Description'
+          FocusControl = edtDescription
+        end
+        object Label4: TLabel
+          Left = 55
+          Top = 204
+          Width = 48
+          Height = 15
+          Caption = 'Category'
+          FocusControl = edtCategory
+        end
+        object Label5: TLabel
+          Left = 307
+          Top = 204
+          Width = 43
+          Height = 15
+          Caption = 'Supplier'
+          FocusControl = edtSupplier
+        end
+        object Label6: TLabel
+          Left = 86
+          Top = 69
+          Width = 69
+          Height = 15
+          AutoSize = False
+          Caption = 'Date Register'
+          Enabled = False
+          FocusControl = edtDateReg
+        end
+        object Label7: TLabel
+          Left = 181
+          Top = 204
+          Width = 31
+          Height = 15
+          Caption = 'Brand'
+          FocusControl = edtBrand
+        end
+        object Label8: TLabel
+          Left = 9
+          Top = 204
+          Width = 15
+          Height = 15
+          Caption = 'Un'
+          FocusControl = edtUn
+        end
+        object Label9: TLabel
+          Left = 239
+          Top = 69
+          Width = 72
+          Height = 15
+          AutoSize = False
+          Caption = 'Date Updated'
+          Enabled = False
+          FocusControl = edtDateUp
+        end
+        object Label10: TLabel
+          Left = 173
+          Top = 69
+          Width = 46
+          Height = 15
+          AutoSize = False
+          Caption = 'User Reg'
+          Enabled = False
+          FocusControl = edtUserReg
+        end
+        object Label11: TLabel
+          Left = 325
+          Top = 69
+          Width = 41
+          Height = 15
+          AutoSize = False
+          Caption = 'User Up'
+          Enabled = False
+          FocusControl = edtUserUp
+        end
+        object pnlRegister: TPanel
+          Left = 0
+          Top = 0
+          Width = 1020
+          Height = 65
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clMedGray
+          ParentBackground = False
+          TabOrder = 0
+          ExplicitTop = 8
+          object lblRegister: TLabel
+            AlignWithMargins = True
+            Left = 15
+            Top = 5
+            Width = 1005
+            Height = 25
+            Margins.Left = 15
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = 'Register Product'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitWidth = 138
+          end
+        end
+        object edtIdProd: TDBEdit
+          Left = 9
+          Top = 131
+          Width = 50
+          Height = 23
+          Cursor = crHandPoint
+          Color = cl3DLight
+          Ctl3D = True
+          DataField = 'PROD_ID'
+          DataSource = DSData
+          Enabled = False
+          ParentCtl3D = False
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object edtName: TDBEdit
+          Left = 65
+          Top = 131
+          Width = 330
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'NAME'
+          DataSource = DSData
+          TabOrder = 2
+        end
+        object edtDescription: TDBEdit
+          Left = 9
+          Top = 176
+          Width = 386
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'DESCRIPTION'
+          DataSource = DSData
+          TabOrder = 3
+        end
+        object edtCategory: TDBEdit
+          Left = 55
+          Top = 220
+          Width = 120
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'CATEGORY'
+          DataSource = DSData
+          TabOrder = 5
+        end
+        object edtSupplier: TDBEdit
+          Left = 307
+          Top = 220
+          Width = 200
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'SUPPLIER'
+          DataSource = DSData
+          TabOrder = 7
+        end
+        object cbActive: TDBCheckBox
+          Left = 12
+          Top = 82
+          Width = 70
+          Height = 17
+          Cursor = crHandPoint
+          Caption = 'ACTIVE'
+          DataField = 'ACTIVE'
+          DataSource = DSData
+          ParentShowHint = False
+          ShowHint = False
+          TabOrder = 8
+        end
+        object edtDateReg: TDBEdit
+          Left = 86
+          Top = 85
+          Width = 80
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'DATE_REGISTER'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 9
+        end
+        object edtBrand: TDBEdit
+          Left = 181
+          Top = 220
+          Width = 120
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'BRAND'
+          DataSource = DSData
+          TabOrder = 6
+        end
+        object edtUn: TDBEdit
+          Left = 9
+          Top = 220
+          Width = 40
+          Height = 23
+          Cursor = crHandPoint
+          CharCase = ecUpperCase
+          DataField = 'UN'
+          DataSource = DSData
+          TabOrder = 4
+        end
+        object edtDateUp: TDBEdit
+          Left = 239
+          Top = 85
+          Width = 80
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'DATE_UPDATED'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 10
+        end
+        object edtUserReg: TDBEdit
+          Left = 173
+          Top = 85
+          Width = 60
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'USER_ID'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 11
+        end
+        object edtUserUp: TDBEdit
+          Left = 325
+          Top = 85
+          Width = 60
+          Height = 23
+          AutoSize = False
+          CharCase = ecUpperCase
+          Color = cl3DLight
+          DataField = 'USER_UPDATE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 12
         end
       end
     end
@@ -899,6 +927,7 @@ inherited viewProduct: TviewProduct
         Images = imgList
         ParentBiDiMode = False
         TabOrder = 0
+        OnClick = btnCloseWindowClick
       end
     end
   end

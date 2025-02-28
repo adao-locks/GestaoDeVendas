@@ -13,8 +13,8 @@ type
   TviewProduct = class(TviewBase)
     pnlBackground: TPanel;
     CardPanelList: TCardPanel;
-    cardSearch: TCard;
     cardRegister: TCard;
+    cardSearch: TCard;
     pnlFooter: TPanel;
     btnNew: TSpeedButton;
     btnEdit: TSpeedButton;
@@ -43,7 +43,7 @@ type
     edtCategory: TDBEdit;
     Label5: TLabel;
     edtSupplier: TDBEdit;
-    DBCheckBox1: TDBCheckBox;
+    cbActive: TDBCheckBox;
     Label6: TLabel;
     edtDateReg: TDBEdit;
     Label7: TLabel;
@@ -81,6 +81,9 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +111,12 @@ begin
 
 end;
 
+procedure TviewProduct.btnCloseWindowClick(Sender: TObject);
+begin
+  inherited;
+  viewProduct.Close;
+end;
+
 procedure TviewProduct.btnDeleteClick(Sender: TObject);
 begin
   inherited;
@@ -126,31 +135,32 @@ begin
   inherited;
 
   CardPanelList.ActiveCard := cardRegister;
-  //edtName.SetFocus;
+  edtName.SetFocus;
   ServiceRegister.QRYProduct.Edit;
-  //edtUpDate.Text := DateToStr(Date);
+  edtDateUp.Text := DateToStr(Date);
 
 end;
 
 procedure TviewProduct.btnNewClick(Sender: TObject);
 VAR
+
   maxID : integer;
 
 begin
   inherited;
 
-  //CardPanelList.ActiveCard := cardRegister;
-  //edtName.SetFocus;
+  CardPanelList.ActiveCard := cardRegister;
+  edtName.SetFocus;
   ServiceRegister.QRYProduct.Insert;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Text := 'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
-  ServiceRegister.QRYProduct.Open;
-  if not ServiceRegister.QRYProduct.FieldByName('MaxID').IsNull then
-    maxID := ServiceRegister.QRYProduct.FieldByName('MaxID').AsInteger + 1
+  ServiceRegister.QRYIDProd.Close;
+  ServiceRegister.QRYIDProd.SQL.Text := 'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
+  ServiceRegister.QRYIDProd.Open;
+  if not ServiceRegister.QRYIDProd.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYIDProd.FieldByName('MaxID').AsInteger + 1
   else
     maxID := 1;
-  //edtPeopleID.Field.Value := maxID;
-  //edtRegDate.Text := DateToStr(Date);
+  edtIdProd.Field.Value := maxID;
+  edtDateReg.Text := DateToStr(Date);
 
 end;
 
@@ -165,6 +175,19 @@ begin
     CardPanelList.ActiveCard := cardSearch;
   end;
 
+end;
+
+procedure TviewProduct.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardSearch;
+end;
+
+procedure TviewProduct.FormShow(Sender: TObject);
+begin
+  inherited;
+  Get_Product;
 end;
 
 procedure TviewProduct.Get_Product;

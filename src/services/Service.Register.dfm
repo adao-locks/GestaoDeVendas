@@ -1,5 +1,5 @@
 object ServiceRegister: TServiceRegister
-  Height = 258
+  Height = 330
   Width = 677
   object QRYEntity: TFDQuery
     Connection = ServiceConnection.FDConn
@@ -211,8 +211,8 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT * FROM ITEMS_SALE WHERE ITEM_ID = :CODE')
-    Left = 160
-    Top = 24
+    Left = 32
+    Top = 192
     ParamData = <
       item
         Name = 'CODE'
@@ -401,8 +401,8 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT * FROM PRODUCT WHERE PROD_ID = :PRODUCT')
-    Left = 160
-    Top = 80
+    Left = 32
+    Top = 248
     ParamData = <
       item
         Name = 'PRODUCT'
@@ -472,9 +472,30 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT max(PEOPLE_ID) MAXID FROM PEOPLE')
-    Left = 256
+    Left = 104
     Top = 24
     object QRYIDPeopleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYIDProd: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT max(PROD_ID) MAXID FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+    Left = 104
+    Top = 248
+    ParamData = <
+      item
+        Name = 'PRODUCT'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYIDProdMAXID: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'MAXID'
       Origin = 'MAXID'

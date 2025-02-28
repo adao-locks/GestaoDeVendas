@@ -421,6 +421,7 @@ inherited viewEntity: TviewEntity
           Color = clBlack
           Font.Color = clBlack
           ParentFont = False
+          ReadOnly = True
           Columns = <
             item
               Expanded = False
@@ -695,8 +696,10 @@ inherited viewEntity: TviewEntity
           Width = 100
           Height = 23
           Cursor = crHandPoint
+          Color = cl3DLight
           DataField = 'PEOPLE_ID'
           DataSource = DSData
+          Enabled = False
           ReadOnly = True
           TabOrder = 1
         end
@@ -1245,7 +1248,6 @@ inherited viewEntity: TviewEntity
     Top = 65531
   end
   object DSIDData: TDataSource
-    DataSet = ServiceRegister.QRYIDPeople
     Left = 736
   end
 end
