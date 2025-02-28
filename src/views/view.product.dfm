@@ -24,7 +24,7 @@ inherited viewProduct: TviewProduct
       Margins.Right = 2
       Margins.Bottom = 0
       Align = alClient
-      ActiveCard = cardSearch
+      ActiveCard = cardRegister
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
@@ -46,8 +46,6 @@ inherited viewProduct: TviewProduct
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = -64
-          ExplicitTop = 216
           object lblSearch: TLabel
             AlignWithMargins = True
             Left = 15
@@ -434,7 +432,6 @@ inherited viewProduct: TviewProduct
         CardIndex = 1
         ParentBackground = False
         TabOrder = 0
-        ExplicitTop = -3
         object Label1: TLabel
           Left = 9
           Top = 115
@@ -541,7 +538,6 @@ inherited viewProduct: TviewProduct
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 8
           object lblRegister: TLabel
             AlignWithMargins = True
             Left = 15
@@ -631,6 +627,7 @@ inherited viewProduct: TviewProduct
           Caption = 'ACTIVE'
           DataField = 'ACTIVE'
           DataSource = DSData
+          DragMode = dmAutomatic
           ParentShowHint = False
           ShowHint = False
           TabOrder = 8

@@ -9,7 +9,8 @@ uses
   view.base in 'src\views\view.base.pas' {viewBase},
   view.base.lists in 'src\views\view.base.lists.pas' {viewBaseLists},
   view.entity in 'src\views\view.entity.pas' {viewEntity},
-  view.product in 'src\views\view.product.pas' {viewProduct};
+  view.product in 'src\views\view.product.pas' {viewProduct},
+  view.sales in 'src\views\view.sales.pas' {viewBase1};
 
 {$R *.res}
 
@@ -20,5 +21,6 @@ begin
   Application.CreateForm(TServiceConnection, ServiceConnection);
   Application.CreateForm(TServiceRegister, ServiceRegister);
   Application.CreateForm(TviewProduct, viewProduct);
+  Application.CreateForm(TviewBase1, viewBase1);
   Application.Run;
 end.

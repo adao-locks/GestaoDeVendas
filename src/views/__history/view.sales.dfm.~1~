@@ -1,0 +1,5 @@
+inherited viewBase1: TviewBase1
+  Caption = 'viewBase1'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+end

@@ -159,6 +159,10 @@
             <Form>viewProduct</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\views\view.sales.pas">
+            <Form>viewBase1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
