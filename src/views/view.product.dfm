@@ -24,7 +24,7 @@ inherited viewProduct: TviewProduct
       Margins.Right = 2
       Margins.Bottom = 0
       Align = alClient
-      ActiveCard = cardRegister
+      ActiveCard = cardSearch
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
@@ -46,6 +46,8 @@ inherited viewProduct: TviewProduct
           Color = clMedGray
           ParentBackground = False
           TabOrder = 0
+          ExplicitLeft = -64
+          ExplicitTop = 216
           object lblSearch: TLabel
             AlignWithMargins = True
             Left = 15
@@ -171,21 +173,6 @@ inherited viewProduct: TviewProduct
             Font.Style = []
             ParentFont = False
           end
-          object lblDateBirthAsk: TLabel
-            Left = 266
-            Top = 41
-            Width = 90
-            Height = 17
-            Alignment = taRightJustify
-            AutoSize = False
-            Caption = 'Date Updated: '
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-          end
           object lblDateRegAsk: TLabel
             Left = 15
             Top = 41
@@ -201,7 +188,22 @@ inherited viewProduct: TviewProduct
             Font.Style = []
             ParentFont = False
           end
-          object edtFantasyAsk: TSearchBox
+          object lblDateBirthAsk: TLabel
+            Left = 269
+            Top = 43
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Between: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object edtCategoryAsk: TSearchBox
             AlignWithMargins = True
             Left = 110
             Top = 92
@@ -229,7 +231,7 @@ inherited viewProduct: TviewProduct
             CharCase = ecUpperCase
             TabOrder = 1
           end
-          object edtZIPAsk: TSearchBox
+          object edtUnAsk: TSearchBox
             AlignWithMargins = True
             Left = 363
             Top = 68
@@ -243,7 +245,7 @@ inherited viewProduct: TviewProduct
             CharCase = ecUpperCase
             TabOrder = 2
           end
-          object edtStateAsk: TSearchBox
+          object edtUserRegAsk: TSearchBox
             AlignWithMargins = True
             Left = 363
             Top = 92
@@ -257,7 +259,7 @@ inherited viewProduct: TviewProduct
             CharCase = ecUpperCase
             TabOrder = 3
           end
-          object edtCityAsk: TSearchBox
+          object edtUserUpAsk: TSearchBox
             AlignWithMargins = True
             Left = 363
             Top = 116
@@ -271,7 +273,7 @@ inherited viewProduct: TviewProduct
             CharCase = ecUpperCase
             TabOrder = 4
           end
-          object edtPhoneAsk: TSearchBox
+          object edtSupplierAsk: TSearchBox
             AlignWithMargins = True
             Left = 111
             Top = 116
@@ -285,7 +287,7 @@ inherited viewProduct: TviewProduct
             CharCase = ecUpperCase
             TabOrder = 5
           end
-          object edtEmailAsk: TSearchBox
+          object edtBrandAsk: TSearchBox
             AlignWithMargins = True
             Left = 111
             Top = 140
@@ -299,7 +301,7 @@ inherited viewProduct: TviewProduct
             CharCase = ecUpperCase
             TabOrder = 6
           end
-          object cbEmployee: TCheckBox
+          object cbActiveAsk: TCheckBox
             Left = 528
             Top = 41
             Width = 97
@@ -313,44 +315,31 @@ inherited viewProduct: TviewProduct
             State = cbGrayed
             TabOrder = 7
           end
-          object edtDateBirth: TDatePicker
-            Left = 363
-            Top = 37
-            Width = 120
-            Height = 25
+          object DateTimePicker1: TDateTimePicker
+            Left = 110
+            Top = 39
+            Width = 145
+            Height = 23
             Cursor = crHandPoint
-            Date = -36522.000000000000000000
-            DateFormat = 'dd/mm/yyyy'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Date = 36526.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.909075833333190500
             TabOrder = 8
           end
-          object DatePicker1: TDatePicker
-            Left = 111
-            Top = 37
-            Width = 120
-            Height = 25
+          object edtDateBirth: TDateTimePicker
+            Left = 363
+            Top = 39
+            Width = 145
+            Height = 23
             Cursor = crHandPoint
-            Date = -36522.000000000000000000
-            DateFormat = 'dd/mm/yyyy'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Date = 54789.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.909075833333190500
             TabOrder = 9
-          end
-          object btnResetTypes: TButton
-            Left = 528
-            Top = 133
-            Width = 97
-            Height = 25
-            Cursor = crHandPoint
-            Caption = 'Reset types'
-            TabOrder = 10
           end
         end
         object DBGrid1: TDBGrid

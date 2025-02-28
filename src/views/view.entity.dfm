@@ -48,10 +48,14 @@ inherited viewEntity: TviewEntity
         inherited pnlSearch: TPanel
           Height = 169
           StyleElements = [seFont, seClient, seBorder]
+          ExplicitLeft = -160
+          ExplicitTop = -72
           ExplicitHeight = 169
           inherited lblSearch: TLabel
             Width = 1005
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitLeft = 7
+            ExplicitWidth = 1005
           end
           object lblDateRegAsk: TLabel
             Left = 15
@@ -99,9 +103,9 @@ inherited viewEntity: TviewEntity
             ParentFont = False
           end
           object lblZipAsk: TLabel
-            Left = 269
-            Top = 68
-            Width = 90
+            Left = 292
+            Top = 67
+            Width = 65
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
@@ -114,9 +118,9 @@ inherited viewEntity: TviewEntity
             ParentFont = False
           end
           object lblStateAsk: TLabel
-            Left = 269
-            Top = 92
-            Width = 90
+            Left = 292
+            Top = 91
+            Width = 65
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
@@ -129,9 +133,9 @@ inherited viewEntity: TviewEntity
             ParentFont = False
           end
           object lblCityAsk: TLabel
-            Left = 269
-            Top = 116
-            Width = 90
+            Left = 292
+            Top = 115
+            Width = 65
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
@@ -144,13 +148,13 @@ inherited viewEntity: TviewEntity
             ParentFont = False
           end
           object lblDateBirthAsk: TLabel
-            Left = 266
-            Top = 41
-            Width = 90
+            Left = 292
+            Top = 43
+            Width = 65
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Date Birthday: '
+            Caption = 'Between: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -189,9 +193,9 @@ inherited viewEntity: TviewEntity
             ParentFont = False
           end
           object lblStreetAsk: TLabel
-            Left = 269
-            Top = 140
-            Width = 90
+            Left = 292
+            Top = 139
+            Width = 65
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
@@ -202,21 +206,6 @@ inherited viewEntity: TviewEntity
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-          end
-          object edtDateReg: TDatePicker
-            Left = 111
-            Top = 37
-            Width = 120
-            Height = 25
-            Cursor = crHandPoint
-            Date = -36522.000000000000000000
-            DateFormat = 'dd/mm/yyyy'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            TabOrder = 0
           end
           object edtFantasyAsk: TSearchBox
             AlignWithMargins = True
@@ -230,7 +219,7 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 1
+            TabOrder = 0
             OnInvokeSearch = edtFantasyAskInvokeSearch
           end
           object edtNameAsk: TSearchBox
@@ -245,12 +234,12 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 2
+            TabOrder = 1
             OnInvokeSearch = edtNameAskInvokeSearch
           end
           object edtZIPAsk: TSearchBox
             AlignWithMargins = True
-            Left = 363
+            Left = 362
             Top = 68
             Width = 145
             Height = 18
@@ -260,12 +249,12 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 3
+            TabOrder = 2
             OnInvokeSearch = edtZIPAskInvokeSearch
           end
           object edtStateAsk: TSearchBox
             AlignWithMargins = True
-            Left = 363
+            Left = 362
             Top = 92
             Width = 145
             Height = 18
@@ -275,12 +264,12 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 4
+            TabOrder = 3
             OnInvokeSearch = edtStateAskInvokeSearch
           end
           object edtCityAsk: TSearchBox
             AlignWithMargins = True
-            Left = 363
+            Left = 362
             Top = 116
             Width = 145
             Height = 18
@@ -290,23 +279,8 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 5
+            TabOrder = 4
             OnInvokeSearch = edtCityAskInvokeSearch
-          end
-          object edtDateBirth: TDatePicker
-            Left = 363
-            Top = 37
-            Width = 120
-            Height = 25
-            Cursor = crHandPoint
-            Date = -36522.000000000000000000
-            DateFormat = 'dd/mm/yyyy'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            TabOrder = 6
           end
           object edtPhoneAsk: TSearchBox
             AlignWithMargins = True
@@ -320,7 +294,7 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 7
+            TabOrder = 5
             OnInvokeSearch = edtPhoneAskInvokeSearch
           end
           object edtEmailAsk: TSearchBox
@@ -335,12 +309,12 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 8
+            TabOrder = 6
             OnInvokeSearch = edtEmailAskInvokeSearch
           end
           object edtStreetAsk: TSearchBox
             AlignWithMargins = True
-            Left = 363
+            Left = 362
             Top = 140
             Width = 145
             Height = 18
@@ -350,7 +324,7 @@ inherited viewEntity: TviewEntity
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 9
+            TabOrder = 7
             OnInvokeSearch = edtStreetAskInvokeSearch
           end
           object cbEmployee: TCheckBox
@@ -365,7 +339,7 @@ inherited viewEntity: TviewEntity
             ParentShowHint = False
             ShowHint = False
             State = cbGrayed
-            TabOrder = 10
+            TabOrder = 8
             OnClick = cbEmployeeClick
           end
           object cbClient: TCheckBox
@@ -376,7 +350,7 @@ inherited viewEntity: TviewEntity
             Cursor = crHandPoint
             Caption = 'Client'
             State = cbGrayed
-            TabOrder = 11
+            TabOrder = 9
             OnClick = cbClientClick
           end
           object cbSupplier: TCheckBox
@@ -387,7 +361,7 @@ inherited viewEntity: TviewEntity
             Cursor = crHandPoint
             Caption = 'Supplier'
             State = cbGrayed
-            TabOrder = 12
+            TabOrder = 10
             OnClick = cbSupplierClick
           end
           object cbTransport: TCheckBox
@@ -398,7 +372,7 @@ inherited viewEntity: TviewEntity
             Cursor = crHandPoint
             Caption = 'Transport'
             State = cbGrayed
-            TabOrder = 13
+            TabOrder = 11
             OnClick = cbTransportClick
           end
           object btnResetTypes: TButton
@@ -407,7 +381,7 @@ inherited viewEntity: TviewEntity
             Width = 97
             Height = 25
             Caption = 'Reset types'
-            TabOrder = 14
+            TabOrder = 12
             OnClick = btnResetTypesClick
           end
         end
@@ -506,6 +480,34 @@ inherited viewEntity: TviewEntity
               Width = 100
               Visible = True
             end>
+        end
+        object edtDateReg: TDateTimePicker
+          Left = 110
+          Top = 39
+          Width = 145
+          Height = 23
+          Cursor = crHandPoint
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Date = 36526.000000000000000000
+          Format = 'dd/MM/yyyy'
+          Time = 0.909075833333190500
+          TabOrder = 2
+          OnChange = edtDateRegChange
+        end
+        object edtDateBirth: TDateTimePicker
+          Left = 362
+          Top = 39
+          Width = 145
+          Height = 23
+          Cursor = crHandPoint
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Date = 54789.000000000000000000
+          Format = 'dd/MM/yyyy'
+          Time = 0.909075833333190500
+          TabOrder = 3
+          OnChange = edtDateBirthChange
         end
       end
       inherited cardRegister: TCard

@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base, Data.DB, Vcl.Buttons,
   Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
   Vcl.WinXCtrls, Vcl.WinXPickers, Vcl.WinXPanels, Service.Register,
-  System.ImageList, Vcl.ImgList;
+  System.ImageList, Vcl.ImgList, Vcl.ComCtrls;
 
 type
   TviewProduct = class(TviewBase)
@@ -63,19 +63,18 @@ type
     lblCityAsk: TLabel;
     lblPhoneAsk: TLabel;
     lblEmailAsk: TLabel;
-    edtFantasyAsk: TSearchBox;
+    edtCategoryAsk: TSearchBox;
     edtNameAsk: TSearchBox;
-    edtZIPAsk: TSearchBox;
-    edtStateAsk: TSearchBox;
-    edtCityAsk: TSearchBox;
-    edtPhoneAsk: TSearchBox;
-    edtEmailAsk: TSearchBox;
-    cbEmployee: TCheckBox;
-    edtDateBirth: TDatePicker;
-    lblDateBirthAsk: TLabel;
-    DatePicker1: TDatePicker;
+    edtUnAsk: TSearchBox;
+    edtUserRegAsk: TSearchBox;
+    edtUserUpAsk: TSearchBox;
+    edtSupplierAsk: TSearchBox;
+    edtBrandAsk: TSearchBox;
+    cbActiveAsk: TCheckBox;
     lblDateRegAsk: TLabel;
-    btnResetTypes: TButton;
+    DateTimePicker1: TDateTimePicker;
+    edtDateBirth: TDateTimePicker;
+    lblDateBirthAsk: TLabel;
     procedure btnCancelClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);

@@ -28,7 +28,7 @@ uses
   Vcl.DBCtrls,
   Data.SqlExpr,
   Vcl.WinXPickers,
-  Vcl.CheckLst;
+  Vcl.CheckLst, Vcl.ComCtrls;
 
 type
   TviewEntity = class(TviewBaseLists)
@@ -74,7 +74,6 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     edtUpDate: TDBEdit;
-    edtDateReg: TDatePicker;
     lblDateRegAsk: TLabel;
     lblNameAsk: TLabel;
     lblFantasyAsk: TLabel;
@@ -86,7 +85,6 @@ type
     lblStateAsk: TLabel;
     edtCityAsk: TSearchBox;
     lblCityAsk: TLabel;
-    edtDateBirth: TDatePicker;
     lblDateBirthAsk: TLabel;
     edtPhoneAsk: TSearchBox;
     lblPhoneAsk: TLabel;
@@ -100,6 +98,8 @@ type
     cbTransport: TCheckBox;
     btnResetTypes: TButton;
     DSIDData: TDataSource;
+    edtDateReg: TDateTimePicker;
+    edtDateBirth: TDateTimePicker;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -121,6 +121,8 @@ type
     procedure cbClientClick(Sender: TObject);
     procedure cbEmployeeClick(Sender: TObject);
     procedure btnResetTypesClick(Sender: TObject);
+    procedure edtDateRegChange(Sender: TObject);
+    procedure edtDateBirthChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -283,6 +285,36 @@ begin
   ServiceRegister.QRYEntity.Close;
   ServiceRegister.QRYEntity.SQL.Add(' AND CITY LIKE :CITY');
   ServiceRegister.QRYEntity.ParamByName('-').AsString := '%' + edtCityAsk.Text + '%';
+  ServiceRegister.QRYEntity.Open;
+end;
+
+procedure TviewEntity.edtDateBirthChange(Sender: TObject);
+var
+
+  DateRegistered : TDate;
+
+begin
+  inherited;
+  DateRegistered := edtDateReg.Date;
+  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
+  ServiceRegister.QRYEntity.Open;
+end;
+
+procedure TviewEntity.edtDateRegChange(Sender: TObject);
+var
+
+  DateRegistered : TDate;
+
+begin
+  inherited;
+  DateRegistered := edtDateReg.Date;
+  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
   ServiceRegister.QRYEntity.Open;
 end;
 
