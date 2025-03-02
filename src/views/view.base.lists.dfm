@@ -1,13 +1,8 @@
 inherited viewBaseLists: TviewBaseLists
-  BorderStyle = bsNone
   Caption = 'viewBaseLists'
-  ClientHeight = 550
-  ClientWidth = 1024
   Position = poMainFormCenter
   StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
-  ExplicitWidth = 1024
-  ExplicitHeight = 550
   TextHeight = 15
   object pnlTop: TPanel
     Left = 0
@@ -283,6 +278,7 @@ inherited viewBaseLists: TviewBaseLists
           Top = 70
           Width = 1010
           Height = 405
+          Cursor = crCross
           Margins.Left = 5
           Margins.Top = 5
           Margins.Right = 5
@@ -291,6 +287,7 @@ inherited viewBaseLists: TviewBaseLists
           BorderStyle = bsNone
           DataSource = DSData
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ReadOnly = True
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText

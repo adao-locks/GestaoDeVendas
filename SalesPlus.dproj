@@ -155,12 +155,12 @@
             <Form>viewEntity</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\views\view.product.pas">
-            <Form>viewProduct</Form>
+        <DCCReference Include="src\views\view.sales.pas">
+            <Form>viewSales</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\views\view.sales.pas">
-            <Form>viewBase1</Form>
+        <DCCReference Include="src\views\view.product2.pas">
+            <Form>viewProducts</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

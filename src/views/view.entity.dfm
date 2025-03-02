@@ -1,12 +1,11 @@
 inherited viewEntity: TviewEntity
   Caption = 'Entity'
+  Position = poDesigned
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 50
@@ -42,20 +41,16 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
         inherited pnlSearch: TPanel
           Height = 169
           StyleElements = [seFont, seClient, seBorder]
-          ExplicitLeft = -160
-          ExplicitTop = -72
           ExplicitHeight = 169
           inherited lblSearch: TLabel
-            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitLeft = 7
-            ExplicitWidth = 1005
           end
           object lblDateRegAsk: TLabel
             Left = 15
@@ -391,11 +386,9 @@ inherited viewEntity: TviewEntity
           Top = 169
           Width = 1020
           Height = 311
-          Cursor = crCross
           Color = clBlack
           Font.Color = clBlack
           ParentFont = False
-          ReadOnly = True
           Columns = <
             item
               Expanded = False
@@ -515,9 +508,9 @@ inherited viewEntity: TviewEntity
         object lblPeopleID: TLabel [0]
           Left = 7
           Top = 72
-          Width = 70
+          Width = 11
           Height = 15
-          Caption = 'Identification'
+          Caption = 'ID'
           FocusControl = edtPeopleID
         end
         object lblName: TLabel [1]
@@ -686,7 +679,6 @@ inherited viewEntity: TviewEntity
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
             Caption = 'Register Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 119
@@ -1246,10 +1238,7 @@ inherited viewEntity: TviewEntity
   end
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYEntity
-    Left = 890
-    Top = 65531
-  end
-  object DSIDData: TDataSource
-    Left = 736
+    Left = 882
+    Top = 65528
   end
 end

@@ -58,6 +58,8 @@ type
     { Private declarations }
   public
     { Public declarations }
+    var
+      SERVICE_COM_ID : integer;
   end;
 
 var
@@ -115,8 +117,9 @@ begin
   QRYEnterprise.Params[0].AsInteger := 1;
   QRYEnterprise.Open();
 
-  iCOD_COMPANY  := QRYEnterpriseCOM_ID.AsInteger;
-  sCOMPANY_NAME := QRYEnterpriseCOMPANY_NAME.AsString;
+  iCOD_COMPANY    := QRYEnterpriseCOM_ID.AsInteger;
+  SERVICE_COM_ID  := iCOD_COMPANY;
+  sCOMPANY_NAME   := QRYEnterpriseCOMPANY_NAME.AsString;
 
 end;
 

@@ -5,11 +5,11 @@ interface
 uses
   Winapi.Windows,
   Winapi.Messages,
+  Vcl.Controls,
   System.SysUtils,
   System.Variants,
   System.Classes,
   Vcl.Graphics,
-  Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
   view.base.lists,
@@ -28,7 +28,8 @@ uses
   Vcl.DBCtrls,
   Data.SqlExpr,
   Vcl.WinXPickers,
-  Vcl.CheckLst, Vcl.ComCtrls;
+  Vcl.CheckLst,
+  Vcl.ComCtrls;
 
 type
   TviewEntity = class(TviewBaseLists)
@@ -97,7 +98,6 @@ type
     cbSupplier: TCheckBox;
     cbTransport: TCheckBox;
     btnResetTypes: TButton;
-    DSIDData: TDataSource;
     edtDateReg: TDateTimePicker;
     edtDateBirth: TDateTimePicker;
     procedure FormShow(Sender: TObject);

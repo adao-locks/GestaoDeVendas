@@ -280,52 +280,21 @@ object ServiceRegister: TServiceRegister
   object QRYSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM SALE WHERE SALE_ID = :SALE')
+      'SELECT * FROM SALE WHERE 1=1')
     Left = 32
     Top = 80
-    ParamData = <
-      item
-        Name = 'SALE'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object QRYSaleSALE_ID: TIntegerField
-      FieldName = 'SALE_ID'
-      Origin = 'SALE_ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object QRYSaleCLIENT_ID: TIntegerField
-      FieldName = 'CLIENT_ID'
-      Origin = 'CLIENT_ID'
-    end
-    object QRYSaleEMPLOYEE_ID: TIntegerField
-      FieldName = 'EMPLOYEE_ID'
-      Origin = 'EMPLOYEE_ID'
-    end
     object QRYSaleDATE_SALE: TSQLTimeStampField
       FieldName = 'DATE_SALE'
       Origin = 'DATE_SALE'
     end
-    object QRYSaleTOTAL: TFMTBCDField
-      FieldName = 'TOTAL'
-      Origin = 'TOTAL'
-      Precision = 18
-      Size = 2
-    end
-    object QRYSalePAYMENT_DATE: TSQLTimeStampField
-      FieldName = 'PAYMENT_DATE'
-      Origin = 'PAYMENT_DATE'
+    object QRYSaleDATE_PAYMENT: TSQLTimeStampField
+      FieldName = 'DATE_PAYMENT'
+      Origin = 'DATE_PAYMENT'
     end
     object QRYSalePAYMENT_METHOD: TStringField
       FieldName = 'PAYMENT_METHOD'
       Origin = 'PAYMENT_METHOD'
       Size = 50
-    end
-    object QRYSaleCOM_ID: TIntegerField
-      FieldName = 'COM_ID'
-      Origin = 'COM_ID'
     end
     object QRYSaleBUDGET: TBooleanField
       FieldName = 'BUDGET'
@@ -371,26 +340,34 @@ object ServiceRegister: TServiceRegister
       FieldName = '1ST_INSTALLMENT'
       Origin = '"1ST_INSTALLMENT"'
     end
-    object QRYSaleLATE_DATE: TSQLTimeStampField
-      FieldName = 'LATE_DATE'
-      Origin = 'LATE_DATE'
-    end
-    object QRYSaleUPDATE_DATE: TSQLTimeStampField
-      FieldName = 'UPDATE_DATE'
-      Origin = 'UPDATE_DATE'
-    end
     object QRYSaleOBS: TStringField
       FieldName = 'OBS'
       Origin = 'OBS'
       Size = 255
     end
-    object QRYSaleDATE_PAYMENT: TSQLTimeStampField
-      FieldName = 'DATE_PAYMENT'
-      Origin = 'DATE_PAYMENT'
+    object QRYSaleCOM_ID: TIntegerField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
     end
-    object QRYSaleDATE_LATE: TSQLTimeStampField
-      FieldName = 'DATE_LATE'
-      Origin = 'DATE_LATE'
+    object QRYSaleCLIENT_ID: TIntegerField
+      FieldName = 'CLIENT_ID'
+      Origin = 'CLIENT_ID'
+    end
+    object QRYSaleTOTAL: TFMTBCDField
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+      Precision = 18
+      Size = 2
+    end
+    object QRYSaleEMPLOYEE_ID: TIntegerField
+      FieldName = 'EMPLOYEE_ID'
+      Origin = 'EMPLOYEE_ID'
+    end
+    object QRYSaleSALE_ID: TIntegerField
+      FieldName = 'SALE_ID'
+      Origin = 'SALE_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object QRYSaleDATE_UPDATED: TSQLTimeStampField
       FieldName = 'DATE_UPDATED'
@@ -501,6 +478,40 @@ object ServiceRegister: TServiceRegister
       Origin = 'MAXID'
       ProviderFlags = []
       ReadOnly = True
+    end
+  end
+  object QRYIDSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECt max(SALE_ID) MAXID FROM SALE WHERE 1=1')
+    Left = 104
+    Top = 80
+    object QRYIDSaleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYNamePeople: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID')
+    Left = 176
+    Top = 24
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYNamePeopleNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 150
     end
   end
 end
