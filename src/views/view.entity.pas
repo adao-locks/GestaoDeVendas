@@ -38,7 +38,6 @@ type
     lblName: TLabel;
     edtName: TDBEdit;
     lblBirth: TLabel;
-    edtBirthDate: TDBEdit;
     lblRegDate: TLabel;
     edtRegDate: TDBEdit;
     lblEIN: TLabel;
@@ -100,6 +99,7 @@ type
     btnResetTypes: TButton;
     edtDateReg: TDateTimePicker;
     edtDateBirth: TDateTimePicker;
+    dtBirthday: TDateTimePicker;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -198,27 +198,36 @@ begin
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
+  edtEmployee.State := cbUnchecked;
+  edtClient.State := cbUnchecked;
+  edtSupplier.State := cbUnchecked;
+  edtTransport.State := cbUnchecked;
 
 end;
 
 procedure TviewEntity.btnResetTypesClick(Sender: TObject);
 begin
+
   inherited;
   cbEmployee.State := cbGrayed;
   cbClient.State := cbGrayed;
   cbTransport.State := cbGrayed;
   cbSupplier.State := cbGrayed;
+
 end;
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
 begin
-  inherited;
 
+  inherited;
   if ServiceRegister.QRYEntity.State in dsEditModes then
   begin
+
+    ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime := dtBirthday.Date;
     ServiceRegister.QRYEntity.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
+
   end;
 
 end;

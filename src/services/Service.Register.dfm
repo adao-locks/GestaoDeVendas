@@ -296,10 +296,6 @@ object ServiceRegister: TServiceRegister
       Origin = 'PAYMENT_METHOD'
       Size = 50
     end
-    object QRYSaleBUDGET: TBooleanField
-      FieldName = 'BUDGET'
-      Origin = 'BUDGET'
-    end
     object QRYSaleINSTALLMENT: TBooleanField
       FieldName = 'INSTALLMENT'
       Origin = 'INSTALLMENT'

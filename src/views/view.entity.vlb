@@ -68,7 +68,7 @@ Coordinates=10,10,138,447
 Coordinates=657,276,89,51
 
 []
-Coordinates=574,276,64,51
+Coordinates=753,552,54,33
 Visible=True
 
 [pnlTypePeople]
@@ -85,9 +85,6 @@ Coordinates=408,917,85,33
 
 [edtEmployee]
 Coordinates=181,917,85,33
-
-[edtBirthDate]
-Coordinates=753,552,54,33
 
 [edtEmail]
 Coordinates=53,917,54,33

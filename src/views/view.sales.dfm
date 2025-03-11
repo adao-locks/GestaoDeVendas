@@ -5,9 +5,11 @@ inherited viewSales: TviewSales
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Sales'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 36
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -47,6 +49,7 @@ inherited viewSales: TviewSales
         inherited pnlSearch: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblSearch: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end
@@ -211,9 +214,18 @@ inherited viewSales: TviewSales
           Caption = 'Last Update'
           FocusControl = edtDTUpdate
         end
+        object Label8: TLabel [6]
+          Left = 8
+          Top = 202
+          Width = 22
+          Height = 15
+          Caption = 'OBS'
+          FocusControl = DBEdit1
+        end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end
@@ -298,6 +310,206 @@ inherited viewSales: TviewSales
           Enabled = False
           ReadOnly = True
           TabOrder = 8
+        end
+        object pnlPayment: TPanel
+          Left = 8
+          Top = 246
+          Width = 361
+          Height = 217
+          BevelOuter = bvLowered
+          TabOrder = 9
+          object Label7: TLabel
+            Left = 115
+            Top = 16
+            Width = 77
+            Height = 15
+            Caption = 'Payment Date:'
+          end
+          object Label9: TLabel
+            Left = 95
+            Top = 166
+            Width = 46
+            Height = 15
+            Caption = 'Addition'
+            FocusControl = edtAddition
+          end
+          object Label10: TLabel
+            Left = 181
+            Top = 166
+            Width = 47
+            Height = 15
+            Caption = 'Discount'
+            FocusControl = edtDiscount
+          end
+          object Label11: TLabel
+            Left = 9
+            Top = 166
+            Width = 25
+            Height = 15
+            Caption = 'Total'
+            FocusControl = edtTotal
+          end
+          object Label12: TLabel
+            Left = 267
+            Top = 166
+            Width = 44
+            Height = 15
+            Caption = 'Subtotal'
+            FocusControl = edtSubtotal
+          end
+          object Label13: TLabel
+            Left = 9
+            Top = 122
+            Width = 69
+            Height = 15
+            Caption = 'Inst. Amount'
+            FocusControl = edtInstAmount
+          end
+          object Label14: TLabel
+            Left = 115
+            Top = 122
+            Width = 53
+            Height = 15
+            Caption = 'Inst. Value'
+            FocusControl = edtInstValue
+          end
+          object Label15: TLabel
+            Left = 221
+            Top = 122
+            Width = 47
+            Height = 15
+            Caption = 'First Inst.'
+            FocusControl = edt1stInst
+          end
+          object lblChange: TLabel
+            Left = 9
+            Top = 57
+            Width = 41
+            Height = 15
+            Caption = 'Change'
+            FocusControl = edtChange
+          end
+          object cbPaid: TDBCheckBox
+            Left = 9
+            Top = 16
+            Width = 45
+            Height = 15
+            Caption = 'Paid'
+            DataField = 'PAID'
+            DataSource = DSData
+            TabOrder = 0
+          end
+          object edtDTPayment: TDateTimePicker
+            Left = 198
+            Top = 17
+            Width = 84
+            Height = 15
+            Date = 45718.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.663053645832405900
+            TabOrder = 1
+          end
+          object cbInstallment: TDBCheckBox
+            Left = 9
+            Top = 102
+            Width = 80
+            Height = 17
+            Caption = 'Installment'
+            DataField = 'INSTALLMENT'
+            DataSource = DSData
+            TabOrder = 2
+          end
+          object edtAddition: TDBEdit
+            Left = 95
+            Top = 182
+            Width = 80
+            Height = 23
+            DataField = 'ADDITION'
+            DataSource = DSData
+            TabOrder = 3
+          end
+          object edtDiscount: TDBEdit
+            Left = 181
+            Top = 182
+            Width = 80
+            Height = 23
+            DataField = 'DISCOUNT'
+            DataSource = DSData
+            TabOrder = 4
+          end
+          object edtTotal: TDBEdit
+            Left = 9
+            Top = 182
+            Width = 80
+            Height = 23
+            DataField = 'TOTAL'
+            DataSource = DSData
+            TabOrder = 5
+          end
+          object cbCash: TDBCheckBox
+            Left = 9
+            Top = 37
+            Width = 50
+            Height = 17
+            Caption = 'Cash'
+            DataField = 'CASH'
+            DataSource = DSData
+            TabOrder = 6
+          end
+          object edtSubtotal: TDBEdit
+            Left = 267
+            Top = 182
+            Width = 80
+            Height = 23
+            DataField = 'SUBTOTAL'
+            DataSource = DSData
+            TabOrder = 7
+          end
+          object edtInstAmount: TDBEdit
+            Left = 9
+            Top = 138
+            Width = 100
+            Height = 23
+            DataField = 'INSTALLMENT_AMOUNT'
+            DataSource = DSData
+            TabOrder = 8
+          end
+          object edtInstValue: TDBEdit
+            Left = 115
+            Top = 138
+            Width = 100
+            Height = 23
+            DataField = 'INSTALLMENT_VALUE'
+            DataSource = DSData
+            TabOrder = 9
+          end
+          object edt1stInst: TDBEdit
+            Left = 221
+            Top = 138
+            Width = 100
+            Height = 23
+            DataField = '1ST_INSTALLMENT'
+            DataSource = DSData
+            TabOrder = 10
+          end
+          object edtChange: TDBEdit
+            Left = 9
+            Top = 73
+            Width = 100
+            Height = 23
+            DataField = 'CHANGE'
+            DataSource = DSData
+            TabOrder = 11
+          end
+        end
+        object DBEdit1: TDBEdit
+          Left = 8
+          Top = 217
+          Width = 400
+          Height = 23
+          DataField = 'OBS'
+          DataSource = DSData
+          TabOrder = 10
         end
       end
     end

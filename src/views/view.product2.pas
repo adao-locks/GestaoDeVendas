@@ -130,7 +130,6 @@ begin
 
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
-  cbActive.State := cbChecked;
   ServiceRegister.QRYProduct.Insert;
   ServiceRegister.QRYIDProd.Close;
   ServiceRegister.QRYIDProd.SQL.Text := 'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
@@ -141,6 +140,7 @@ begin
     maxID := 1;
   edtIdProd.Field.Value := maxID;
   edtDateReg.Text := DateToStr(Date);
+  cbActive.State := cbChecked;
 
 end;
 

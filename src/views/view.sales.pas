@@ -23,7 +23,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Service.Register, Vcl.Mask, Vcl.DBCtrls, Data.FMTBcd, Data.SqlExpr,
-  Service.Connection;
+  Service.Connection, Vcl.ComCtrls;
 
 type
   TviewSales = class(TviewBaseLists)
@@ -41,6 +41,30 @@ type
     edtDTUpdate: TDBEdit;
     edtEmployeeName: TEdit;
     edtClientName: TEdit;
+    pnlPayment: TPanel;
+    cbPaid: TDBCheckBox;
+    Label7: TLabel;
+    edtDTPayment: TDateTimePicker;
+    Label8: TLabel;
+    DBEdit1: TDBEdit;
+    cbInstallment: TDBCheckBox;
+    Label9: TLabel;
+    edtAddition: TDBEdit;
+    Label10: TLabel;
+    edtDiscount: TDBEdit;
+    Label11: TLabel;
+    edtTotal: TDBEdit;
+    cbCash: TDBCheckBox;
+    Label12: TLabel;
+    edtSubtotal: TDBEdit;
+    Label13: TLabel;
+    edtInstAmount: TDBEdit;
+    Label14: TLabel;
+    edtInstValue: TDBEdit;
+    Label15: TLabel;
+    edt1stInst: TDBEdit;
+    lblChange: TLabel;
+    edtChange: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -129,6 +153,9 @@ begin
   edtIDSale.Field.Value := maxID;
   edtDTSale.Text := DateToStr(Date);
   edtIDCom.Text := ServiceConnection.SERVICE_COM_ID.ToString;
+  cbPaid.State := cbUnchecked;
+  cbCash.State := cbUnchecked;
+  cbInstallment.State := cbUnchecked;
 
 end;
 
@@ -138,9 +165,12 @@ begin
 
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
+
+    ServiceRegister.QRYSale.FieldByName('DATE_PAYMENT').AsDateTime := edtDTPayment.Date; //testa isso;
     ServiceRegister.QRYSale.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
+
   end;
 
 end;

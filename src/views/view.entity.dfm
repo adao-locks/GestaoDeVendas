@@ -6,6 +6,8 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 50
@@ -50,6 +52,7 @@ inherited viewEntity: TviewEntity
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 169
           inherited lblSearch: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
           object lblDateRegAsk: TLabel
@@ -527,7 +530,6 @@ inherited viewEntity: TviewEntity
           Width = 44
           Height = 15
           Caption = 'Birthday'
-          FocusControl = edtBirthDate
         end
         object lblRegDate: TLabel [3]
           Left = 593
@@ -591,7 +593,7 @@ inherited viewEntity: TviewEntity
           Width = 162
           Height = 139
           BevelOuter = bvSpace
-          TabOrder = 8
+          TabOrder = 7
           object lblTypePeople: TLabel
             AlignWithMargins = True
             Left = 6
@@ -679,6 +681,7 @@ inherited viewEntity: TviewEntity
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             Caption = 'Register Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 119
@@ -708,17 +711,6 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           TabOrder = 2
         end
-        object edtBirthDate: TDBEdit
-          Left = 7
-          Top = 178
-          Width = 154
-          Height = 23
-          Cursor = crHandPoint
-          CharCase = ecUpperCase
-          DataField = 'DATE_BIRTH'
-          DataSource = DSData
-          TabOrder = 3
-        end
         object edtRegDate: TDBEdit
           Left = 593
           Top = 88
@@ -729,7 +721,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 4
+          TabOrder = 3
         end
         object edtEIN: TDBEdit
           Left = 7
@@ -740,7 +732,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'EIN_CNPJ'
           DataSource = DSData
-          TabOrder = 5
+          TabOrder = 4
         end
         object edtPhone: TDBEdit
           Left = 313
@@ -751,7 +743,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'PHONE'
           DataSource = DSData
-          TabOrder = 6
+          TabOrder = 5
         end
         object edtEmail: TDBEdit
           Left = 7
@@ -762,7 +754,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'EMAIL'
           DataSource = DSData
-          TabOrder = 7
+          TabOrder = 6
         end
         object pnlAddress: TPanel
           Left = 7
@@ -770,7 +762,7 @@ inherited viewEntity: TviewEntity
           Width = 573
           Height = 183
           BevelOuter = bvSpace
-          TabOrder = 9
+          TabOrder = 8
           object lblTitleAddress: TLabel
             AlignWithMargins = True
             Left = 6
@@ -933,7 +925,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'FANTASY'
           DataSource = DSData
-          TabOrder = 10
+          TabOrder = 9
         end
         object DBEdit1: TDBEdit
           Left = 593
@@ -944,7 +936,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 11
+          TabOrder = 10
         end
         object edtUpDate: TDBEdit
           Left = 695
@@ -956,6 +948,16 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
+          TabOrder = 11
+        end
+        object dtBirthday: TDateTimePicker
+          Left = 7
+          Top = 179
+          Width = 90
+          Height = 23
+          Date = 45727.000000000000000000
+          Format = 'dd/MM/yyyy'
+          Time = 0.795442511574947300
           TabOrder = 12
         end
       end

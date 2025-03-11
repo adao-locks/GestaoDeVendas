@@ -93,7 +93,6 @@ type
     QRYSaleDATE_SALE: TSQLTimeStampField;
     QRYSaleDATE_PAYMENT: TSQLTimeStampField;
     QRYSalePAYMENT_METHOD: TStringField;
-    QRYSaleBUDGET: TBooleanField;
     QRYSaleINSTALLMENT: TBooleanField;
     QRYSaleCASH: TBooleanField;
     QRYSaleSUBTOTAL: TIntegerField;
