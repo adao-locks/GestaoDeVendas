@@ -21,7 +21,7 @@ uses
 type
   TServiceRegister = class(TDataModule)
     QRYEntity: TFDQuery;
-    QRYStock: TFDQuery;
+    QRYLogs: TFDQuery;
     QRYSaleItens: TFDQuery;
     QRYSale: TFDQuery;
     QRYProduct: TFDQuery;
@@ -36,21 +36,6 @@ type
     QRYEntityEMPLOYEE: TBooleanField;
     QRYEntitySUPPLIER: TBooleanField;
     QRYEntityTRANSPORT: TBooleanField;
-    QRYStockSTOCK_ID: TIntegerField;
-    QRYStockPROD_ID: TIntegerField;
-    QRYStockQTDE: TIntegerField;
-    QRYStockCOST_PRICE: TFMTBCDField;
-    QRYStockSALE_PRICE: TFMTBCDField;
-    QRYStockDATE_UPDATED: TSQLTimeStampField;
-    QRYStockSKU: TStringField;
-    QRYStockEAN13: TStringField;
-    QRYStockMIN_QTDE: TIntegerField;
-    QRYStockMAX_QTDE: TIntegerField;
-    QRYStockBATCH: TStringField;
-    QRYStockWEIGHT: TIntegerField;
-    QRYStockCOLOR: TIntegerField;
-    QRYStockSIZE: TStringField;
-    QRYStockEMP_ID: TIntegerField;
     QRYProductPROD_ID: TIntegerField;
     QRYProductNAME: TStringField;
     QRYProductDESCRIPTION: TStringField;
@@ -84,7 +69,6 @@ type
     QRYEntityFANTASY: TStringField;
     QRYEntityOBS: TStringField;
     QRYEntityDATE_UPDATED: TSQLTimeStampField;
-    QRYStockDATE_REGISTER: TSQLTimeStampField;
     QRYSaleItensDATE_UPDATED: TSQLTimeStampField;
     QRYIDPeople: TFDQuery;
     QRYIDPeopleMAXID: TIntegerField;
@@ -114,6 +98,17 @@ type
     QRYIDSaleMAXID: TIntegerField;
     QRYNamePeople: TFDQuery;
     QRYNamePeopleNAME: TStringField;
+    QRYLogsLANCTO: TIntegerField;
+    QRYLogsUSER: TStringField;
+    QRYLogsDATE: TSQLTimeStampField;
+    QRYLogsDESCRIPTION: TStringField;
+    QRYLogsPAGE: TStringField;
+    QRYLogsCOMPANY: TIntegerField;
+    QRYSaleUSER: TStringField;
+    QRYEntityCOM_ID: TStringField;
+    QRYEntityUSER: TStringField;
+    QRYProductUSER: TStringField;
+    QRYProductCOM_ID: TStringField;
   private
     { Private declarations }
   public

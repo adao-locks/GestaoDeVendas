@@ -1,0 +1,47 @@
+unit view.stock;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
+  System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register;
+
+type
+  TviewStock = class(TviewBaseLists)
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure Get_Stock();
+  end;
+
+var
+  viewStock: TviewStock;
+
+implementation
+
+{$R *.dfm}
+
+{ TviewBaseLists1 }
+
+procedure TviewStock.FormCreate(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardSearch;
+
+end;
+
+procedure TviewStock.Get_Stock;
+begin
+
+  ServiceRegister.QRYStock.Close;
+  ServiceRegister.QRYStock.SQL.Clear;
+  ServiceRegister.QRYStock.SQL.Add('SELECT * FROM STOCK WHERE 1=1');
+  ServiceRegister.QRYStock.Open();
+
+end;
+
+end.

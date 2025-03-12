@@ -126,7 +126,6 @@ begin
   inherited;
 
   CardPanelList.ActiveCard := cardRegister;
-  //edt.SetFocus;        trocar ainda
   ServiceRegister.QRYSale.Edit;
   edtDTUpdate.Text := DateToStr(Date);
 
@@ -152,7 +151,7 @@ begin
     maxID := 1;
   edtIDSale.Field.Value := maxID;
   edtDTSale.Text := DateToStr(Date);
-  edtIDCom.Text := ServiceConnection.SERVICE_COM_ID.ToString;
+  edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
   cbPaid.State := cbUnchecked;
   cbCash.State := cbUnchecked;
   cbInstallment.State := cbUnchecked;
@@ -166,7 +165,9 @@ begin
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
 
-    ServiceRegister.QRYSale.FieldByName('DATE_PAYMENT').AsDateTime := edtDTPayment.Date; //testa isso;
+    ServiceRegister.QRYSale.FieldByName('DATE_PAYMENT').AsDateTime := edtDTPayment.Date;
+    ServiceRegister.QRYSale.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYSale.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYSale.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;

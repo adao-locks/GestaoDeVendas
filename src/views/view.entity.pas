@@ -29,7 +29,7 @@ uses
   Data.SqlExpr,
   Vcl.WinXPickers,
   Vcl.CheckLst,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls, Service.Connection;
 
 type
   TviewEntity = class(TviewBaseLists)
@@ -224,6 +224,8 @@ begin
   begin
 
     ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime := dtBirthday.Date;
+    ServiceRegister.QRYEntity.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYEntity.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYEntity.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;

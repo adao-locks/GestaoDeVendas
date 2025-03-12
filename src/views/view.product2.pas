@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.Mask,
-  Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ComCtrls;
+  Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ComCtrls, Service.Connection;
 
 type
   TviewProducts = class(TviewBaseLists)
@@ -150,9 +150,13 @@ begin
 
   if ServiceRegister.QRYProduct.State in dsEditModes then
   begin
+
+    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYProduct.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYProduct.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
+
   end;
 
 end;

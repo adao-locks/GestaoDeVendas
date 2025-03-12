@@ -10,9 +10,6 @@ Coordinates=379,504,50,33
 [lblRegister]
 Coordinates=767,276,67,51
 
-[ServiceRegister.QRYStock]
-Coordinates=754,10,145,321
-
 [lblSearch]
 Coordinates=496,276,60,51
 
@@ -140,4 +137,7 @@ Coordinates=684,344,84,33
 
 [btnDelete]
 Coordinates=578,344,84,33
+
+[ServiceRegister.QRYLogs]
+Coordinates=754,10,145,321
 

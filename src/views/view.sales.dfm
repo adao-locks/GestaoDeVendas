@@ -42,7 +42,6 @@ inherited viewSales: TviewSales
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -50,7 +49,9 @@ inherited viewSales: TviewSales
           StyleElements = [seFont, seClient, seBorder]
           inherited lblSearch: TLabel
             Width = 1005
+            Caption = 'Search Sale'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 97
           end
         end
         inherited DBGData: TDBGrid
@@ -226,7 +227,9 @@ inherited viewSales: TviewSales
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
             Width = 1005
+            Caption = 'Register Sale'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 107
           end
         end
         object edtIDSale: TDBEdit
@@ -296,7 +299,7 @@ inherited viewSales: TviewSales
         object edtEmployeeName: TEdit
           Left = 94
           Top = 133
-          Width = 300
+          Width = 275
           Height = 23
           Enabled = False
           ReadOnly = True
@@ -305,7 +308,7 @@ inherited viewSales: TviewSales
         object edtClientName: TEdit
           Left = 94
           Top = 175
-          Width = 300
+          Width = 275
           Height = 23
           Enabled = False
           ReadOnly = True
@@ -505,7 +508,7 @@ inherited viewSales: TviewSales
         object DBEdit1: TDBEdit
           Left = 8
           Top = 217
-          Width = 400
+          Width = 361
           Height = 23
           DataField = 'OBS'
           DataSource = DSData

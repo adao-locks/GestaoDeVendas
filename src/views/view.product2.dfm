@@ -9,7 +9,7 @@ inherited viewProducts: TviewProducts
       Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 54
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -42,7 +42,6 @@ inherited viewProducts: TviewProducts
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -52,7 +51,9 @@ inherited viewProducts: TviewProducts
           ExplicitHeight = 170
           inherited lblSearch: TLabel
             Width = 1005
+            Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 128
           end
           object lblCityAsk: TLabel
             Left = 269

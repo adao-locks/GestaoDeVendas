@@ -1,0 +1,38 @@
+unit view.stock;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
+  System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register;
+
+type
+  TviewBaseLists1 = class(TviewBaseLists)
+  private
+    { Private declarations }
+  public
+    procedure Get_Stock();
+  end;
+
+var
+  viewBaseLists1: TviewBaseLists1;
+
+implementation
+
+{$R *.dfm}
+
+{ TviewBaseLists1 }
+
+procedure TviewBaseLists1.Get_Stock;
+begin
+
+  ServiceRegister.QRYStock.Close;
+  ServiceRegister.QRYProduct.SQL.Clear;
+  ServiceRegister.QRYProduct.SQL.Add('SELECT * FROM PRODUCT WHERE 1=1');
+  ServiceRegister.QRYProduct.Open();
+
+end;
+
+end.

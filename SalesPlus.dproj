@@ -163,6 +163,10 @@
             <Form>viewProducts</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\views\view.logs.pas">
+            <Form>viewLogs</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

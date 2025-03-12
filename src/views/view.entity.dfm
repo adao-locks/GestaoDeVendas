@@ -10,7 +10,7 @@ inherited viewEntity: TviewEntity
       Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 50
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -43,7 +43,6 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -53,7 +52,9 @@ inherited viewEntity: TviewEntity
           ExplicitHeight = 169
           inherited lblSearch: TLabel
             Width = 1005
+            Caption = 'Search Entity'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 109
           end
           object lblDateRegAsk: TLabel
             Left = 15
@@ -964,7 +965,6 @@ inherited viewEntity: TviewEntity
     end
   end
   inherited imgList: TImageList
-    Left = 808
     Top = 65528
     Bitmap = {
       494C010107000800040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600

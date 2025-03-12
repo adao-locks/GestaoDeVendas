@@ -22,7 +22,7 @@ uses
   Provider.Constants,
   view.entity,
   view.sales,
-  view.product2;
+  view.product2, view.logs, Service.Register, Service.Connection;
 
 type
   TViewPrincipal = class(TForm)
@@ -136,12 +136,23 @@ end;
 
 procedure TViewPrincipal.btnStockClick(Sender: TObject);
 begin
+
   GET_LineMenu(Sender);
+  viewLogs := TviewLogs.Create(Self);
+
+  try
+    viewLogs.ShowModal;
+  finally
+    FreeAndNil(viewLogs);
+  end;
+
 end;
 
 procedure TViewPrincipal.Button1Click(Sender: TObject);
 begin
+
   Application.Terminate;
+
 end;
 
 procedure TViewPrincipal.FormShow(Sender: TObject);
@@ -150,6 +161,7 @@ begin
   GET_LineMenu(btnReports);
 
   lblBusiness.Caption := sCOMPANY_NAME;
+  lblUserName.Caption := ServiceConnection.QRYUsers.FieldByName('NAME').AsString;
 
 end;
 
