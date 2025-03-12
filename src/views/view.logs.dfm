@@ -76,6 +76,42 @@ inherited viewLogs: TviewLogs
         inherited DBGData: TDBGrid
           Top = 110
           Height = 365
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'LANCTO'
+              Width = 55
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER'
+              Width = 35
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE'
+              Width = 130
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DESCRIPTION'
+              Width = 550
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PAGE'
+              Width = 113
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'COMPANY'
+              Visible = True
+            end>
         end
       end
       inherited cardRegister: TCard
