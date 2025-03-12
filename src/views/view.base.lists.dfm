@@ -14,13 +14,11 @@ inherited viewBaseLists: TviewBaseLists
     Color = clMedGray
     ParentBackground = False
     TabOrder = 0
-    OnMouseDown = pnlTopMouseDown
     object lblTitleWindow: TLabel
       Left = 78
       Top = 0
       Width = 868
       Height = 35
-      Cursor = crHandPoint
       Align = alClient
       Alignment = taCenter
       Caption = '<title_window>'
@@ -31,7 +29,6 @@ inherited viewBaseLists: TviewBaseLists
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
-      OnMouseDown = pnlTopMouseDown
       ExplicitWidth = 110
       ExplicitHeight = 21
     end

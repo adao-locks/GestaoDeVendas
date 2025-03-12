@@ -6,13 +6,18 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
-  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register;
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.WinXCtrls;
 
 type
   TviewLogs = class(TviewBaseLists)
-    SpeedButton1: TSpeedButton;
+    btnConsult: TButton;
+    lblNameAsk: TLabel;
+    edtNameAsk: TSearchBox;
+    SearchBox1: TSearchBox;
+    Label1: TLabel;
     procedure btnCloseWindowClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnConsultClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +35,12 @@ procedure TviewLogs.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
   viewLogs.Close;
+end;
+
+procedure TviewLogs.btnConsultClick(Sender: TObject);
+begin
+  inherited;
+  GET_LOGS;
 end;
 
 procedure TviewLogs.Get_Logs;

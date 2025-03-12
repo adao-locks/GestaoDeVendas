@@ -49,9 +49,9 @@ type
     lblRegister: TLabel;
     DBGData: TDBGrid;
     DSData: TDataSource;
-    procedure pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -65,26 +65,31 @@ implementation
 
 {$R *.dfm}
 
+procedure TviewBaseLists.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FormatSettings.ShortDateFormat := 'DD/MM/YYYY';
+  FormatSettings.DateSeparator := '/';
+  FormatSettings.DecimalSeparator := '.';
+end;
+
+procedure TviewBaseLists.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+
+  if Key = VK_ESCAPE then
+    Self.Close;
+
+  if Key = VK_RETURN then
+    perform(WM_NEXTDLGCTL,0,0);
+
+end;
+
 procedure TviewBaseLists.FormShow(Sender: TObject);
 begin
   inherited;
   CardPanelList.ActiveCard := cardSearch;
-end;
-
-procedure TviewBaseLists.pnlTopMouseDown(Sender: TObject; Button: TMouseButton;
-
-  Shift: TShiftState; X, Y: Integer);
-
-const
-
-  sc_DragMove = $f012;
-
-begin
-
-  inherited;
-  ReleaseCapture;
-  Perform(wm_SysCommand, sc_DragMove, 0);
-
 end;
 
 end.

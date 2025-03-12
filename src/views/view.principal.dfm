@@ -2503,7 +2503,7 @@ object ViewPrincipal: TViewPrincipal
         ExplicitLeft = 4
         ExplicitTop = 28
       end
-      object btnStock: TSpeedButton
+      object btnLogs: TSpeedButton
         Left = 0
         Top = 180
         Width = 105
@@ -2514,7 +2514,7 @@ object ViewPrincipal: TViewPrincipal
         ImageIndex = 2
         Images = ImageList1
         Flat = True
-        OnClick = btnStockClick
+        OnClick = btnLogsClick
         ExplicitLeft = 4
       end
       object btnReports: TSpeedButton

@@ -54,7 +54,7 @@ type
     btnSales: TSpeedButton;
     btnClients: TSpeedButton;
     btnProducts: TSpeedButton;
-    btnStock: TSpeedButton;
+    btnLogs: TSpeedButton;
     btnReports: TSpeedButton;
     imgUserHover: TImage;
     imgBackground: TImage;
@@ -62,7 +62,7 @@ type
     procedure btnSalesClick(Sender: TObject);
     procedure btnReportsClick(Sender: TObject);
     procedure btnClientsClick(Sender: TObject);
-    procedure btnStockClick(Sender: TObject);
+    procedure btnLogsClick(Sender: TObject);
     procedure btnProductsClick(Sender: TObject);
     procedure btnConfigClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -89,6 +89,11 @@ begin
   GET_LineMenu(Sender);
   viewEntity := TviewEntity.Create(Self);
 
+  viewEntity.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
+  viewEntity.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
+  viewEntity.Width := pnlContent.Width;
+  viewEntity.Height := pnlContent.Height;
+
   try
     viewEntity.ShowModal;
   finally
@@ -108,6 +113,11 @@ begin
   GET_LineMenu(Sender);
   viewProducts := TviewProducts.Create(Self);
 
+  viewProducts.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
+  viewProducts.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
+  viewProducts.Width := pnlContent.Width;
+  viewProducts.Height := pnlContent.Height;
+
   try
     viewProducts.ShowModal;
   finally
@@ -126,6 +136,11 @@ begin
   GET_LineMenu(Sender);
   viewSales := TviewSales.Create(Self);
 
+  viewSales.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
+  viewSales.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
+  viewSales.Width := pnlContent.Width;
+  viewSales.Height := pnlContent.Height;
+
   try
     viewSales.ShowModal;
   finally
@@ -134,11 +149,16 @@ begin
 
 end;
 
-procedure TViewPrincipal.btnStockClick(Sender: TObject);
+procedure TViewPrincipal.btnLogsClick(Sender: TObject);
 begin
 
   GET_LineMenu(Sender);
   viewLogs := TviewLogs.Create(Self);
+
+  viewLogs.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
+  viewLogs.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
+  viewLogs.Width := pnlContent.Width;
+  viewLogs.Height := pnlContent.Height;
 
   try
     viewLogs.ShowModal;
@@ -167,11 +187,13 @@ end;
 
 procedure TViewPrincipal.GET_LineMenu(Sender: TObject);
 begin
+
   ShapeMenu.Left    := 0;
   ShapeMenu.Top     := 0;
   ShapeMenu.Height  := TSpeedButton(Sender).Height;
   ShapeMenu.Top     := TSpeedButton(Sender).Top;
   pnlShapeMenu.Repaint;
+
 end;
 
 procedure TViewPrincipal.imgUserDefaultMouseEnter(Sender: TObject);

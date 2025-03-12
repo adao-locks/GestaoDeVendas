@@ -1,0 +1,135 @@
+inherited viewLogs: TviewLogs
+  Caption = 'Logs'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlTop: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited lblTitleWindow: TLabel
+      Caption = 'Logs'
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 33
+    end
+    inherited pnlLogo: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlCloseWindow: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited btnCloseWindow: TButton
+        OnClick = btnCloseWindowClick
+      end
+    end
+  end
+  inherited pnlFooter: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited btnNew: TSpeedButton
+      Visible = False
+    end
+    inherited btnEdit: TSpeedButton
+      Visible = False
+    end
+    inherited btnSave: TSpeedButton
+      Visible = False
+    end
+    inherited btnCancel: TSpeedButton
+      Visible = False
+    end
+    inherited btnDelete: TSpeedButton
+      Visible = False
+    end
+  end
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited CardPanelList: TCardPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited cardSearch: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlSearch: TPanel
+          Height = 121
+          StyleElements = [seFont, seClient, seBorder]
+          ExplicitHeight = 121
+          inherited lblSearch: TLabel
+            Caption = 'View Logs'
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 85
+          end
+          object SpeedButton1: TSpeedButton
+            AlignWithMargins = True
+            Left = 5
+            Top = 94
+            Width = 71
+            Height = 22
+            Margins.Left = 1000
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = 'Consult'
+            OnClick = SpeedButton1Click
+          end
+          object Button1: TButton
+            Left = 104
+            Top = 91
+            Width = 97
+            Height = 25
+            Caption = 'Consult'
+            TabOrder = 0
+          end
+        end
+        inherited DBGData: TDBGrid
+          Top = 126
+          Height = 349
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'LANCTO'
+              Width = 55
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER'
+              Width = 35
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE'
+              Width = 130
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DESCRIPTION'
+              Width = 550
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PAGE'
+              Width = 113
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'COMPANY'
+              Visible = True
+            end>
+        end
+      end
+      inherited cardRegister: TCard
+        CardVisible = False
+        Enabled = False
+        Locked = True
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlRegister: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblRegister: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+    end
+  end
+  inherited DSData: TDataSource
+    DataSet = ServiceRegister.QRYLogs
+  end
+end
