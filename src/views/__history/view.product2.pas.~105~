@@ -34,11 +34,10 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    cbActiveAsk: TCheckBox;
-    DateTimePicker1: TDateTimePicker;
+    dtRegIni: TDateTimePicker;
     edtBrandAsk: TSearchBox;
     edtCategoryAsk: TSearchBox;
-    edtDateBirth: TDateTimePicker;
+    dtRegEnd: TDateTimePicker;
     edtNameAsk: TSearchBox;
     edtSupplierAsk: TSearchBox;
     edtUnAsk: TSearchBox;
@@ -53,7 +52,7 @@ type
     lblPhoneAsk: TLabel;
     lblStateAsk: TLabel;
     lblZipAsk: TLabel;
-    btnResetTypes: TButton;
+    btnConsult: TButton;
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
@@ -62,17 +61,9 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure edtNameAskInvokeSearch(Sender: TObject);
     procedure edtCategoryAskInvokeSearch(Sender: TObject);
-    procedure edtSupplierAskInvokeSearch(Sender: TObject);
-    procedure edtBrandAskInvokeSearch(Sender: TObject);
-    procedure edtUnAskInvokeSearch(Sender: TObject);
-    procedure edtUserRegAskInvokeSearch(Sender: TObject);
-    procedure edtUserUpAskInvokeSearch(Sender: TObject);
-    procedure btnResetTypesClick(Sender: TObject);
     procedure cbActiveAskClick(Sender: TObject);
-    procedure checkTypeFilters;
-    procedure DateTimePicker1Change(Sender: TObject);
+    procedure btnConsultClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -104,6 +95,70 @@ procedure TviewProducts.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
   viewProducts.Close;
+end;
+
+procedure TviewProducts.btnConsultClick(Sender: TObject);
+var
+
+  dtRegisterIni : TDate;
+  dtRegisterEnd : TDate;
+
+begin
+  inherited;
+
+  dtRegisterIni := dtRegIni.Date;
+  dtRegisterEnd := dtRegEnd.Date;
+  ServiceRegister.QRYEntity.Close;
+
+
+  ServiceRegister.QRYProduct.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYProduct.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', dtRegisterIni);
+  ServiceRegister.QRYProduct.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', dtRegisterEnd);
+
+  if edtNameAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND NAME LIKE :NAME');
+    ServiceRegister.QRYProduct.ParamByName('NAME').AsString := '%' + edtNameAsk.Text + '%';
+  end;
+
+  if edtCategoryAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND FANTASY LIKE :FANTASY');
+    ServiceRegister.QRYProduct.ParamByName('FANTASY').AsString := '%' + edtCategoryAsk.Text + '%';
+  end;
+
+  if edtBrandAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND PHONE LIKE :PHONE');
+    ServiceRegister.QRYProduct.ParamByName('PHONE').AsString := '%' + edtBrandAsk.Text + '%';
+  end;
+
+  if edtSupplierAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND BRAND LIKE :BRAND');
+    ServiceRegister.QRYProduct.ParamByName('BRAND').AsString := '%' + edtBrandAsk.Text + '%';
+  end;
+
+  if edtUnAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND UN LIKE :UN');
+    ServiceRegister.QRYProduct.ParamByName('UN').AsString := '%' + edtUnAsk.Text + '%';
+  end;
+
+  if edtUserRegAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND USER_ID LIKE :USER');
+    ServiceRegister.QRYProduct.ParamByName('USER').AsString := '%' + edtUserRegAsk.Text + '%';
+  end;
+
+  if edtUserUpAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYProduct.SQL.Add(' AND USER_UPDATE LIKE :USER');
+    ServiceRegister.QRYProduct.ParamByName('USER').AsString := '%' + edtUserUpAsk.Text + '%';
+  end;
+
+  ServiceRegister.QRYProduct.Open;
+
 end;
 
 procedure TviewProducts.btnDeleteClick(Sender: TObject);
@@ -156,12 +211,6 @@ begin
 
 end;
 
-procedure TviewProducts.btnResetTypesClick(Sender: TObject);
-begin
-  inherited;
-  cbActiveAsk.State := cbGrayed;
-end;
-
 procedure TviewProducts.btnSaveClick(Sender: TObject);
 begin
   inherited;
@@ -185,98 +234,12 @@ begin
   checkTypeFilters;
 end;
 
-procedure TviewProducts.checkTypeFilters;
-var
-  SQLBase: string;
-  Filters: string;
-begin
-  SQLBase := 'SELECT * FROM PRODUCT WHERE 1=1';
-
-  if cbActiveAsk.State = cbChecked then
-    Filters := Filters + ' AND ACTIVE = TRUE'
-  else if cbActiveAsk.State = cbUnchecked then
-    Filters := Filters + ' AND ACTIVE = FALSE';
-
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Text := SQLBase + Filters;
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.DateTimePicker1Change(Sender: TObject);
-var
-
-  DateRegistered : TDate;
-
-begin
-  inherited;
-  DateRegistered := edtDateReg.Date;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYProduct.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
-  ServiceRegister.QRYProduct.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.edtBrandAskInvokeSearch(Sender: TObject);
-begin
-  inherited;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND BRAND LIKE :BRAND');
-  ServiceRegister.QRYProduct.ParamByName('BRAND').AsString := '%' + edtBrandAsk.Text + '%';
-  ServiceRegister.QRYProduct.Open;
-end;
-
 procedure TviewProducts.edtCategoryAskInvokeSearch(Sender: TObject);
 begin
   inherited;
   ServiceRegister.QRYProduct.Close;
   ServiceRegister.QRYProduct.SQL.Add(' AND CATEGORY LIKE :CATEGORY');
   ServiceRegister.QRYProduct.ParamByName('CATEGORY').AsString := '%' + edtCategoryAsk.Text + '%';
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.edtNameAskInvokeSearch(Sender: TObject);
-begin
-  inherited;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND NAME LIKE :NAME');
-  ServiceRegister.QRYProduct.ParamByName('NAME').AsString := '%' + edtNameAsk.Text + '%';
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.edtSupplierAskInvokeSearch(Sender: TObject);
-begin
-  inherited;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND SUPPLIER LIKE :SUPPLIER');
-  ServiceRegister.QRYProduct.ParamByName('SUPPLIER').AsString := '%' + edtNameAsk.Text + '%';
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.edtUnAskInvokeSearch(Sender: TObject);
-begin
-  inherited;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND UN LIKE :UN');
-  ServiceRegister.QRYProduct.ParamByName('UN').AsString := '%' + edtUnAsk.Text + '%';
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.edtUserRegAskInvokeSearch(Sender: TObject);
-begin
-  inherited;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND USER_ID LIKE :USER');
-  ServiceRegister.QRYProduct.ParamByName('USER').AsString := '%' + edtUserReg.Text + '%';
-  ServiceRegister.QRYProduct.Open;
-end;
-
-procedure TviewProducts.edtUserUpAskInvokeSearch(Sender: TObject);
-begin
-  inherited;
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Add(' AND USER_UPDATE LIKE :USER');
-  ServiceRegister.QRYProduct.ParamByName('USER').AsString := '%' + edtUserUp.Text + '%';
   ServiceRegister.QRYProduct.Open;
 end;
 

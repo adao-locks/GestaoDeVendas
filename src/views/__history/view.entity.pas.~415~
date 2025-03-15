@@ -91,11 +91,6 @@ type
     edtEmailAsk: TSearchBox;
     edtStreetAsk: TSearchBox;
     lblStreetAsk: TLabel;
-    cbEmployee: TCheckBox;
-    cbClient: TCheckBox;
-    cbSupplier: TCheckBox;
-    cbTransport: TCheckBox;
-    btnResetTypes: TButton;
     edtDateReg: TDateTimePicker;
     edtDateReg2: TDateTimePicker;
     dtBirthday: TDateTimePicker;
@@ -213,26 +208,6 @@ begin
     ServiceRegister.QRYEntity.ParamByName('STREET').AsString := '%' + edtStreetAsk.Text + '%';
   end;
 
-  if cbEmployee.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND EMPLOYEE = TRUE')
-  else if cbEmployee.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND EMPLOYEE = FALSE');
-
-  if cbClient.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND CLIENT = TRUE')
-  else if cbClient.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND CLIENT = FALSE');
-
-  if cbSupplier.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND SUPPLIER = TRUE')
-  else if cbSupplier.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND SUPPLIER = FALSE');
-
-  if cbTransport.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND TRANSPORT = TRUE')
-  else if cbTransport.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND TRANSPORT = FALSE');
-
   ServiceRegister.QRYEntity.Open;
 
 end;
@@ -323,7 +298,6 @@ begin
   begin
     ShowMessage('Please, select a type of person!');
   end;
-
 end;
 
 procedure TviewEntity.FormShow(Sender: TObject);

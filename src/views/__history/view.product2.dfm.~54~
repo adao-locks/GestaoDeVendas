@@ -5,8 +5,6 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 54
@@ -50,7 +48,6 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
-            Width = 1005
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -190,21 +187,7 @@ inherited viewProducts: TviewProducts
             Font.Style = []
             ParentFont = False
           end
-          object cbActiveAsk: TCheckBox
-            Left = 528
-            Top = 41
-            Width = 97
-            Height = 17
-            Cursor = crHandPoint
-            Caption = 'Active'
-            DoubleBuffered = True
-            ParentDoubleBuffered = False
-            ParentShowHint = False
-            ShowHint = False
-            TabOrder = 0
-            OnClick = cbActiveAskClick
-          end
-          object DateTimePicker1: TDateTimePicker
+          object dtRegIni: TDateTimePicker
             Left = 110
             Top = 39
             Width = 145
@@ -215,8 +198,7 @@ inherited viewProducts: TviewProducts
             Date = 36526.000000000000000000
             Format = 'dd/MM/yyyy'
             Time = 0.909075833333190500
-            TabOrder = 1
-            OnChange = DateTimePicker1Change
+            TabOrder = 0
           end
           object edtBrandAsk: TSearchBox
             AlignWithMargins = True
@@ -230,7 +212,7 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 2
+            TabOrder = 1
             OnInvokeSearch = edtBrandAskInvokeSearch
           end
           object edtCategoryAsk: TSearchBox
@@ -245,10 +227,10 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 3
+            TabOrder = 2
             OnInvokeSearch = edtCategoryAskInvokeSearch
           end
-          object edtDateBirth: TDateTimePicker
+          object dtRegEnd: TDateTimePicker
             Left = 363
             Top = 39
             Width = 145
@@ -259,7 +241,7 @@ inherited viewProducts: TviewProducts
             Date = 54789.000000000000000000
             Format = 'dd/MM/yyyy'
             Time = 0.909075833333190500
-            TabOrder = 4
+            TabOrder = 3
           end
           object edtNameAsk: TSearchBox
             AlignWithMargins = True
@@ -273,7 +255,7 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 5
+            TabOrder = 4
             OnInvokeSearch = edtNameAskInvokeSearch
           end
           object edtSupplierAsk: TSearchBox
@@ -288,7 +270,7 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 6
+            TabOrder = 5
             OnInvokeSearch = edtSupplierAskInvokeSearch
           end
           object edtUnAsk: TSearchBox
@@ -303,7 +285,7 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 7
+            TabOrder = 6
             OnInvokeSearch = edtUnAskInvokeSearch
           end
           object edtUserRegAsk: TSearchBox
@@ -318,7 +300,7 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 8
+            TabOrder = 7
             OnInvokeSearch = edtUserRegAskInvokeSearch
           end
           object edtUserUpAsk: TSearchBox
@@ -333,17 +315,17 @@ inherited viewProducts: TviewProducts
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 9
+            TabOrder = 8
             OnInvokeSearch = edtUserUpAskInvokeSearch
           end
-          object btnResetTypes: TButton
-            Left = 528
-            Top = 133
+          object btnConsult: TButton
+            Left = 520
+            Top = 132
             Width = 97
             Height = 25
-            Caption = 'Reset types'
-            TabOrder = 10
-            OnClick = btnResetTypesClick
+            Caption = 'Consult'
+            TabOrder = 9
+            OnClick = btnConsultClick
           end
         end
         inherited DBGData: TDBGrid

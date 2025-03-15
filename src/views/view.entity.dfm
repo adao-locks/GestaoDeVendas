@@ -41,6 +41,7 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -884,9 +885,11 @@ inherited viewEntity: TviewEntity
           Top = 134
           Width = 90
           Height = 23
-          Date = 45727.000000000000000000
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Date = 29221.000000000000000000
           Format = 'dd/MM/yyyy'
-          Time = 0.795442511574947300
+          Time = 0.795439814814017200
           TabOrder = 11
         end
         object edtEIN: TMaskEdit

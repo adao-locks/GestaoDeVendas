@@ -105,7 +105,6 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
-    procedure btnResetTypesClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
     procedure rbLEClick(Sender: TObject);
     procedure rbPPClick(Sender: TObject);
@@ -258,17 +257,6 @@ begin
   edtClient.State := cbUnchecked;
   edtSupplier.State := cbUnchecked;
   edtTransport.State := cbUnchecked;
-
-end;
-
-procedure TviewEntity.btnResetTypesClick(Sender: TObject);
-begin
-
-  inherited;
-  cbEmployee.State := cbGrayed;
-  cbClient.State := cbGrayed;
-  cbTransport.State := cbGrayed;
-  cbSupplier.State := cbGrayed;
 
 end;
 
