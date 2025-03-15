@@ -91,16 +91,13 @@ type
     edtEmailAsk: TSearchBox;
     edtStreetAsk: TSearchBox;
     lblStreetAsk: TLabel;
-    cbEmployee: TCheckBox;
-    cbClient: TCheckBox;
-    cbSupplier: TCheckBox;
-    cbTransport: TCheckBox;
-    btnResetTypes: TButton;
     edtDateReg: TDateTimePicker;
     edtDateReg2: TDateTimePicker;
     dtBirthday: TDateTimePicker;
     btnConsult: TButton;
     edtEIN: TMaskEdit;
+    rbPP: TRadioButton;
+    rbLE: TRadioButton;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -110,9 +107,9 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnResetTypesClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
-    procedure edtEINExit(Sender: TObject);
-    function ValidarCNPJ(const CNPJ: string): Boolean;
-    procedure FormCreate(Sender: TObject);
+    procedure rbLEClick(Sender: TObject);
+    procedure rbPPClick(Sender: TObject);
+    procedure edtEINChange(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -211,26 +208,6 @@ begin
     ServiceRegister.QRYEntity.ParamByName('STREET').AsString := '%' + edtStreetAsk.Text + '%';
   end;
 
-  if cbEmployee.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND EMPLOYEE = TRUE')
-  else if cbEmployee.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND EMPLOYEE = FALSE');
-
-  if cbClient.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND CLIENT = TRUE')
-  else if cbClient.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND CLIENT = FALSE');
-
-  if cbSupplier.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND SUPPLIER = TRUE')
-  else if cbSupplier.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND SUPPLIER = FALSE');
-
-  if cbTransport.State = cbChecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND TRANSPORT = TRUE')
-  else if cbTransport.State = cbUnchecked then
-    ServiceRegister.QRYEntity.SQL.Add(' AND TRANSPORT = FALSE');
-
   ServiceRegister.QRYEntity.Open;
 
 end;
@@ -314,10 +291,13 @@ begin
 
 end;
 
-procedure TviewEntity.FormCreate(Sender: TObject);
+procedure TviewEntity.edtEINChange(Sender: TObject);
 begin
   inherited;
-  edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  if (rbPP.Checked = false) and (rbLE.Checked = false) then
+  begin
+    ShowMessage('Please, select a type of person!');
+  end;
 end;
 
 procedure TviewEntity.FormShow(Sender: TObject);
@@ -336,60 +316,16 @@ begin
 
 end;
 
-function TviewEntity.ValidarCNPJ(const CNPJ: string): Boolean;
-const
-  Pesos1: array[1..12] of Integer = (5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
-  Pesos2: array[1..13] of Integer = (6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
-var
-  Num, Soma, Resto, i: Integer;
-  CNPJLimpo: string;
-begin
-  Result := False;
-  CNPJLimpo := StringReplace(CNPJ, '.', '', [rfReplaceAll]);
-  CNPJLimpo := StringReplace(CNPJLimpo, '/', '', [rfReplaceAll]);
-  CNPJLimpo := StringReplace(CNPJLimpo, '-', '', [rfReplaceAll]);
-
-  if Length(CNPJLimpo) <> 14 then Exit;
-
-  // Calcula primeiro dígito verificador
-  Soma := 0;
-  for i := 1 to 12 do
-  begin
-    Num := StrToIntDef(CNPJLimpo[i], 0);
-    Soma := Soma + (Num * Pesos1[i]);
-  end;
-  Resto := Soma mod 11;
-  if (Resto < 2) then
-    Resto := 0
-  else
-    Resto := 11 - Resto;
-
-  if StrToIntDef(CNPJLimpo[13], -1) <> Resto then Exit;
-
-  // Calcula segundo dígito verificador
-  Soma := 0;
-  for i := 1 to 13 do
-  begin
-    Num := StrToIntDef(CNPJLimpo[i], 0);
-    Soma := Soma + (Num * Pesos2[i]);
-  end;
-  Resto := Soma mod 11;
-  if (Resto < 2) then
-    Resto := 0
-  else
-    Resto := 11 - Resto;
-
-  Result := StrToIntDef(CNPJLimpo[14], -1) = Resto;
-end;
-
-procedure TviewEntity.edtEINExit(Sender: TObject);
+procedure TviewEntity.rbLEClick(Sender: TObject);
 begin
   inherited;
-  if not ValidarCNPJ(edtEIN.Text) then
-  begin
-    ShowMessage('CNPJ inválido!');
-    edtEIN.SetFocus;
-  end;
+  edtEIN.EditMask := '99.999.999/9999-99;1;_';
+end;
+
+procedure TviewEntity.rbPPClick(Sender: TObject);
+begin
+  inherited;
+  edtEIN.EditMask := '999.999.999-99;1;_';
 end;
 
 end.
