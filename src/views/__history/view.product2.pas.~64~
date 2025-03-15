@@ -158,7 +158,7 @@ end;
 procedure TviewProducts.btnResetTypesClick(Sender: TObject);
 begin
   inherited;
-  cbActiveAsk.State := cbGrayed;
+  cbActive.State := cbChecked;
 end;
 
 procedure TviewProducts.btnSaveClick(Sender: TObject);
@@ -191,9 +191,9 @@ var
 begin
   SQLBase := 'SELECT * FROM PRODUCT WHERE 1=1';
 
-  if cbActiveAsk.State = cbChecked then
+  if cbActive.State = cbChecked then
     Filters := Filters + ' AND ACTIVE = TRUE'
-  else if cbActiveAsk.State = cbUnchecked then
+  else if cbActive.State = cbUnchecked then
     Filters := Filters + ' AND ACTIVE = FALSE';
 
   ServiceRegister.QRYProduct.Close;
@@ -269,7 +269,6 @@ begin
   inherited;
 
   CardPanelList.ActiveCard := cardSearch;
-  cbActiveAsk.State := cbGrayed;
 
 end;
 

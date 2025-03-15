@@ -72,6 +72,7 @@ type
     procedure btnResetTypesClick(Sender: TObject);
     procedure cbActiveAskClick(Sender: TObject);
     procedure checkTypeFilters;
+    procedure DateTimePicker1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -199,6 +200,21 @@ begin
   ServiceRegister.QRYProduct.Close;
   ServiceRegister.QRYProduct.SQL.Text := SQLBase + Filters;
   ServiceRegister.QRYProduct.Open;
+end;
+
+procedure TviewProducts.DateTimePicker1Change(Sender: TObject);
+var
+
+  DateRegistered : TDate;
+
+begin
+  inherited;
+  DateRegistered := edtDateReg.Date;
+  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered);
+  ServiceRegister.QRYEntity.Open;
 end;
 
 procedure TviewProducts.edtBrandAskInvokeSearch(Sender: TObject);

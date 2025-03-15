@@ -158,7 +158,7 @@ end;
 procedure TviewProducts.btnResetTypesClick(Sender: TObject);
 begin
   inherited;
-  cbActiveAsk.State := cbGrayed;
+  cbActive.State := cbGrayed;
 end;
 
 procedure TviewProducts.btnSaveClick(Sender: TObject);

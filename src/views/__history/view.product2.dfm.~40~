@@ -201,8 +201,8 @@ inherited viewProducts: TviewProducts
             ParentDoubleBuffered = False
             ParentShowHint = False
             ShowHint = False
+            State = cbGrayed
             TabOrder = 0
-            OnClick = cbActiveAskClick
           end
           object DateTimePicker1: TDateTimePicker
             Left = 110
@@ -335,15 +335,6 @@ inherited viewProducts: TviewProducts
             TabOrder = 9
             OnInvokeSearch = edtUserUpAskInvokeSearch
           end
-          object btnResetTypes: TButton
-            Left = 528
-            Top = 133
-            Width = 97
-            Height = 25
-            Caption = 'Reset types'
-            TabOrder = 10
-            OnClick = btnResetTypesClick
-          end
         end
         inherited DBGData: TDBGrid
           Top = 175
@@ -362,37 +353,31 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'NAME'
-              Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRIPTION'
-              Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CATEGORY'
-              Width = 100
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUPPLIER'
-              Width = 100
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UN'
-              Width = 40
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'BRAND'
-              Width = 70
               Visible = True
             end
             item

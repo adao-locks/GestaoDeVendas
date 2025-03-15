@@ -216,6 +216,7 @@ inherited viewProducts: TviewProducts
             Format = 'dd/MM/yyyy'
             Time = 0.909075833333190500
             TabOrder = 1
+            OnChange = DateTimePicker1Change
           end
           object edtBrandAsk: TSearchBox
             AlignWithMargins = True

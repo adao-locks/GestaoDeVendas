@@ -201,6 +201,7 @@ inherited viewProducts: TviewProducts
             ParentDoubleBuffered = False
             ParentShowHint = False
             ShowHint = False
+            State = cbGrayed
             TabOrder = 0
             OnClick = cbActiveAskClick
           end
@@ -362,37 +363,31 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'NAME'
-              Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRIPTION'
-              Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CATEGORY'
-              Width = 100
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUPPLIER'
-              Width = 100
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UN'
-              Width = 40
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'BRAND'
-              Width = 70
               Visible = True
             end
             item

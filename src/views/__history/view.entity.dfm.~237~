@@ -261,6 +261,7 @@ inherited viewEntity: TviewEntity
             BorderStyle = bsNone
             CharCase = ecUpperCase
             TabOrder = 3
+            OnInvokeSearch = edtStateAskInvokeSearch
           end
           object edtCityAsk: TSearchBox
             AlignWithMargins = True
@@ -275,6 +276,7 @@ inherited viewEntity: TviewEntity
             BorderStyle = bsNone
             CharCase = ecUpperCase
             TabOrder = 4
+            OnInvokeSearch = edtCityAskInvokeSearch
           end
           object edtPhoneAsk: TSearchBox
             AlignWithMargins = True
@@ -331,6 +333,7 @@ inherited viewEntity: TviewEntity
             ShowHint = False
             State = cbGrayed
             TabOrder = 8
+            OnClick = cbEmployeeClick
           end
           object cbClient: TCheckBox
             Left = 528
@@ -341,6 +344,7 @@ inherited viewEntity: TviewEntity
             Caption = 'Client'
             State = cbGrayed
             TabOrder = 9
+            OnClick = cbClientClick
           end
           object cbSupplier: TCheckBox
             Left = 528
@@ -351,6 +355,7 @@ inherited viewEntity: TviewEntity
             Caption = 'Supplier'
             State = cbGrayed
             TabOrder = 10
+            OnClick = cbSupplierClick
           end
           object cbTransport: TCheckBox
             Left = 528
@@ -361,6 +366,7 @@ inherited viewEntity: TviewEntity
             Caption = 'Transport'
             State = cbGrayed
             TabOrder = 11
+            OnClick = cbTransportClick
           end
           object btnResetTypes: TButton
             Left = 528

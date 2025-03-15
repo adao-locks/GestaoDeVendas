@@ -72,6 +72,7 @@ type
     procedure btnResetTypesClick(Sender: TObject);
     procedure cbActiveAskClick(Sender: TObject);
     procedure checkTypeFilters;
+    procedure DateTimePicker1Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -199,6 +200,10 @@ begin
   ServiceRegister.QRYProduct.Close;
   ServiceRegister.QRYProduct.SQL.Text := SQLBase + Filters;
   ServiceRegister.QRYProduct.Open;
+end;
+
+procedure TviewProducts.DateTimePicker1Change(Sender: TObject);
+
 end;
 
 procedure TviewProducts.edtBrandAskInvokeSearch(Sender: TObject);
