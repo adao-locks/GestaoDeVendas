@@ -5,6 +5,7 @@ inherited viewLogs: TviewLogs
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 33
       Caption = 'Logs'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 33
@@ -48,6 +49,7 @@ inherited viewLogs: TviewLogs
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 121
           inherited lblSearch: TLabel
+            Width = 85
             Caption = 'View Logs'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 85

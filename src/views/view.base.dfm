@@ -2,7 +2,7 @@ object viewBase: TviewBase
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'ViewBase'
+  Caption = 'z'
   ClientHeight = 550
   ClientWidth = 1024
   Color = clBtnFace

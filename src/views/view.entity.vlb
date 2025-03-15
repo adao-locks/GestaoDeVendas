@@ -65,7 +65,7 @@ Coordinates=10,10,138,447
 Coordinates=657,276,89,51
 
 []
-Coordinates=753,552,54,33
+Coordinates=753,656,54,33
 Visible=True
 
 [pnlTypePeople]
@@ -91,9 +91,6 @@ Coordinates=497,917,54,33
 
 [edtName]
 Coordinates=753,812,54,33
-
-[edtEIN]
-Coordinates=753,656,54,33
 
 [edtRegDate]
 Coordinates=753,760,54,33

@@ -41,7 +41,6 @@ type
     lblRegDate: TLabel;
     edtRegDate: TDBEdit;
     lblEIN: TLabel;
-    edtEIN: TDBEdit;
     lblPhone: TLabel;
     edtPhone: TDBEdit;
     lblEmail: TLabel;
@@ -101,6 +100,7 @@ type
     edtDateReg2: TDateTimePicker;
     dtBirthday: TDateTimePicker;
     btnConsult: TButton;
+    edtEIN: TMaskEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -110,8 +110,10 @@ type
     procedure btnDeleteClick(Sender: TObject);
     procedure btnResetTypesClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
+    procedure edtEINExit(Sender: TObject);
+    function ValidarCNPJ(const CNPJ: string): Boolean;
+    procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
   public
     procedure GET_Entity();
   end;
@@ -301,6 +303,7 @@ begin
   begin
 
     ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime := dtBirthday.Date;
+    ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString := edtEIN.Text;
     ServiceRegister.QRYEntity.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYEntity.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYEntity.Post;
@@ -309,6 +312,12 @@ begin
 
   end;
 
+end;
+
+procedure TviewEntity.FormCreate(Sender: TObject);
+begin
+  inherited;
+  edtEIN.EditMask := '99.999.999/9999-99;1;_';
 end;
 
 procedure TviewEntity.FormShow(Sender: TObject);
@@ -325,6 +334,62 @@ begin
   ServiceRegister.QRYEntity.SQL.Add('SELECT * FROM PEOPLE WHERE 1=1');
   ServiceRegister.QRYEntity.Open();
 
+end;
+
+function TviewEntity.ValidarCNPJ(const CNPJ: string): Boolean;
+const
+  Pesos1: array[1..12] of Integer = (5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
+  Pesos2: array[1..13] of Integer = (6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
+var
+  Num, Soma, Resto, i: Integer;
+  CNPJLimpo: string;
+begin
+  Result := False;
+  CNPJLimpo := StringReplace(CNPJ, '.', '', [rfReplaceAll]);
+  CNPJLimpo := StringReplace(CNPJLimpo, '/', '', [rfReplaceAll]);
+  CNPJLimpo := StringReplace(CNPJLimpo, '-', '', [rfReplaceAll]);
+
+  if Length(CNPJLimpo) <> 14 then Exit;
+
+  // Calcula primeiro dígito verificador
+  Soma := 0;
+  for i := 1 to 12 do
+  begin
+    Num := StrToIntDef(CNPJLimpo[i], 0);
+    Soma := Soma + (Num * Pesos1[i]);
+  end;
+  Resto := Soma mod 11;
+  if (Resto < 2) then
+    Resto := 0
+  else
+    Resto := 11 - Resto;
+
+  if StrToIntDef(CNPJLimpo[13], -1) <> Resto then Exit;
+
+  // Calcula segundo dígito verificador
+  Soma := 0;
+  for i := 1 to 13 do
+  begin
+    Num := StrToIntDef(CNPJLimpo[i], 0);
+    Soma := Soma + (Num * Pesos2[i]);
+  end;
+  Resto := Soma mod 11;
+  if (Resto < 2) then
+    Resto := 0
+  else
+    Resto := 11 - Resto;
+
+  Result := StrToIntDef(CNPJLimpo[14], -1) = Resto;
+end;
+
+procedure TviewEntity.edtEINExit(Sender: TObject);
+begin
+  inherited;
+  if not ValidarCNPJ(edtEIN.Text) then
+  begin
+    ShowMessage('CNPJ inválido!');
+    edtEIN.SetFocus;
+  end;
 end;
 
 end.

@@ -43,6 +43,7 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -541,7 +542,6 @@ inherited viewEntity: TviewEntity
           Width = 50
           Height = 15
           Caption = 'EIN/CNPJ'
-          FocusControl = edtEIN
         end
         object lblPhone: TLabel [5]
           Left = 313
@@ -589,7 +589,7 @@ inherited viewEntity: TviewEntity
           Width = 162
           Height = 139
           BevelOuter = bvSpace
-          TabOrder = 7
+          TabOrder = 6
           object lblTypePeople: TLabel
             AlignWithMargins = True
             Left = 6
@@ -719,17 +719,6 @@ inherited viewEntity: TviewEntity
           ReadOnly = True
           TabOrder = 3
         end
-        object edtEIN: TDBEdit
-          Left = 7
-          Top = 133
-          Width = 100
-          Height = 23
-          Cursor = crHandPoint
-          CharCase = ecUpperCase
-          DataField = 'EIN_CNPJ'
-          DataSource = DSData
-          TabOrder = 4
-        end
         object edtPhone: TDBEdit
           Left = 313
           Top = 220
@@ -739,7 +728,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'PHONE'
           DataSource = DSData
-          TabOrder = 5
+          TabOrder = 4
         end
         object edtEmail: TDBEdit
           Left = 7
@@ -750,7 +739,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'EMAIL'
           DataSource = DSData
-          TabOrder = 6
+          TabOrder = 5
         end
         object pnlAddress: TPanel
           Left = 7
@@ -758,7 +747,7 @@ inherited viewEntity: TviewEntity
           Width = 573
           Height = 183
           BevelOuter = bvSpace
-          TabOrder = 8
+          TabOrder = 7
           object lblTitleAddress: TLabel
             AlignWithMargins = True
             Left = 6
@@ -921,7 +910,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'FANTASY'
           DataSource = DSData
-          TabOrder = 9
+          TabOrder = 8
         end
         object DBEdit1: TDBEdit
           Left = 593
@@ -932,7 +921,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 10
+          TabOrder = 9
         end
         object edtUpDate: TDBEdit
           Left = 695
@@ -944,7 +933,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 11
+          TabOrder = 10
         end
         object dtBirthday: TDateTimePicker
           Left = 7
@@ -954,7 +943,15 @@ inherited viewEntity: TviewEntity
           Date = 45727.000000000000000000
           Format = 'dd/MM/yyyy'
           Time = 0.795442511574947300
+          TabOrder = 11
+        end
+        object edtEIN: TMaskEdit
+          Left = 7
+          Top = 133
+          Width = 100
+          Height = 23
           TabOrder = 12
+          Text = ''
         end
       end
     end
