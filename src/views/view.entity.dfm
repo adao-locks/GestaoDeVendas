@@ -6,6 +6,8 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 868
@@ -41,7 +43,6 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -50,6 +51,7 @@ inherited viewEntity: TviewEntity
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 169
           inherited lblSearch: TLabel
+            Width = 1005
             Caption = 'Search Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 109
@@ -709,8 +711,7 @@ inherited viewEntity: TviewEntity
             Font.Name = 'Segoe UI'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitLeft = 8
-            ExplicitTop = -9
+            ExplicitWidth = 49
           end
           object lblZIPCode: TLabel
             Left = 8
@@ -861,7 +862,7 @@ inherited viewEntity: TviewEntity
           Left = 593
           Top = 132
           Width = 296
-          Height = 120
+          Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
           DataField = 'OBS'

@@ -1,5 +1,6 @@
 inherited viewProducts: TviewProducts
   Caption = 'viewProduct2'
+  Position = poDesigned
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
@@ -7,7 +8,7 @@ inherited viewProducts: TviewProducts
     inherited lblTitleWindow: TLabel
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 54
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -494,7 +495,7 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
+            Width = 138
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138

@@ -1,6 +1,7 @@
 inherited viewBaseLists: TviewBaseLists
-  Caption = 'ViewBase'
-  Position = poMainFormCenter
+  Left = 50
+  Caption = 'ViewBaseLists'
+  Position = poDesigned
   StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
   TextHeight = 15

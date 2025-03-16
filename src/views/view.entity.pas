@@ -299,7 +299,7 @@ begin
 
   ServiceRegister.QRYEntity.Close;
   ServiceRegister.QRYEntity.SQL.Clear;
-  ServiceRegister.QRYEntity.SQL.Add('SELECT * FROM PEOPLE WHERE 1=1');
+  ServiceRegister.QRYEntity.SQL.Add('SELECT * FROM PEOPLE WHERE 1=1 ORDER BY 1');
   ServiceRegister.QRYEntity.Open();
 
 end;
