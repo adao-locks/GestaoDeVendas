@@ -1,4 +1,5 @@
 inherited viewSales: TviewSales
+  Left = 41
   Caption = 'Sales'
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
@@ -42,6 +43,7 @@ inherited viewSales: TviewSales
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardProducts
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -165,9 +167,343 @@ inherited viewSales: TviewSales
             end>
         end
       end
+      object cardProducts: TCard [1]
+        Left = 0
+        Top = 0
+        Width = 1020
+        Height = 480
+        CardIndex = 1
+        TabOrder = 2
+        ExplicitTop = -3
+        object Label16: TLabel
+          Left = 8
+          Top = 72
+          Width = 38
+          Height = 15
+          Caption = 'Item ID'
+          FocusControl = edtItemID
+        end
+        object Label17: TLabel
+          Left = 74
+          Top = 72
+          Width = 35
+          Height = 15
+          Caption = 'Sale ID'
+          FocusControl = edtSaleID
+        end
+        object Label18: TLabel
+          Left = 8
+          Top = 112
+          Width = 42
+          Height = 15
+          Caption = 'Product'
+          FocusControl = edtProdID
+        end
+        object Label19: TLabel
+          Left = 8
+          Top = 152
+          Width = 46
+          Height = 15
+          Caption = 'Quantity'
+          FocusControl = edtQtdeProd
+        end
+        object Label20: TLabel
+          Left = 114
+          Top = 152
+          Width = 49
+          Height = 15
+          Caption = 'Price UN.'
+          FocusControl = edtPriceUN
+        end
+        object Label21: TLabel
+          Left = 220
+          Top = 152
+          Width = 25
+          Height = 15
+          Caption = 'Total'
+          FocusControl = edtTotalProd
+        end
+        object Label22: TLabel
+          Left = 8
+          Top = 192
+          Width = 47
+          Height = 15
+          Caption = 'Discount'
+          FocusControl = edtDiscountProd
+        end
+        object Label24: TLabel
+          Left = 114
+          Top = 192
+          Width = 52
+          Height = 15
+          Caption = 'Addiction'
+          FocusControl = edtAddictionProd
+        end
+        object Label25: TLabel
+          Left = 220
+          Top = 192
+          Width = 44
+          Height = 15
+          Caption = 'Subtotal'
+          FocusControl = edtSubtotalProd
+        end
+        object Label26: TLabel
+          Left = 8
+          Top = 232
+          Width = 22
+          Height = 15
+          Caption = 'OBS'
+          FocusControl = edtOBSProd
+        end
+        object Panel1: TPanel
+          Left = 0
+          Top = 0
+          Width = 1020
+          Height = 65
+          Align = alTop
+          BevelOuter = bvNone
+          Color = clMedGray
+          ParentBackground = False
+          TabOrder = 0
+          object Label23: TLabel
+            AlignWithMargins = True
+            Left = 15
+            Top = 5
+            Width = 1005
+            Height = 25
+            Margins.Left = 15
+            Margins.Top = 5
+            Margins.Right = 0
+            Margins.Bottom = 0
+            Align = alTop
+            Caption = 'Register Sale'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            ExplicitWidth = 107
+          end
+        end
+        object DBGrid1: TDBGrid
+          Left = 326
+          Top = 73
+          Width = 682
+          Height = 392
+          Cursor = crCross
+          DataSource = DSDataItens
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ITEM_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SALE_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PROD_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'QTDE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'UNIT_PRICE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOTAL'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DISCOUNT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ADDITION'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SUBTOTAL'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'OBS'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_REGISTER'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_UPDATED'
+              Visible = True
+            end>
+        end
+        object edtItemID: TDBEdit
+          Left = 8
+          Top = 88
+          Width = 60
+          Height = 23
+          CharCase = ecUpperCase
+          DataField = 'ITEM_ID'
+          Enabled = False
+          ReadOnly = True
+          TabOrder = 2
+        end
+        object edtSaleID: TDBEdit
+          Left = 74
+          Top = 88
+          Width = 60
+          Height = 23
+          CharCase = ecUpperCase
+          DataField = 'SALE_ID'
+          DataSource = DataSource1
+          Enabled = False
+          ReadOnly = True
+          TabOrder = 3
+        end
+        object edtProdID: TDBEdit
+          Left = 8
+          Top = 128
+          Width = 60
+          Height = 23
+          CharCase = ecUpperCase
+          DataField = 'PROD_ID'
+          DataSource = DataSource1
+          TabOrder = 4
+        end
+        object edtProdName: TDBEdit
+          Left = 74
+          Top = 128
+          Width = 246
+          Height = 23
+          CharCase = ecUpperCase
+          DataField = 'PROD_ID'
+          DataSource = DataSource1
+          ReadOnly = True
+          TabOrder = 5
+        end
+        object edtQtdeProd: TDBEdit
+          Left = 8
+          Top = 168
+          Width = 100
+          Height = 23
+          DataField = 'QTDE'
+          DataSource = DataSource1
+          TabOrder = 6
+        end
+        object edtPriceUN: TDBEdit
+          Left = 114
+          Top = 168
+          Width = 100
+          Height = 23
+          DataField = 'UNIT_PRICE'
+          DataSource = DataSource1
+          TabOrder = 7
+        end
+        object edtTotalProd: TDBEdit
+          Left = 220
+          Top = 168
+          Width = 100
+          Height = 23
+          DataField = 'TOTAL'
+          DataSource = DataSource1
+          TabOrder = 8
+        end
+        object edtDiscountProd: TDBEdit
+          Left = 8
+          Top = 208
+          Width = 100
+          Height = 23
+          DataField = 'DISCOUNT'
+          DataSource = DataSource1
+          TabOrder = 9
+        end
+        object edtAddictionProd: TDBEdit
+          Left = 114
+          Top = 208
+          Width = 100
+          Height = 23
+          DataField = 'ADDITION'
+          DataSource = DataSource1
+          TabOrder = 10
+        end
+        object edtSubtotalProd: TDBEdit
+          Left = 220
+          Top = 208
+          Width = 100
+          Height = 23
+          DataField = 'SUBTOTAL'
+          DataSource = DataSource1
+          TabOrder = 11
+        end
+        object edtOBSProd: TDBEdit
+          Left = 8
+          Top = 248
+          Width = 312
+          Height = 23
+          DataField = 'OBS'
+          DataSource = DataSource1
+          TabOrder = 12
+        end
+        object Confirm: TButton
+          Left = 8
+          Top = 277
+          Width = 312
+          Height = 25
+          Caption = 'Confirm'
+          TabOrder = 13
+        end
+      end
       inherited cardRegister: TCard
+        CardIndex = 2
         StyleElements = [seFont, seClient, seBorder]
-        object Label1: TLabel [0]
+        ExplicitTop = -3
+        object btnProducts: TSpeedButton [0]
+          AlignWithMargins = True
+          Left = 903
+          Top = 435
+          Width = 105
+          Height = 27
+          Cursor = crHandPoint
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
+          Caption = 'Products'
+          ImageIndex = 0
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btnProductsClick
+        end
+        object Label1: TLabel [1]
           Left = 8
           Top = 73
           Width = 11
@@ -175,7 +511,7 @@ inherited viewSales: TviewSales
           Caption = 'ID'
           FocusControl = edtIDSale
         end
-        object Label2: TLabel [1]
+        object Label2: TLabel [2]
           Left = 8
           Top = 117
           Width = 52
@@ -183,7 +519,7 @@ inherited viewSales: TviewSales
           Caption = 'Employee'
           FocusControl = edtIDEmployee
         end
-        object Label3: TLabel [2]
+        object Label3: TLabel [3]
           Left = 8
           Top = 159
           Width = 31
@@ -191,7 +527,7 @@ inherited viewSales: TviewSales
           Caption = 'Client'
           FocusControl = edtIDClient
         end
-        object Label4: TLabel [3]
+        object Label4: TLabel [4]
           Left = 64
           Top = 73
           Width = 40
@@ -199,7 +535,7 @@ inherited viewSales: TviewSales
           Caption = 'ID Com'
           FocusControl = edtIDCom
         end
-        object Label5: TLabel [4]
+        object Label5: TLabel [5]
           Left = 120
           Top = 73
           Width = 48
@@ -207,7 +543,7 @@ inherited viewSales: TviewSales
           Caption = 'Sale Date'
           FocusControl = edtDTSale
         end
-        object Label6: TLabel [5]
+        object Label6: TLabel [6]
           Left = 222
           Top = 73
           Width = 62
@@ -215,13 +551,13 @@ inherited viewSales: TviewSales
           Caption = 'Last Update'
           FocusControl = edtDTUpdate
         end
-        object Label8: TLabel [6]
+        object Label8: TLabel [7]
           Left = 8
           Top = 202
           Width = 22
           Height = 15
           Caption = 'OBS'
-          FocusControl = DBEdit1
+          FocusControl = edtOBS
         end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
@@ -232,25 +568,102 @@ inherited viewSales: TviewSales
             ExplicitWidth = 107
           end
         end
+        object DBGridItens: TDBGrid
+          Left = 383
+          Top = 73
+          Width = 625
+          Height = 354
+          Cursor = crCross
+          DataSource = DSDataItens
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -12
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ITEM_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SALE_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'PROD_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'QTDE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'UNIT_PRICE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOTAL'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DISCOUNT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ADDITION'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SUBTOTAL'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'OBS'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_REGISTER'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_UPDATED'
+              Visible = True
+            end>
+        end
         object edtIDSale: TDBEdit
           Left = 8
           Top = 89
           Width = 50
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'SALE_ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 1
+          TabOrder = 2
         end
         object edtIDEmployee: TDBEdit
           Left = 8
           Top = 133
           Width = 80
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'EMPLOYEE_ID'
           DataSource = DSData
-          TabOrder = 2
+          TabOrder = 3
           OnExit = edtIDEmployeeExit
         end
         object edtIDClient: TDBEdit
@@ -258,9 +671,10 @@ inherited viewSales: TviewSales
           Top = 175
           Width = 80
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'CLIENT_ID'
           DataSource = DSData
-          TabOrder = 3
+          TabOrder = 4
           OnExit = edtIDClientExit
         end
         object edtIDCom: TDBEdit
@@ -268,51 +682,56 @@ inherited viewSales: TviewSales
           Top = 89
           Width = 50
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'COM_ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 4
+          TabOrder = 5
         end
         object edtDTSale: TDBEdit
           Left = 120
           Top = 89
           Width = 96
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'DATE_SALE'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 5
+          TabOrder = 6
         end
         object edtDTUpdate: TDBEdit
           Left = 222
           Top = 89
           Width = 96
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'DATE_UPDATED'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 6
+          TabOrder = 7
         end
         object edtEmployeeName: TEdit
           Left = 94
           Top = 133
           Width = 275
           Height = 23
+          CharCase = ecUpperCase
           Enabled = False
           ReadOnly = True
-          TabOrder = 7
+          TabOrder = 8
         end
         object edtClientName: TEdit
           Left = 94
           Top = 175
           Width = 275
           Height = 23
+          CharCase = ecUpperCase
           Enabled = False
           ReadOnly = True
-          TabOrder = 8
+          TabOrder = 9
         end
         object pnlPayment: TPanel
           Left = 8
@@ -320,7 +739,7 @@ inherited viewSales: TviewSales
           Width = 361
           Height = 217
           BevelOuter = bvLowered
-          TabOrder = 9
+          TabOrder = 10
           object Label7: TLabel
             Left = 115
             Top = 16
@@ -427,6 +846,7 @@ inherited viewSales: TviewSales
             Top = 182
             Width = 80
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'ADDITION'
             DataSource = DSData
             TabOrder = 3
@@ -436,6 +856,7 @@ inherited viewSales: TviewSales
             Top = 182
             Width = 80
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'DISCOUNT'
             DataSource = DSData
             TabOrder = 4
@@ -445,6 +866,7 @@ inherited viewSales: TviewSales
             Top = 182
             Width = 80
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'TOTAL'
             DataSource = DSData
             TabOrder = 5
@@ -464,6 +886,7 @@ inherited viewSales: TviewSales
             Top = 182
             Width = 80
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'SUBTOTAL'
             DataSource = DSData
             TabOrder = 7
@@ -473,6 +896,7 @@ inherited viewSales: TviewSales
             Top = 138
             Width = 100
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'INSTALLMENT_AMOUNT'
             DataSource = DSData
             TabOrder = 8
@@ -482,6 +906,7 @@ inherited viewSales: TviewSales
             Top = 138
             Width = 100
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'INSTALLMENT_VALUE'
             DataSource = DSData
             TabOrder = 9
@@ -491,6 +916,7 @@ inherited viewSales: TviewSales
             Top = 138
             Width = 100
             Height = 23
+            CharCase = ecUpperCase
             DataField = '1ST_INSTALLMENT'
             DataSource = DSData
             TabOrder = 10
@@ -500,29 +926,41 @@ inherited viewSales: TviewSales
             Top = 73
             Width = 100
             Height = 23
+            CharCase = ecUpperCase
             DataField = 'CHANGE'
             DataSource = DSData
             TabOrder = 11
           end
         end
-        object DBEdit1: TDBEdit
+        object edtOBS: TDBEdit
           Left = 8
           Top = 217
           Width = 361
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 10
+          TabOrder = 11
         end
       end
     end
   end
   inherited imgList: TImageList
+    Left = 792
     Top = 65531
   end
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYSale
-    Left = 826
+    Left = 842
     Top = 65531
+  end
+  object DSDataItens: TDataSource
+    DataSet = ServiceRegister.QRYSaleItens
+    Left = 904
+    Top = 65531
+  end
+  object DataSource1: TDataSource
+    DataSet = ServiceRegister.QRYSaleItensID
+    Left = 720
   end
 end

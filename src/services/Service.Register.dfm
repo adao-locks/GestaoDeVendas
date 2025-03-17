@@ -483,4 +483,67 @@ object ServiceRegister: TServiceRegister
       Size = 150
     end
   end
+  object QRYSaleItensID: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT MAX(ITEM_ID) MAXID FROM ITEMS_SALE ')
+    Left = 112
+    Top = 192
+    object IntegerField1: TIntegerField
+      FieldName = 'ITEM_ID'
+      Origin = 'ITEM_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'SALE_ID'
+      Origin = 'SALE_ID'
+    end
+    object IntegerField3: TIntegerField
+      FieldName = 'PROD_ID'
+      Origin = 'PROD_ID'
+    end
+    object IntegerField4: TIntegerField
+      FieldName = 'QTDE'
+      Origin = 'QTDE'
+      Required = True
+    end
+    object FMTBCDField1: TFMTBCDField
+      FieldName = 'UNIT_PRICE'
+      Origin = 'UNIT_PRICE'
+      Precision = 18
+      Size = 2
+    end
+    object FMTBCDField2: TFMTBCDField
+      FieldName = 'TOTAL'
+      Origin = 'TOTAL'
+      Precision = 18
+      Size = 2
+    end
+    object IntegerField5: TIntegerField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+    end
+    object IntegerField6: TIntegerField
+      FieldName = 'ADDITION'
+      Origin = 'ADDITION'
+    end
+    object IntegerField7: TIntegerField
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+    end
+    object StringField1: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 255
+    end
+    object SQLTimeStampField1: TSQLTimeStampField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
+    object SQLTimeStampField2: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
+    end
+  end
 end

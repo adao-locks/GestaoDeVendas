@@ -1,0 +1,320 @@
+unit view.sales;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  view.base.lists,
+  Data.DB,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.WinXPanels,
+  Vcl.Buttons,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Service.Register, Vcl.Mask, Vcl.DBCtrls, Data.FMTBcd, Data.SqlExpr,
+  Service.Connection, Vcl.ComCtrls;
+
+type
+  TviewSales = class(TviewBaseLists)
+    DSDataItens: TDataSource;
+    DBGridItens: TDBGrid;
+    btnProducts: TSpeedButton;
+    cardProducts: TCard;
+    Panel1: TPanel;
+    Label23: TLabel;
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label8: TLabel;
+    edtIDSale: TDBEdit;
+    edtIDEmployee: TDBEdit;
+    edtIDClient: TDBEdit;
+    edtIDCom: TDBEdit;
+    edtDTSale: TDBEdit;
+    edtDTUpdate: TDBEdit;
+    edtEmployeeName: TEdit;
+    edtClientName: TEdit;
+    pnlPayment: TPanel;
+    Label7: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    lblChange: TLabel;
+    cbPaid: TDBCheckBox;
+    edtDTPayment: TDateTimePicker;
+    cbInstallment: TDBCheckBox;
+    edtAddition: TDBEdit;
+    edtDiscount: TDBEdit;
+    edtTotal: TDBEdit;
+    cbCash: TDBCheckBox;
+    edtSubtotal: TDBEdit;
+    edtInstAmount: TDBEdit;
+    edtInstValue: TDBEdit;
+    edt1stInst: TDBEdit;
+    edtChange: TDBEdit;
+    edtOBS: TDBEdit;
+    Label16: TLabel;
+    edtItemID: TDBEdit;
+    Label17: TLabel;
+    edtSaleID: TDBEdit;
+    DataSource1: TDataSource;
+    Label18: TLabel;
+    edtProdID: TDBEdit;
+    edtProdName: TDBEdit;
+    Label19: TLabel;
+    edtQtdeProd: TDBEdit;
+    Label20: TLabel;
+    edtPriceUN: TDBEdit;
+    Label21: TLabel;
+    edtTotalProd: TDBEdit;
+    Label22: TLabel;
+    edtDiscountProd: TDBEdit;
+    Label24: TLabel;
+    edtAddictionProd: TDBEdit;
+    Label25: TLabel;
+    edtSubtotalProd: TDBEdit;
+    Label26: TLabel;
+    edtOBSProd: TDBEdit;
+    procedure FormShow(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure edtIDEmployeeExit(Sender: TObject);
+    procedure edtIDClientExit(Sender: TObject);
+    procedure btnAddProdClick(Sender: TObject);
+    procedure btnDeleteProdClick(Sender: TObject);
+    procedure btnProductsClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure Get_Sales();
+    procedure Get_Itens();
+  end;
+
+var
+  viewSales: TviewSales;
+
+implementation
+
+{$R *.dfm}
+
+procedure TviewSales.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSale.State in dsEditModes then
+  begin
+    ServiceRegister.QRYSale.Cancel;
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+end;
+
+procedure TviewSales.btnCloseWindowClick(Sender: TObject);
+begin
+  inherited;
+
+  viewSales.Close;
+
+end;
+
+
+
+procedure TviewSales.btnDeleteClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSale.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYSale.Delete;
+    ShowMessage('Record deleted successfully');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewSales.btnEditClick(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardRegister;
+  ServiceRegister.QRYSale.Edit;
+  Get_Itens();
+  edtDTUpdate.Text := DateToStr(Date);
+
+end;
+
+procedure TviewSales.btnNewClick(Sender: TObject);
+VAR
+
+  maxID : Integer;
+
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardRegister;
+  edtIDEmployee.SetFocus;
+  ServiceRegister.QRYSale.Insert;
+  ServiceRegister.QRYSaleItens.Insert;
+
+  ServiceRegister.QRYIDSale.Close;
+  ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(SALE_ID) AS MaxID FROM SALE';
+  ServiceRegister.QRYIDSale.Open;
+  if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtIDSale.Field.Value := maxID;
+
+  edtDTSale.Text := DateToStr(Date);
+  edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
+  cbPaid.State := cbUnchecked;
+  cbCash.State := cbUnchecked;
+  cbInstallment.State := cbUnchecked;
+
+end;
+
+procedure TviewSales.btnProductsClick(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardProducts;
+
+end;
+
+procedure TviewSales.btnSaveClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSale.State in dsEditModes then
+  begin
+
+    ServiceRegister.QRYSale.FieldByName('DATE_PAYMENT').AsDateTime := edtDTPayment.Date;
+    ServiceRegister.QRYSale.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYSale.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYSale.Post;
+    ShowMessage('Registered successfully!');
+    CardPanelList.ActiveCard := cardSearch;
+
+  end;
+
+end;
+
+
+
+procedure TviewSales.btnAddProdClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSale.State in dsEditModes then
+  begin
+    ServiceRegister.QRYSaleItens.FieldByName('SALE_ID').AsString := edtIDSale.Text;
+    ServiceRegister.QRYSaleItens.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYSaleItens.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYSaleItens.Post;
+    ShowMessage('Registered product successfully!');
+  end;
+
+end;
+
+procedure TviewSales.btnDeleteProdClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSaleItens.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYSaleItens.Delete;
+    ShowMessage('Product deleted from sale successfully');
+  end;
+
+end;
+
+procedure TviewSales.edtIDClientExit(Sender: TObject);
+begin
+  inherited;
+
+  if Trim(edtIDClient.Text) = '' then Exit;
+
+  ServiceRegister.QRYNamePeople.Close;
+  ServiceRegister.QRYNamePeople.SQL.Text := 'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID';
+  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtIDClient.Text, 0);
+  ServiceRegister.QRYNamePeople.Open;
+
+  if not ServiceRegister.QRYNamePeople.IsEmpty then
+    edtClientName.Text := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
+  else
+    edtClientName.Text := '';
+
+end;
+
+procedure TviewSales.edtIDEmployeeExit(Sender: TObject);
+begin
+  inherited;
+
+  if Trim(edtIDEmployee.Text) = '' then Exit;
+
+  ServiceRegister.QRYNamePeople.Close;
+  ServiceRegister.QRYNamePeople.SQL.Text := 'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID';
+  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtIDEmployee.Text, 0);
+  ServiceRegister.QRYNamePeople.Open;
+
+  if not ServiceRegister.QRYNamePeople.IsEmpty then
+    edtEmployeeName.Text := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
+  else
+    edtEmployeeName.Text := '';
+
+end;
+
+procedure TviewSales.FormShow(Sender: TObject);
+begin
+  inherited;
+
+  Get_Sales;
+  CardPanelList.ActiveCard := cardSearch;
+
+end;
+
+procedure TviewSales.Get_Itens;
+begin
+
+  ServiceRegister.QRYSaleItens.Close;
+  ServiceRegister.QRYSaleItens.SQL.Clear;
+  ServiceRegister.QRYSaleItens.SQL.Add('SELECT * FROM ITEMS_SALE WHERE SALE_ID = :SALE_ID');
+  ServiceRegister.QRYSaleItens.ParamByName('SALE_ID').AsInteger := StrToIntDef(edtIDSale.Text, 0);
+  ServiceRegister.QRYSaleItens.Open;
+  edtSaleID.Text := edtIDSale.Text;
+
+end;
+
+procedure TviewSales.Get_Sales;
+begin
+
+  ServiceRegister.QRYSale.Close;
+  ServiceRegister.QRYSale.SQL.Clear;
+  ServiceRegister.QRYSale.SQL.Add('SELECT * FROM SALE WHERE 1=1');
+  ServiceRegister.QRYSale.Open();
+
+end;
+
+end.

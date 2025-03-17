@@ -27,44 +27,74 @@ uses
 
 type
   TviewSales = class(TviewBaseLists)
+    DSDataItens: TDataSource;
+    DBGridItens: TDBGrid;
+    btnProducts: TSpeedButton;
+    cardProducts: TCard;
+    Panel1: TPanel;
+    Label23: TLabel;
+    DBGrid1: TDBGrid;
     Label1: TLabel;
-    edtIDSale: TDBEdit;
     Label2: TLabel;
-    edtIDEmployee: TDBEdit;
     Label3: TLabel;
-    edtIDClient: TDBEdit;
     Label4: TLabel;
-    edtIDCom: TDBEdit;
     Label5: TLabel;
-    edtDTSale: TDBEdit;
     Label6: TLabel;
+    Label8: TLabel;
+    edtIDSale: TDBEdit;
+    edtIDEmployee: TDBEdit;
+    edtIDClient: TDBEdit;
+    edtIDCom: TDBEdit;
+    edtDTSale: TDBEdit;
     edtDTUpdate: TDBEdit;
     edtEmployeeName: TEdit;
     edtClientName: TEdit;
     pnlPayment: TPanel;
-    cbPaid: TDBCheckBox;
     Label7: TLabel;
-    edtDTPayment: TDateTimePicker;
-    Label8: TLabel;
-    DBEdit1: TDBEdit;
-    cbInstallment: TDBCheckBox;
     Label9: TLabel;
-    edtAddition: TDBEdit;
     Label10: TLabel;
-    edtDiscount: TDBEdit;
     Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    lblChange: TLabel;
+    cbPaid: TDBCheckBox;
+    edtDTPayment: TDateTimePicker;
+    cbInstallment: TDBCheckBox;
+    edtAddition: TDBEdit;
+    edtDiscount: TDBEdit;
     edtTotal: TDBEdit;
     cbCash: TDBCheckBox;
-    Label12: TLabel;
     edtSubtotal: TDBEdit;
-    Label13: TLabel;
     edtInstAmount: TDBEdit;
-    Label14: TLabel;
     edtInstValue: TDBEdit;
-    Label15: TLabel;
     edt1stInst: TDBEdit;
-    lblChange: TLabel;
     edtChange: TDBEdit;
+    edtOBS: TDBEdit;
+    Label16: TLabel;
+    edtItemID: TDBEdit;
+    Label17: TLabel;
+    edtSaleID: TDBEdit;
+    DataSource1: TDataSource;
+    Label18: TLabel;
+    edtProdID: TDBEdit;
+    edtProdName: TDBEdit;
+    Label19: TLabel;
+    edtQtdeProd: TDBEdit;
+    Label20: TLabel;
+    edtPriceUN: TDBEdit;
+    Label21: TLabel;
+    edtTotalProd: TDBEdit;
+    Label22: TLabel;
+    edtDiscountProd: TDBEdit;
+    Label24: TLabel;
+    edtAddictionProd: TDBEdit;
+    Label25: TLabel;
+    edtSubtotalProd: TDBEdit;
+    Label26: TLabel;
+    edtOBSProd: TDBEdit;
+    Confirm: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -74,10 +104,14 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure edtIDEmployeeExit(Sender: TObject);
     procedure edtIDClientExit(Sender: TObject);
+    procedure btnAddProdClick(Sender: TObject);
+    procedure btnDeleteProdClick(Sender: TObject);
+    procedure btnProductsClick(Sender: TObject);
   private
     { Private declarations }
   public
     procedure Get_Sales();
+    procedure Get_Itens();
   end;
 
 var
@@ -127,6 +161,7 @@ begin
 
   CardPanelList.ActiveCard := cardRegister;
   ServiceRegister.QRYSale.Edit;
+  Get_Itens();
   edtDTUpdate.Text := DateToStr(Date);
 
 end;
@@ -134,27 +169,52 @@ end;
 procedure TviewSales.btnNewClick(Sender: TObject);
 VAR
 
-  maxID : integer;
+  maxID : Integer;
 
 begin
   inherited;
 
-  CardPanelList.ActiveCard := cardRegister;
-  edtIDEmployee.SetFocus;
-  ServiceRegister.QRYSale.Insert;
-  ServiceRegister.QRYIDSale.Close;
-  ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(SALE_ID) AS MaxID FROM SALE';
-  ServiceRegister.QRYIDSale.Open;
-  if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
-    maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
-  else
-    maxID := 1;
-  edtIDSale.Field.Value := maxID;
-  edtDTSale.Text := DateToStr(Date);
-  edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
-  cbPaid.State := cbUnchecked;
-  cbCash.State := cbUnchecked;
-  cbInstallment.State := cbUnchecked;
+  if cardRegister.Active then
+  begin
+    CardPanelList.ActiveCard := cardRegister;
+    edtIDEmployee.SetFocus;
+    ServiceRegister.QRYSale.Insert;
+    ServiceRegister.QRYSaleItens.Insert;
+
+    ServiceRegister.QRYIDSale.Close;
+    ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(SALE_ID) AS MaxID FROM SALE';
+    ServiceRegister.QRYIDSale.Open;
+    if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
+      maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
+    else
+      maxID := 1;
+    edtIDSale.Field.Value := maxID;
+
+    edtDTSale.Text := DateToStr(Date);
+    edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
+    cbPaid.State := cbUnchecked;
+    cbCash.State := cbUnchecked;
+    cbInstallment.State := cbUnchecked;
+  end;
+  if cardProducts.Active then
+  begin
+    ServiceRegister.QRYSaleItensID.Close;
+    ServiceRegister.QRYSaleItensID.SQL.Text := 'SELECT MAX(ITEM_ID) AS MaxID FROM ITEMS_SALE';
+    ServiceRegister.QRYSaleItensID.Open;
+    if not ServiceRegister.QRYSaleItensID.FieldByName('MaxID').IsNull then
+      maxID := ServiceRegister.QRYSaleItensID.FieldByName('MaxID').AsInteger + 1
+    else
+      maxID := 1;
+    edtItemID.Field.Value := maxID;
+  end;
+
+end;
+
+procedure TviewSales.btnProductsClick(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardProducts;
 
 end;
 
@@ -177,6 +237,33 @@ begin
 end;
 
 
+
+procedure TviewSales.btnAddProdClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSale.State in dsEditModes then
+  begin
+    ServiceRegister.QRYSaleItens.FieldByName('SALE_ID').AsString := edtIDSale.Text;
+    ServiceRegister.QRYSaleItens.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYSaleItens.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYSaleItens.Post;
+    ShowMessage('Registered product successfully!');
+  end;
+
+end;
+
+procedure TviewSales.btnDeleteProdClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSaleItens.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYSaleItens.Delete;
+    ShowMessage('Product deleted from sale successfully');
+  end;
+
+end;
 
 procedure TviewSales.edtIDClientExit(Sender: TObject);
 begin
@@ -220,6 +307,18 @@ begin
 
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
+
+end;
+
+procedure TviewSales.Get_Itens;
+begin
+
+  ServiceRegister.QRYSaleItens.Close;
+  ServiceRegister.QRYSaleItens.SQL.Clear;
+  ServiceRegister.QRYSaleItens.SQL.Add('SELECT * FROM ITEMS_SALE WHERE SALE_ID = :SALE_ID');
+  ServiceRegister.QRYSaleItens.ParamByName('SALE_ID').AsInteger := StrToIntDef(edtIDSale.Text, 0);
+  ServiceRegister.QRYSaleItens.Open;
+  edtSaleID.Text := edtIDSale.Text;
 
 end;
 

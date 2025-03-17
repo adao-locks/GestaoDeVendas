@@ -109,6 +109,19 @@ type
     QRYEntityUSER: TStringField;
     QRYProductUSER: TStringField;
     QRYProductCOM_ID: TStringField;
+    QRYSaleItensID: TFDQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    IntegerField3: TIntegerField;
+    IntegerField4: TIntegerField;
+    FMTBCDField1: TFMTBCDField;
+    FMTBCDField2: TFMTBCDField;
+    IntegerField5: TIntegerField;
+    IntegerField6: TIntegerField;
+    IntegerField7: TIntegerField;
+    StringField1: TStringField;
+    SQLTimeStampField1: TSQLTimeStampField;
+    SQLTimeStampField2: TSQLTimeStampField;
   private
     { Private declarations }
   public
