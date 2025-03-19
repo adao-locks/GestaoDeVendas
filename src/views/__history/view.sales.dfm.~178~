@@ -1,4 +1,5 @@
 inherited viewSales: TviewSales
+  Left = 41
   Caption = 'Sales'
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
@@ -174,28 +175,6 @@ inherited viewSales: TviewSales
         CardIndex = 1
         TabOrder = 2
         ExplicitTop = -3
-        object SpeedButton1: TSpeedButton
-          AlignWithMargins = True
-          Left = 903
-          Top = 435
-          Width = 105
-          Height = 27
-          Cursor = crHandPoint
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = 'Products'
-          ImageIndex = 0
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold]
-          ParentFont = False
-          OnClick = btnProductsClick
-        end
         object Label16: TLabel
           Left = 8
           Top = 72
@@ -268,6 +247,14 @@ inherited viewSales: TviewSales
           Caption = 'Subtotal'
           FocusControl = edtSubtotalProd
         end
+        object Label26: TLabel
+          Left = 8
+          Top = 232
+          Width = 22
+          Height = 15
+          Caption = 'OBS'
+          FocusControl = edtOBSProd
+        end
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -300,10 +287,10 @@ inherited viewSales: TviewSales
           end
         end
         object DBGrid1: TDBGrid
-          Left = 383
+          Left = 326
           Top = 73
-          Width = 625
-          Height = 354
+          Width = 682
+          Height = 392
           Cursor = crCross
           DataSource = DSDataItens
           TabOrder = 1
@@ -381,6 +368,8 @@ inherited viewSales: TviewSales
           Height = 23
           CharCase = ecUpperCase
           DataField = 'ITEM_ID'
+          Enabled = False
+          ReadOnly = True
           TabOrder = 2
         end
         object edtSaleID: TDBEdit
@@ -391,6 +380,8 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'SALE_ID'
           DataSource = DataSource1
+          Enabled = False
+          ReadOnly = True
           TabOrder = 3
         end
         object edtProdID: TDBEdit
@@ -406,7 +397,7 @@ inherited viewSales: TviewSales
         object edtProdName: TDBEdit
           Left = 74
           Top = 128
-          Width = 303
+          Width = 246
           Height = 23
           CharCase = ecUpperCase
           DataField = 'PROD_ID'
@@ -467,6 +458,23 @@ inherited viewSales: TviewSales
           DataField = 'SUBTOTAL'
           DataSource = DataSource1
           TabOrder = 11
+        end
+        object edtOBSProd: TDBEdit
+          Left = 8
+          Top = 248
+          Width = 312
+          Height = 23
+          DataField = 'OBS'
+          DataSource = DataSource1
+          TabOrder = 12
+        end
+        object Confirm: TButton
+          Left = 8
+          Top = 277
+          Width = 312
+          Height = 25
+          Caption = 'Confirm'
+          TabOrder = 13
         end
       end
       inherited cardRegister: TCard
@@ -953,7 +961,6 @@ inherited viewSales: TviewSales
   end
   object DataSource1: TDataSource
     DataSet = ServiceRegister.QRYSaleItensID
-    Left = 496
-    Top = 264
+    Left = 720
   end
 end

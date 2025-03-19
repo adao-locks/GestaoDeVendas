@@ -1,4 +1,5 @@
 inherited viewSales: TviewSales
+  Left = 41
   Caption = 'Sales'
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
@@ -42,7 +43,7 @@ inherited viewSales: TviewSales
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardProducts
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -86,6 +87,7 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'PAID'
+              Width = 64
               Visible = True
             end
             item
@@ -97,11 +99,13 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'PAYMENT_METHOD'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CASH'
+              Width = 64
               Visible = True
             end
             item
@@ -127,26 +131,31 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'INSTALLMENT'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = '1ST_INSTALLMENT'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'INSTALLMENT_AMOUNT'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'INSTALLMENT_VALUE'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOTAL'
+              Width = 64
               Visible = True
             end
             item
@@ -157,11 +166,13 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'OBS'
+              Width = 64
               Visible = True
             end>
         end
@@ -173,7 +184,6 @@ inherited viewSales: TviewSales
         Height = 480
         CardIndex = 1
         TabOrder = 2
-        ExplicitTop = -3
         object Label16: TLabel
           Left = 8
           Top = 72
@@ -245,6 +255,14 @@ inherited viewSales: TviewSales
           Height = 15
           Caption = 'Subtotal'
           FocusControl = edtSubtotalProd
+        end
+        object Label26: TLabel
+          Left = 8
+          Top = 232
+          Width = 22
+          Height = 15
+          Caption = 'OBS'
+          FocusControl = edtOBSProd
         end
         object Panel1: TPanel
           Left = 0
@@ -319,6 +337,7 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'TOTAL'
+              Width = 64
               Visible = True
             end
             item
@@ -339,16 +358,19 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'OBS'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end>
         end
@@ -359,6 +381,8 @@ inherited viewSales: TviewSales
           Height = 23
           CharCase = ecUpperCase
           DataField = 'ITEM_ID'
+          Enabled = False
+          ReadOnly = True
           TabOrder = 2
         end
         object edtSaleID: TDBEdit
@@ -369,6 +393,8 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'SALE_ID'
           DataSource = DataSource1
+          Enabled = False
+          ReadOnly = True
           TabOrder = 3
         end
         object edtProdID: TDBEdit
@@ -446,11 +472,27 @@ inherited viewSales: TviewSales
           DataSource = DataSource1
           TabOrder = 11
         end
+        object edtOBSProd: TDBEdit
+          Left = 8
+          Top = 248
+          Width = 312
+          Height = 23
+          DataField = 'OBS'
+          DataSource = DataSource1
+          TabOrder = 12
+        end
+        object Confirm: TButton
+          Left = 8
+          Top = 277
+          Width = 312
+          Height = 25
+          Caption = 'Confirm'
+          TabOrder = 13
+        end
       end
       inherited cardRegister: TCard
         CardIndex = 2
         StyleElements = [seFont, seClient, seBorder]
-        ExplicitTop = -3
         object btnProducts: TSpeedButton [0]
           AlignWithMargins = True
           Left = 903
@@ -580,6 +622,7 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'TOTAL'
+              Width = 64
               Visible = True
             end
             item
@@ -600,16 +643,19 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'OBS'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end>
         end
@@ -931,7 +977,6 @@ inherited viewSales: TviewSales
   end
   object DataSource1: TDataSource
     DataSet = ServiceRegister.QRYSaleItensID
-    Left = 496
-    Top = 264
+    Left = 720
   end
 end

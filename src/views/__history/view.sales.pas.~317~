@@ -94,6 +94,7 @@ type
     edtSubtotalProd: TDBEdit;
     Label26: TLabel;
     edtOBSProd: TDBEdit;
+    Confirm: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -110,6 +111,7 @@ type
     { Private declarations }
   public
     procedure Get_Sales();
+    procedure Get_Itens();
   end;
 
 var
@@ -159,6 +161,7 @@ begin
 
   CardPanelList.ActiveCard := cardRegister;
   ServiceRegister.QRYSale.Edit;
+  Get_Itens();
   edtDTUpdate.Text := DateToStr(Date);
 
 end;
@@ -185,6 +188,7 @@ begin
     maxID := 1;
   edtIDSale.Field.Value := maxID;
 
+  Get_Itens;
   edtDTSale.Text := DateToStr(Date);
   edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
   cbPaid.State := cbUnchecked;
@@ -290,6 +294,18 @@ begin
 
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
+
+end;
+
+procedure TviewSales.Get_Itens;
+begin
+
+  ServiceRegister.QRYSaleItens.Close;
+  ServiceRegister.QRYSaleItens.SQL.Clear;
+  ServiceRegister.QRYSaleItens.SQL.Add('SELECT * FROM ITEMS_SALE WHERE SALE_ID = :SALE_ID');
+  ServiceRegister.QRYSaleItens.ParamByName('SALE_ID').AsInteger := StrToIntDef(edtIDSale.Text, 0);
+  ServiceRegister.QRYSaleItens.Open;
+  edtSaleID.Text := edtIDSale.Text;
 
 end;
 

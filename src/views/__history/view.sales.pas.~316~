@@ -94,6 +94,7 @@ type
     edtSubtotalProd: TDBEdit;
     Label26: TLabel;
     edtOBSProd: TDBEdit;
+    Confirm: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -160,6 +161,7 @@ begin
 
   CardPanelList.ActiveCard := cardRegister;
   ServiceRegister.QRYSale.Edit;
+  Get_Itens();
   edtDTUpdate.Text := DateToStr(Date);
 
 end;
@@ -300,7 +302,9 @@ begin
   ServiceRegister.QRYSaleItens.Close;
   ServiceRegister.QRYSaleItens.SQL.Clear;
   ServiceRegister.QRYSaleItens.SQL.Add('SELECT * FROM ITEMS_SALE WHERE SALE_ID = :SALE_ID');
+  ServiceRegister.QRYSaleItens.ParamByName('SALE_ID').AsInteger := StrToIntDef(edtIDSale.Text, 0);
   ServiceRegister.QRYSaleItens.Open;
+  edtSaleID.Text := edtIDSale.Text;
 
 end;
 

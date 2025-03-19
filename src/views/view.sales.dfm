@@ -43,7 +43,7 @@ inherited viewSales: TviewSales
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardProducts
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -87,6 +87,7 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'PAID'
+              Width = 64
               Visible = True
             end
             item
@@ -98,11 +99,13 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'PAYMENT_METHOD'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CASH'
+              Width = 64
               Visible = True
             end
             item
@@ -128,26 +131,31 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'INSTALLMENT'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = '1ST_INSTALLMENT'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'INSTALLMENT_AMOUNT'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'INSTALLMENT_VALUE'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOTAL'
+              Width = 64
               Visible = True
             end
             item
@@ -158,329 +166,19 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'OBS'
+              Width = 64
               Visible = True
             end>
-        end
-      end
-      object cardProducts: TCard [1]
-        Left = 0
-        Top = 0
-        Width = 1020
-        Height = 480
-        CardIndex = 1
-        TabOrder = 2
-        ExplicitTop = -3
-        object Label16: TLabel
-          Left = 8
-          Top = 72
-          Width = 38
-          Height = 15
-          Caption = 'Item ID'
-          FocusControl = edtItemID
-        end
-        object Label17: TLabel
-          Left = 74
-          Top = 72
-          Width = 35
-          Height = 15
-          Caption = 'Sale ID'
-          FocusControl = edtSaleID
-        end
-        object Label18: TLabel
-          Left = 8
-          Top = 112
-          Width = 42
-          Height = 15
-          Caption = 'Product'
-          FocusControl = edtProdID
-        end
-        object Label19: TLabel
-          Left = 8
-          Top = 152
-          Width = 46
-          Height = 15
-          Caption = 'Quantity'
-          FocusControl = edtQtdeProd
-        end
-        object Label20: TLabel
-          Left = 114
-          Top = 152
-          Width = 49
-          Height = 15
-          Caption = 'Price UN.'
-          FocusControl = edtPriceUN
-        end
-        object Label21: TLabel
-          Left = 220
-          Top = 152
-          Width = 25
-          Height = 15
-          Caption = 'Total'
-          FocusControl = edtTotalProd
-        end
-        object Label22: TLabel
-          Left = 8
-          Top = 192
-          Width = 47
-          Height = 15
-          Caption = 'Discount'
-          FocusControl = edtDiscountProd
-        end
-        object Label24: TLabel
-          Left = 114
-          Top = 192
-          Width = 52
-          Height = 15
-          Caption = 'Addiction'
-          FocusControl = edtAddictionProd
-        end
-        object Label25: TLabel
-          Left = 220
-          Top = 192
-          Width = 44
-          Height = 15
-          Caption = 'Subtotal'
-          FocusControl = edtSubtotalProd
-        end
-        object Label26: TLabel
-          Left = 8
-          Top = 232
-          Width = 22
-          Height = 15
-          Caption = 'OBS'
-          FocusControl = edtOBSProd
-        end
-        object Panel1: TPanel
-          Left = 0
-          Top = 0
-          Width = 1020
-          Height = 65
-          Align = alTop
-          BevelOuter = bvNone
-          Color = clMedGray
-          ParentBackground = False
-          TabOrder = 0
-          object Label23: TLabel
-            AlignWithMargins = True
-            Left = 15
-            Top = 5
-            Width = 1005
-            Height = 25
-            Margins.Left = 15
-            Margins.Top = 5
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = 'Register Sale'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -19
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
-            ExplicitWidth = 107
-          end
-        end
-        object DBGrid1: TDBGrid
-          Left = 326
-          Top = 73
-          Width = 682
-          Height = 392
-          Cursor = crCross
-          DataSource = DSDataItens
-          TabOrder = 1
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -12
-          TitleFont.Name = 'Segoe UI'
-          TitleFont.Style = []
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'ITEM_ID'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'SALE_ID'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'PROD_ID'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'QTDE'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'UNIT_PRICE'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'TOTAL'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DISCOUNT'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'ADDITION'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'SUBTOTAL'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'OBS'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DATE_REGISTER'
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DATE_UPDATED'
-              Visible = True
-            end>
-        end
-        object edtItemID: TDBEdit
-          Left = 8
-          Top = 88
-          Width = 60
-          Height = 23
-          CharCase = ecUpperCase
-          DataField = 'ITEM_ID'
-          Enabled = False
-          ReadOnly = True
-          TabOrder = 2
-        end
-        object edtSaleID: TDBEdit
-          Left = 74
-          Top = 88
-          Width = 60
-          Height = 23
-          CharCase = ecUpperCase
-          DataField = 'SALE_ID'
-          DataSource = DataSource1
-          Enabled = False
-          ReadOnly = True
-          TabOrder = 3
-        end
-        object edtProdID: TDBEdit
-          Left = 8
-          Top = 128
-          Width = 60
-          Height = 23
-          CharCase = ecUpperCase
-          DataField = 'PROD_ID'
-          DataSource = DataSource1
-          TabOrder = 4
-        end
-        object edtProdName: TDBEdit
-          Left = 74
-          Top = 128
-          Width = 246
-          Height = 23
-          CharCase = ecUpperCase
-          DataField = 'PROD_ID'
-          DataSource = DataSource1
-          ReadOnly = True
-          TabOrder = 5
-        end
-        object edtQtdeProd: TDBEdit
-          Left = 8
-          Top = 168
-          Width = 100
-          Height = 23
-          DataField = 'QTDE'
-          DataSource = DataSource1
-          TabOrder = 6
-        end
-        object edtPriceUN: TDBEdit
-          Left = 114
-          Top = 168
-          Width = 100
-          Height = 23
-          DataField = 'UNIT_PRICE'
-          DataSource = DataSource1
-          TabOrder = 7
-        end
-        object edtTotalProd: TDBEdit
-          Left = 220
-          Top = 168
-          Width = 100
-          Height = 23
-          DataField = 'TOTAL'
-          DataSource = DataSource1
-          TabOrder = 8
-        end
-        object edtDiscountProd: TDBEdit
-          Left = 8
-          Top = 208
-          Width = 100
-          Height = 23
-          DataField = 'DISCOUNT'
-          DataSource = DataSource1
-          TabOrder = 9
-        end
-        object edtAddictionProd: TDBEdit
-          Left = 114
-          Top = 208
-          Width = 100
-          Height = 23
-          DataField = 'ADDITION'
-          DataSource = DataSource1
-          TabOrder = 10
-        end
-        object edtSubtotalProd: TDBEdit
-          Left = 220
-          Top = 208
-          Width = 100
-          Height = 23
-          DataField = 'SUBTOTAL'
-          DataSource = DataSource1
-          TabOrder = 11
-        end
-        object edtOBSProd: TDBEdit
-          Left = 8
-          Top = 248
-          Width = 312
-          Height = 23
-          DataField = 'OBS'
-          DataSource = DataSource1
-          TabOrder = 12
-        end
-        object Confirm: TButton
-          Left = 8
-          Top = 277
-          Width = 312
-          Height = 25
-          Caption = 'Confirm'
-          TabOrder = 13
         end
       end
       inherited cardRegister: TCard
-        CardIndex = 2
         StyleElements = [seFont, seClient, seBorder]
-        ExplicitTop = -3
         object btnProducts: TSpeedButton [0]
           AlignWithMargins = True
           Left = 903
@@ -501,7 +199,6 @@ inherited viewSales: TviewSales
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
-          OnClick = btnProductsClick
         end
         object Label1: TLabel [1]
           Left = 8
@@ -559,6 +256,14 @@ inherited viewSales: TviewSales
           Caption = 'OBS'
           FocusControl = edtOBS
         end
+        object Label16: TLabel [8]
+          Left = 383
+          Top = 73
+          Width = 47
+          Height = 15
+          Caption = 'Products'
+          FocusControl = edtDTUpdate
+        end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
@@ -570,9 +275,9 @@ inherited viewSales: TviewSales
         end
         object DBGridItens: TDBGrid
           Left = 383
-          Top = 73
+          Top = 89
           Width = 625
-          Height = 354
+          Height = 338
           Cursor = crCross
           DataSource = DSDataItens
           TabOrder = 1
@@ -610,6 +315,7 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'TOTAL'
+              Width = 64
               Visible = True
             end
             item
@@ -630,16 +336,19 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'OBS'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end>
         end

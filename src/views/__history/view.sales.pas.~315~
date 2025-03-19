@@ -94,6 +94,7 @@ type
     edtSubtotalProd: TDBEdit;
     Label26: TLabel;
     edtOBSProd: TDBEdit;
+    Confirm: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -160,6 +161,7 @@ begin
 
   CardPanelList.ActiveCard := cardRegister;
   ServiceRegister.QRYSale.Edit;
+  Get_Itens();
   edtDTUpdate.Text := DateToStr(Date);
 
 end;
@@ -172,25 +174,39 @@ VAR
 begin
   inherited;
 
-  CardPanelList.ActiveCard := cardRegister;
-  edtIDEmployee.SetFocus;
-  ServiceRegister.QRYSale.Insert;
-  ServiceRegister.QRYSaleItens.Insert;
+  if cardRegister.Active then
+  begin
+    CardPanelList.ActiveCard := cardRegister;
+    edtIDEmployee.SetFocus;
+    ServiceRegister.QRYSale.Insert;
+    ServiceRegister.QRYSaleItens.Insert;
 
-  ServiceRegister.QRYIDSale.Close;
-  ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(SALE_ID) AS MaxID FROM SALE';
-  ServiceRegister.QRYIDSale.Open;
-  if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
-    maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
-  else
-    maxID := 1;
-  edtIDSale.Field.Value := maxID;
+    ServiceRegister.QRYIDSale.Close;
+    ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(SALE_ID) AS MaxID FROM SALE';
+    ServiceRegister.QRYIDSale.Open;
+    if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
+      maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
+    else
+      maxID := 1;
+    edtIDSale.Field.Value := maxID;
 
-  edtDTSale.Text := DateToStr(Date);
-  edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
-  cbPaid.State := cbUnchecked;
-  cbCash.State := cbUnchecked;
-  cbInstallment.State := cbUnchecked;
+    edtDTSale.Text := DateToStr(Date);
+    edtIDCom.Text := ServiceConnection.SERVICE_COM_ID;
+    cbPaid.State := cbUnchecked;
+    cbCash.State := cbUnchecked;
+    cbInstallment.State := cbUnchecked;
+  end;
+  if cardProducts.Active then
+  begin
+    ServiceRegister.QRYSaleItensID.Close;
+    ServiceRegister.QRYSaleItensID.SQL.Text := 'SELECT MAX(ITEM_ID) AS MaxID FROM ITEMS_SALE';
+    ServiceRegister.QRYSaleItensID.Open;
+    if not ServiceRegister.QRYSaleItensID.FieldByName('MaxID').IsNull then
+      maxID := ServiceRegister.QRYSaleItensID.FieldByName('MaxID').AsInteger + 1
+    else
+      maxID := 1;
+    edtItemID.Field.Value := maxID;
+  end;
 
 end;
 
@@ -302,6 +318,7 @@ begin
   ServiceRegister.QRYSaleItens.SQL.Add('SELECT * FROM ITEMS_SALE WHERE SALE_ID = :SALE_ID');
   ServiceRegister.QRYSaleItens.ParamByName('SALE_ID').AsInteger := StrToIntDef(edtIDSale.Text, 0);
   ServiceRegister.QRYSaleItens.Open;
+  edtSaleID.Text := edtIDSale.Text;
 
 end;
 
