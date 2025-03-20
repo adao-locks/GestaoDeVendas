@@ -22,12 +22,16 @@ uses
   Vcl.Buttons,
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
-  Service.Register, Vcl.Mask, Vcl.DBCtrls, Data.FMTBcd, Data.SqlExpr,
-  Service.Connection, Vcl.ComCtrls;
+  Service.Register,
+  Vcl.Mask,
+  Vcl.DBCtrls,
+  Data.FMTBcd,
+  Data.SqlExpr,
+  Service.Connection,
+  Vcl.ComCtrls;
 
 type
   TviewSales = class(TviewBaseLists)
-    DSDataItens: TDataSource;
     DBGridItens: TDBGrid;
     btnProducts: TSpeedButton;
     Label1: TLabel;
@@ -70,6 +74,7 @@ type
     edtOBS: TDBEdit;
     DataSource1: TDataSource;
     Label16: TLabel;
+    DSDataItens: TDataSource;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -81,6 +86,7 @@ type
     procedure edtIDClientExit(Sender: TObject);
     procedure btnAddProdClick(Sender: TObject);
     procedure btnDeleteProdClick(Sender: TObject);
+    procedure btnProductsClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -92,6 +98,9 @@ var
   viewSales: TviewSales;
 
 implementation
+
+uses
+  view.sales.products;
 
 {$R *.dfm}
 
@@ -168,6 +177,15 @@ begin
   cbPaid.State := cbUnchecked;
   cbCash.State := cbUnchecked;
   cbInstallment.State := cbUnchecked;
+
+end;
+
+procedure TviewSales.btnProductsClick(Sender: TObject);
+begin
+  inherited;
+
+  viewSales.Close;
+  viewProdSale := TviewProdSale.Create(Self);
 
 end;
 
@@ -271,7 +289,7 @@ begin
   ServiceRegister.QRYSaleItens.SQL.Add('SELECT * FROM ITEMS_SALE WHERE SALE_ID = :SALE_ID');
   ServiceRegister.QRYSaleItens.ParamByName('SALE_ID').AsInteger := StrToIntDef(edtIDSale.Text, 0);
   ServiceRegister.QRYSaleItens.Open;
-  edtSaleID.Text := edtIDSale.Text;
+  edtIDSale.Text := edtIDSale.Text;
 
 end;
 

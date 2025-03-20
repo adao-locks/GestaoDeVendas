@@ -199,6 +199,7 @@ inherited viewSales: TviewSales
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
           ParentFont = False
+          OnClick = btnProductsClick
         end
         object Label1: TLabel [1]
           Left = 8
@@ -279,7 +280,6 @@ inherited viewSales: TviewSales
           Width = 625
           Height = 338
           Cursor = crCross
-          DataSource = DSDataItens
           TabOrder = 1
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -663,13 +663,13 @@ inherited viewSales: TviewSales
     Left = 842
     Top = 65531
   end
+  object DataSource1: TDataSource
+    DataSet = ServiceRegister.QRYSaleItensID
+    Left = 728
+  end
   object DSDataItens: TDataSource
     DataSet = ServiceRegister.QRYSaleItens
     Left = 904
     Top = 65531
-  end
-  object DataSource1: TDataSource
-    DataSet = ServiceRegister.QRYSaleItensID
-    Left = 720
   end
 end

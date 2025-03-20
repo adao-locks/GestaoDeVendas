@@ -1,0 +1,86 @@
+inherited viewBaseLists1: TviewBaseLists1
+  Caption = 'viewBaseLists1'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlTop: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlLogo: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlCloseWindow: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited pnlFooter: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
+      StyleElements = [seFont, seClient, seBorder]
+      inherited cardSearch: TCard
+        CardVisible = False
+        Enabled = False
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlSearch: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblSearch: TLabel
+            Width = 1005
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited cardRegister: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        object Label1: TLabel [0]
+          Left = 8
+          Top = 71
+          Width = 42
+          Height = 15
+          Caption = 'ITEM_ID'
+          FocusControl = DBEdit1
+        end
+        object Label2: TLabel [1]
+          Left = 152
+          Top = 168
+          Width = 42
+          Height = 15
+          Caption = 'SALE_ID'
+          FocusControl = DBEdit2
+        end
+        inherited pnlRegister: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblRegister: TLabel
+            Width = 1005
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        object DBEdit1: TDBEdit
+          Left = 8
+          Top = 87
+          Width = 154
+          Height = 23
+          DataField = 'ITEM_ID'
+          TabOrder = 1
+        end
+        object DBEdit2: TDBEdit
+          Left = 152
+          Top = 184
+          Width = 154
+          Height = 23
+          DataField = 'SALE_ID'
+          TabOrder = 2
+        end
+      end
+    end
+  end
+  inherited DSData: TDataSource
+    DataSet = ServiceRegister.QRYSaleItens
+  end
+end
