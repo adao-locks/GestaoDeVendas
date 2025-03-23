@@ -1,0 +1,68 @@
+unit view.sales.products;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
+  System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Mask, Service.Connection, Service.Register, Vcl.DBCtrls,
+  Vcl.ComCtrls;
+
+type
+  TviewProdSale = class(TviewBaseLists)
+    Label1: TLabel;
+    edtSaleId: TDBEdit;
+    Label2: TLabel;
+    edtCliId: TDBEdit;
+    Label3: TLabel;
+    edtEmpId: TDBEdit;
+    Label4: TLabel;
+    edtIdProd: TDBEdit;
+    Label5: TLabel;
+    edtUnit: TDBEdit;
+    Label6: TLabel;
+    edtTotal: TDBEdit;
+    Label7: TLabel;
+    edtQtde: TDBEdit;
+    Label8: TLabel;
+    edtAddit: TDBEdit;
+    Label9: TLabel;
+    edtDisc: TDBEdit;
+    Label10: TLabel;
+    edtSubt: TDBEdit;
+    DBCheckBox1: TDBCheckBox;
+    DBCheckBox2: TDBCheckBox;
+    Label11: TLabel;
+    DBEdit1: TDBEdit;
+    DBCheckBox3: TDBCheckBox;
+    Label12: TLabel;
+    Label13: TLabel;
+    edtValInst: TDBEdit;
+    Label14: TLabel;
+    DBEdit4: TDBEdit;
+    DateTimePicker1: TDateTimePicker;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  viewProdSale: TviewProdSale;
+
+implementation
+
+{$R *.dfm}
+
+procedure TviewProdSale.FormShow(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardRegister;
+
+
+end;
+
+end.

@@ -1,0 +1,69 @@
+inherited viewProdSale: TviewProdSale
+  Caption = 'viewProdSale'
+  StyleElements = [seFont, seClient, seBorder]
+  OnCreate = nil
+  TextHeight = 15
+  inherited pnlTop: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlLogo: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlCloseWindow: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited pnlFooter: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited btnNew: TSpeedButton
+      Visible = False
+    end
+    inherited btnEdit: TSpeedButton
+      Visible = False
+    end
+    inherited btnDelete: TSpeedButton
+      Visible = False
+    end
+  end
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
+      StyleElements = [seFont, seClient, seBorder]
+      inherited cardSearch: TCard
+        CardVisible = False
+        Enabled = False
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlSearch: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblSearch: TLabel
+            Width = 1005
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited cardRegister: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlRegister: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblRegister: TLabel
+            Width = 1005
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+    end
+  end
+  inherited DSData: TDataSource
+    DataSet = ServiceRegister.QRYSaleItens
+  end
+  object DataSource1: TDataSource
+    DataSet = ServiceRegister.QRYSaleItens
+    Left = 840
+    Top = 64
+  end
+end

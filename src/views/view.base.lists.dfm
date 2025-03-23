@@ -315,7 +315,7 @@ inherited viewBaseLists: TviewBaseLists
             AlignWithMargins = True
             Left = 15
             Top = 5
-            Width = 67
+            Width = 1005
             Height = 25
             Margins.Left = 15
             Margins.Top = 5
@@ -329,6 +329,7 @@ inherited viewBaseLists: TviewBaseLists
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
+            ExplicitWidth = 67
           end
         end
       end

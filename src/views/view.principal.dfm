@@ -5,7 +5,7 @@ object ViewPrincipal: TViewPrincipal
   BorderStyle = bsNone
   Caption = '9'
   ClientHeight = 737
-  ClientWidth = 1100
+  ClientWidth = 1366
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -2132,7 +2132,7 @@ object ViewPrincipal: TViewPrincipal
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1100
+    Width = 1366
     Height = 41
     Align = alTop
     BevelOuter = bvNone
@@ -2141,6 +2141,7 @@ object ViewPrincipal: TViewPrincipal
     Padding.Right = 10
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1100
     object pnlLogo: TPanel
       Left = 10
       Top = 0
@@ -2202,13 +2203,14 @@ object ViewPrincipal: TViewPrincipal
       end
     end
     object pnlUser: TPanel
-      Left = 874
+      Left = 1140
       Top = 0
       Width = 216
       Height = 41
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitLeft = 874
       object pnlLineUser: TPanel
         AlignWithMargins = True
         Left = 0
@@ -2537,30 +2539,33 @@ object ViewPrincipal: TViewPrincipal
   object pnlPanelPrincipal: TPanel
     Left = 129
     Top = 41
-    Width = 971
+    Width = 1237
     Height = 696
     Align = alClient
     BevelOuter = bvNone
     Color = clTeal
     ParentBackground = False
     TabOrder = 2
+    ExplicitWidth = 971
     object pnlBottom: TPanel
       Left = 0
       Top = 655
-      Width = 971
+      Width = 1237
       Height = 41
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 971
       object pnlBusiness: TPanel
-        Left = 570
+        Left = 836
         Top = 0
         Width = 401
         Height = 41
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitLeft = 570
         object lblBusiness: TLabel
           AlignWithMargins = True
           Left = 228
@@ -2603,7 +2608,7 @@ object ViewPrincipal: TViewPrincipal
     object pnlContent: TPanel
       Left = 0
       Top = 0
-      Width = 971
+      Width = 1237
       Height = 655
       Margins.Top = 0
       Align = alClient
@@ -2611,10 +2616,11 @@ object ViewPrincipal: TViewPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 971
       object imgBackground: TImage
         Left = 0
         Top = 0
-        Width = 971
+        Width = 1237
         Height = 655
         Align = alClient
         Center = True
