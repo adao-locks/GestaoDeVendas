@@ -128,6 +128,12 @@ object ServiceRegister: TServiceRegister
       Origin = '"USER"'
       Size = 100
     end
+    object QRYEntityTYPE_PERSON: TStringField
+      FieldName = 'TYPE_PERSON'
+      Origin = 'TYPE_PERSON'
+      FixedChar = True
+      Size = 1
+    end
   end
   object QRYLogs: TFDQuery
     Connection = ServiceConnection.FDConn
@@ -418,6 +424,46 @@ object ServiceRegister: TServiceRegister
       Origin = 'NAME'
       Required = True
       Size = 150
+    end
+  end
+  object QRYNameProduct: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID')
+    Left = 192
+    Top = 192
+    ParamData = <
+      item
+        Name = 'PROD_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYNameProductNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 150
+    end
+  end
+  object QRYType: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT TYPE_PERSON FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE')
+    Left = 272
+    Top = 24
+    ParamData = <
+      item
+        Name = 'PEOPLE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYTypeTYPE_PERSON: TStringField
+      FieldName = 'TYPE_PERSON'
+      Origin = 'TYPE_PERSON'
+      FixedChar = True
+      Size = 1
     end
   end
 end

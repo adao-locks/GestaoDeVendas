@@ -1,6 +1,5 @@
 inherited viewEntity: TviewEntity
   Caption = 'Entity'
-  Position = poDesigned
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
@@ -10,7 +9,7 @@ inherited viewEntity: TviewEntity
       Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 868
+      ExplicitWidth = 50
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -43,6 +42,7 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -341,84 +341,121 @@ inherited viewEntity: TviewEntity
             item
               Expanded = False
               FieldName = 'PEOPLE_ID'
-              Title.Caption = 'ID'
-              Width = 20
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
-              Title.Caption = 'Name'
-              Width = 180
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'EIN_CNPJ'
-              Title.Caption = 'EIN/CNPJ'
-              Width = 90
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PHONE'
-              Title.Caption = 'Phone'
-              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'EMAIL'
-              Title.Caption = 'Email'
-              Width = 100
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'ZIP_CODE'
-              Title.Caption = 'ZIP Code'
-              Width = 75
+              FieldName = 'DATE_BIRTH'
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'STATE'
-              Title.Caption = 'State'
+              FieldName = 'DATE_REGISTER'
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'CITY'
-              Title.Caption = 'City'
-              Width = 80
+              FieldName = 'CLIENT'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'EMPLOYEE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SUPPLIER'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TRANSPORT'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STREET'
-              Title.Caption = 'Street'
-              Width = 100
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NUMBER_ADDRESS'
-              Title.Caption = 'Number'
-              Width = 40
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'NEIGHBORHOOD'
-              Title.Caption = 'Neighborhood'
-              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COMPLEMENT'
-              Title.Caption = 'Complement'
-              Width = 100
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CITY'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NEIGHBORHOOD'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'STATE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ZIP_CODE'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'FANTASY'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'OBS'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE_UPDATED'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'COM_ID'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TYPE_PERSON'
               Visible = True
             end>
         end
@@ -468,7 +505,7 @@ inherited viewEntity: TviewEntity
           FocusControl = edtName
         end
         object lblBirth: TLabel [2]
-          Left = 227
+          Left = 271
           Top = 117
           Width = 44
           Height = 15
@@ -490,12 +527,11 @@ inherited viewEntity: TviewEntity
           Caption = 'EIN/CNPJ'
         end
         object lblPhone: TLabel [5]
-          Left = 313
+          Left = 422
           Top = 207
           Width = 34
           Height = 15
           Caption = 'Phone'
-          FocusControl = edtPhone
         end
         object lblEmail: TLabel [6]
           Left = 7
@@ -535,7 +571,7 @@ inherited viewEntity: TviewEntity
           Width = 162
           Height = 139
           BevelOuter = bvSpace
-          TabOrder = 6
+          TabOrder = 8
           object lblTypePeople: TLabel
             AlignWithMargins = True
             Left = 6
@@ -635,12 +671,11 @@ inherited viewEntity: TviewEntity
           Width = 100
           Height = 23
           Cursor = crHandPoint
-          Color = cl3DLight
           DataField = 'PEOPLE_ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 1
+          TabOrder = 6
         end
         object edtName: TDBEdit
           Left = 113
@@ -651,35 +686,23 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'NAME'
           DataSource = DSData
-          TabOrder = 2
+          TabOrder = 1
         end
         object edtRegDate: TDBEdit
           Left = 593
           Top = 88
           Width = 96
           Height = 23
-          Color = cl3DLight
           DataField = 'DATE_REGISTER'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 3
-        end
-        object edtPhone: TDBEdit
-          Left = 313
-          Top = 223
-          Width = 150
-          Height = 23
-          Cursor = crHandPoint
-          CharCase = ecUpperCase
-          DataField = 'PHONE'
-          DataSource = DSData
-          TabOrder = 4
+          TabOrder = 7
         end
         object edtEmail: TDBEdit
           Left = 7
           Top = 223
-          Width = 300
+          Width = 409
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
@@ -693,7 +716,7 @@ inherited viewEntity: TviewEntity
           Width = 573
           Height = 183
           BevelOuter = bvSpace
-          TabOrder = 7
+          TabOrder = 9
           object lblTitleAddress: TLabel
             AlignWithMargins = True
             Left = 6
@@ -746,7 +769,7 @@ inherited viewEntity: TviewEntity
             FocusControl = edtCity
           end
           object lblNeighborhood: TLabel
-            Left = 254
+            Left = 314
             Top = 80
             Width = 78
             Height = 15
@@ -762,7 +785,7 @@ inherited viewEntity: TviewEntity
             FocusControl = edtStreet
           end
           object lblNumberAddress: TLabel
-            Left = 264
+            Left = 435
             Top = 128
             Width = 89
             Height = 15
@@ -805,7 +828,7 @@ inherited viewEntity: TviewEntity
           object edtCity: TDBEdit
             Left = 48
             Top = 96
-            Width = 200
+            Width = 260
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -814,9 +837,9 @@ inherited viewEntity: TviewEntity
             TabOrder = 3
           end
           object edtNeighborhood: TDBEdit
-            Left = 254
+            Left = 314
             Top = 96
-            Width = 200
+            Width = 250
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -827,7 +850,7 @@ inherited viewEntity: TviewEntity
           object edtStreet: TDBEdit
             Left = 8
             Top = 144
-            Width = 250
+            Width = 421
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -836,9 +859,9 @@ inherited viewEntity: TviewEntity
             TabOrder = 5
           end
           object edtNumberAddress: TDBEdit
-            Left = 264
+            Left = 435
             Top = 144
-            Width = 154
+            Width = 129
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -850,13 +873,13 @@ inherited viewEntity: TviewEntity
         object edtFantasy: TDBEdit
           Left = 6
           Top = 177
-          Width = 450
+          Width = 557
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
           DataField = 'FANTASY'
           DataSource = DSData
-          TabOrder = 8
+          TabOrder = 4
         end
         object DBEdit1: TDBEdit
           Left = 593
@@ -867,14 +890,13 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 9
+          TabOrder = 13
         end
         object edtUpDate: TDBEdit
           Left = 695
           Top = 88
           Width = 96
           Height = 23
-          Color = cl3DLight
           DataField = 'DATE_UPDATED'
           DataSource = DSData
           Enabled = False
@@ -882,7 +904,7 @@ inherited viewEntity: TviewEntity
           TabOrder = 10
         end
         object dtBirthday: TDateTimePicker
-          Left = 227
+          Left = 271
           Top = 134
           Width = 90
           Height = 23
@@ -891,16 +913,16 @@ inherited viewEntity: TviewEntity
           Date = 29221.000000000000000000
           Format = 'dd/MM/yyyy'
           Time = 0.795439814814017200
-          TabOrder = 11
+          TabOrder = 3
         end
         object edtEIN: TMaskEdit
           Left = 121
           Top = 134
-          Width = 100
+          Width = 144
           Height = 23
-          TabOrder = 12
+          TabOrder = 2
           Text = ''
-          OnChange = edtEINChange
+          OnEnter = edtEINEnter
         end
         object rbPP: TRadioButton
           Left = 7
@@ -908,8 +930,7 @@ inherited viewEntity: TviewEntity
           Width = 104
           Height = 17
           Caption = 'Physical Person'
-          TabOrder = 13
-          OnClick = rbPPClick
+          TabOrder = 11
         end
         object rbLE: TRadioButton
           Left = 7
@@ -917,8 +938,16 @@ inherited viewEntity: TviewEntity
           Width = 113
           Height = 17
           Caption = 'Legal Entity'
+          TabOrder = 12
+        end
+        object edtPhone: TMaskEdit
+          Left = 422
+          Top = 223
+          Width = 141
+          Height = 23
           TabOrder = 14
-          OnClick = rbLEClick
+          Text = ''
+          OnChange = edtPhoneChange
         end
       end
     end
@@ -1199,6 +1228,7 @@ inherited viewEntity: TviewEntity
   end
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYEntity
+    OnDataChange = DSDataDataChange
     Left = 882
     Top = 65528
   end

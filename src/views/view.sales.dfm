@@ -376,9 +376,9 @@ inherited viewSales: TviewSales
         object Label1: TLabel [0]
           Left = 8
           Top = 72
-          Width = 35
+          Width = 32
           Height = 13
-          Caption = 'Sale ID'
+          Caption = 'Box ID'
           FocusControl = edtSaleId
         end
         object Label2: TLabel [1]
@@ -408,9 +408,9 @@ inherited viewSales: TviewSales
         object Label5: TLabel [4]
           Left = 8
           Top = 232
-          Width = 27
+          Width = 54
           Height = 13
-          Caption = 'Unity'
+          Caption = 'Price Unity'
           FocusControl = edtUnit
         end
         object Label6: TLabel [5]
@@ -432,17 +432,17 @@ inherited viewSales: TviewSales
         object Label8: TLabel [7]
           Left = 8
           Top = 272
-          Width = 45
+          Width = 66
           Height = 13
-          Caption = 'Addition'
+          Caption = 'Val. Addition'
           FocusControl = edtAddit
         end
         object Label9: TLabel [8]
           Left = 84
           Top = 272
-          Width = 46
+          Width = 67
           Height = 13
-          Caption = 'Discount'
+          Caption = 'Val. Discount'
           FocusControl = edtDisc
         end
         object Label10: TLabel [9]
@@ -488,8 +488,8 @@ inherited viewSales: TviewSales
           FocusControl = edtIdProd
         end
         object Label16: TLabel [14]
-          Left = 542
-          Top = 70
+          Left = 538
+          Top = 72
           Width = 21
           Height = 13
           Caption = 'Obs'
@@ -537,8 +537,9 @@ inherited viewSales: TviewSales
           AutoSize = False
           CharCase = ecUpperCase
           DataField = 'SALE_ID'
+          DataSource = DSData
           Enabled = False
-          TabOrder = 1
+          TabOrder = 10
         end
         object edtCliId: TDBEdit
           Left = 8
@@ -549,7 +550,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'CLIENT_ID'
           DataSource = DSData
-          TabOrder = 2
+          TabOrder = 1
           OnChange = edtCliIdChange
         end
         object edtEmpId: TDBEdit
@@ -561,7 +562,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'EMPLOYEE_ID'
           DataSource = DSData
-          TabOrder = 3
+          TabOrder = 2
           OnChange = edtEmpIdChange
         end
         object edtIdProd: TDBEdit
@@ -573,7 +574,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'PROD_ID'
           DataSource = DSData
-          TabOrder = 4
+          TabOrder = 3
           OnChange = edtIdProdChange
         end
         object edtUnit: TDBEdit
@@ -585,7 +586,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'UNIT'
           DataSource = DSData
-          TabOrder = 5
+          TabOrder = 4
         end
         object edtTotal: TDBEdit
           Left = 160
@@ -597,6 +598,7 @@ inherited viewSales: TviewSales
           DataField = 'TOTAL'
           DataSource = DSData
           TabOrder = 6
+          OnEnter = edtTotalEnter
         end
         object edtQtde: TDBEdit
           Left = 84
@@ -607,7 +609,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'QTDE'
           DataSource = DSData
-          TabOrder = 7
+          TabOrder = 5
         end
         object edtAddit: TDBEdit
           Left = 8
@@ -618,7 +620,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'ADDITION'
           DataSource = DSData
-          TabOrder = 8
+          TabOrder = 7
         end
         object edtDisc: TDBEdit
           Left = 84
@@ -629,7 +631,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'DISCOUNT'
           DataSource = DSData
-          TabOrder = 9
+          TabOrder = 8
         end
         object edtSubt: TDBEdit
           Left = 160
@@ -640,7 +642,8 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'SUBTOTAL'
           DataSource = DSData
-          TabOrder = 10
+          TabOrder = 9
+          OnEnter = edtSubtEnter
         end
         object DTPDateSale: TDateTimePicker
           Left = 64
@@ -665,8 +668,8 @@ inherited viewSales: TviewSales
           TabOrder = 12
         end
         object richObs: TRichEdit
-          Left = 542
-          Top = 86
+          Left = 538
+          Top = 88
           Width = 297
           Height = 141
           Cursor = crHandPoint
@@ -682,7 +685,7 @@ inherited viewSales: TviewSales
         end
         object pnlPaid: TPanel
           Left = 266
-          Top = 72
+          Top = 74
           Width = 263
           Height = 155
           BevelOuter = bvNone
@@ -735,6 +738,7 @@ inherited viewSales: TviewSales
             DataSource = DSData
             Enabled = False
             TabOrder = 0
+            OnClick = cbCashClick
           end
           object cbInstall: TDBCheckBox
             Left = 8
@@ -747,6 +751,7 @@ inherited viewSales: TviewSales
             DataSource = DSData
             Enabled = False
             TabOrder = 1
+            OnClick = cbInstallClick
           end
           object cbPaid: TDBCheckBox
             Left = 7
@@ -760,6 +765,8 @@ inherited viewSales: TviewSales
             DataSource = DSData
             TabOrder = 2
             OnClick = cbPaidClick
+            ExplicitLeft = 39
+            ExplicitTop = -9
           end
           object DTPInstall: TDateTimePicker
             Left = 9

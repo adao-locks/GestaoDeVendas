@@ -84,6 +84,10 @@ type
     procedure edtCliIdChange(Sender: TObject);
     procedure edtEmpIdChange(Sender: TObject);
     procedure edtIdProdChange(Sender: TObject);
+    procedure edtTotalEnter(Sender: TObject);
+    procedure edtSubtEnter(Sender: TObject);
+    procedure cbCashClick(Sender: TObject);
+    procedure cbInstallClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -167,9 +171,48 @@ begin
   inherited;
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
+    ServiceRegister.QRYSale.FieldByName('DATE_SALE').AsDateTime := DTPDateSale.DateTime;
     ServiceRegister.QRYSale.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
+  end;
+end;
+
+procedure TviewSales.cbCashClick(Sender: TObject);
+begin
+  inherited;
+  if cbCash.Checked then
+  begin
+    edtChange.Enabled := TRUE;
+    cbInstall.Enabled := FALSE;
+    edtChange.Field.Value := 0;
+  end
+  else begin
+    edtChange.Enabled := FALSE;
+    cbInstall.Enabled := TRUE;
+    edtChange.Field.Value := null;
+  end;
+end;
+
+procedure TviewSales.cbInstallClick(Sender: TObject);
+begin
+  inherited;
+  if cbInstall.Checked then
+  begin
+    DTPInstall.Enabled := TRUE;
+    edtValInst.Enabled := TRUE;
+    edtInstAmount.Enabled := TRUE;
+    cbCash.Enabled := FALSE;
+    edtValInst.Field.Value := 0;
+    edtInstAmount.Field.Value := 0;
+  end
+  else begin
+    DTPInstall.Enabled := FALSE;
+    edtValInst.Enabled := FALSE;
+    edtInstAmount.Enabled := FALSE;
+    cbCash.Enabled := TRUE;
+    edtValInst.Field.Value := null;
+    edtInstAmount.Field.Value := null;
   end;
 end;
 
@@ -237,15 +280,27 @@ begin
     Exit;
   end;
 
-  ServiceRegister.QRYProduct.Close;
-  ServiceRegister.QRYProduct.SQL.Text := 'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
-  ServiceRegister.QRYProduct.ParamByName('PROD_ID').AsInteger := StrToIntDef(edtIdProd.Text, 0);
-  ServiceRegister.QRYProduct.Open;
+  ServiceRegister.QRYNameProduct.Close;
+  ServiceRegister.QRYNameProduct.SQL.Text := 'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
+  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger := StrToIntDef(edtIdProd.Text, 0);
+  ServiceRegister.QRYNameProduct.Open;
 
-  if not ServiceRegister.QRYProduct.IsEmpty then
-    lblNameProduct.Caption := ServiceRegister.QRYProduct.FieldByName('NAME').AsString
+  if not ServiceRegister.QRYNameProduct.IsEmpty then
+    lblNameProduct.Caption := ServiceRegister.QRYNameProduct.FieldByName('NAME').AsString
   else
     lblNameProduct.Caption := 'Product not found';
+end;
+
+procedure TviewSales.edtSubtEnter(Sender: TObject);
+begin
+  inherited;
+  edtSubt.Field.Value := ((edtTotal.Field.Value + edtAddit.Field.Value) - edtDisc.Field.Value);
+end;
+
+procedure TviewSales.edtTotalEnter(Sender: TObject);
+begin
+  inherited;
+  edtTotal.Field.Value := (edtUnit.Field.Value * edtQtde.Field.Value);
 end;
 
 procedure TviewSales.FormShow(Sender: TObject);
@@ -253,9 +308,6 @@ begin
   inherited;
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
-  cbPaid.State := cbUnchecked;
-  cbCash.State := cbUnchecked;
-  cbInstall.State := cbUnchecked;
 end;
 
 procedure TviewSales.Get_Sales;

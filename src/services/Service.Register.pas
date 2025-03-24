@@ -98,6 +98,11 @@ type
     QRYSaleDATE_SALE: TSQLTimeStampField;
     QRYSaleOBS: TStringField;
     QRYSaleCOM_ID: TIntegerField;
+    QRYNameProduct: TFDQuery;
+    QRYNameProductNAME: TStringField;
+    QRYType: TFDQuery;
+    QRYTypeTYPE_PERSON: TStringField;
+    QRYEntityTYPE_PERSON: TStringField;
   private
     { Private declarations }
   public

@@ -65,7 +65,7 @@ Coordinates=10,10,138,447
 Coordinates=657,276,89,51
 
 []
-Coordinates=753,656,54,33
+Coordinates=753,604,54,33
 Visible=True
 
 [pnlTypePeople]
@@ -94,9 +94,6 @@ Coordinates=753,812,54,33
 
 [edtRegDate]
 Coordinates=753,760,54,33
-
-[edtPhone]
-Coordinates=753,604,54,33
 
 [lblEmail]
 Coordinates=94,565,46,51

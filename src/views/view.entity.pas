@@ -42,7 +42,6 @@ type
     edtRegDate: TDBEdit;
     lblEIN: TLabel;
     lblPhone: TLabel;
-    edtPhone: TDBEdit;
     lblEmail: TLabel;
     edtEmail: TDBEdit;
     edtClient: TDBCheckBox;
@@ -98,6 +97,7 @@ type
     edtEIN: TMaskEdit;
     rbPP: TRadioButton;
     rbLE: TRadioButton;
+    edtPhone: TMaskEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -106,9 +106,11 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
-    procedure rbLEClick(Sender: TObject);
-    procedure rbPPClick(Sender: TObject);
-    procedure edtEINChange(Sender: TObject);
+    procedure edtPhoneChange(Sender: TObject);
+    procedure LoadData;
+    procedure DSDataDataChange(Sender: TObject; Field: TField);
+    function VerifyEin(Sender:string): string;
+    procedure edtEINEnter(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -225,11 +227,21 @@ begin
 end;
 
 procedure TviewEntity.btnEditClick(Sender: TObject);
+var
+  tipo : string;
 begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
   ServiceRegister.QRYEntity.Edit;
+  ServiceRegister.QRYEntity.Refresh;
+  tipo := ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString;
+  rbPP.Checked := False;
+  rbLE.Checked := False;
+  if Tipo = 'P' then
+    rbPP.Checked := True
+  else if Tipo = 'L' then
+    rbLE.Checked := True;
   edtUpDate.Text := DateToStr(Date);
 end;
 
@@ -268,6 +280,11 @@ begin
   begin
 
     ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime := dtBirthday.Date;
+    ServiceRegister.QRYEntity.FieldByName('PHONE').Text := edtPhone.Text;
+    if rbPP.Checked then
+      ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'P'
+    else if rbLE.Checked then
+      ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'L';
     ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString := edtEIN.Text;
     ServiceRegister.QRYEntity.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYEntity.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
@@ -279,13 +296,21 @@ begin
 
 end;
 
-procedure TviewEntity.edtEINChange(Sender: TObject);
+procedure TviewEntity.LoadData;
+begin
+  edtPhone.Clear;
+  edtEIN.Clear;
+  if not ServiceRegister.QRYEntity.IsEmpty then
+  begin
+    edtPhone.Text := ServiceRegister.QRYEntity.FieldByName('PHONE').AsString;
+    edtEIN.Text := ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString;
+  end;
+end;
+
+procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
 begin
   inherited;
-  if (rbPP.Checked = false) and (rbLE.Checked = false) then
-  begin
-    ShowMessage('Please, select a type of person!');
-  end;
+  LoadData;
 end;
 
 procedure TviewEntity.FormShow(Sender: TObject);
@@ -304,16 +329,25 @@ begin
 
 end;
 
-procedure TviewEntity.rbLEClick(Sender: TObject);
+procedure TviewEntity.edtEINEnter(Sender: TObject);
 begin
   inherited;
-  edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  ServiceRegister.QRYEntity.Open();
+  VerifyEin(ServiceRegister.QRYEntity.ParamByName('TYPE_PERSON').AsString);
 end;
 
-procedure TviewEntity.rbPPClick(Sender: TObject);
+procedure TviewEntity.edtPhoneChange(Sender: TObject);
 begin
   inherited;
-  edtEIN.EditMask := '999.999.999-99;1;_';
+  edtPhone.EditMask := '(99) 99999-9999;1;_';
+end;
+
+function TviewEntity.VerifyEin(Sender: string): string;
+begin
+  if (rbPP.Checked = false) and (rbLE.Checked = false) then
+  begin
+    ShowMessage('Please, select a type of person!');
+  end;
 end;
 
 end.

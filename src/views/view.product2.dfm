@@ -1,14 +1,15 @@
 inherited viewProducts: TviewProducts
   Caption = 'viewProduct2'
-  Position = poDesigned
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 868
+      ExplicitWidth = 54
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -41,6 +42,7 @@ inherited viewProducts: TviewProducts
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -49,6 +51,7 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
+            Width = 1005
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -449,7 +452,7 @@ inherited viewProducts: TviewProducts
           FocusControl = edtCategory
         end
         object Label5: TLabel [6]
-          Left = 307
+          Left = 267
           Top = 204
           Width = 43
           Height = 15
@@ -467,7 +470,7 @@ inherited viewProducts: TviewProducts
           FocusControl = edtDateReg
         end
         object Label7: TLabel [8]
-          Left = 181
+          Left = 161
           Top = 204
           Width = 31
           Height = 15
@@ -495,7 +498,7 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 138
+            Width = 1005
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138
@@ -515,9 +518,9 @@ inherited viewProducts: TviewProducts
           TabOrder = 1
         end
         object edtBrand: TDBEdit
-          Left = 181
+          Left = 161
           Top = 220
-          Width = 120
+          Width = 100
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
@@ -528,7 +531,7 @@ inherited viewProducts: TviewProducts
         object edtCategory: TDBEdit
           Left = 55
           Top = 220
-          Width = 120
+          Width = 100
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
@@ -543,7 +546,6 @@ inherited viewProducts: TviewProducts
           Height = 23
           AutoSize = False
           CharCase = ecUpperCase
-          Color = cl3DLight
           DataField = 'DATE_REGISTER'
           DataSource = DSData
           Enabled = False
@@ -556,7 +558,6 @@ inherited viewProducts: TviewProducts
           Height = 23
           AutoSize = False
           CharCase = ecUpperCase
-          Color = cl3DLight
           DataField = 'DATE_UPDATED'
           DataSource = DSData
           Enabled = False
@@ -565,7 +566,7 @@ inherited viewProducts: TviewProducts
         object edtDescription: TDBEdit
           Left = 9
           Top = 176
-          Width = 386
+          Width = 376
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
@@ -579,7 +580,6 @@ inherited viewProducts: TviewProducts
           Width = 50
           Height = 23
           Cursor = crHandPoint
-          Color = cl3DLight
           Ctl3D = True
           DataField = 'PROD_ID'
           DataSource = DSData
@@ -591,7 +591,7 @@ inherited viewProducts: TviewProducts
         object edtName: TDBEdit
           Left = 65
           Top = 131
-          Width = 330
+          Width = 320
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
@@ -600,9 +600,9 @@ inherited viewProducts: TviewProducts
           TabOrder = 8
         end
         object edtSupplier: TDBEdit
-          Left = 307
+          Left = 267
           Top = 220
-          Width = 200
+          Width = 118
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
@@ -628,7 +628,6 @@ inherited viewProducts: TviewProducts
           Height = 23
           AutoSize = False
           CharCase = ecUpperCase
-          Color = cl3DLight
           DataField = 'USER_ID'
           DataSource = DSData
           Enabled = False
@@ -641,7 +640,6 @@ inherited viewProducts: TviewProducts
           Height = 23
           AutoSize = False
           CharCase = ecUpperCase
-          Color = cl3DLight
           DataField = 'USER_UPDATE'
           DataSource = DSData
           Enabled = False
