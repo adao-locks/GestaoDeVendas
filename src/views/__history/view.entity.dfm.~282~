@@ -505,7 +505,7 @@ inherited viewEntity: TviewEntity
           FocusControl = edtName
         end
         object lblBirth: TLabel [2]
-          Left = 227
+          Left = 271
           Top = 117
           Width = 44
           Height = 15
@@ -565,7 +565,15 @@ inherited viewEntity: TviewEntity
           Caption = 'Last update'
           FocusControl = edtUpDate
         end
-        object pnlTypePeople: TPanel [10]
+        object Label3: TLabel [10]
+          Left = 367
+          Top = 118
+          Width = 75
+          Height = 15
+          Caption = 'TYPE_PERSON'
+          FocusControl = DBEdit2
+        end
+        object pnlTypePeople: TPanel [11]
           Left = 593
           Top = 263
           Width = 162
@@ -769,7 +777,7 @@ inherited viewEntity: TviewEntity
             FocusControl = edtCity
           end
           object lblNeighborhood: TLabel
-            Left = 254
+            Left = 314
             Top = 80
             Width = 78
             Height = 15
@@ -785,7 +793,7 @@ inherited viewEntity: TviewEntity
             FocusControl = edtStreet
           end
           object lblNumberAddress: TLabel
-            Left = 264
+            Left = 435
             Top = 128
             Width = 89
             Height = 15
@@ -828,7 +836,7 @@ inherited viewEntity: TviewEntity
           object edtCity: TDBEdit
             Left = 48
             Top = 96
-            Width = 200
+            Width = 260
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -837,9 +845,9 @@ inherited viewEntity: TviewEntity
             TabOrder = 3
           end
           object edtNeighborhood: TDBEdit
-            Left = 254
+            Left = 314
             Top = 96
-            Width = 200
+            Width = 250
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -850,7 +858,7 @@ inherited viewEntity: TviewEntity
           object edtStreet: TDBEdit
             Left = 8
             Top = 144
-            Width = 250
+            Width = 421
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -859,9 +867,9 @@ inherited viewEntity: TviewEntity
             TabOrder = 5
           end
           object edtNumberAddress: TDBEdit
-            Left = 264
+            Left = 435
             Top = 144
-            Width = 154
+            Width = 129
             Height = 23
             Cursor = crHandPoint
             CharCase = ecUpperCase
@@ -904,7 +912,7 @@ inherited viewEntity: TviewEntity
           TabOrder = 10
         end
         object dtBirthday: TDateTimePicker
-          Left = 227
+          Left = 271
           Top = 134
           Width = 90
           Height = 23
@@ -917,8 +925,8 @@ inherited viewEntity: TviewEntity
         end
         object edtEIN: TMaskEdit
           Left = 121
-          Top = 134
-          Width = 99
+          Top = 138
+          Width = 144
           Height = 23
           TabOrder = 2
           Text = ''
@@ -931,7 +939,6 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Physical Person'
           TabOrder = 11
-          OnClick = rbPPClick
         end
         object rbLE: TRadioButton
           Left = 7
@@ -940,7 +947,6 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Legal Entity'
           TabOrder = 12
-          OnClick = rbLEClick
         end
         object edtPhone: TMaskEdit
           Left = 422
@@ -950,6 +956,15 @@ inherited viewEntity: TviewEntity
           TabOrder = 14
           Text = ''
           OnChange = edtPhoneChange
+        end
+        object DBEdit2: TDBEdit
+          Left = 367
+          Top = 134
+          Width = 101
+          Height = 23
+          DataField = 'TYPE_PERSON'
+          DataSource = DSData
+          TabOrder = 15
         end
       end
     end

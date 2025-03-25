@@ -109,12 +109,12 @@ type
     procedure edtPhoneChange(Sender: TObject);
     procedure LoadData;
     procedure DSDataDataChange(Sender: TObject; Field: TField);
-    function VerifyEin(Sender:string): string;
     procedure edtEINEnter(Sender: TObject);
+    procedure rbPPClick(Sender: TObject);
+    procedure rbLEClick(Sender: TObject);
   private
   public
     procedure GET_Entity();
-    procedure GET_Type();
   end;
 
 var
@@ -234,8 +234,9 @@ begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
+  if not ServiceRegister.QRYEntity.Active then
+  ServiceRegister.QRYEntity.Open;
   ServiceRegister.QRYEntity.Edit;
-  GET_Type;
   ServiceRegister.QRYEntity.Refresh;
   tipo := ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString;
   rbPP.Checked := False;
@@ -244,6 +245,10 @@ begin
     rbPP.Checked := True
   else if Tipo = 'L' then
     rbLE.Checked := True;
+  edtEIN.EditMask := '';
+  edtEIN.Enabled := FALSE;
+  rbPP.Enabled := FALSE;
+  rbLE.Enabled := FALSE;
   edtUpDate.Text := DateToStr(Date);
 end;
 
@@ -257,6 +262,10 @@ begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
+  edtClient.Checked := false;
+  edtTransport.Checked := false;
+  edtSupplier.Checked := false;
+  edtEmployee.Checked := false;
   ServiceRegister.QRYEntity.Insert;
   ServiceRegister.QRYIDPeople.Close;
   ServiceRegister.QRYIDPeople.SQL.Text := 'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
@@ -267,11 +276,6 @@ begin
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
-  edtEmployee.State := cbUnchecked;
-  edtClient.State := cbUnchecked;
-  edtSupplier.State := cbUnchecked;
-  edtTransport.State := cbUnchecked;
-
 end;
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
@@ -284,9 +288,9 @@ begin
     ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime := dtBirthday.Date;
     ServiceRegister.QRYEntity.FieldByName('PHONE').Text := edtPhone.Text;
     if rbPP.Checked then
-      ServiceRegister.QRYType.FieldByName('TYPE_PERSON').AsString := 'P'
+      ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'P'
     else if rbLE.Checked then
-      ServiceRegister.QRYType.FieldByName('TYPE_PERSON').AsString := 'L';
+      ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'L';
     ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString := edtEIN.Text;
     ServiceRegister.QRYEntity.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYEntity.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
@@ -307,6 +311,18 @@ begin
     edtPhone.Text := ServiceRegister.QRYEntity.FieldByName('PHONE').AsString;
     edtEIN.Text := ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString;
   end;
+end;
+
+procedure TviewEntity.rbLEClick(Sender: TObject);
+begin
+  inherited;
+  edtEIN.EditMask := '99.999.999/9999-99;1;_';
+end;
+
+procedure TviewEntity.rbPPClick(Sender: TObject);
+begin
+  inherited;
+  edtEIN.EditMask := '999.999.999-99;1;_';
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -331,36 +347,17 @@ begin
 
 end;
 
-procedure TviewEntity.GET_Type;
-begin
-
-  ServiceRegister.QRYType.Close;
-  ServiceRegister.QRYType.SQL.Clear;
-  ServiceRegister.QRYType.SQL.Add('SELECT TYPE_PERSON FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE');
-  ServiceRegister.QRYType.ParamByName(edtPeopleID.Text).ToString;
-  ServiceRegister.QRYType.Open();
-
-end;
-
 procedure TviewEntity.edtEINEnter(Sender: TObject);
 begin
   inherited;
-  ServiceRegister.QRYType.Open();
-  VerifyEin(ServiceRegister.QRYType.ParamByName('TYPE_PERSON').AsString);
+  if (rbPP.Checked = false) and (rbLE.Checked = false) then
+    ShowMessage('Please, select a type of person!')
 end;
 
 procedure TviewEntity.edtPhoneChange(Sender: TObject);
 begin
   inherited;
   edtPhone.EditMask := '(99) 99999-9999;1;_';
-end;
-
-function TviewEntity.VerifyEin(Sender: string): string;
-begin
-  if (rbPP.Checked = false) and (rbLE.Checked = false) then
-  begin
-    ShowMessage('Please, select a type of person!');
-  end;
 end;
 
 end.

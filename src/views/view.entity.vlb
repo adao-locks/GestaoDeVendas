@@ -65,23 +65,8 @@ Coordinates=10,10,138,447
 Coordinates=657,276,89,51
 
 []
-Coordinates=753,604,54,33
-Visible=True
-
-[pnlTypePeople]
 Coordinates=29,476,87,51
-
-[edtClient]
-Coordinates=753,864,85,33
-
-[edtTransport]
-Coordinates=556,886,85,33
-
-[edtSupplier]
-Coordinates=408,917,85,33
-
-[edtEmployee]
-Coordinates=181,917,85,33
+Visible=True
 
 [edtEmail]
 Coordinates=53,917,54,33
@@ -115,10 +100,6 @@ Coordinates=556,536,46,51
 
 [lblPhone]
 Coordinates=45,565,46,51
-
-[lblTypePeople]
-Coordinates=366,414,52,51
-Visible=True
 
 [btnEdit]
 Coordinates=184,412,84,33

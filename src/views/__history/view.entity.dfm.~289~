@@ -917,7 +917,7 @@ inherited viewEntity: TviewEntity
         end
         object edtEIN: TMaskEdit
           Left = 121
-          Top = 134
+          Top = 138
           Width = 144
           Height = 23
           TabOrder = 2

@@ -565,7 +565,15 @@ inherited viewEntity: TviewEntity
           Caption = 'Last update'
           FocusControl = edtUpDate
         end
-        object pnlTypePeople: TPanel [10]
+        object Label3: TLabel [10]
+          Left = 367
+          Top = 118
+          Width = 75
+          Height = 15
+          Caption = 'TYPE_PERSON'
+          FocusControl = DBEdit2
+        end
+        object pnlTypePeople: TPanel [11]
           Left = 593
           Top = 263
           Width = 162
@@ -917,12 +925,13 @@ inherited viewEntity: TviewEntity
         end
         object edtEIN: TMaskEdit
           Left = 121
-          Top = 134
+          Top = 138
           Width = 144
           Height = 23
           TabOrder = 2
           Text = ''
           OnEnter = edtEINEnter
+          OnKeyDown = edtEINKeyDown
         end
         object rbPP: TRadioButton
           Left = 7
@@ -931,7 +940,6 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Physical Person'
           TabOrder = 11
-          OnClick = rbPPClick
         end
         object rbLE: TRadioButton
           Left = 7
@@ -940,7 +948,6 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Legal Entity'
           TabOrder = 12
-          OnClick = rbLEClick
         end
         object edtPhone: TMaskEdit
           Left = 422
@@ -950,6 +957,15 @@ inherited viewEntity: TviewEntity
           TabOrder = 14
           Text = ''
           OnChange = edtPhoneChange
+        end
+        object DBEdit2: TDBEdit
+          Left = 367
+          Top = 134
+          Width = 101
+          Height = 23
+          DataField = 'TYPE_PERSON'
+          DataSource = DSData
+          TabOrder = 15
         end
       end
     end

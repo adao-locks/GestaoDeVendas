@@ -917,7 +917,7 @@ inherited viewEntity: TviewEntity
         end
         object edtEIN: TMaskEdit
           Left = 121
-          Top = 134
+          Top = 138
           Width = 144
           Height = 23
           TabOrder = 2
@@ -931,6 +931,7 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Physical Person'
           TabOrder = 11
+          OnClick = rbPPClick
         end
         object rbLE: TRadioButton
           Left = 7
@@ -939,6 +940,7 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Legal Entity'
           TabOrder = 12
+          OnClick = rbLEClick
         end
         object edtPhone: TMaskEdit
           Left = 422

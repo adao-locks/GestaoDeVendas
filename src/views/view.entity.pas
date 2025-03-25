@@ -44,28 +44,6 @@ type
     lblPhone: TLabel;
     lblEmail: TLabel;
     edtEmail: TDBEdit;
-    edtClient: TDBCheckBox;
-    edtEmployee: TDBCheckBox;
-    edtSupplier: TDBCheckBox;
-    edtTransport: TDBCheckBox;
-    lblTypePeople: TLabel;
-    pnlTypePeople: TPanel;
-    pnlAddress: TPanel;
-    lblTitleAddress: TLabel;
-    lblZIPCode: TLabel;
-    edtZIPCode: TDBEdit;
-    lblComplement: TLabel;
-    edtComplement: TDBEdit;
-    lblState: TLabel;
-    edtState: TDBEdit;
-    lblCity: TLabel;
-    edtCity: TDBEdit;
-    lblNeighborhood: TLabel;
-    edtNeighborhood: TDBEdit;
-    lblStreet: TLabel;
-    edtStreet: TDBEdit;
-    lblNumberAddress: TLabel;
-    edtNumberAddress: TDBEdit;
     lblFantasy: TLabel;
     edtFantasy: TDBEdit;
     Label1: TLabel;
@@ -98,6 +76,26 @@ type
     rbPP: TRadioButton;
     rbLE: TRadioButton;
     edtPhone: TMaskEdit;
+    lblTypePeople: TLabel;
+    edtClient: TDBCheckBox;
+    edtEmployee: TDBCheckBox;
+    edtSupplier: TDBCheckBox;
+    edtTransport: TDBCheckBox;
+    lblTitleAddress: TLabel;
+    lblZIPCode: TLabel;
+    lblComplement: TLabel;
+    lblState: TLabel;
+    lblCity: TLabel;
+    lblNeighborhood: TLabel;
+    lblStreet: TLabel;
+    lblNumberAddress: TLabel;
+    edtZIPCode: TDBEdit;
+    edtComplement: TDBEdit;
+    edtState: TDBEdit;
+    edtCity: TDBEdit;
+    edtNeighborhood: TDBEdit;
+    edtStreet: TDBEdit;
+    edtNumberAddress: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -109,8 +107,9 @@ type
     procedure edtPhoneChange(Sender: TObject);
     procedure LoadData;
     procedure DSDataDataChange(Sender: TObject; Field: TField);
-    function VerifyEin(Sender:string): string;
     procedure edtEINEnter(Sender: TObject);
+    procedure rbPPClick(Sender: TObject);
+    procedure rbLEClick(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -233,6 +232,8 @@ begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
+  if not ServiceRegister.QRYEntity.Active then
+  ServiceRegister.QRYEntity.Open;
   ServiceRegister.QRYEntity.Edit;
   ServiceRegister.QRYEntity.Refresh;
   tipo := ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString;
@@ -242,6 +243,10 @@ begin
     rbPP.Checked := True
   else if Tipo = 'L' then
     rbLE.Checked := True;
+  edtEIN.EditMask := '';
+  edtEIN.Enabled := FALSE;
+  rbPP.Enabled := FALSE;
+  rbLE.Enabled := FALSE;
   edtUpDate.Text := DateToStr(Date);
 end;
 
@@ -265,11 +270,14 @@ begin
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
-  edtEmployee.State := cbUnchecked;
+  edtClient.Checked := false;
+  edtTransport.Checked := false;
+  edtSupplier.Checked := false;
+  edtEmployee.Checked := false;
   edtClient.State := cbUnchecked;
-  edtSupplier.State := cbUnchecked;
   edtTransport.State := cbUnchecked;
-
+  edtEmployee.State := cbUnchecked;
+  edtSupplier.State := cbUnchecked;
 end;
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
@@ -307,6 +315,20 @@ begin
   end;
 end;
 
+procedure TviewEntity.rbLEClick(Sender: TObject);
+begin
+  inherited;
+  if edtEIN.Text = '' then
+    edtEIN.EditMask := '99.999.999/9999-99;1;_';
+end;
+
+procedure TviewEntity.rbPPClick(Sender: TObject);
+begin
+  inherited;
+  if edtEIN.Text = '' then
+    edtEIN.EditMask := '999.999.999-99;1;_';
+end;
+
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
 begin
   inherited;
@@ -332,22 +354,14 @@ end;
 procedure TviewEntity.edtEINEnter(Sender: TObject);
 begin
   inherited;
-  ServiceRegister.QRYEntity.Open();
-  VerifyEin(ServiceRegister.QRYEntity.ParamByName('TYPE_PERSON').AsString);
+  if (rbPP.Checked = false) and (rbLE.Checked = false) then
+    ShowMessage('Please, select a type of person!')
 end;
 
 procedure TviewEntity.edtPhoneChange(Sender: TObject);
 begin
   inherited;
   edtPhone.EditMask := '(99) 99999-9999;1;_';
-end;
-
-function TviewEntity.VerifyEin(Sender: string): string;
-begin
-  if (rbPP.Checked = false) and (rbLE.Checked = false) then
-  begin
-    ShowMessage('Please, select a type of person!');
-  end;
 end;
 
 end.

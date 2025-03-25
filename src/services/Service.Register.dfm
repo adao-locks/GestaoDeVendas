@@ -446,24 +446,4 @@ object ServiceRegister: TServiceRegister
       Size = 150
     end
   end
-  object QRYType: TFDQuery
-    Connection = ServiceConnection.FDConn
-    SQL.Strings = (
-      'SELECT TYPE_PERSON FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE')
-    Left = 272
-    Top = 24
-    ParamData = <
-      item
-        Name = 'PEOPLE'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-    object QRYTypeTYPE_PERSON: TStringField
-      FieldName = 'TYPE_PERSON'
-      Origin = 'TYPE_PERSON'
-      FixedChar = True
-      Size = 1
-    end
-  end
 end
