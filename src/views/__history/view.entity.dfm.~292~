@@ -489,180 +489,179 @@ inherited viewEntity: TviewEntity
       inherited cardRegister: TCard
         StyleElements = [seFont, seClient, seBorder]
         object lblPeopleID: TLabel [0]
-          Left = 7
-          Top = 72
+          Left = 9
+          Top = 74
           Width = 11
           Height = 15
           Caption = 'ID'
           FocusControl = edtPeopleID
         end
         object lblName: TLabel [1]
-          Left = 113
-          Top = 72
+          Left = 115
+          Top = 74
           Width = 32
           Height = 15
           Caption = 'Name'
           FocusControl = edtName
         end
         object lblBirth: TLabel [2]
-          Left = 271
-          Top = 117
+          Left = 273
+          Top = 119
           Width = 44
           Height = 15
           Caption = 'Birthday'
         end
         object lblRegDate: TLabel [3]
-          Left = 593
-          Top = 72
+          Left = 595
+          Top = 74
           Width = 69
           Height = 15
           Caption = 'Register Date'
           FocusControl = edtRegDate
         end
         object lblEIN: TLabel [4]
-          Left = 121
-          Top = 118
+          Left = 123
+          Top = 120
           Width = 50
           Height = 15
           Caption = 'EIN/CNPJ'
         end
         object lblPhone: TLabel [5]
-          Left = 422
-          Top = 207
+          Left = 424
+          Top = 209
           Width = 34
           Height = 15
           Caption = 'Phone'
         end
         object lblEmail: TLabel [6]
-          Left = 7
-          Top = 207
+          Left = 9
+          Top = 209
           Width = 34
           Height = 15
           Caption = 'E-mail'
           FocusControl = edtEmail
         end
         object lblFantasy: TLabel [7]
-          Left = 6
-          Top = 161
+          Left = 8
+          Top = 163
           Width = 40
           Height = 15
           Caption = 'Fantasy'
           FocusControl = edtFantasy
         end
         object Label1: TLabel [8]
-          Left = 593
-          Top = 116
+          Left = 595
+          Top = 118
           Width = 22
           Height = 15
           Caption = 'OBS'
           FocusControl = DBEdit1
         end
         object Label2: TLabel [9]
-          Left = 695
-          Top = 72
+          Left = 697
+          Top = 74
           Width = 61
           Height = 15
           Caption = 'Last update'
           FocusControl = edtUpDate
         end
-        object Label3: TLabel [10]
-          Left = 367
-          Top = 118
-          Width = 75
-          Height = 15
-          Caption = 'TYPE_PERSON'
-          FocusControl = DBEdit2
+        object lblTypePeople: TLabel [10]
+          AlignWithMargins = True
+          Left = 608
+          Top = 260
+          Width = 29
+          Height = 17
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Caption = 'Type'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
-        object pnlTypePeople: TPanel [11]
-          Left = 593
-          Top = 263
-          Width = 162
-          Height = 139
-          BevelOuter = bvSpace
-          TabOrder = 8
-          object lblTypePeople: TLabel
-            AlignWithMargins = True
-            Left = 6
-            Top = 6
-            Width = 150
-            Height = 17
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Align = alTop
-            Caption = 'Type'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            ExplicitWidth = 29
-          end
-          object edtClient: TDBCheckBox
-            AlignWithMargins = True
-            Left = 11
-            Top = 31
-            Width = 140
-            Height = 17
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Top = 5
-            Margins.Right = 10
-            Align = alTop
-            Caption = 'CLIENT'
-            DataField = 'CLIENT'
-            DataSource = DSData
-            TabOrder = 0
-          end
-          object edtEmployee: TDBCheckBox
-            AlignWithMargins = True
-            Left = 11
-            Top = 56
-            Width = 140
-            Height = 17
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Top = 5
-            Margins.Right = 10
-            Align = alTop
-            Caption = 'EMPLOYEE'
-            DataField = 'EMPLOYEE'
-            DataSource = DSData
-            TabOrder = 1
-          end
-          object edtSupplier: TDBCheckBox
-            AlignWithMargins = True
-            Left = 11
-            Top = 81
-            Width = 140
-            Height = 17
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Top = 5
-            Margins.Right = 10
-            Align = alTop
-            Caption = 'SUPPLIER'
-            DataField = 'SUPPLIER'
-            DataSource = DSData
-            TabOrder = 2
-          end
-          object edtTransport: TDBCheckBox
-            AlignWithMargins = True
-            Left = 11
-            Top = 106
-            Width = 140
-            Height = 17
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Top = 5
-            Margins.Right = 10
-            Align = alTop
-            Caption = 'TRANSPORT'
-            DataField = 'TRANSPORT'
-            DataSource = DSData
-            TabOrder = 3
-          end
+        object lblTitleAddress: TLabel [11]
+          AlignWithMargins = True
+          Left = 9
+          Top = 260
+          Width = 49
+          Height = 17
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          AutoSize = False
+          Caption = 'Address'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object lblZIPCode: TLabel [12]
+          Left = 11
+          Top = 285
+          Width = 48
+          Height = 15
+          AutoSize = False
+          Caption = 'ZIP Code'
+          FocusControl = edtZIPCode
+        end
+        object lblComplement: TLabel [13]
+          Left = 117
+          Top = 285
+          Width = 70
+          Height = 15
+          AutoSize = False
+          Caption = 'Complement'
+          FocusControl = edtComplement
+        end
+        object lblState: TLabel [14]
+          Left = 11
+          Top = 330
+          Width = 26
+          Height = 15
+          AutoSize = False
+          Caption = 'State'
+          FocusControl = edtState
+        end
+        object lblCity: TLabel [15]
+          Left = 51
+          Top = 330
+          Width = 21
+          Height = 15
+          AutoSize = False
+          Caption = 'City'
+          FocusControl = edtCity
+        end
+        object lblNeighborhood: TLabel [16]
+          Left = 317
+          Top = 330
+          Width = 78
+          Height = 15
+          AutoSize = False
+          Caption = 'Neighborhood'
+          FocusControl = edtNeighborhood
+        end
+        object lblStreet: TLabel [17]
+          Left = 11
+          Top = 378
+          Width = 30
+          Height = 15
+          AutoSize = False
+          Caption = 'Street'
+          FocusControl = edtStreet
+        end
+        object lblNumberAddress: TLabel [18]
+          Left = 438
+          Top = 378
+          Width = 89
+          Height = 15
+          AutoSize = False
+          Caption = 'Number Address'
+          FocusControl = edtNumberAddress
         end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
@@ -674,8 +673,8 @@ inherited viewEntity: TviewEntity
           end
         end
         object edtPeopleID: TDBEdit
-          Left = 7
-          Top = 88
+          Left = 9
+          Top = 90
           Width = 100
           Height = 23
           Cursor = crHandPoint
@@ -686,8 +685,8 @@ inherited viewEntity: TviewEntity
           TabOrder = 6
         end
         object edtName: TDBEdit
-          Left = 113
-          Top = 88
+          Left = 115
+          Top = 90
           Width = 450
           Height = 23
           Cursor = crHandPoint
@@ -697,8 +696,8 @@ inherited viewEntity: TviewEntity
           TabOrder = 1
         end
         object edtRegDate: TDBEdit
-          Left = 593
-          Top = 88
+          Left = 595
+          Top = 90
           Width = 96
           Height = 23
           DataField = 'DATE_REGISTER'
@@ -708,8 +707,8 @@ inherited viewEntity: TviewEntity
           TabOrder = 7
         end
         object edtEmail: TDBEdit
-          Left = 7
-          Top = 223
+          Left = 9
+          Top = 225
           Width = 409
           Height = 23
           Cursor = crHandPoint
@@ -718,169 +717,9 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           TabOrder = 5
         end
-        object pnlAddress: TPanel
-          Left = 7
-          Top = 263
-          Width = 573
-          Height = 183
-          BevelOuter = bvSpace
-          TabOrder = 9
-          object lblTitleAddress: TLabel
-            AlignWithMargins = True
-            Left = 6
-            Top = 6
-            Width = 561
-            Height = 17
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Align = alTop
-            Caption = 'Address'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = [fsBold]
-            ParentFont = False
-            ExplicitWidth = 49
-          end
-          object lblZIPCode: TLabel
-            Left = 8
-            Top = 35
-            Width = 48
-            Height = 15
-            Caption = 'ZIP Code'
-            FocusControl = edtZIPCode
-          end
-          object lblComplement: TLabel
-            Left = 114
-            Top = 35
-            Width = 70
-            Height = 15
-            Caption = 'Complement'
-            FocusControl = edtComplement
-          end
-          object lblState: TLabel
-            Left = 8
-            Top = 80
-            Width = 26
-            Height = 15
-            Caption = 'State'
-            FocusControl = edtState
-          end
-          object lblCity: TLabel
-            Left = 48
-            Top = 80
-            Width = 21
-            Height = 15
-            Caption = 'City'
-            FocusControl = edtCity
-          end
-          object lblNeighborhood: TLabel
-            Left = 314
-            Top = 80
-            Width = 78
-            Height = 15
-            Caption = 'Neighborhood'
-            FocusControl = edtNeighborhood
-          end
-          object lblStreet: TLabel
-            Left = 8
-            Top = 128
-            Width = 30
-            Height = 15
-            Caption = 'Street'
-            FocusControl = edtStreet
-          end
-          object lblNumberAddress: TLabel
-            Left = 435
-            Top = 128
-            Width = 89
-            Height = 15
-            Caption = 'Number Address'
-            FocusControl = edtNumberAddress
-          end
-          object edtZIPCode: TDBEdit
-            Left = 8
-            Top = 51
-            Width = 100
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'ZIP_CODE'
-            DataSource = DSData
-            TabOrder = 0
-          end
-          object edtComplement: TDBEdit
-            Left = 114
-            Top = 51
-            Width = 450
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'COMPLEMENT'
-            DataSource = DSData
-            TabOrder = 1
-          end
-          object edtState: TDBEdit
-            Left = 8
-            Top = 96
-            Width = 34
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'STATE'
-            DataSource = DSData
-            TabOrder = 2
-          end
-          object edtCity: TDBEdit
-            Left = 48
-            Top = 96
-            Width = 260
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'CITY'
-            DataSource = DSData
-            TabOrder = 3
-          end
-          object edtNeighborhood: TDBEdit
-            Left = 314
-            Top = 96
-            Width = 250
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'NEIGHBORHOOD'
-            DataSource = DSData
-            TabOrder = 4
-          end
-          object edtStreet: TDBEdit
-            Left = 8
-            Top = 144
-            Width = 421
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'STREET'
-            DataSource = DSData
-            TabOrder = 5
-          end
-          object edtNumberAddress: TDBEdit
-            Left = 435
-            Top = 144
-            Width = 129
-            Height = 23
-            Cursor = crHandPoint
-            CharCase = ecUpperCase
-            DataField = 'NUMBER_ADDRESS'
-            DataSource = DSData
-            TabOrder = 6
-          end
-        end
         object edtFantasy: TDBEdit
-          Left = 6
-          Top = 177
+          Left = 8
+          Top = 179
           Width = 557
           Height = 23
           Cursor = crHandPoint
@@ -890,30 +729,30 @@ inherited viewEntity: TviewEntity
           TabOrder = 4
         end
         object DBEdit1: TDBEdit
-          Left = 593
-          Top = 132
+          Left = 595
+          Top = 134
           Width = 296
           Height = 23
           Cursor = crHandPoint
           CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 13
+          TabOrder = 11
         end
         object edtUpDate: TDBEdit
-          Left = 695
-          Top = 88
+          Left = 697
+          Top = 90
           Width = 96
           Height = 23
           DataField = 'DATE_UPDATED'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 10
+          TabOrder = 8
         end
         object dtBirthday: TDateTimePicker
-          Left = 271
-          Top = 134
+          Left = 273
+          Top = 136
           Width = 90
           Height = 23
           BevelInner = bvNone
@@ -924,48 +763,184 @@ inherited viewEntity: TviewEntity
           TabOrder = 3
         end
         object edtEIN: TMaskEdit
-          Left = 121
-          Top = 138
+          Left = 123
+          Top = 140
           Width = 144
           Height = 23
           TabOrder = 2
           Text = ''
           OnEnter = edtEINEnter
-          OnKeyDown = edtEINKeyDown
         end
         object rbPP: TRadioButton
-          Left = 7
-          Top = 117
+          Left = 9
+          Top = 119
           Width = 104
           Height = 17
           Caption = 'Physical Person'
-          TabOrder = 11
+          TabOrder = 9
+          OnClick = rbPPClick
         end
         object rbLE: TRadioButton
-          Left = 7
-          Top = 140
+          Left = 9
+          Top = 142
           Width = 113
           Height = 17
           Caption = 'Legal Entity'
-          TabOrder = 12
+          TabOrder = 10
+          OnClick = rbLEClick
         end
         object edtPhone: TMaskEdit
-          Left = 422
-          Top = 223
+          Left = 424
+          Top = 225
           Width = 141
           Height = 23
-          TabOrder = 14
+          TabOrder = 12
           Text = ''
           OnChange = edtPhoneChange
         end
-        object DBEdit2: TDBEdit
-          Left = 367
-          Top = 134
-          Width = 101
-          Height = 23
-          DataField = 'TYPE_PERSON'
+        object edtClient: TDBCheckBox
+          AlignWithMargins = True
+          Left = 613
+          Top = 285
+          Width = 140
+          Height = 17
+          Cursor = crHandPoint
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Caption = 'CLIENT'
+          DataField = 'CLIENT'
+          DataSource = DSData
+          TabOrder = 13
+        end
+        object edtEmployee: TDBCheckBox
+          AlignWithMargins = True
+          Left = 613
+          Top = 310
+          Width = 140
+          Height = 17
+          Cursor = crHandPoint
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Caption = 'EMPLOYEE'
+          DataField = 'EMPLOYEE'
+          DataSource = DSData
+          TabOrder = 14
+        end
+        object edtSupplier: TDBCheckBox
+          AlignWithMargins = True
+          Left = 613
+          Top = 335
+          Width = 140
+          Height = 17
+          Cursor = crHandPoint
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Caption = 'SUPPLIER'
+          DataField = 'SUPPLIER'
           DataSource = DSData
           TabOrder = 15
+        end
+        object edtTransport: TDBCheckBox
+          AlignWithMargins = True
+          Left = 613
+          Top = 360
+          Width = 140
+          Height = 17
+          Cursor = crHandPoint
+          Margins.Left = 10
+          Margins.Top = 5
+          Margins.Right = 10
+          Caption = 'TRANSPORT'
+          DataField = 'TRANSPORT'
+          DataSource = DSData
+          TabOrder = 16
+        end
+        object edtZIPCode: TDBEdit
+          Left = 11
+          Top = 301
+          Width = 100
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'ZIP_CODE'
+          DataSource = DSData
+          TabOrder = 17
+        end
+        object edtComplement: TDBEdit
+          Left = 117
+          Top = 301
+          Width = 450
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'COMPLEMENT'
+          DataSource = DSData
+          TabOrder = 18
+        end
+        object edtState: TDBEdit
+          Left = 11
+          Top = 346
+          Width = 34
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'STATE'
+          DataSource = DSData
+          TabOrder = 19
+        end
+        object edtCity: TDBEdit
+          Left = 51
+          Top = 346
+          Width = 260
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'CITY'
+          DataSource = DSData
+          TabOrder = 20
+        end
+        object edtNeighborhood: TDBEdit
+          Left = 317
+          Top = 346
+          Width = 250
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'NEIGHBORHOOD'
+          DataSource = DSData
+          TabOrder = 21
+        end
+        object edtStreet: TDBEdit
+          Left = 11
+          Top = 394
+          Width = 421
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'STREET'
+          DataSource = DSData
+          TabOrder = 22
+        end
+        object edtNumberAddress: TDBEdit
+          Left = 438
+          Top = 394
+          Width = 129
+          Height = 23
+          Cursor = crHandPoint
+          AutoSize = False
+          CharCase = ecUpperCase
+          DataField = 'NUMBER_ADDRESS'
+          DataSource = DSData
+          TabOrder = 23
         end
       end
     end

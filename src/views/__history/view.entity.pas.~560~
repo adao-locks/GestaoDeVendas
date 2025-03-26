@@ -44,28 +44,6 @@ type
     lblPhone: TLabel;
     lblEmail: TLabel;
     edtEmail: TDBEdit;
-    edtClient: TDBCheckBox;
-    edtEmployee: TDBCheckBox;
-    edtSupplier: TDBCheckBox;
-    edtTransport: TDBCheckBox;
-    lblTypePeople: TLabel;
-    pnlTypePeople: TPanel;
-    pnlAddress: TPanel;
-    lblTitleAddress: TLabel;
-    lblZIPCode: TLabel;
-    edtZIPCode: TDBEdit;
-    lblComplement: TLabel;
-    edtComplement: TDBEdit;
-    lblState: TLabel;
-    edtState: TDBEdit;
-    lblCity: TLabel;
-    edtCity: TDBEdit;
-    lblNeighborhood: TLabel;
-    edtNeighborhood: TDBEdit;
-    lblStreet: TLabel;
-    edtStreet: TDBEdit;
-    lblNumberAddress: TLabel;
-    edtNumberAddress: TDBEdit;
     lblFantasy: TLabel;
     edtFantasy: TDBEdit;
     Label1: TLabel;
@@ -98,6 +76,26 @@ type
     rbPP: TRadioButton;
     rbLE: TRadioButton;
     edtPhone: TMaskEdit;
+    lblTypePeople: TLabel;
+    edtClient: TDBCheckBox;
+    edtEmployee: TDBCheckBox;
+    edtSupplier: TDBCheckBox;
+    edtTransport: TDBCheckBox;
+    lblTitleAddress: TLabel;
+    lblZIPCode: TLabel;
+    lblComplement: TLabel;
+    lblState: TLabel;
+    lblCity: TLabel;
+    lblNeighborhood: TLabel;
+    lblStreet: TLabel;
+    lblNumberAddress: TLabel;
+    edtZIPCode: TDBEdit;
+    edtComplement: TDBEdit;
+    edtState: TDBEdit;
+    edtCity: TDBEdit;
+    edtNeighborhood: TDBEdit;
+    edtStreet: TDBEdit;
+    edtNumberAddress: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -262,10 +260,6 @@ begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
-  edtClient.Checked := false;
-  edtTransport.Checked := false;
-  edtSupplier.Checked := false;
-  edtEmployee.Checked := false;
   ServiceRegister.QRYEntity.Insert;
   ServiceRegister.QRYIDPeople.Close;
   ServiceRegister.QRYIDPeople.SQL.Text := 'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
@@ -276,6 +270,14 @@ begin
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
+  edtClient.Checked := false;
+  edtTransport.Checked := false;
+  edtSupplier.Checked := false;
+  edtEmployee.Checked := false;
+  edtClient.State := cbUnchecked;
+  edtTransport.State := cbUnchecked;
+  edtEmployee.State := cbUnchecked;
+  edtSupplier.State := cbUnchecked;
 end;
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
@@ -316,13 +318,15 @@ end;
 procedure TviewEntity.rbLEClick(Sender: TObject);
 begin
   inherited;
-  edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  if edtEIN.Text = '' then
+    edtEIN.EditMask := '99.999.999/9999-99;1;_';
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
 begin
   inherited;
-  edtEIN.EditMask := '999.999.999-99;1;_';
+  if edtEIN.Text = '' then
+    edtEIN.EditMask := '999.999.999-99;1;_';
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -335,11 +339,6 @@ procedure TviewEntity.FormShow(Sender: TObject);
 begin
   inherited;
   GET_Entity;
-
-  edtClient.Checked := false;
-  edtTransport.Checked := false;
-  edtSupplier.Checked := false;
-  edtEmployee.Checked := false;
 end;
 
 procedure TviewEntity.GET_Entity();

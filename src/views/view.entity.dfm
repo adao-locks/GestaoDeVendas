@@ -9,7 +9,7 @@ inherited viewEntity: TviewEntity
       Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 50
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -764,12 +764,13 @@ inherited viewEntity: TviewEntity
         end
         object edtEIN: TMaskEdit
           Left = 123
-          Top = 140
+          Top = 136
           Width = 144
           Height = 23
           TabOrder = 2
           Text = ''
           OnEnter = edtEINEnter
+          OnExit = edtEINExit
         end
         object rbPP: TRadioButton
           Left = 9

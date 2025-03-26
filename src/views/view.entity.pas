@@ -110,6 +110,7 @@ type
     procedure edtEINEnter(Sender: TObject);
     procedure rbPPClick(Sender: TObject);
     procedure rbLEClick(Sender: TObject);
+    procedure edtEINExit(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -320,6 +321,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
@@ -327,6 +329,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '999.999.999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -356,6 +359,12 @@ begin
   inherited;
   if (rbPP.Checked = false) and (rbLE.Checked = false) then
     ShowMessage('Please, select a type of person!')
+end;
+
+procedure TviewEntity.edtEINExit(Sender: TObject);
+begin
+  inherited;
+  edtEIN.LockDrawing;
 end;
 
 procedure TviewEntity.edtPhoneChange(Sender: TObject);
