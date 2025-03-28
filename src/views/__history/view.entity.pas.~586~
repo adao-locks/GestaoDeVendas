@@ -110,6 +110,7 @@ type
     procedure edtEINEnter(Sender: TObject);
     procedure rbPPClick(Sender: TObject);
     procedure rbLEClick(Sender: TObject);
+    procedure edtEINExit(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -151,14 +152,16 @@ var
 begin
   inherited;
 
+  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYEntity.SQL.Text := 'SELECT * FROM PEOPLE WHERE 1=1';
+
   DateRegistered1 := edtDateReg.Date;
   DateRegistered2 := edtDateReg2.Date;
-  ServiceRegister.QRYEntity.Close;
 
 
   ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered1);
-  ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered2);
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate  := DateRegistered1;
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsDate  := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin
@@ -320,6 +323,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
@@ -327,6 +331,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '999.999.999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -356,6 +361,12 @@ begin
   inherited;
   if (rbPP.Checked = false) and (rbLE.Checked = false) then
     ShowMessage('Please, select a type of person!')
+end;
+
+procedure TviewEntity.edtEINExit(Sender: TObject);
+begin
+  inherited;
+  edtEIN.LockDrawing;
 end;
 
 procedure TviewEntity.edtPhoneChange(Sender: TObject);

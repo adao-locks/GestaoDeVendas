@@ -152,14 +152,15 @@ var
 begin
   inherited;
 
+  ServiceRegister.QRYEntity.SQL.Text := 'SELECT * FROM PEOPLE WHERE 1=1';
+
   DateRegistered1 := edtDateReg.Date;
   DateRegistered2 := edtDateReg2.Date;
-  ServiceRegister.QRYEntity.Close;
 
 
   ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered1);
-  ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered2);
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate  := DateRegistered1;
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsDate  := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin

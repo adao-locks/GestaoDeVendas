@@ -44,28 +44,6 @@ type
     lblPhone: TLabel;
     lblEmail: TLabel;
     edtEmail: TDBEdit;
-    edtClient: TDBCheckBox;
-    edtEmployee: TDBCheckBox;
-    edtSupplier: TDBCheckBox;
-    edtTransport: TDBCheckBox;
-    lblTypePeople: TLabel;
-    pnlTypePeople: TPanel;
-    pnlAddress: TPanel;
-    lblTitleAddress: TLabel;
-    lblZIPCode: TLabel;
-    edtZIPCode: TDBEdit;
-    lblComplement: TLabel;
-    edtComplement: TDBEdit;
-    lblState: TLabel;
-    edtState: TDBEdit;
-    lblCity: TLabel;
-    edtCity: TDBEdit;
-    lblNeighborhood: TLabel;
-    edtNeighborhood: TDBEdit;
-    lblStreet: TLabel;
-    edtStreet: TDBEdit;
-    lblNumberAddress: TLabel;
-    edtNumberAddress: TDBEdit;
     lblFantasy: TLabel;
     edtFantasy: TDBEdit;
     Label1: TLabel;
@@ -98,6 +76,26 @@ type
     rbPP: TRadioButton;
     rbLE: TRadioButton;
     edtPhone: TMaskEdit;
+    lblTypePeople: TLabel;
+    edtClient: TDBCheckBox;
+    edtEmployee: TDBCheckBox;
+    edtSupplier: TDBCheckBox;
+    edtTransport: TDBCheckBox;
+    lblTitleAddress: TLabel;
+    lblZIPCode: TLabel;
+    lblComplement: TLabel;
+    lblState: TLabel;
+    lblCity: TLabel;
+    lblNeighborhood: TLabel;
+    lblStreet: TLabel;
+    lblNumberAddress: TLabel;
+    edtZIPCode: TDBEdit;
+    edtComplement: TDBEdit;
+    edtState: TDBEdit;
+    edtCity: TDBEdit;
+    edtNeighborhood: TDBEdit;
+    edtStreet: TDBEdit;
+    edtNumberAddress: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -112,6 +110,7 @@ type
     procedure edtEINEnter(Sender: TObject);
     procedure rbPPClick(Sender: TObject);
     procedure rbLEClick(Sender: TObject);
+    procedure edtEINExit(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -147,19 +146,19 @@ end;
 procedure TviewEntity.btnConsultClick(Sender: TObject);
 var
 
-  DateRegistered1 : TDate;
-  DateRegistered2 : TDate;
+  DateRegistered1 : TDateTimePicker;
+  DateRegistered2 : TDateTime;
 
 begin
   inherited;
 
-  DateRegistered1 := edtDateReg.Date;
-  DateRegistered2 := edtDateReg2.Date;
+  DateRegistered1 := edtDateReg.DateTime;
+  DateRegistered2 := edtDateReg2.DateTime;
   ServiceRegister.QRYEntity.Close;
 
 
   ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered1);
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate := FormatDateTime('YYYY-MM-DD', DateRegistered1);
   ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered2);
 
   if edtNameAsk.Text <> '' then
@@ -322,6 +321,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
@@ -329,6 +329,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '999.999.999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -358,6 +359,12 @@ begin
   inherited;
   if (rbPP.Checked = false) and (rbLE.Checked = false) then
     ShowMessage('Please, select a type of person!')
+end;
+
+procedure TviewEntity.edtEINExit(Sender: TObject);
+begin
+  inherited;
+  edtEIN.LockDrawing;
 end;
 
 procedure TviewEntity.edtPhoneChange(Sender: TObject);

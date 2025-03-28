@@ -111,8 +111,6 @@ type
     procedure rbPPClick(Sender: TObject);
     procedure rbLEClick(Sender: TObject);
     procedure edtEINExit(Sender: TObject);
-    procedure edtEINMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
   private
   public
     procedure GET_Entity();
@@ -160,8 +158,8 @@ begin
 
 
   ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYEntity.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered1);
-  ServiceRegister.QRYEntity.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', DateRegistered2);
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate  := DateRegistered1;
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsDate  := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin
@@ -323,6 +321,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
@@ -330,6 +329,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '999.999.999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -365,13 +365,6 @@ procedure TviewEntity.edtEINExit(Sender: TObject);
 begin
   inherited;
   edtEIN.LockDrawing;
-end;
-
-procedure TviewEntity.edtEINMouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-begin
-  inherited;
-  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.edtPhoneChange(Sender: TObject);

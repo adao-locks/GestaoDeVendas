@@ -212,7 +212,7 @@ inherited viewSales: TviewSales
           inherited lblSearch: TLabel
             Left = 14
             Top = 4
-            Width = 1091
+            Width = 76
             Height = 20
             Margins.Left = 14
             Margins.Top = 4
@@ -498,7 +498,7 @@ inherited viewSales: TviewSales
           inherited lblRegister: TLabel
             Left = 14
             Top = 4
-            Width = 1091
+            Width = 86
             Height = 20
             Margins.Left = 14
             Margins.Top = 4

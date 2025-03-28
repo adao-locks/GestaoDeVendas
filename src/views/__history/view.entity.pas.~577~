@@ -321,6 +321,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
@@ -328,6 +329,7 @@ begin
   inherited;
   if edtEIN.Text = '' then
     edtEIN.EditMask := '999.999.999-99;1;_';
+  edtEIN.UnlockDrawing;
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);

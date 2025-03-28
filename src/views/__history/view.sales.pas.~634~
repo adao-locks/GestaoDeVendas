@@ -84,6 +84,7 @@ type
     btnRemove: TButton;
     FDMemTable1: TFDMemTable;
     DBGrid1: TDBGrid;
+    btnConfirm: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -96,10 +97,12 @@ type
     procedure edtClientChange(Sender: TObject);
     procedure edtEmployeeChange(Sender: TObject);
     procedure edtCodProdChange(Sender: TObject);
+    procedure btnConfirmClick(Sender: TObject);
   private
     { Private declarations }
   public
     procedure Get_Sales();
+    procedure Get_Itens();
   end;
 
 var
@@ -130,6 +133,7 @@ begin
       edtIDItem.Field.Value := 1;
     edtSaleID.Field.Value := edtSale.Field.Value;
     DT_CREATED_ITEM.Date := Now;
+    btnConfirm.Enabled := true;
   end;
 end;
 
@@ -147,6 +151,12 @@ procedure TviewSales.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
   viewSales.Close;
+end;
+
+procedure TviewSales.btnConfirmClick(Sender: TObject);
+begin
+  inherited;
+  btnConfirm.Enabled := false;
 end;
 
 procedure TviewSales.btnDeleteClick(Sender: TObject);
@@ -197,6 +207,7 @@ procedure TviewSales.btnProductsClick(Sender: TObject);
 begin
   inherited;
   CardPanelList.ActiveCard := cardItems;
+  get_itens;
 end;
 
 procedure TviewSales.btnSaveClick(Sender: TObject);
@@ -279,6 +290,15 @@ begin
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
   DT_CREATED.Enabled := false;
+end;
+
+procedure TviewSales.Get_Itens;
+begin
+  ServiceRegister.QRYItemsSale.Close;
+  ServiceRegister.QRYItemsSale.SQL.Clear;
+  ServiceRegister.QRYItemsSale.SQL.Add('SELECT * FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE');
+  ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+  ServiceRegister.QRYItemsSale.Open();
 end;
 
 procedure TviewSales.Get_Sales;

@@ -9,7 +9,7 @@ inherited viewEntity: TviewEntity
       Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 868
+      ExplicitWidth = 50
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -42,7 +42,6 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]

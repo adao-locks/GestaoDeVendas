@@ -493,7 +493,6 @@ inherited viewSales: TviewSales
           Margins.Right = 2
           Margins.Bottom = 2
           StyleElements = [seFont, seClient, seBorder]
-          ExplicitLeft = -38
           ExplicitWidth = 1105
           ExplicitHeight = 59
           inherited lblRegister: TLabel
@@ -648,8 +647,6 @@ inherited viewSales: TviewSales
         Height = 705
         CardIndex = 2
         TabOrder = 2
-        ExplicitWidth = 185
-        ExplicitHeight = 41
         object Label13: TLabel
           Left = 75
           Top = 7
@@ -680,7 +677,7 @@ inherited viewSales: TviewSales
           Width = 51
           Height = 13
           Caption = 'QUANTITY'
-          FocusControl = DBEdit4
+          FocusControl = edtQuant
         end
         object Label17: TLabel
           Left = 7
@@ -688,15 +685,15 @@ inherited viewSales: TviewSales
           Width = 59
           Height = 13
           Caption = 'UNIT_PRICE'
-          FocusControl = DBEdit5
+          FocusControl = edtUnit
         end
         object Label18: TLabel
           Left = 7
           Top = 128
-          Width = 70
+          Width = 55
           Height = 13
           Caption = 'DISCOUNT'
-          FocusControl = DBEdit6
+          FocusControl = edtDiscItem
         end
         object Label19: TLabel
           Left = 83
@@ -704,7 +701,7 @@ inherited viewSales: TviewSales
           Width = 51
           Height = 13
           Caption = 'SUBTOTAL'
-          FocusControl = DBEdit7
+          FocusControl = edtSubtotal
         end
         object Label20: TLabel
           Left = 143
@@ -713,7 +710,7 @@ inherited viewSales: TviewSales
           Height = 13
           Caption = 'DT_CREATED'
         end
-        object Label21: TLabel
+        object lblNameProd: TLabel
           Left = 93
           Top = 67
           Width = 170
@@ -749,43 +746,48 @@ inherited viewSales: TviewSales
           Height = 21
           DataField = 'ID_PRODUCT'
           DataSource = DSDataItems
+          Enabled = False
           TabOrder = 2
           OnChange = edtCodProdChange
         end
-        object DBEdit4: TDBEdit
+        object edtQuant: TDBEdit
           Left = 83
           Top = 104
           Width = 70
           Height = 21
           DataField = 'QUANTITY'
           DataSource = DSDataItems
+          Enabled = False
           TabOrder = 3
         end
-        object DBEdit5: TDBEdit
+        object edtUnit: TDBEdit
           Left = 7
           Top = 104
           Width = 70
           Height = 21
           DataField = 'UNIT_PRICE'
           DataSource = DSDataItems
+          Enabled = False
           TabOrder = 4
         end
-        object DBEdit6: TDBEdit
+        object edtDiscItem: TDBEdit
           Left = 7
           Top = 144
           Width = 70
           Height = 21
           DataField = 'DISCOUNT'
           DataSource = DSDataItems
+          Enabled = False
           TabOrder = 5
         end
-        object DBEdit7: TDBEdit
+        object edtSubtotal: TDBEdit
           Left = 83
           Top = 144
           Width = 70
           Height = 21
           DataField = 'SUBTOTAL'
           DataSource = DSDataItems
+          Enabled = False
           TabOrder = 6
         end
         object DT_CREATED_ITEM: TDateTimePicker
@@ -831,6 +833,16 @@ inherited viewSales: TviewSales
           TitleFont.Height = -11
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
+        end
+        object btnConfirm: TButton
+          Left = 159
+          Top = 171
+          Width = 70
+          Height = 25
+          Caption = 'Confirm'
+          Enabled = False
+          TabOrder = 11
+          OnClick = btnConfirmClick
         end
       end
     end
