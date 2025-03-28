@@ -407,27 +407,7 @@ inherited viewProducts: TviewProducts
           Caption = 'ID'
           FocusControl = edtIdProd
         end
-        object Label10: TLabel [1]
-          Left = 173
-          Top = 69
-          Width = 46
-          Height = 15
-          AutoSize = False
-          Caption = 'User'
-          Enabled = False
-          FocusControl = edtUserReg
-        end
-        object Label11: TLabel [2]
-          Left = 325
-          Top = 69
-          Width = 41
-          Height = 15
-          AutoSize = False
-          Caption = 'User'
-          Enabled = False
-          FocusControl = edtUserUp
-        end
-        object Label2: TLabel [3]
+        object Label2: TLabel [1]
           Left = 65
           Top = 115
           Width = 32
@@ -435,7 +415,7 @@ inherited viewProducts: TviewProducts
           Caption = 'Name'
           FocusControl = edtName
         end
-        object Label3: TLabel [4]
+        object Label3: TLabel [2]
           Left = 9
           Top = 160
           Width = 60
@@ -443,7 +423,7 @@ inherited viewProducts: TviewProducts
           Caption = 'Description'
           FocusControl = edtDescription
         end
-        object Label4: TLabel [5]
+        object Label4: TLabel [3]
           Left = 55
           Top = 204
           Width = 48
@@ -451,7 +431,7 @@ inherited viewProducts: TviewProducts
           Caption = 'Category'
           FocusControl = edtCategory
         end
-        object Label5: TLabel [6]
+        object Label5: TLabel [4]
           Left = 267
           Top = 204
           Width = 43
@@ -459,7 +439,7 @@ inherited viewProducts: TviewProducts
           Caption = 'Supplier'
           FocusControl = edtSupplier
         end
-        object Label6: TLabel [7]
+        object Label6: TLabel [5]
           Left = 86
           Top = 69
           Width = 69
@@ -469,7 +449,7 @@ inherited viewProducts: TviewProducts
           Enabled = False
           FocusControl = edtDateReg
         end
-        object Label7: TLabel [8]
+        object Label7: TLabel [6]
           Left = 161
           Top = 204
           Width = 31
@@ -477,23 +457,13 @@ inherited viewProducts: TviewProducts
           Caption = 'Brand'
           FocusControl = edtBrand
         end
-        object Label8: TLabel [9]
+        object Label8: TLabel [7]
           Left = 9
           Top = 204
           Width = 15
           Height = 15
           Caption = 'Un'
           FocusControl = edtUn
-        end
-        object Label9: TLabel [10]
-          Left = 239
-          Top = 69
-          Width = 72
-          Height = 15
-          AutoSize = False
-          Caption = 'Last Update'
-          Enabled = False
-          FocusControl = edtDateUp
         end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
@@ -551,18 +521,6 @@ inherited viewProducts: TviewProducts
           Enabled = False
           TabOrder = 4
         end
-        object edtDateUp: TDBEdit
-          Left = 239
-          Top = 85
-          Width = 80
-          Height = 23
-          AutoSize = False
-          CharCase = ecUpperCase
-          DataField = 'DATE_UPDATED'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 5
-        end
         object edtDescription: TDBEdit
           Left = 9
           Top = 176
@@ -572,7 +530,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'DESCRIPTION'
           DataSource = DSData
-          TabOrder = 6
+          TabOrder = 5
         end
         object edtIdProd: TDBEdit
           Left = 9
@@ -586,7 +544,7 @@ inherited viewProducts: TviewProducts
           Enabled = False
           ParentCtl3D = False
           ReadOnly = True
-          TabOrder = 7
+          TabOrder = 6
         end
         object edtName: TDBEdit
           Left = 65
@@ -597,7 +555,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'NAME'
           DataSource = DSData
-          TabOrder = 8
+          TabOrder = 7
         end
         object edtSupplier: TDBEdit
           Left = 267
@@ -608,7 +566,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'SUPPLIER'
           DataSource = DSData
-          TabOrder = 9
+          TabOrder = 8
         end
         object edtUn: TDBEdit
           Left = 9
@@ -619,31 +577,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'UN'
           DataSource = DSData
-          TabOrder = 10
-        end
-        object edtUserReg: TDBEdit
-          Left = 173
-          Top = 85
-          Width = 60
-          Height = 23
-          AutoSize = False
-          CharCase = ecUpperCase
-          DataField = 'USER_ID'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 11
-        end
-        object edtUserUp: TDBEdit
-          Left = 325
-          Top = 85
-          Width = 60
-          Height = 23
-          AutoSize = False
-          CharCase = ecUpperCase
-          DataField = 'USER_UPDATE'
-          DataSource = DSData
-          Enabled = False
-          TabOrder = 12
+          TabOrder = 9
         end
       end
     end

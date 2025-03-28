@@ -15,17 +15,12 @@ type
     edtBrand: TDBEdit;
     edtCategory: TDBEdit;
     edtDateReg: TDBEdit;
-    edtDateUp: TDBEdit;
     edtDescription: TDBEdit;
     edtIdProd: TDBEdit;
     edtName: TDBEdit;
     edtSupplier: TDBEdit;
     edtUn: TDBEdit;
-    edtUserReg: TDBEdit;
-    edtUserUp: TDBEdit;
     Label1: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -33,7 +28,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    Label9: TLabel;
     dtRegIni: TDateTimePicker;
     edtBrandAsk: TSearchBox;
     edtCategoryAsk: TSearchBox;
@@ -179,7 +173,6 @@ begin
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
   ServiceRegister.QRYProduct.Edit;
-  edtDateUp.Text := DateToStr(Date);
 
 end;
 

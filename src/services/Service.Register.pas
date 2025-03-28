@@ -35,18 +35,6 @@ type
     QRYEntityEMPLOYEE: TBooleanField;
     QRYEntitySUPPLIER: TBooleanField;
     QRYEntityTRANSPORT: TBooleanField;
-    QRYProductPROD_ID: TIntegerField;
-    QRYProductNAME: TStringField;
-    QRYProductDESCRIPTION: TStringField;
-    QRYProductCATEGORY: TStringField;
-    QRYProductSUPPLIER: TStringField;
-    QRYProductACTIVE: TBooleanField;
-    QRYProductDATE_REGISTER: TSQLTimeStampField;
-    QRYProductBRAND: TStringField;
-    QRYProductUN: TStringField;
-    QRYProductDATE_UPDATED: TSQLTimeStampField;
-    QRYProductUSER_ID: TIntegerField;
-    QRYProductUSER_UPDATE: TIntegerField;
     QRYEntitySTREET: TStringField;
     QRYEntityNUMBER_ADDRESS: TStringField;
     QRYEntityCOMPLEMENT: TStringField;
@@ -72,8 +60,6 @@ type
     QRYLogsCOMPANY: TIntegerField;
     QRYEntityCOM_ID: TStringField;
     QRYEntityUSER: TStringField;
-    QRYProductUSER: TStringField;
-    QRYProductCOM_ID: TStringField;
     QRYNameProduct: TFDQuery;
     QRYNameProductNAME: TStringField;
     QRYEntityTYPE_PERSON: TStringField;
@@ -101,6 +87,18 @@ type
     QRYSaleID_EMPLOYEE: TIntegerField;
     QRYSaleCOM_ID: TIntegerField;
     QRYSaleUSER: TIntegerField;
+    QRYProductPROD_ID: TIntegerField;
+    QRYProductNAME: TStringField;
+    QRYProductDESCRIPTION: TStringField;
+    QRYProductCATEGORY: TStringField;
+    QRYProductSUPPLIER: TStringField;
+    QRYProductACTIVE: TBooleanField;
+    QRYProductDATE_REGISTER: TSQLTimeStampField;
+    QRYProductBRAND: TStringField;
+    QRYProductUN: TStringField;
+    QRYProductDATE_UPDATED: TSQLTimeStampField;
+    QRYProductUSER: TStringField;
+    QRYProductCOM_ID: TStringField;
   private
     { Private declarations }
   public

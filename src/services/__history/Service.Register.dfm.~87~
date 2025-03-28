@@ -140,7 +140,7 @@ object ServiceRegister: TServiceRegister
     SQL.Strings = (
       'SELECT * FROM LOGS WHERE 1=1')
     Left = 32
-    Top = 136
+    Top = 192
     object QRYLogsLANCTO: TIntegerField
       FieldName = 'LANCTO'
       Origin = 'LANCTO'
@@ -177,103 +177,71 @@ object ServiceRegister: TServiceRegister
       'SELECT * FROM SALE WHERE 1=1')
     Left = 32
     Top = 80
-    object QRYSaleSALE_ID: TIntegerField
-      FieldName = 'SALE_ID'
-      Origin = 'SALE_ID'
+    object QRYSaleID_SALE: TIntegerField
+      FieldName = 'ID_SALE'
+      Origin = 'ID_SALE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object QRYSaleCLIENT_ID: TIntegerField
-      FieldName = 'CLIENT_ID'
-      Origin = 'CLIENT_ID'
+    object QRYSaleID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Origin = 'ID_CLIENT'
+      Required = True
     end
-    object QRYSaleEMPLOYEE_ID: TIntegerField
-      FieldName = 'EMPLOYEE_ID'
-      Origin = 'EMPLOYEE_ID'
+    object QRYSaleID_EMPLOYEE: TIntegerField
+      FieldName = 'ID_EMPLOYEE'
+      Origin = 'ID_EMPLOYEE'
+      Required = True
     end
-    object QRYSalePROD_ID: TIntegerField
-      FieldName = 'PROD_ID'
-      Origin = 'PROD_ID'
+    object QRYSaleDT_SALE: TSQLTimeStampField
+      FieldName = 'DT_SALE'
+      Origin = 'DT_SALE'
+      Required = True
     end
-    object QRYSaleUNIT: TIntegerField
-      FieldName = 'UNIT'
-      Origin = 'UNIT'
+    object QRYSalePAYMENT_METHOD: TStringField
+      FieldName = 'PAYMENT_METHOD'
+      Origin = 'PAYMENT_METHOD'
+      Required = True
+      Size = 30
     end
-    object QRYSaleTOTAL: TFMTBCDField
-      FieldName = 'TOTAL'
-      Origin = 'TOTAL'
+    object QRYSaleDISCOUNT: TFMTBCDField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+      Required = True
       Precision = 18
       Size = 2
     end
-    object QRYSaleQTDE: TIntegerField
-      FieldName = 'QTDE'
-      Origin = 'QTDE'
+    object QRYSaleTOTAL_AMOUNT: TFMTBCDField
+      FieldName = 'TOTAL_AMOUNT'
+      Origin = 'TOTAL_AMOUNT'
+      Required = True
+      Precision = 18
+      Size = 2
     end
-    object QRYSaleADDITION: TIntegerField
-      FieldName = 'ADDITION'
-      Origin = 'ADDITION'
+    object QRYSaleSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+      Required = True
     end
-    object QRYSaleDISCOUNT: TIntegerField
-      FieldName = 'DISCOUNT'
-      Origin = 'DISCOUNT'
+    object QRYSaleOBSERVATION: TStringField
+      FieldName = 'OBSERVATION'
+      Origin = 'OBSERVATION'
+      Size = 500
     end
-    object QRYSaleSUBTOTAL: TIntegerField
-      FieldName = 'SUBTOTAL'
-      Origin = 'SUBTOTAL'
-    end
-    object QRYSaleDATE_PAYMENT: TSQLTimeStampField
-      FieldName = 'DATE_PAYMENT'
-      Origin = 'DATE_PAYMENT'
-    end
-    object QRYSalePAID: TBooleanField
-      FieldName = 'PAID'
-      Origin = 'PAID'
-    end
-    object QRYSaleCASH: TBooleanField
-      FieldName = 'CASH'
-      Origin = 'CASH'
-    end
-    object QRYSaleCHANGE: TIntegerField
-      FieldName = 'CHANGE'
-      Origin = 'CHANGE'
-    end
-    object QRYSaleINSTALLMENT: TBooleanField
-      FieldName = 'INSTALLMENT'
-      Origin = 'INSTALLMENT'
-    end
-    object QRYSaleSQLTimeStampField1ST_INSTALLMENT: TSQLTimeStampField
-      FieldName = '1ST_INSTALLMENT'
-      Origin = '"1ST_INSTALLMENT"'
-    end
-    object QRYSaleINSTALLMENT_VALUE: TIntegerField
-      FieldName = 'INSTALLMENT_VALUE'
-      Origin = 'INSTALLMENT_VALUE'
-    end
-    object QRYSaleINSTALLMENT_AMOUNT: TIntegerField
-      FieldName = 'INSTALLMENT_AMOUNT'
-      Origin = 'INSTALLMENT_AMOUNT'
-    end
-    object QRYSaleDATE_UPDATED: TSQLTimeStampField
-      FieldName = 'DATE_UPDATED'
-      Origin = 'DATE_UPDATED'
-    end
-    object QRYSaleUSER: TStringField
-      FieldName = 'USER'
-      Origin = '"USER"'
-      Size = 100
-    end
-    object QRYSaleDATE_SALE: TSQLTimeStampField
-      FieldName = 'DATE_SALE'
-      Origin = 'DATE_SALE'
-    end
-    object QRYSaleOBS: TStringField
-      FieldName = 'OBS'
-      Origin = 'OBS'
-      Size = 255
+    object QRYSaleDT_CREATED: TSQLTimeStampField
+      FieldName = 'DT_CREATED'
+      Origin = 'DT_CREATED'
+      Required = True
     end
     object QRYSaleCOM_ID: TIntegerField
       FieldName = 'COM_ID'
       Origin = 'COM_ID'
+      Required = True
+    end
+    object QRYSaleUSER: TIntegerField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Required = True
     end
   end
   object QRYProduct: TFDQuery
@@ -281,7 +249,7 @@ object ServiceRegister: TServiceRegister
     SQL.Strings = (
       'SELECT * FROM PRODUCT WHERE PROD_ID = :PRODUCT')
     Left = 32
-    Top = 192
+    Top = 248
     ParamData = <
       item
         Name = 'PRODUCT'
@@ -376,7 +344,7 @@ object ServiceRegister: TServiceRegister
     SQL.Strings = (
       'SELECT max(PROD_ID) MAXID FROM PRODUCT WHERE PROD_ID = :PRODUCT')
     Left = 104
-    Top = 192
+    Top = 248
     ParamData = <
       item
         Name = 'PRODUCT'
@@ -395,7 +363,7 @@ object ServiceRegister: TServiceRegister
   object QRYIDSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECt max(SALE_ID) MAXID FROM SALE WHERE 1=1')
+      'SELECt max(ID_SALE) MAXID FROM SALE WHERE 1=1')
     Left = 88
     Top = 80
     object QRYIDSaleMAXID: TIntegerField
@@ -431,7 +399,7 @@ object ServiceRegister: TServiceRegister
     SQL.Strings = (
       'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID')
     Left = 192
-    Top = 192
+    Top = 248
     ParamData = <
       item
         Name = 'PROD_ID'
@@ -444,6 +412,75 @@ object ServiceRegister: TServiceRegister
       Origin = 'NAME'
       Required = True
       Size = 150
+    end
+  end
+  object QRYItemsSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM SALE_ITEMS WHERE 1=1')
+    Left = 32
+    Top = 136
+    object QRYItemsSaleID_ITEM: TIntegerField
+      FieldName = 'ID_ITEM'
+      Origin = 'ID_ITEM'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYItemsSaleID_SALE: TIntegerField
+      FieldName = 'ID_SALE'
+      Origin = 'ID_SALE'
+      Required = True
+    end
+    object QRYItemsSaleID_PRODUCT: TStringField
+      FieldName = 'ID_PRODUCT'
+      Origin = 'ID_PRODUCT'
+      Required = True
+      Size = 50
+    end
+    object QRYItemsSaleQUANTITY: TFMTBCDField
+      FieldName = 'QUANTITY'
+      Origin = 'QUANTITY'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleUNIT_PRICE: TFMTBCDField
+      FieldName = 'UNIT_PRICE'
+      Origin = 'UNIT_PRICE'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleDISCOUNT: TFMTBCDField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleSUBTOTAL: TFMTBCDField
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleDT_CREATED: TSQLTimeStampField
+      FieldName = 'DT_CREATED'
+      Origin = 'DT_CREATED'
+      Required = True
+    end
+  end
+  object QRYIDItemsSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECt max(ID_ITEM) MAXID FROM SALE_ITEMS WHERE 1=1')
+    Left = 120
+    Top = 136
+    object QRYIDItemsSaleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

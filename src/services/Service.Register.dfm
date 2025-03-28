@@ -306,14 +306,6 @@ object ServiceRegister: TServiceRegister
       FieldName = 'DATE_UPDATED'
       Origin = 'DATE_UPDATED'
     end
-    object QRYProductUSER_ID: TIntegerField
-      FieldName = 'USER_ID'
-      Origin = 'USER_ID'
-    end
-    object QRYProductUSER_UPDATE: TIntegerField
-      FieldName = 'USER_UPDATE'
-      Origin = 'USER_UPDATE'
-    end
     object QRYProductUSER: TStringField
       FieldName = 'USER'
       Origin = '"USER"'
