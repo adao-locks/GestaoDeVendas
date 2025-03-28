@@ -28,51 +28,63 @@ uses
   Data.FMTBcd,
   Data.SqlExpr,
   Service.Connection,
-  Vcl.ComCtrls;
+  Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TviewSales = class(TviewBaseLists)
     Label1: TLabel;
-    edtSaleId: TDBEdit;
+    edtSale: TDBEdit;
     Label2: TLabel;
-    edtCliId: TDBEdit;
+    edtClient: TDBEdit;
     Label3: TLabel;
-    edtEmpId: TDBEdit;
+    edtEmployee: TDBEdit;
     Label4: TLabel;
-    edtIdProd: TDBEdit;
     Label5: TLabel;
-    edtUnit: TDBEdit;
+    edtPayMeth: TDBEdit;
     Label6: TLabel;
-    edtTotal: TDBEdit;
-    Label7: TLabel;
-    edtQtde: TDBEdit;
-    Label8: TLabel;
-    edtAddit: TDBEdit;
-    Label9: TLabel;
     edtDisc: TDBEdit;
+    Label7: TLabel;
+    edtTot: TDBEdit;
+    Label8: TLabel;
+    edtStat: TDBEdit;
+    Label9: TLabel;
+    edtObs: TDBEdit;
     Label10: TLabel;
-    edtSubt: TDBEdit;
-    Label15: TLabel;
-    lblNameProduct: TLabel;
-    lblEmployeeName: TLabel;
-    lblClientName: TLabel;
-    DTPDateSale: TDateTimePicker;
-    Label16: TLabel;
-    Label17: TLabel;
-    edtComId: TDBEdit;
-    richObs: TRichEdit;
-    pnlPaid: TPanel;
-    lblChange: TLabel;
-    lbl1stInst: TLabel;
+    DT_SALE: TDateTimePicker;
+    DT_CREATED: TDateTimePicker;
+    lblEmployee: TLabel;
+    lblClient: TLabel;
+    Label11: TLabel;
+    edtCom: TDBEdit;
+    Label12: TLabel;
+    edtUser: TDBEdit;
+    btnProducts: TButton;
+    cardItems: TCard;
+    DSDataItems: TDataSource;
     Label13: TLabel;
+    edtIDItem: TDBEdit;
     Label14: TLabel;
-    cbPaid: TDBCheckBox;
-    cbCash: TDBCheckBox;
-    edtChange: TDBEdit;
-    cbInstall: TDBCheckBox;
-    edtValInst: TDBEdit;
-    edtInstAmount: TDBEdit;
-    DTPInstall: TDateTimePicker;
+    edtSaleID: TDBEdit;
+    Label15: TLabel;
+    edtCodProd: TDBEdit;
+    Label16: TLabel;
+    edtQuant: TDBEdit;
+    Label17: TLabel;
+    edtUnit: TDBEdit;
+    Label18: TLabel;
+    edtDiscItem: TDBEdit;
+    Label19: TLabel;
+    edtSubtotal: TDBEdit;
+    Label20: TLabel;
+    lblNameProd: TLabel;
+    DT_CREATED_ITEM: TDateTimePicker;
+    btnAddProd: TButton;
+    btnRemove: TButton;
+    FDMemTable1: TFDMemTable;
+    DBGrid1: TDBGrid;
+    btnConfirm: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -80,18 +92,17 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure cbPaidClick(Sender: TObject);
-    procedure edtCliIdChange(Sender: TObject);
-    procedure edtEmpIdChange(Sender: TObject);
-    procedure edtIdProdChange(Sender: TObject);
-    procedure edtTotalEnter(Sender: TObject);
-    procedure edtSubtEnter(Sender: TObject);
-    procedure cbCashClick(Sender: TObject);
-    procedure cbInstallClick(Sender: TObject);
+    procedure btnProductsClick(Sender: TObject);
+    procedure btnAddProdClick(Sender: TObject);
+    procedure edtClientChange(Sender: TObject);
+    procedure edtEmployeeChange(Sender: TObject);
+    procedure edtCodProdChange(Sender: TObject);
+    procedure btnConfirmClick(Sender: TObject);
   private
     { Private declarations }
   public
     procedure Get_Sales();
+    procedure Get_Itens();
   end;
 
 var
@@ -100,6 +111,31 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TviewSales.btnAddProdClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYItemsSale.State in dsEditModes then
+  begin
+    edtCodProd.Enabled := true;
+    edtUnit.Enabled := true;
+    edtQuant.Enabled := true;
+    edtDiscItem.Enabled := true;
+    edtSubtotal.Enabled := true;
+    ServiceRegister.QRYItemsSale.Insert;
+    ServiceRegister.QRYIDItemsSale.Close;
+    ServiceRegister.QRYIDItemsSale.SQL.Text := 'SELECt MAX(ID_ITEM) MAXID FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
+    ServiceRegister.QRYIDItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+    ServiceRegister.QRYIDItemsSale.Open;
+    if not ServiceRegister.QRYIDItemsSale.FieldByName('MAXID').IsNull then
+      edtIDItem.Field.Value := ServiceRegister.QRYIDItemsSale.FieldByName('MAXID').AsInteger + 1
+    else
+      edtIDItem.Field.Value := 1;
+    edtSaleID.Field.Value := edtSale.Field.Value;
+    DT_CREATED_ITEM.Date := Now;
+    btnConfirm.Enabled := true;
+  end;
+end;
 
 procedure TviewSales.btnCancelClick(Sender: TObject);
 begin
@@ -115,6 +151,12 @@ procedure TviewSales.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
   viewSales.Close;
+end;
+
+procedure TviewSales.btnConfirmClick(Sender: TObject);
+begin
+  inherited;
+  btnConfirm.Enabled := false;
 end;
 
 procedure TviewSales.btnDeleteClick(Sender: TObject);
@@ -141,29 +183,31 @@ var
 begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
-  edtCliId.SetFocus;
+  edtClient.SetFocus;
   ServiceRegister.QRYSale.Insert;
   ServiceRegister.QRYIDSale.Close;
-  ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(SALE_ID) AS MaxID FROM SALE WHERE 1=1';
+  ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(ID_SALE) AS MaxID FROM SALE WHERE 1=1';
   ServiceRegister.QRYIDSale.Open;
   if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
   else
     maxID := 1;
-  edtSaleId.Text := maxID.ToString;
-  DTPDateSale.Date := Now;
-  edtComId.Field.Value := ServiceConnection.SERVICE_COM_ID.ToInteger;
-  edtUnit.Field.Value := 0;
-  edtQtde.Field.Value := 0;
-  edtTotal.Field.Value := 0;
-  edtAddit.Field.Value := 0;
+  edtSale.Text := maxID.ToString;
+  DT_SALE.Date := Now;
+  DT_CREATED.Date := Now;
+  edtCom.Text := ServiceConnection.SERVICE_COM_ID;
+  edtUser.Text := ServiceConnection.SERVICE_USER;
   edtDisc.Field.Value := 0;
-  edtSubt.Field.Value := 0;
-  cbPaid.State := cbUnchecked;
-  cbCash.State := cbUnchecked;
-  cbInstall.State := cbUnchecked;
-  DTPInstall.Date := Now;
-  richObs.Text := '';
+  edtTot.Field.Value := 0;
+  edtPayMeth.Text := 'CASH';
+  edtStat.Text := 'PENDING';
+end;
+
+procedure TviewSales.btnProductsClick(Sender: TObject);
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardItems;
+  get_itens;
 end;
 
 procedure TviewSales.btnSaveClick(Sender: TObject);
@@ -171,136 +215,73 @@ begin
   inherited;
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
-    ServiceRegister.QRYSale.FieldByName('DATE_SALE').AsDateTime := DTPDateSale.DateTime;
+    ServiceRegister.QRYSale.FieldByName('DT_SALE').AsDateTime := DT_SALE.DateTime;
+    ServiceRegister.QRYSale.FieldByName('DT_CREATED').AsDateTime := DT_CREATED.DateTime;
     ServiceRegister.QRYSale.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
   end;
 end;
 
-procedure TviewSales.cbCashClick(Sender: TObject);
+procedure TviewSales.edtCodProdChange(Sender: TObject);
 begin
   inherited;
-  if cbCash.Checked then
+  if Trim(edtCodProd.Text) = '' then
   begin
-    edtChange.Enabled := TRUE;
-    cbInstall.Enabled := FALSE;
-    edtChange.Field.Value := 0;
-  end
-  else begin
-    edtChange.Enabled := FALSE;
-    cbInstall.Enabled := TRUE;
-    edtChange.Field.Value := null;
+    lblNameProd.Caption := 'PRODUCT NAME';
+    Exit;
   end;
+
+  ServiceRegister.QRYNameProduct.Close;
+  ServiceRegister.QRYNameProduct.SQL.Text := 'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
+  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger := StrToIntDef(edtCodProd.Text, 0);
+  ServiceRegister.QRYNameProduct.Open;
+
+  if not ServiceRegister.QRYNameProduct.IsEmpty then
+    lblNameProd.Caption := ServiceRegister.QRYNameProduct.FieldByName('NAME').AsString
+  else
+    lblNameProd.Caption := 'PRODUCT NOT FOUND!';
 end;
 
-procedure TviewSales.cbInstallClick(Sender: TObject);
+procedure TviewSales.edtClientChange(Sender: TObject);
 begin
   inherited;
-  if cbInstall.Checked then
+  if Trim(edtClient.Text) = '' then
   begin
-    DTPInstall.Enabled := TRUE;
-    edtValInst.Enabled := TRUE;
-    edtInstAmount.Enabled := TRUE;
-    cbCash.Enabled := FALSE;
-    edtValInst.Field.Value := 0;
-    edtInstAmount.Field.Value := 0;
-  end
-  else begin
-    DTPInstall.Enabled := FALSE;
-    edtValInst.Enabled := FALSE;
-    edtInstAmount.Enabled := FALSE;
-    cbCash.Enabled := TRUE;
-    edtValInst.Field.Value := null;
-    edtInstAmount.Field.Value := null;
-  end;
-end;
-
-procedure TviewSales.cbPaidClick(Sender: TObject);
-begin
-  inherited;
-  if cbPaid.Checked then
-  begin
-    cbCash.Enabled := TRUE;
-    cbInstall.Enabled := TRUE;
-  end
-  else begin
-    cbCash.Enabled := FALSE;
-    cbInstall.Enabled := FALSE;
-  end;
-end;
-
-procedure TviewSales.edtCliIdChange(Sender: TObject);
-begin
-  inherited;
-  if Trim(edtCliId.Text) = '' then
-  begin
-    lblClientName.Caption := 'Client Name';
+    lblClient.Caption := 'CLIENT NAME';
     Exit;
   end;
 
   ServiceRegister.QRYNamePeople.Close;
   ServiceRegister.QRYNamePeople.SQL.Text := 'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND CLIENT = TRUE';
-  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtCliId.Text, 0);
+  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtClient.Text, 0);
   ServiceRegister.QRYNamePeople.Open;
 
   if not ServiceRegister.QRYNamePeople.IsEmpty then
-    lblClientName.Caption := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
+    lblClient.Caption := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
   else
-    lblClientName.Caption := 'Client not found';
+    lblClient.Caption := 'CLIENT NOT FOUND!';
 end;
 
-procedure TviewSales.edtEmpIdChange(Sender: TObject);
+procedure TviewSales.edtEmployeeChange(Sender: TObject);
 begin
   inherited;
-  if Trim(edtEmpId.Text) = '' then
+  if Trim(edtEmployee.Text) = '' then
   begin
-    lblEmployeeName.Caption := 'Employee Name';
+    lblEmployee.Caption := 'EMPLOYEE NAME';
     Exit;
   end;
 
   ServiceRegister.QRYNamePeople.Close;
   ServiceRegister.QRYNamePeople.SQL.Clear;
   ServiceRegister.QRYNamePeople.SQL.Add('SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND EMPLOYEE = TRUE')  ;
-  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtEmpId.Text, 0);
+  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtEmployee.Text, 0);
   ServiceRegister.QRYNamePeople.Open;
 
   if not ServiceRegister.QRYNamePeople.IsEmpty then
-    lblEmployeeName.Caption := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
+    lblEmployee.Caption := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
   else
-    lblEmployeeName.Caption := 'Employee not found';
-end;
-
-procedure TviewSales.edtIdProdChange(Sender: TObject);
-begin
-  inherited;
-  if Trim(edtIdProd.Text) = '' then
-  begin
-    lblNameProduct.Caption := 'Product Name';
-    Exit;
-  end;
-
-  ServiceRegister.QRYNameProduct.Close;
-  ServiceRegister.QRYNameProduct.SQL.Text := 'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
-  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger := StrToIntDef(edtIdProd.Text, 0);
-  ServiceRegister.QRYNameProduct.Open;
-
-  if not ServiceRegister.QRYNameProduct.IsEmpty then
-    lblNameProduct.Caption := ServiceRegister.QRYNameProduct.FieldByName('NAME').AsString
-  else
-    lblNameProduct.Caption := 'Product not found';
-end;
-
-procedure TviewSales.edtSubtEnter(Sender: TObject);
-begin
-  inherited;
-  edtSubt.Field.Value := ((edtTotal.Field.Value + edtAddit.Field.Value) - edtDisc.Field.Value);
-end;
-
-procedure TviewSales.edtTotalEnter(Sender: TObject);
-begin
-  inherited;
-  edtTotal.Field.Value := (edtUnit.Field.Value * edtQtde.Field.Value);
+    lblEmployee.Caption := 'EMPLOYEE NOT FOUND!';
 end;
 
 procedure TviewSales.FormShow(Sender: TObject);
@@ -308,6 +289,16 @@ begin
   inherited;
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
+  DT_CREATED.Enabled := false;
+end;
+
+procedure TviewSales.Get_Itens;
+begin
+  ServiceRegister.QRYItemsSale.Close;
+  ServiceRegister.QRYItemsSale.SQL.Clear;
+  ServiceRegister.QRYItemsSale.SQL.Add('SELECT * FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE');
+  ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+  ServiceRegister.QRYItemsSale.Open();
 end;
 
 procedure TviewSales.Get_Sales;

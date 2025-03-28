@@ -1,0 +1,15 @@
+if Trim(edtIdProd.Text) = '' then
+  begin
+    lblNameProduct.Caption := 'Product Name';
+    Exit;
+  end;
+
+  ServiceRegister.QRYNameProduct.Close;
+  ServiceRegister.QRYNameProduct.SQL.Text := 'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
+  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger := StrToIntDef(edtIdProd.Text, 0);
+  ServiceRegister.QRYNameProduct.Open;
+
+  if not ServiceRegister.QRYNameProduct.IsEmpty then
+    lblNameProduct.Caption := ServiceRegister.QRYNameProduct.FieldByName('NAME').AsString
+  else
+    lblNameProduct.Caption := 'Product not found';

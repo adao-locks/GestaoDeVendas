@@ -28,7 +28,7 @@ object ServiceConnection: TServiceConnection
   object QRYEnterprise: TFDQuery
     Connection = FDConn
     SQL.Strings = (
-      'SELECT * FROM COMPANY WHERE COM_ID = :CODIGO')
+      'SELECT * FROM COMPANY WHERE ID_COM = :CODIGO')
     Left = 208
     Top = 160
     ParamData = <
@@ -38,11 +38,12 @@ object ServiceConnection: TServiceConnection
         ParamType = ptInput
         Value = Null
       end>
-    object QRYEnterpriseCOM_ID: TIntegerField
-      FieldName = 'COM_ID'
-      Origin = 'COM_ID'
+    object QRYEnterpriseID_COM: TStringField
+      FieldName = 'ID_COM'
+      Origin = 'ID_COM'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
+      Size = 4
     end
     object QRYEnterpriseACTIVE: TBooleanField
       FieldName = 'ACTIVE'
@@ -113,17 +114,9 @@ object ServiceConnection: TServiceConnection
       Origin = 'SITE'
       Size = 255
     end
-    object QRYEnterpriseDATE_UPDATE: TSQLTimeStampField
-      FieldName = 'DATE_UPDATE'
-      Origin = 'DATE_UPDATE'
-    end
-    object QRYEnterpriseUSER_UPDATE: TIntegerField
-      FieldName = 'USER_UPDATE'
-      Origin = 'USER_UPDATE'
-    end
-    object QRYEnterpriseUSER_ID: TIntegerField
-      FieldName = 'USER_ID'
-      Origin = 'USER_ID'
+    object QRYEnterpriseID_USER: TIntegerField
+      FieldName = 'ID_USER'
+      Origin = 'ID_USER'
     end
   end
   object QRYUsers: TFDQuery
@@ -165,6 +158,11 @@ object ServiceConnection: TServiceConnection
     object QRYUsersSTATUS: TBooleanField
       FieldName = 'STATUS'
       Origin = 'STATUS'
+    end
+    object QRYUsersFUNCTION: TStringField
+      FieldName = 'FUNCTION'
+      Origin = '"FUNCTION"'
+      Size = 100
     end
   end
 end

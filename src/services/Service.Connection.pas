@@ -35,7 +35,14 @@ type
     WaitCursor: TFDGUIxWaitCursor;
     FBDriverLink: TFDPhysFBDriverLink;
     QRYEnterprise: TFDQuery;
-    QRYEnterpriseCOM_ID: TIntegerField;
+    QRYUsers: TFDQuery;
+    QRYUsersID: TIntegerField;
+    QRYUsersNAME: TStringField;
+    QRYUsersMASTER: TStringField;
+    QRYUsersPASSWORD: TBlobField;
+    QRYUsersSTATUS: TBooleanField;
+    QRYUsersFUNCTION: TStringField;
+    QRYEnterpriseID_COM: TStringField;
     QRYEnterpriseACTIVE: TBooleanField;
     QRYEnterpriseHEADQUARTERS: TBooleanField;
     QRYEnterpriseCOMPANY_NAME: TStringField;
@@ -50,15 +57,7 @@ type
     QRYEnterpriseZIP: TStringField;
     QRYEnterpriseADDRESS_NUMBER: TStringField;
     QRYEnterpriseSITE: TStringField;
-    QRYEnterpriseDATE_UPDATE: TSQLTimeStampField;
-    QRYEnterpriseUSER_UPDATE: TIntegerField;
-    QRYEnterpriseUSER_ID: TIntegerField;
-    QRYUsers: TFDQuery;
-    QRYUsersID: TIntegerField;
-    QRYUsersNAME: TStringField;
-    QRYUsersMASTER: TStringField;
-    QRYUsersPASSWORD: TBlobField;
-    QRYUsersSTATUS: TBooleanField;
+    QRYEnterpriseID_USER: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -95,7 +94,6 @@ begin
     FDConn.Connected := false;
 
     LPath := ExtractFileDir(ParamStr(0)) + '\login.ini';
-    //      FDPhysFBDriverLink.VendorHome := ExtractFileDir(ParamStr(0)) + '\dlls';
 
     LIniFile := TIniFile.Create(LPath);
 
@@ -112,8 +110,6 @@ begin
     FDConn.Params.Values['Server']          := LServidor;
     FDConn.Params.Values['Port']            := LPort.ToString;
 
-    //FDConn.Connected := true;
-
   finally
 
     FreeAndNil(LIniFile);
@@ -121,15 +117,15 @@ begin
   end;
 
   QRYEnterprise.Close;
-  QRYEnterprise.Params[0].AsInteger := 1;
+  QRYEnterprise.Params[0].AsString := '_001';
   QRYEnterprise.Open();
 
   QRYUsers.Close;
-  QRYUsers.Params[0].AsInteger := 001;
+  QRYUsers.Params[0].AsInteger := 1;
   QRYUsers.Open();
 
-  iCOD_COMPANY    := QRYEnterpriseCOM_ID.AsInteger;
-  SERVICE_COM_ID  := iCOD_COMPANY.ToString;
+  iCOD_COMPANY    := QRYEnterpriseID_COM.AsString;
+  SERVICE_COM_ID  := iCOD_COMPANY;
   sCOMPANY_NAME   := QRYEnterpriseCOMPANY_NAME.AsString;
   sUSER           := QRYUsersID.AsInteger;
   SERVICE_USER    := sUSER.ToString;
