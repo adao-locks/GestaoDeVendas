@@ -296,7 +296,7 @@ begin
     else if rbLE.Checked then
       ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'L';
     ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString := edtEIN.Text;
-    ServiceRegister.QRYEntity.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYEntity.FieldByName('COM_ID').AsInteger := ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYEntity.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYEntity.Post;
     ShowMessage('Registered successfully!');

@@ -2141,7 +2141,6 @@ object ViewPrincipal: TViewPrincipal
     Padding.Right = 10
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1100
     object pnlLogo: TPanel
       Left = 10
       Top = 0
@@ -2210,7 +2209,6 @@ object ViewPrincipal: TViewPrincipal
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 874
       object pnlLineUser: TPanel
         AlignWithMargins = True
         Left = 0
@@ -2546,7 +2544,6 @@ object ViewPrincipal: TViewPrincipal
     Color = clTeal
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 971
     object pnlBottom: TPanel
       Left = 0
       Top = 655
@@ -2556,7 +2553,6 @@ object ViewPrincipal: TViewPrincipal
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 971
       object pnlBusiness: TPanel
         Left = 836
         Top = 0
@@ -2565,7 +2561,6 @@ object ViewPrincipal: TViewPrincipal
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitLeft = 570
         object lblBusiness: TLabel
           AlignWithMargins = True
           Left = 228
@@ -2585,7 +2580,27 @@ object ViewPrincipal: TViewPrincipal
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitHeight = 25
+          ExplicitTop = 31
+          ExplicitHeight = 9
+        end
+        object lblCOMID: TLabel
+          AlignWithMargins = True
+          Left = 308
+          Top = 0
+          Width = 73
+          Height = 12
+          Margins.Left = 20
+          Margins.Top = 10
+          Margins.Right = 20
+          Margins.Bottom = 10
+          Alignment = taRightJustify
+          Caption = '<business_name>'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -9
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
         end
         object pnlBusinessLine: TPanel
           AlignWithMargins = True
@@ -2616,7 +2631,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 971
       object imgBackground: TImage
         Left = 0
         Top = 0

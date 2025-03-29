@@ -28,22 +28,21 @@ object ServiceConnection: TServiceConnection
   object QRYEnterprise: TFDQuery
     Connection = FDConn
     SQL.Strings = (
-      'SELECT * FROM COMPANY WHERE ID_COM = :CODIGO')
+      'SELECT * FROM COMPANY WHERE ID_COM = :ID_COM')
     Left = 208
     Top = 160
     ParamData = <
       item
-        Name = 'CODIGO'
+        Name = 'ID_COM'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
       end>
-    object QRYEnterpriseID_COM: TStringField
+    object QRYEnterpriseID_COM: TIntegerField
       FieldName = 'ID_COM'
       Origin = 'ID_COM'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-      Size = 4
     end
     object QRYEnterpriseACTIVE: TBooleanField
       FieldName = 'ACTIVE'
@@ -122,12 +121,12 @@ object ServiceConnection: TServiceConnection
   object QRYUsers: TFDQuery
     Connection = FDConn
     SQL.Strings = (
-      'SELECT * FROM USERS WHERE ID = :CODIGO')
+      'SELECT * FROM USERS WHERE ID = :ID')
     Left = 64
     Top = 136
     ParamData = <
       item
-        Name = 'CODIGO'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null

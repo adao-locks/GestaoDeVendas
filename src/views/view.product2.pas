@@ -209,7 +209,7 @@ begin
   if ServiceRegister.QRYProduct.State in dsEditModes then
   begin
 
-    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsInteger := ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYProduct.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYProduct.Post;
     ShowMessage('Registered successfully!');

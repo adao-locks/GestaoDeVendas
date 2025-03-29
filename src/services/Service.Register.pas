@@ -82,10 +82,8 @@ type
     QRYItemsSaleQUANTITY: TFMTBCDField;
     QRYItemsSaleUNIT_PRICE: TFMTBCDField;
     QRYItemsSaleDISCOUNT: TFMTBCDField;
-    QRYItemsSaleSUBTOTAL: TFMTBCDField;
     QRYItemsSaleDT_CREATED: TSQLTimeStampField;
     QRYSaleID_EMPLOYEE: TIntegerField;
-    QRYSaleCOM_ID: TIntegerField;
     QRYSaleUSER: TIntegerField;
     QRYProductPROD_ID: TIntegerField;
     QRYProductNAME: TStringField;
@@ -99,6 +97,7 @@ type
     QRYProductDATE_UPDATED: TSQLTimeStampField;
     QRYProductUSER: TStringField;
     QRYProductCOM_ID: TStringField;
+    QRYSaleID_COM: TStringField;
   private
     { Private declarations }
   public

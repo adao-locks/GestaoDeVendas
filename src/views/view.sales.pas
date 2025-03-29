@@ -30,7 +30,7 @@ uses
   Service.Connection,
   Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXCtrls;
 
 type
   TviewSales = class(TviewBaseLists)
@@ -75,16 +75,35 @@ type
     edtUnit: TDBEdit;
     Label18: TLabel;
     edtDiscItem: TDBEdit;
-    Label19: TLabel;
-    edtSubtotal: TDBEdit;
     Label20: TLabel;
     lblNameProd: TLabel;
     DT_CREATED_ITEM: TDateTimePicker;
     btnAddProd: TButton;
     btnRemove: TButton;
-    FDMemTable1: TFDMemTable;
     DBGrid1: TDBGrid;
-    btnConfirm: TButton;
+    btnConfirmItem: TButton;
+    lblCityAsk: TLabel;
+    lblDateBirthAsk: TLabel;
+    lblDateRegAsk: TLabel;
+    lblEmailAsk: TLabel;
+    lblFantasyAsk: TLabel;
+    lblNameAsk: TLabel;
+    lblPhoneAsk: TLabel;
+    lblStateAsk: TLabel;
+    lblZipAsk: TLabel;
+    dtRegIni: TDateTimePicker;
+    edtBrandAsk: TSearchBox;
+    edtCategoryAsk: TSearchBox;
+    dtRegEnd: TDateTimePicker;
+    edtNameAsk: TSearchBox;
+    edtSupplierAsk: TSearchBox;
+    edtUnAsk: TSearchBox;
+    edtUserRegAsk: TSearchBox;
+    edtUserUpAsk: TSearchBox;
+    btnConsult: TButton;
+    btnCancelItem: TButton;
+    lblConfirmItem: TLabel;
+    btnBackItens: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -97,7 +116,10 @@ type
     procedure edtClientChange(Sender: TObject);
     procedure edtEmployeeChange(Sender: TObject);
     procedure edtCodProdChange(Sender: TObject);
-    procedure btnConfirmClick(Sender: TObject);
+    procedure btnConfirmItemClick(Sender: TObject);
+    procedure btnRemoveClick(Sender: TObject);
+    procedure btnCancelItemClick(Sender: TObject);
+    procedure btnBackItensClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -115,13 +137,9 @@ implementation
 procedure TviewSales.btnAddProdClick(Sender: TObject);
 begin
   inherited;
-  if ServiceRegister.QRYItemsSale.State in dsEditModes then
+  if ServiceRegister.QRYSale.State in dsEditModes then
   begin
-    edtCodProd.Enabled := true;
-    edtUnit.Enabled := true;
-    edtQuant.Enabled := true;
-    edtDiscItem.Enabled := true;
-    edtSubtotal.Enabled := true;
+    CardPanelList.ActiveCard := cardItems;
     ServiceRegister.QRYItemsSale.Insert;
     ServiceRegister.QRYIDItemsSale.Close;
     ServiceRegister.QRYIDItemsSale.SQL.Text := 'SELECt MAX(ID_ITEM) MAXID FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
@@ -132,9 +150,22 @@ begin
     else
       edtIDItem.Field.Value := 1;
     edtSaleID.Field.Value := edtSale.Field.Value;
+    DT_CREATED.Date := Now;
+    edtCodProd.Enabled := True;
+    edtUnit.Enabled := True;
+    edtQuant.Enabled := True;
+    edtDiscItem.Enabled := True;
     DT_CREATED_ITEM.Date := Now;
-    btnConfirm.Enabled := true;
+    btnConfirmItem.Enabled := True;
+    btnCancelItem.Enabled := True;
+    btnRemove.Enabled := False;
   end;
+end;
+
+procedure TviewSales.btnBackItensClick(Sender: TObject);
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardRegister;
 end;
 
 procedure TviewSales.btnCancelClick(Sender: TObject);
@@ -147,16 +178,31 @@ begin
   end;
 end;
 
+procedure TviewSales.btnCancelItemClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYItemsSale.State in dsEditModes then
+  begin
+    ServiceRegister.QRYItemsSale.Cancel;
+    btnConfirmItem.Enabled := false;
+    btnCancelItem.Enabled := false;
+  end;
+end;
+
 procedure TviewSales.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
   viewSales.Close;
 end;
 
-procedure TviewSales.btnConfirmClick(Sender: TObject);
+procedure TviewSales.btnConfirmItemClick(Sender: TObject);
 begin
   inherited;
-  btnConfirm.Enabled := false;
+  ServiceRegister.QRYItemsSale.FieldByName('DT_CREATED').AsDateTime := DT_CREATED_ITEM.DateTime;
+  ServiceRegister.QRYItemsSale.Post;
+  lblConfirmItem.Caption := 'Item registered successfully';
+  btnConfirmItem.Enabled := false;
+  btnCancelItem.Enabled := false;
 end;
 
 procedure TviewSales.btnDeleteClick(Sender: TObject);
@@ -195,7 +241,7 @@ begin
   edtSale.Text := maxID.ToString;
   DT_SALE.Date := Now;
   DT_CREATED.Date := Now;
-  edtCom.Text := ServiceConnection.SERVICE_COM_ID;
+  edtCom.Field.Value := ServiceConnection.SERVICE_COM_ID;
   edtUser.Text := ServiceConnection.SERVICE_USER;
   edtDisc.Field.Value := 0;
   edtTot.Field.Value := 0;
@@ -207,7 +253,17 @@ procedure TviewSales.btnProductsClick(Sender: TObject);
 begin
   inherited;
   CardPanelList.ActiveCard := cardItems;
-  get_itens;
+  Get_Itens;
+end;
+
+procedure TviewSales.btnRemoveClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYItemsSale.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYItemsSale.Delete;
+    ShowMessage('Product deleted successfully');
+  end;
 end;
 
 procedure TviewSales.btnSaveClick(Sender: TObject);
@@ -289,15 +345,14 @@ begin
   inherited;
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
-  DT_CREATED.Enabled := false;
 end;
 
 procedure TviewSales.Get_Itens;
 begin
   ServiceRegister.QRYItemsSale.Close;
   ServiceRegister.QRYItemsSale.SQL.Clear;
-  ServiceRegister.QRYItemsSale.SQL.Add('SELECT * FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE');
-  ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+  ServiceRegister.QRYItemsSale.SQL.Add('SELECT SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE');
+  ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsString := edtSale.Text;
   ServiceRegister.QRYItemsSale.Open();
 end;
 

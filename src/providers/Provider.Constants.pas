@@ -4,7 +4,7 @@ interface
 
 var
 
-  iCOD_COMPANY  : string;
+  iCOD_COMPANY  : integer;
   sCOMPANY_NAME : string;
   sUSER         : integer;
 

@@ -233,15 +233,16 @@ object ServiceRegister: TServiceRegister
       Origin = 'DT_CREATED'
       Required = True
     end
-    object QRYSaleCOM_ID: TIntegerField
-      FieldName = 'COM_ID'
-      Origin = 'COM_ID'
-      Required = True
-    end
     object QRYSaleUSER: TIntegerField
       FieldName = 'USER'
       Origin = '"USER"'
       Required = True
+    end
+    object QRYSaleID_COM: TStringField
+      FieldName = 'ID_COM'
+      Origin = 'ID_COM'
+      Required = True
+      Size = 11
     end
   end
   object QRYProduct: TFDQuery
@@ -446,12 +447,6 @@ object ServiceRegister: TServiceRegister
     object QRYItemsSaleDISCOUNT: TFMTBCDField
       FieldName = 'DISCOUNT'
       Origin = 'DISCOUNT'
-      Precision = 18
-      Size = 2
-    end
-    object QRYItemsSaleSUBTOTAL: TFMTBCDField
-      FieldName = 'SUBTOTAL'
-      Origin = 'SUBTOTAL'
       Precision = 18
       Size = 2
     end

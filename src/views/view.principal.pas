@@ -58,6 +58,7 @@ type
     btnReports: TSpeedButton;
     imgUserHover: TImage;
     imgBackground: TImage;
+    lblCOMID: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure btnSalesClick(Sender: TObject);
     procedure btnReportsClick(Sender: TObject);
@@ -181,6 +182,7 @@ begin
   GET_LineMenu(btnReports);
 
   lblBusiness.Caption := sCOMPANY_NAME;
+  lblCOMID.Caption := ('ID: ' + ServiceConnection.SERVICE_COM_ID.ToString);
   lblUserName.Caption := ServiceConnection.QRYUsers.FieldByName('NAME').AsString;
 
 end;

@@ -42,7 +42,6 @@ type
     QRYUsersPASSWORD: TBlobField;
     QRYUsersSTATUS: TBooleanField;
     QRYUsersFUNCTION: TStringField;
-    QRYEnterpriseID_COM: TStringField;
     QRYEnterpriseACTIVE: TBooleanField;
     QRYEnterpriseHEADQUARTERS: TBooleanField;
     QRYEnterpriseCOMPANY_NAME: TStringField;
@@ -58,13 +57,14 @@ type
     QRYEnterpriseADDRESS_NUMBER: TStringField;
     QRYEnterpriseSITE: TStringField;
     QRYEnterpriseID_USER: TIntegerField;
+    QRYEnterpriseID_COM: TIntegerField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     var
-      SERVICE_COM_ID : STRING;
+      SERVICE_COM_ID : integer;
       SERVICE_USER : STRING;
   end;
 
@@ -117,14 +117,14 @@ begin
   end;
 
   QRYEnterprise.Close;
-  QRYEnterprise.Params[0].AsString := '_001';
+  QRYEnterprise.Params[0].AsInteger := 1;
   QRYEnterprise.Open();
 
   QRYUsers.Close;
   QRYUsers.Params[0].AsInteger := 1;
   QRYUsers.Open();
 
-  iCOD_COMPANY    := QRYEnterpriseID_COM.AsString;
+  iCOD_COMPANY    := QRYEnterpriseID_COM.AsInteger;
   SERVICE_COM_ID  := iCOD_COMPANY;
   sCOMPANY_NAME   := QRYEnterpriseCOMPANY_NAME.AsString;
   sUSER           := QRYUsersID.AsInteger;
