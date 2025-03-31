@@ -15,17 +15,12 @@ type
     edtBrand: TDBEdit;
     edtCategory: TDBEdit;
     edtDateReg: TDBEdit;
-    edtDateUp: TDBEdit;
     edtDescription: TDBEdit;
     edtIdProd: TDBEdit;
     edtName: TDBEdit;
     edtSupplier: TDBEdit;
     edtUn: TDBEdit;
-    edtUserReg: TDBEdit;
-    edtUserUp: TDBEdit;
     Label1: TLabel;
-    Label10: TLabel;
-    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -33,7 +28,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    Label9: TLabel;
     dtRegIni: TDateTimePicker;
     edtBrandAsk: TSearchBox;
     edtCategoryAsk: TSearchBox;
@@ -61,7 +55,6 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure cbActiveAskClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
   private
     { Private declarations }
@@ -99,20 +92,21 @@ end;
 procedure TviewProducts.btnConsultClick(Sender: TObject);
 var
 
-  dtRegisterIni : TDate;
-  dtRegisterEnd : TDate;
+  DateRegistered1 : TDate;
+  DateRegistered2 : TDate;
 
 begin
   inherited;
 
-  dtRegisterIni := dtRegIni.Date;
-  dtRegisterEnd := dtRegEnd.Date;
-  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYProduct.SQL.Text := 'SELECT * FROM PEOPLE WHERE 1=1';
+
+  DateRegistered1 := dtRegIni.Date;
+  DateRegistered2 := dtRegEnd.Date;
 
 
   ServiceRegister.QRYProduct.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYProduct.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', dtRegisterIni);
-  ServiceRegister.QRYProduct.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', dtRegisterEnd);
+  ServiceRegister.QRYProduct.ParamByName('DATEI').AsDate  := DateRegistered1;
+  ServiceRegister.QRYProduct.ParamByName('DATEF').AsDate  := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin
@@ -122,20 +116,20 @@ begin
 
   if edtCategoryAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND FANTASY LIKE :FANTASY');
-    ServiceRegister.QRYProduct.ParamByName('FANTASY').AsString := '%' + edtCategoryAsk.Text + '%';
+    ServiceRegister.QRYProduct.SQL.Add(' AND CATEGORY LIKE :CATEGORY');
+    ServiceRegister.QRYProduct.ParamByName('CATEGORY').AsString := '%' + edtCategoryAsk.Text + '%';
   end;
 
   if edtBrandAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND PHONE LIKE :PHONE');
-    ServiceRegister.QRYProduct.ParamByName('PHONE').AsString := '%' + edtBrandAsk.Text + '%';
+    ServiceRegister.QRYProduct.SQL.Add(' AND BRAND LIKE :BRAND');
+    ServiceRegister.QRYProduct.ParamByName('BRAND').AsString := '%' + edtBrandAsk.Text + '%';
   end;
 
   if edtSupplierAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND BRAND LIKE :BRAND');
-    ServiceRegister.QRYProduct.ParamByName('BRAND').AsString := '%' + edtBrandAsk.Text + '%';
+    ServiceRegister.QRYProduct.SQL.Add(' AND SUPPLIER LIKE :SUPPLIER');
+    ServiceRegister.QRYProduct.ParamByName('SUPPLIER').AsString := '%' + edtSupplierAsk.Text + '%';
   end;
 
   if edtUnAsk.Text <> '' then
@@ -180,7 +174,6 @@ begin
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
   ServiceRegister.QRYProduct.Edit;
-  edtDateUp.Text := DateToStr(Date);
 
 end;
 
@@ -217,7 +210,7 @@ begin
   if ServiceRegister.QRYProduct.State in dsEditModes then
   begin
 
-    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsString := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsInteger := ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYProduct.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYProduct.Post;
     ShowMessage('Registered successfully!');
@@ -227,18 +220,11 @@ begin
 
 end;
 
-procedure TviewProducts.cbActiveAskClick(Sender: TObject);
-begin
-  inherited;
-  checkTypeFilters;
-end;
-
 procedure TviewProducts.FormCreate(Sender: TObject);
 begin
   inherited;
 
   CardPanelList.ActiveCard := cardSearch;
-  cbActiveAsk.State := cbGrayed;
 
 end;
 

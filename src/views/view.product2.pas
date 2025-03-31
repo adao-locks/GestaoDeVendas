@@ -92,20 +92,21 @@ end;
 procedure TviewProducts.btnConsultClick(Sender: TObject);
 var
 
-  dtRegisterIni : TDate;
-  dtRegisterEnd : TDate;
+  DateRegistered1 : TDate;
+  DateRegistered2 : TDate;
 
 begin
   inherited;
 
-  dtRegisterIni := dtRegIni.Date;
-  dtRegisterEnd := dtRegEnd.Date;
-  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYProduct.SQL.Text := 'SELECT * FROM PRODUCT WHERE 1=1';
+
+  DateRegistered1 := dtRegIni.Date;
+  DateRegistered2 := dtRegEnd.Date;
 
 
   ServiceRegister.QRYProduct.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYProduct.ParamByName('DATEI').AsString := FormatDateTime('YYYY-MM-DD', dtRegisterIni);
-  ServiceRegister.QRYProduct.ParamByName('DATEF').AsString := FormatDateTime('YYYY-MM-DD', dtRegisterEnd);
+  ServiceRegister.QRYProduct.ParamByName('DATEI').AsDate  := DateRegistered1;
+  ServiceRegister.QRYProduct.ParamByName('DATEF').AsDate  := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin

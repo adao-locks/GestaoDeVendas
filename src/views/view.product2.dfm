@@ -5,7 +5,8 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 54
+      Width = 868
+      Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 54
@@ -41,7 +42,6 @@ inherited viewProducts: TviewProducts
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardRegister
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -50,7 +50,7 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
-            Width = 128
+            Width = 1005
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -382,6 +382,7 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
+              Width = 64
               Visible = True
             end
             item
@@ -392,6 +393,7 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end>
         end
@@ -467,7 +469,7 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 138
+            Width = 1005
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138
