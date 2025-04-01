@@ -877,15 +877,15 @@ inherited viewSales: TviewSales
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 7
-          Top = 220
+          Top = 224
           Width = 1091
-          Height = 478
+          Height = 474
           Cursor = crCross
           Margins.Left = 7
           Margins.Top = 7
           Margins.Right = 7
           Margins.Bottom = 7
-          Align = alBottom
+          Align = alClient
           DataSource = DSDataItems
           GradientEndColor = clBtnFace
           GradientStartColor = clBtnFace
@@ -960,10 +960,11 @@ inherited viewSales: TviewSales
             end>
         end
         object pnlContent: TPanel
-          Left = 7
-          Top = 5
-          Width = 1091
-          Height = 214
+          Left = 0
+          Top = 0
+          Width = 1105
+          Height = 217
+          Align = alTop
           BevelOuter = bvNone
           TabOrder = 1
           object Label13: TLabel
