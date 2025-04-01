@@ -15,6 +15,10 @@ inherited viewCompany: TviewCompany
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
+      inherited btnCloseWindow: TButton
+        OnClick = btnCloseWindowClick
+        ExplicitLeft = 8
+      end
     end
   end
   inherited pnlFooter: TPanel

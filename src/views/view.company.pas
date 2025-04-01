@@ -44,6 +44,7 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,6 +80,12 @@ begin
     edtState.Enabled := False;
     edtCity.Enabled := False;
   end;
+end;
+
+procedure TviewCompany.btnCloseWindowClick(Sender: TObject);
+begin
+  inherited;
+  viewCompany.Close;
 end;
 
 procedure TviewCompany.btnEditClick(Sender: TObject);

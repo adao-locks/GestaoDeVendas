@@ -24,6 +24,5 @@ begin
   Application.CreateForm(TViewPrincipal, ViewPrincipal);
   Application.CreateForm(TServiceConnection, ServiceConnection);
   Application.CreateForm(TServiceRegister, ServiceRegister);
-  Application.CreateForm(TviewCompany, viewCompany);
   Application.Run;
 end.

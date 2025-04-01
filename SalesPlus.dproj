@@ -4,7 +4,7 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">v1.0</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <ProjectName Condition="'$(ProjectName)'==''">SalesPlus</ProjectName>
         <TargetedPlatforms>3</TargetedPlatforms>
@@ -54,6 +54,12 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
         <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='v1.0' or '$(Cfg_4)'!=''">
+        <Cfg_4>true</Cfg_4>
         <CfgParent>Cfg_2</CfgParent>
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
@@ -181,6 +187,10 @@
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="v1.0">
+            <Key>Cfg_4</Key>
+            <CfgParent>Cfg_2</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
     <ProjectExtensions>
