@@ -63,9 +63,9 @@ type
     { Private declarations }
   public
     { Public declarations }
-    var
-      SERVICE_COM_ID : integer;
-      SERVICE_USER : STRING;
+  var
+    SERVICE_COM_ID: integer;
+    SERVICE_USER: STRING;
   end;
 
 var
@@ -74,18 +74,18 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
 {$R *.dfm}
 
 procedure TServiceConnection.DataModuleCreate(Sender: TObject);
 var
-  LIniFile    :TIniFile;
-  LDatabase   :string;
-  LUser_Name  :string;
-  LPassword   :string;
-  LServidor   :string;
-  LPort       :integer;
-  LPath       :string;
+  LIniFile: TIniFile;
+  LDatabase: string;
+  LDrive: string;
+  LUser_Name: string;
+  LPassword: string;
+  LServidor: string;
+  LPort: integer;
+  LPath: string;
 
 begin
 
@@ -97,18 +97,19 @@ begin
 
     LIniFile := TIniFile.Create(LPath);
 
-    LDatabase   := LIniFile.ReadString('connection','Path', LDatabase);
-    LServidor   := LIniFile.ReadString('connection','Host', LServidor);
-    LPort       := LIniFile.ReadInteger('connection','Port', LPort);
+    LDatabase := LIniFile.ReadString('connection', 'Path', LDatabase);
+    LDrive := LIniFile.ReadString('connection', 'Driver', LDrive);
+    LServidor := LIniFile.ReadString('connection', 'Host', LServidor);
+    LPort := LIniFile.ReadInteger('connection', 'Port', LPort);
 
-    LUser_Name  := 'SYSDBA';
-    LPassword   := 'masterkey';
+    LUser_Name := 'SYSDBA';
+    LPassword := 'masterkey';
 
-    FDConn.Params.Values['Database']        := LDatabase;
-    FDConn.Params.Values['User_Name']       := LUser_Name;
-    FDConn.Params.Values['Password']        := LPassword;
-    FDConn.Params.Values['Server']          := LServidor;
-    FDConn.Params.Values['Port']            := LPort.ToString;
+    FDConn.Params.Values['Database'] := LDatabase;
+    FDConn.Params.Values['User_Name'] := LUser_Name;
+    FDConn.Params.Values['Password'] := LPassword;
+    FDConn.Params.Values['Server'] := LServidor;
+    FDConn.Params.Values['Port'] := LPort.ToString;
 
   finally
 
@@ -124,11 +125,11 @@ begin
   QRYUsers.Params[0].AsInteger := 1;
   QRYUsers.Open();
 
-  iCOD_COMPANY    := QRYEnterpriseID_COM.AsInteger;
-  SERVICE_COM_ID  := iCOD_COMPANY;
-  sCOMPANY_NAME   := QRYEnterpriseCOMPANY_NAME.AsString;
-  sUSER           := QRYUsersID.AsInteger;
-  SERVICE_USER    := sUSER.ToString;
+  iCOD_COMPANY := QRYEnterpriseID_COM.AsInteger;
+  SERVICE_COM_ID := iCOD_COMPANY;
+  sCOMPANY_NAME := QRYEnterpriseCOMPANY_NAME.AsString;
+  sUSER := QRYUsersID.AsInteger;
+  SERVICE_USER := sUSER.ToString;
 
 end;
 

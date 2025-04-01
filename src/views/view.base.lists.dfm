@@ -2,7 +2,6 @@ inherited viewBaseLists: TviewBaseLists
   Left = 50
   Caption = 'ViewBaseLists'
   Position = poDesigned
-  WindowState = wsNormal
   StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
   TextHeight = 15
@@ -19,8 +18,8 @@ inherited viewBaseLists: TviewBaseLists
     object lblTitleWindow: TLabel
       Left = 78
       Top = 0
-      Width = 868
-      Height = 35
+      Width = 110
+      Height = 21
       Align = alClient
       Alignment = taCenter
       Caption = '<title_window>'
@@ -31,8 +30,6 @@ inherited viewBaseLists: TviewBaseLists
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
-      ExplicitWidth = 110
-      ExplicitHeight = 21
     end
     object pnlLogo: TPanel
       Left = 0
@@ -254,7 +251,7 @@ inherited viewBaseLists: TviewBaseLists
             AlignWithMargins = True
             Left = 15
             Top = 5
-            Width = 1005
+            Width = 57
             Height = 25
             Margins.Left = 15
             Margins.Top = 5
@@ -268,7 +265,6 @@ inherited viewBaseLists: TviewBaseLists
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            ExplicitWidth = 57
           end
         end
         object DBGData: TDBGrid
@@ -316,7 +312,7 @@ inherited viewBaseLists: TviewBaseLists
             AlignWithMargins = True
             Left = 15
             Top = 5
-            Width = 1005
+            Width = 67
             Height = 25
             Margins.Left = 15
             Margins.Top = 5
@@ -330,7 +326,6 @@ inherited viewBaseLists: TviewBaseLists
             Font.Name = 'Segoe UI'
             Font.Style = []
             ParentFont = False
-            ExplicitWidth = 67
           end
         end
       end

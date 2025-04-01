@@ -3,7 +3,8 @@ unit view.product2;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.Mask,
@@ -68,7 +69,6 @@ var
 implementation
 
 {$R *.dfm}
-
 { TviewBaseLists1 }
 
 procedure TviewProducts.btnCancelClick(Sender: TObject);
@@ -92,8 +92,8 @@ end;
 procedure TviewProducts.btnConsultClick(Sender: TObject);
 var
 
-  DateRegistered1 : TDate;
-  DateRegistered2 : TDate;
+  DateRegistered1: TDate;
+  DateRegistered2: TDate;
 
 begin
   inherited;
@@ -103,51 +103,58 @@ begin
   DateRegistered1 := dtRegIni.Date;
   DateRegistered2 := dtRegEnd.Date;
 
-
-  ServiceRegister.QRYProduct.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYProduct.ParamByName('DATEI').AsDate  := DateRegistered1;
-  ServiceRegister.QRYProduct.ParamByName('DATEF').AsDate  := DateRegistered2;
+  ServiceRegister.QRYProduct.SQL.Add
+    (' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYProduct.ParamByName('DATEI').AsDate := DateRegistered1;
+  ServiceRegister.QRYProduct.ParamByName('DATEF').AsDate := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND NAME LIKE :NAME');
-    ServiceRegister.QRYProduct.ParamByName('NAME').AsString := '%' + edtNameAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('NAME').AsString :=
+      '%' + edtNameAsk.Text + '%';
   end;
 
   if edtCategoryAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND CATEGORY LIKE :CATEGORY');
-    ServiceRegister.QRYProduct.ParamByName('CATEGORY').AsString := '%' + edtCategoryAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('CATEGORY').AsString :=
+      '%' + edtCategoryAsk.Text + '%';
   end;
 
   if edtBrandAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND BRAND LIKE :BRAND');
-    ServiceRegister.QRYProduct.ParamByName('BRAND').AsString := '%' + edtBrandAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('BRAND').AsString :=
+      '%' + edtBrandAsk.Text + '%';
   end;
 
   if edtSupplierAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND SUPPLIER LIKE :SUPPLIER');
-    ServiceRegister.QRYProduct.ParamByName('SUPPLIER').AsString := '%' + edtSupplierAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('SUPPLIER').AsString :=
+      '%' + edtSupplierAsk.Text + '%';
   end;
 
   if edtUnAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND UN LIKE :UN');
-    ServiceRegister.QRYProduct.ParamByName('UN').AsString := '%' + edtUnAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('UN').AsString :=
+      '%' + edtUnAsk.Text + '%';
   end;
 
   if edtUserRegAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND USER_ID LIKE :USER');
-    ServiceRegister.QRYProduct.ParamByName('USER').AsString := '%' + edtUserRegAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('USER').AsString :=
+      '%' + edtUserRegAsk.Text + '%';
   end;
 
   if edtUserUpAsk.Text <> '' then
   begin
     ServiceRegister.QRYProduct.SQL.Add(' AND USER_UPDATE LIKE :USER');
-    ServiceRegister.QRYProduct.ParamByName('USER').AsString := '%' + edtUserUpAsk.Text + '%';
+    ServiceRegister.QRYProduct.ParamByName('USER').AsString :=
+      '%' + edtUserUpAsk.Text + '%';
   end;
 
   ServiceRegister.QRYProduct.Open;
@@ -177,12 +184,10 @@ begin
 
 end;
 
-
-
 procedure TviewProducts.btnNewClick(Sender: TObject);
 VAR
 
-  maxID : integer;
+  maxID: integer;
 
 begin
   inherited;
@@ -191,7 +196,8 @@ begin
   edtName.SetFocus;
   ServiceRegister.QRYProduct.Insert;
   ServiceRegister.QRYIDProd.Close;
-  ServiceRegister.QRYIDProd.SQL.Text := 'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
+  ServiceRegister.QRYIDProd.SQL.Text :=
+    'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
   ServiceRegister.QRYIDProd.Open;
   if not ServiceRegister.QRYIDProd.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDProd.FieldByName('MaxID').AsInteger + 1
@@ -210,8 +216,10 @@ begin
   if ServiceRegister.QRYProduct.State in dsEditModes then
   begin
 
-    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsInteger := ServiceConnection.SERVICE_COM_ID;
-    ServiceRegister.QRYProduct.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYProduct.FieldByName('COM_ID').AsInteger :=
+      ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYProduct.FieldByName('USER').AsString :=
+      ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYProduct.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;

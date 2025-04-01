@@ -32,7 +32,7 @@ type
     pnlLogo: TPanel;
     pnlCloseWindow: TPanel;
     btnCloseWindow: TButton;
-    imgList: TImageList;
+    ImgList: TImageList;
     lblTitleWindow: TLabel;
     btnNew: TSpeedButton;
     btnEdit: TSpeedButton;
@@ -82,7 +82,7 @@ begin
     Self.Close;
 
   if Key = VK_RETURN then
-    perform(WM_NEXTDLGCTL,0,0);
+    perform(WM_NEXTDLGCTL, 0, 0);
 
 end;
 

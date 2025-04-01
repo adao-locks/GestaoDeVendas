@@ -14,7 +14,8 @@ uses
   FireDAC.Phys.Intf,
   FireDAC.DApt.Intf,
   FireDAC.Stan.Async,
-  FireDAC.DApt, Data.DB,
+  FireDAC.DApt,
+  Data.DB,
   FireDAC.Comp.DataSet,
   FireDAC.Comp.Client;
 
@@ -116,7 +117,6 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
 {$R *.dfm}
 
 end.

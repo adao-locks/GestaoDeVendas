@@ -6,6 +6,7 @@ inherited viewCompany: TviewCompany
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 67
       Caption = 'Company'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 67
@@ -168,6 +169,7 @@ inherited viewCompany: TviewCompany
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 152
             Caption = 'Register Company'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 152

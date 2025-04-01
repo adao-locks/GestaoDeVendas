@@ -22,9 +22,6 @@ Coordinates=384,696,68,58
 [lblPhoneAsk]
 Coordinates=354,832,86,58
 
-[edtQuant]
-Coordinates=372,900,67,36
-
 [edtBrandAsk]
 Coordinates=871,764,88,58
 
@@ -34,9 +31,6 @@ Visible=True
 
 [Label7]
 Coordinates=1353,764,53,58
-
-[edtCodProd]
-Coordinates=205,900,83,36
 
 [edtTot]
 Coordinates=144,900,51,36
@@ -62,9 +56,6 @@ Coordinates=1515,764,97,58
 [ServiceRegister.QRYIDItemsSale]
 Coordinates=10,606,207,80
 
-[btnAddProd]
-Coordinates=10,696,82,58
-
 [edtStat]
 Coordinates=79,900,55,36
 
@@ -89,9 +80,6 @@ Coordinates=80,764,85,58
 [edtEmployee]
 Coordinates=1732,832,89,36
 
-[DT_CREATED_ITEM]
-Coordinates=207,832,137,58
-
 [edtUnAsk]
 Coordinates=583,832,70,58
 
@@ -109,9 +97,6 @@ Coordinates=1785,696,104,58
 
 [DBGData]
 Coordinates=1653,832,69,36
-
-[Label14]
-Coordinates=1430,696,60,58
 
 [DSDataItems]
 Coordinates=413,507,91,36
@@ -152,9 +137,6 @@ Coordinates=1500,696,79,58
 [edtUser]
 Coordinates=1583,832,60,36
 
-[Label18]
-Coordinates=1899,696,60,58
-
 [edtSale]
 Coordinates=1515,832,58,36
 
@@ -170,12 +152,6 @@ Coordinates=1111,696,88,58
 [ServiceConnection.QRYEnterprise]
 Coordinates=189,10,213,410
 
-[Label15]
-Coordinates=1290,696,60,58
-
-[edtUnit]
-Coordinates=1450,832,55,36
-
 [lblCityAsk]
 Coordinates=1209,696,71,58
 
@@ -185,17 +161,11 @@ Coordinates=1374,832,66,36
 [pnlRegister]
 Coordinates=1036,606,80,58
 
-[btnRemove]
-Coordinates=958,696,80,58
-
 [ServiceRegister.QRYEntity]
 Coordinates=10,10,169,586
 
 [lblFantasyAsk]
 Coordinates=766,764,95,58
-
-[Label16]
-Coordinates=617,764,60,58
 
 [ServiceRegister.QRYIDProd]
 Coordinates=1352,10,177,80
@@ -230,9 +200,6 @@ Coordinates=583,696,60,58
 [ServiceRegister.QRYItemsSale]
 Coordinates=776,10,194,234
 
-[btnConfirmItem]
-Coordinates=1780,606,103,58
-
 [edtPayMeth]
 Coordinates=1201,832,83,36
 
@@ -245,32 +212,17 @@ Coordinates=175,764,53,58
 [Label9]
 Coordinates=1659,696,53,58
 
-[Label17]
-Coordinates=450,832,60,58
-
 [btnNew]
 Coordinates=1067,832,58,36
 
 [DT_SALE]
 Coordinates=238,764,71,58
 
-[edtIDItem]
-Coordinates=987,832,70,36
-
-[edtSaleID]
-Coordinates=906,832,71,36
-
 [edtDisc]
 Coordinates=838,832,58,36
 
-[Label13]
-Coordinates=1360,696,60,58
-
 [btnCancel]
 Coordinates=756,832,72,36
-
-[edtDiscItem]
-Coordinates=663,832,83,36
 
 [cardItems]
 Coordinates=1412,606,71,58
@@ -287,17 +239,11 @@ Coordinates=1539,10,211,80
 [ServiceRegister.QRYIDPeople]
 Coordinates=227,606,190,80
 
-[lblNameProd]
-Coordinates=1416,764,89,58
-
 [dtRegIni]
 Coordinates=311,696,63,58
 
 [edtCategoryAsk]
 Coordinates=195,696,106,58
-
-[Label20]
-Coordinates=10,764,60,58
 
 [DT_CREATED]
 Coordinates=1820,764,99,58
@@ -305,15 +251,6 @@ Coordinates=1820,764,99,58
 [ServiceConnection.QRYUsers]
 Coordinates=980,10,187,190
 
-[lblConfirmItem]
-Coordinates=759,606,98,58
-
-[btnCancelItem]
-Coordinates=652,606,97,58
-
-[btnBackItens]
-Coordinates=937,606,89,58
-
 []
-Coordinates=1371,1167,91,36
+Coordinates=937,606,89,58
 

@@ -5,8 +5,7 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
+      Width = 54
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 54
@@ -50,7 +49,7 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
-            Width = 1005
+            Width = 128
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -382,7 +381,6 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
-              Width = 64
               Visible = True
             end
             item
@@ -393,7 +391,6 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
-              Width = 64
               Visible = True
             end>
         end
@@ -469,7 +466,7 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
+            Width = 138
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138

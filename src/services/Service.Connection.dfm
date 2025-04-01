@@ -11,26 +11,25 @@ object ServiceConnection: TServiceConnection
       'Server=localhost'
       'CharacterSet=win1252'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
-    Left = 48
-    Top = 48
+    Left = 40
+    Top = 24
   end
   object WaitCursor: TFDGUIxWaitCursor
     Provider = 'Forms'
-    Left = 160
-    Top = 64
+    Left = 168
+    Top = 24
   end
   object FBDriverLink: TFDPhysFBDriverLink
-    Left = 272
-    Top = 56
+    Left = 304
+    Top = 24
   end
   object QRYEnterprise: TFDQuery
     Connection = FDConn
     SQL.Strings = (
       'SELECT * FROM COMPANY WHERE ID_COM = :ID_COM')
-    Left = 208
-    Top = 160
+    Left = 168
+    Top = 104
     ParamData = <
       item
         Name = 'ID_COM'
@@ -122,8 +121,8 @@ object ServiceConnection: TServiceConnection
     Connection = FDConn
     SQL.Strings = (
       'SELECT * FROM USERS WHERE ID = :ID')
-    Left = 64
-    Top = 136
+    Left = 40
+    Top = 104
     ParamData = <
       item
         Name = 'ID'

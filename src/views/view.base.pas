@@ -45,7 +45,7 @@ begin
     Self.Close;
 
   if Key = VK_RETURN then
-    perform(WM_NEXTDLGCTL,0,0);
+    perform(WM_NEXTDLGCTL, 0, 0);
 
 end;
 

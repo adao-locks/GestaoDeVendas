@@ -120,7 +120,6 @@ var
 implementation
 
 {$R *.dfm}
-
 { TviewEntity }
 
 procedure TviewEntity.btnCancelClick(Sender: TObject);
@@ -139,8 +138,8 @@ end;
 procedure TviewEntity.btnConsultClick(Sender: TObject);
 var
 
-  DateRegistered1 : TDate;
-  DateRegistered2 : TDate;
+  DateRegistered1: TDate;
+  DateRegistered2: TDate;
 
 begin
   inherited;
@@ -150,57 +149,65 @@ begin
   DateRegistered1 := edtDateReg.Date;
   DateRegistered2 := edtDateReg2.Date;
 
-
-  ServiceRegister.QRYEntity.SQL.Add(' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate  := DateRegistered1;
-  ServiceRegister.QRYEntity.ParamByName('DATEF').AsDate  := DateRegistered2;
+  ServiceRegister.QRYEntity.SQL.Add
+    (' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate := DateRegistered1;
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsDate := DateRegistered2;
 
   if edtNameAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND NAME LIKE :NAME');
-    ServiceRegister.QRYEntity.ParamByName('NAME').AsString := '%' + edtNameAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('NAME').AsString :=
+      '%' + edtNameAsk.Text + '%';
   end;
 
   if edtFantasyAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND FANTASY LIKE :FANTASY');
-    ServiceRegister.QRYEntity.ParamByName('FANTASY').AsString := '%' + edtFantasyAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('FANTASY').AsString :=
+      '%' + edtFantasyAsk.Text + '%';
   end;
 
   if edtPhoneAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND PHONE LIKE :PHONE');
-    ServiceRegister.QRYEntity.ParamByName('PHONE').AsString := '%' + edtPhoneAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('PHONE').AsString :=
+      '%' + edtPhoneAsk.Text + '%';
   end;
 
   if edtEmailAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND EMAIL LIKE :EMAIL');
-    ServiceRegister.QRYEntity.ParamByName('EMAIL').AsString := '%' + edtEmailAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('EMAIL').AsString :=
+      '%' + edtEmailAsk.Text + '%';
   end;
 
   if edtZIPAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND ZIPCODE LIKE :ZIPCODE');
-    ServiceRegister.QRYEntity.ParamByName('ZIPCODE').AsString := '%' + edtZIPAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('ZIPCODE').AsString :=
+      '%' + edtZIPAsk.Text + '%';
   end;
 
   if edtStateAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND STATE LIKE :STATE');
-    ServiceRegister.QRYEntity.ParamByName('STATE').AsString := '%' + edtStateAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('STATE').AsString :=
+      '%' + edtStateAsk.Text + '%';
   end;
 
   if edtCityAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND CITY LIKE :CITY');
-    ServiceRegister.QRYEntity.ParamByName('-').AsString := '%' + edtCityAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('-').AsString :=
+      '%' + edtCityAsk.Text + '%';
   end;
 
   if edtStreetAsk.Text <> '' then
   begin
     ServiceRegister.QRYEntity.SQL.Add(' AND STREET LIKE :STREET');
-    ServiceRegister.QRYEntity.ParamByName('STREET').AsString := '%' + edtStreetAsk.Text + '%';
+    ServiceRegister.QRYEntity.ParamByName('STREET').AsString :=
+      '%' + edtStreetAsk.Text + '%';
   end;
 
   ServiceRegister.QRYEntity.Open;
@@ -222,13 +229,13 @@ end;
 
 procedure TviewEntity.btnEditClick(Sender: TObject);
 var
-  tipo : string;
+  tipo: string;
 begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtName.SetFocus;
   if not ServiceRegister.QRYEntity.Active then
-  ServiceRegister.QRYEntity.Open;
+    ServiceRegister.QRYEntity.Open;
   ServiceRegister.QRYEntity.Edit;
   ServiceRegister.QRYEntity.Refresh;
   tipo := ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString;
@@ -239,8 +246,8 @@ begin
   else if tipo = 'L' then
     rbLE.Checked := True;
   edtEIN.EditMask := '';
-  rbPP.Enabled := FALSE;
-  rbLE.Enabled := FALSE;
+  rbPP.Enabled := False;
+  rbLE.Enabled := False;
   edtEIN.Enabled := False;
   edtEIN.Text := ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString;
   edtUpDate.Text := DateToStr(Date);
@@ -258,7 +265,8 @@ begin
   edtName.SetFocus;
   ServiceRegister.QRYEntity.Insert;
   ServiceRegister.QRYIDPeople.Close;
-  ServiceRegister.QRYIDPeople.SQL.Text := 'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
+  ServiceRegister.QRYIDPeople.SQL.Text :=
+    'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
   ServiceRegister.QRYIDPeople.Open;
   if not ServiceRegister.QRYIDPeople.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDPeople.FieldByName('MaxID').AsInteger + 1
@@ -266,11 +274,11 @@ begin
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
-  rbPP.Checked := true;
-  edtClient.Checked := false;
-  edtTransport.Checked := false;
-  edtSupplier.Checked := false;
-  edtEmployee.Checked := false;
+  rbPP.Checked := True;
+  edtClient.Checked := False;
+  edtTransport.Checked := False;
+  edtSupplier.Checked := False;
+  edtEmployee.Checked := False;
   edtClient.State := cbUnchecked;
   edtTransport.State := cbUnchecked;
   edtEmployee.State := cbUnchecked;
@@ -284,15 +292,18 @@ begin
   if ServiceRegister.QRYEntity.State in dsEditModes then
   begin
 
-    ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime := dtBirthday.Date;
+    ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime :=
+      dtBirthday.Date;
     ServiceRegister.QRYEntity.FieldByName('PHONE').Text := edtPhone.Text;
     if rbPP.Checked then
       ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'P'
     else if rbLE.Checked then
       ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'L';
     ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString := edtEIN.Text;
-    ServiceRegister.QRYEntity.FieldByName('COM_ID').AsInteger := ServiceConnection.SERVICE_COM_ID;
-    ServiceRegister.QRYEntity.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYEntity.FieldByName('COM_ID').AsInteger :=
+      ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYEntity.FieldByName('USER').AsString :=
+      ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYEntity.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
@@ -316,14 +327,14 @@ procedure TviewEntity.rbLEClick(Sender: TObject);
 begin
   inherited;
   edtEIN.EditMask := '99.999.999/9999-99;1;_';
-  edtEin.Text := '';
+  edtEIN.Text := '';
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
 begin
   inherited;
   edtEIN.EditMask := '999.999.999-99;1;_';
-  edtEin.Text := '';
+  edtEIN.Text := '';
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -343,7 +354,8 @@ begin
 
   ServiceRegister.QRYEntity.Close;
   ServiceRegister.QRYEntity.SQL.Clear;
-  ServiceRegister.QRYEntity.SQL.Add('SELECT * FROM PEOPLE WHERE 1=1 ORDER BY 1');
+  ServiceRegister.QRYEntity.SQL.Add
+    ('SELECT * FROM PEOPLE WHERE 1=1 ORDER BY 1');
   ServiceRegister.QRYEntity.Open();
 
 end;
@@ -355,10 +367,12 @@ begin
   begin
     ShowMessage('Please, select a type of person!');
     edtEIN.EditMask := '999.999.999-99;1;_';
-  end else if rbPP.Checked = True then
+  end
+  else if rbPP.Checked = True then
   begin
     edtEIN.EditMask := '999.999.999-99;1;_';
-  end else if rbLE.Checked = True then
+  end
+  else if rbLE.Checked = True then
   begin
     edtEIN.EditMask := '99.999.999/9999-99;1;_';
   end;

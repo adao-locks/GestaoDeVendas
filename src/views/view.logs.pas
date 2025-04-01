@@ -3,7 +3,8 @@ unit view.logs;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.WinXCtrls;
@@ -40,7 +41,7 @@ end;
 procedure TviewLogs.btnConsultClick(Sender: TObject);
 begin
   inherited;
-  GET_LOGS;
+  Get_Logs;
 end;
 
 procedure TviewLogs.Get_Logs;
@@ -56,7 +57,7 @@ end;
 procedure TviewLogs.SpeedButton1Click(Sender: TObject);
 begin
   inherited;
-  GET_LOGS;
+  Get_Logs;
 end;
 
 end.

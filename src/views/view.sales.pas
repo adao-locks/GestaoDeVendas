@@ -64,25 +64,7 @@ type
     btnProducts: TButton;
     cardItems: TCard;
     DSDataItems: TDataSource;
-    Label13: TLabel;
-    edtIDItem: TDBEdit;
-    Label14: TLabel;
-    edtSaleID: TDBEdit;
-    Label15: TLabel;
-    edtCodProd: TDBEdit;
-    Label16: TLabel;
-    edtQuant: TDBEdit;
-    Label17: TLabel;
-    edtUnit: TDBEdit;
-    Label18: TLabel;
-    edtDiscItem: TDBEdit;
-    Label20: TLabel;
-    lblNameProd: TLabel;
-    DT_CREATED_ITEM: TDateTimePicker;
-    btnAddProd: TButton;
-    btnRemove: TButton;
     DBGrid1: TDBGrid;
-    btnConfirmItem: TButton;
     lblCityAsk: TLabel;
     lblDateBirthAsk: TLabel;
     lblDateRegAsk: TLabel;
@@ -102,8 +84,27 @@ type
     edtUserRegAsk: TSearchBox;
     edtUserUpAsk: TSearchBox;
     btnConsult: TButton;
-    btnCancelItem: TButton;
+    pnlContent: TPanel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    Label18: TLabel;
+    Label20: TLabel;
+    lblNameProd: TLabel;
     lblConfirmItem: TLabel;
+    edtIDItem: TDBEdit;
+    edtSaleID: TDBEdit;
+    edtCodProd: TDBEdit;
+    edtQuant: TDBEdit;
+    edtUnit: TDBEdit;
+    edtDiscItem: TDBEdit;
+    DT_CREATED_ITEM: TDateTimePicker;
+    btnAddProd: TButton;
+    btnRemove: TButton;
+    btnConfirmItem: TButton;
+    btnCancelItem: TButton;
     btnBackItens: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
@@ -143,11 +144,14 @@ begin
     CardPanelList.ActiveCard := cardItems;
     ServiceRegister.QRYItemsSale.Insert;
     ServiceRegister.QRYIDItemsSale.Close;
-    ServiceRegister.QRYIDItemsSale.SQL.Text := 'SELECt MAX(ID_ITEM) MAXID FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
-    ServiceRegister.QRYIDItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+    ServiceRegister.QRYIDItemsSale.SQL.Text :=
+      'SELECt MAX(ID_ITEM) MAXID FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
+    ServiceRegister.QRYIDItemsSale.ParamByName('ID_SALE').AsInteger :=
+      edtSale.Field.Value;
     ServiceRegister.QRYIDItemsSale.Open;
     if not ServiceRegister.QRYIDItemsSale.FieldByName('MAXID').IsNull then
-      edtIDItem.Field.Value := ServiceRegister.QRYIDItemsSale.FieldByName('MAXID').AsInteger + 1
+      edtIDItem.Field.Value := ServiceRegister.QRYIDItemsSale.FieldByName
+        ('MAXID').AsInteger + 1
     else
       edtIDItem.Field.Value := 1;
     edtSaleID.Field.Value := edtSale.Field.Value;
@@ -185,8 +189,8 @@ begin
   if ServiceRegister.QRYItemsSale.State in dsEditModes then
   begin
     ServiceRegister.QRYItemsSale.Cancel;
-    btnConfirmItem.Enabled := false;
-    btnCancelItem.Enabled := false;
+    btnConfirmItem.Enabled := False;
+    btnCancelItem.Enabled := False;
   end;
 end;
 
@@ -199,11 +203,12 @@ end;
 procedure TviewSales.btnConfirmItemClick(Sender: TObject);
 begin
   inherited;
-  ServiceRegister.QRYItemsSale.FieldByName('DT_CREATED').AsDateTime := DT_CREATED_ITEM.DateTime;
+  ServiceRegister.QRYItemsSale.FieldByName('DT_CREATED').AsDateTime :=
+    DT_CREATED_ITEM.DateTime;
   ServiceRegister.QRYItemsSale.Post;
   lblConfirmItem.Caption := 'Item registered successfully';
-  btnConfirmItem.Enabled := false;
-  btnCancelItem.Enabled := false;
+  btnConfirmItem.Enabled := False;
+  btnCancelItem.Enabled := False;
 end;
 
 procedure TviewSales.btnDeleteClick(Sender: TObject);
@@ -226,14 +231,15 @@ end;
 
 procedure TviewSales.btnNewClick(Sender: TObject);
 var
-  maxID : Integer;
+  maxID: Integer;
 begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   edtClient.SetFocus;
   ServiceRegister.QRYSale.Insert;
   ServiceRegister.QRYIDSale.Close;
-  ServiceRegister.QRYIDSale.SQL.Text := 'SELECT MAX(ID_SALE) AS MaxID FROM SALE WHERE 1=1';
+  ServiceRegister.QRYIDSale.SQL.Text :=
+    'SELECT MAX(ID_SALE) AS MaxID FROM SALE WHERE 1=1';
   ServiceRegister.QRYIDSale.Open;
   if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
@@ -272,8 +278,10 @@ begin
   inherited;
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
-    ServiceRegister.QRYSale.FieldByName('DT_SALE').AsDateTime := DT_SALE.DateTime;
-    ServiceRegister.QRYSale.FieldByName('DT_CREATED').AsDateTime := DT_CREATED.DateTime;
+    ServiceRegister.QRYSale.FieldByName('DT_SALE').AsDateTime :=
+      DT_SALE.DateTime;
+    ServiceRegister.QRYSale.FieldByName('DT_CREATED').AsDateTime :=
+      DT_CREATED.DateTime;
     ServiceRegister.QRYSale.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
@@ -290,12 +298,15 @@ begin
   end;
 
   ServiceRegister.QRYNameProduct.Close;
-  ServiceRegister.QRYNameProduct.SQL.Text := 'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
-  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger := StrToIntDef(edtCodProd.Text, 0);
+  ServiceRegister.QRYNameProduct.SQL.Text :=
+    'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
+  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger :=
+    StrToIntDef(edtCodProd.Text, 0);
   ServiceRegister.QRYNameProduct.Open;
 
   if not ServiceRegister.QRYNameProduct.IsEmpty then
-    lblNameProd.Caption := ServiceRegister.QRYNameProduct.FieldByName('NAME').AsString
+    lblNameProd.Caption := ServiceRegister.QRYNameProduct.FieldByName
+      ('NAME').AsString
   else
     lblNameProd.Caption := 'PRODUCT NOT FOUND!';
 end;
@@ -310,12 +321,15 @@ begin
   end;
 
   ServiceRegister.QRYNamePeople.Close;
-  ServiceRegister.QRYNamePeople.SQL.Text := 'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND CLIENT = TRUE';
-  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtClient.Text, 0);
+  ServiceRegister.QRYNamePeople.SQL.Text :=
+    'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND CLIENT = TRUE';
+  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger :=
+    StrToIntDef(edtClient.Text, 0);
   ServiceRegister.QRYNamePeople.Open;
 
   if not ServiceRegister.QRYNamePeople.IsEmpty then
-    lblClient.Caption := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
+    lblClient.Caption := ServiceRegister.QRYNamePeople.FieldByName
+      ('NAME').AsString
   else
     lblClient.Caption := 'CLIENT NOT FOUND!';
 end;
@@ -331,12 +345,15 @@ begin
 
   ServiceRegister.QRYNamePeople.Close;
   ServiceRegister.QRYNamePeople.SQL.Clear;
-  ServiceRegister.QRYNamePeople.SQL.Add('SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND EMPLOYEE = TRUE')  ;
-  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToIntDef(edtEmployee.Text, 0);
+  ServiceRegister.QRYNamePeople.SQL.Add
+    ('SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND EMPLOYEE = TRUE');
+  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger :=
+    StrToIntDef(edtEmployee.Text, 0);
   ServiceRegister.QRYNamePeople.Open;
 
   if not ServiceRegister.QRYNamePeople.IsEmpty then
-    lblEmployee.Caption := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString
+    lblEmployee.Caption := ServiceRegister.QRYNamePeople.FieldByName
+      ('NAME').AsString
   else
     lblEmployee.Caption := 'EMPLOYEE NOT FOUND!';
 end;
@@ -352,7 +369,8 @@ procedure TviewSales.Get_Itens;
 begin
   ServiceRegister.QRYItemsSale.Close;
   ServiceRegister.QRYItemsSale.SQL.Clear;
-  ServiceRegister.QRYItemsSale.SQL.Add('SELECT SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE');
+  ServiceRegister.QRYItemsSale.SQL.Add
+    ('SELECT SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE');
   ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsString := edtSale.Text;
   ServiceRegister.QRYItemsSale.Open();
 end;
@@ -361,7 +379,8 @@ procedure TviewSales.Get_Sales;
 begin
   ServiceRegister.QRYSale.Close;
   ServiceRegister.QRYSale.SQL.Clear;
-  ServiceRegister.QRYSale.SQL.Add('SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1');
+  ServiceRegister.QRYSale.SQL.Add
+    ('SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1');
   ServiceRegister.QRYSale.Open();
 end;
 

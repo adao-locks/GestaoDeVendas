@@ -212,10 +212,10 @@ end;
 procedure TViewPrincipal.GET_LineMenu(Sender: TObject);
 begin
 
-  ShapeMenu.Left    := 0;
-  ShapeMenu.Top     := 0;
-  ShapeMenu.Height  := TSpeedButton(Sender).Height;
-  ShapeMenu.Top     := TSpeedButton(Sender).Top;
+  ShapeMenu.Left := 0;
+  ShapeMenu.Top := 0;
+  ShapeMenu.Height := TSpeedButton(Sender).Height;
+  ShapeMenu.Top := TSpeedButton(Sender).Top;
   pnlShapeMenu.Repaint;
 
 end;
@@ -234,7 +234,7 @@ end;
 
 procedure TViewPrincipal.lblTitleSystemMouseEnter(Sender: TObject);
 begin
-  lblTitleSystem.Font.Color := $3ce03c;
+  lblTitleSystem.Font.Color := $3CE03C;
 end;
 
 procedure TViewPrincipal.lblTitleSystemMouseLeave(Sender: TObject);
