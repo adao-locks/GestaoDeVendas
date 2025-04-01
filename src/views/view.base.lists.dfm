@@ -2,6 +2,7 @@ inherited viewBaseLists: TviewBaseLists
   Left = 50
   Caption = 'ViewBaseLists'
   Position = poDesigned
+  WindowState = wsNormal
   StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
   TextHeight = 15
@@ -227,7 +228,7 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 2
       Margins.Bottom = 0
       Align = alClient
-      ActiveCard = cardSearch
+      ActiveCard = cardRegister
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False

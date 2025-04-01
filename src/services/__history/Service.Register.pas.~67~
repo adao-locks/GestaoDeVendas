@@ -1,0 +1,116 @@
+unit Service.Register;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  Service.Connection,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TServiceRegister = class(TDataModule)
+    QRYEntity: TFDQuery;
+    QRYLogs: TFDQuery;
+    QRYSale: TFDQuery;
+    QRYProduct: TFDQuery;
+    QRYEntityPEOPLE_ID: TIntegerField;
+    QRYEntityNAME: TStringField;
+    QRYEntityEIN_CNPJ: TStringField;
+    QRYEntityPHONE: TStringField;
+    QRYEntityEMAIL: TStringField;
+    QRYEntityDATE_BIRTH: TDateField;
+    QRYEntityDATE_REGISTER: TDateField;
+    QRYEntityCLIENT: TBooleanField;
+    QRYEntityEMPLOYEE: TBooleanField;
+    QRYEntitySUPPLIER: TBooleanField;
+    QRYEntityTRANSPORT: TBooleanField;
+    QRYEntitySTREET: TStringField;
+    QRYEntityNUMBER_ADDRESS: TStringField;
+    QRYEntityCOMPLEMENT: TStringField;
+    QRYEntityNEIGHBORHOOD: TStringField;
+    QRYEntityCITY: TStringField;
+    QRYEntitySTATE: TStringField;
+    QRYEntityZIP_CODE: TStringField;
+    QRYEntityFANTASY: TStringField;
+    QRYEntityOBS: TStringField;
+    QRYEntityDATE_UPDATED: TSQLTimeStampField;
+    QRYIDPeople: TFDQuery;
+    QRYIDPeopleMAXID: TIntegerField;
+    QRYIDProd: TFDQuery;
+    QRYIDProdMAXID: TIntegerField;
+    QRYIDSale: TFDQuery;
+    QRYNamePeople: TFDQuery;
+    QRYNamePeopleNAME: TStringField;
+    QRYLogsLANCTO: TIntegerField;
+    QRYLogsUSER: TStringField;
+    QRYLogsDATE: TSQLTimeStampField;
+    QRYLogsDESCRIPTION: TStringField;
+    QRYLogsPAGE: TStringField;
+    QRYLogsCOMPANY: TIntegerField;
+    QRYEntityCOM_ID: TStringField;
+    QRYEntityUSER: TStringField;
+    QRYNameProduct: TFDQuery;
+    QRYNameProductNAME: TStringField;
+    QRYEntityTYPE_PERSON: TStringField;
+    QRYSaleID_SALE: TIntegerField;
+    QRYSaleID_CLIENT: TIntegerField;
+    QRYSaleDT_SALE: TSQLTimeStampField;
+    QRYSalePAYMENT_METHOD: TStringField;
+    QRYSaleDISCOUNT: TFMTBCDField;
+    QRYSaleTOTAL_AMOUNT: TFMTBCDField;
+    QRYSaleSTATUS: TStringField;
+    QRYSaleOBSERVATION: TStringField;
+    QRYSaleDT_CREATED: TSQLTimeStampField;
+    QRYIDSaleMAXID: TIntegerField;
+    QRYItemsSale: TFDQuery;
+    QRYIDItemsSale: TFDQuery;
+    QRYIDItemsSaleMAXID: TIntegerField;
+    QRYItemsSaleID_ITEM: TIntegerField;
+    QRYItemsSaleID_SALE: TIntegerField;
+    QRYItemsSaleID_PRODUCT: TStringField;
+    QRYItemsSaleQUANTITY: TFMTBCDField;
+    QRYItemsSaleUNIT_PRICE: TFMTBCDField;
+    QRYItemsSaleDISCOUNT: TFMTBCDField;
+    QRYItemsSaleDT_CREATED: TSQLTimeStampField;
+    QRYSaleID_EMPLOYEE: TIntegerField;
+    QRYSaleUSER: TIntegerField;
+    QRYProductPROD_ID: TIntegerField;
+    QRYProductNAME: TStringField;
+    QRYProductDESCRIPTION: TStringField;
+    QRYProductCATEGORY: TStringField;
+    QRYProductSUPPLIER: TStringField;
+    QRYProductACTIVE: TBooleanField;
+    QRYProductDATE_REGISTER: TSQLTimeStampField;
+    QRYProductBRAND: TStringField;
+    QRYProductUN: TStringField;
+    QRYProductDATE_UPDATED: TSQLTimeStampField;
+    QRYProductUSER: TStringField;
+    QRYProductCOM_ID: TStringField;
+    QRYSaleID_COM: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ServiceRegister: TServiceRegister;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

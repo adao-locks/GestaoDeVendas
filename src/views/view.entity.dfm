@@ -5,10 +5,9 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 50
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 50
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -49,7 +48,6 @@ inherited viewEntity: TviewEntity
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 169
           inherited lblSearch: TLabel
-            Width = 109
             Caption = 'Search Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 109
@@ -485,6 +483,7 @@ inherited viewEntity: TviewEntity
         end
       end
       inherited cardRegister: TCard
+        Caption = '(99) 99999-9999;1;_'
         StyleElements = [seFont, seClient, seBorder]
         object lblPeopleID: TLabel [0]
           Left = 9
@@ -510,8 +509,8 @@ inherited viewEntity: TviewEntity
           Caption = 'Birthday'
         end
         object lblRegDate: TLabel [3]
-          Left = 595
-          Top = 74
+          Left = 369
+          Top = 120
           Width = 69
           Height = 15
           Caption = 'Register Date'
@@ -548,16 +547,16 @@ inherited viewEntity: TviewEntity
           FocusControl = edtFantasy
         end
         object Label1: TLabel [8]
-          Left = 595
-          Top = 118
+          Left = 571
+          Top = 74
           Width = 22
           Height = 15
           Caption = 'OBS'
           FocusControl = DBEdit1
         end
         object Label2: TLabel [9]
-          Left = 697
-          Top = 74
+          Left = 471
+          Top = 120
           Width = 61
           Height = 15
           Caption = 'Last update'
@@ -565,8 +564,8 @@ inherited viewEntity: TviewEntity
         end
         object lblTypePeople: TLabel [10]
           AlignWithMargins = True
-          Left = 608
-          Top = 260
+          Left = 579
+          Top = 124
           Width = 29
           Height = 17
           Margins.Left = 5
@@ -664,7 +663,6 @@ inherited viewEntity: TviewEntity
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 119
             Caption = 'Register Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 119
@@ -694,8 +692,8 @@ inherited viewEntity: TviewEntity
           TabOrder = 1
         end
         object edtRegDate: TDBEdit
-          Left = 595
-          Top = 90
+          Left = 369
+          Top = 136
           Width = 96
           Height = 23
           DataField = 'DATE_REGISTER'
@@ -727,8 +725,8 @@ inherited viewEntity: TviewEntity
           TabOrder = 4
         end
         object DBEdit1: TDBEdit
-          Left = 595
-          Top = 134
+          Left = 571
+          Top = 90
           Width = 296
           Height = 23
           Cursor = crHandPoint
@@ -738,9 +736,9 @@ inherited viewEntity: TviewEntity
           TabOrder = 11
         end
         object edtUpDate: TDBEdit
-          Left = 697
-          Top = 90
-          Width = 96
+          Left = 471
+          Top = 136
+          Width = 94
           Height = 23
           DataField = 'DATE_UPDATED'
           DataSource = DSData
@@ -763,12 +761,13 @@ inherited viewEntity: TviewEntity
         object edtEIN: TMaskEdit
           Left = 123
           Top = 136
-          Width = 144
+          Width = 143
           Height = 23
+          EditMask = '999.999.999-99;1;_'
+          MaxLength = 14
           TabOrder = 2
-          Text = ''
+          Text = '   .   .   -  '
           OnEnter = edtEINEnter
-          OnExit = edtEINExit
         end
         object rbPP: TRadioButton
           Left = 9
@@ -776,7 +775,9 @@ inherited viewEntity: TviewEntity
           Width = 104
           Height = 17
           Caption = 'Physical Person'
+          Checked = True
           TabOrder = 9
+          TabStop = True
           OnClick = rbPPClick
         end
         object rbLE: TRadioButton
@@ -791,16 +792,17 @@ inherited viewEntity: TviewEntity
         object edtPhone: TMaskEdit
           Left = 424
           Top = 225
-          Width = 141
+          Width = 139
           Height = 23
+          EditMask = '(99) 99999-9999;1;_'
+          MaxLength = 15
           TabOrder = 12
-          Text = ''
-          OnChange = edtPhoneChange
+          Text = '(  )      -    '
         end
         object edtClient: TDBCheckBox
           AlignWithMargins = True
-          Left = 613
-          Top = 285
+          Left = 584
+          Top = 149
           Width = 140
           Height = 17
           Cursor = crHandPoint
@@ -814,8 +816,8 @@ inherited viewEntity: TviewEntity
         end
         object edtEmployee: TDBCheckBox
           AlignWithMargins = True
-          Left = 613
-          Top = 310
+          Left = 584
+          Top = 174
           Width = 140
           Height = 17
           Cursor = crHandPoint
@@ -829,8 +831,8 @@ inherited viewEntity: TviewEntity
         end
         object edtSupplier: TDBCheckBox
           AlignWithMargins = True
-          Left = 613
-          Top = 335
+          Left = 584
+          Top = 199
           Width = 140
           Height = 17
           Cursor = crHandPoint
@@ -844,8 +846,8 @@ inherited viewEntity: TviewEntity
         end
         object edtTransport: TDBCheckBox
           AlignWithMargins = True
-          Left = 613
-          Top = 360
+          Left = 584
+          Top = 224
           Width = 140
           Height = 17
           Cursor = crHandPoint

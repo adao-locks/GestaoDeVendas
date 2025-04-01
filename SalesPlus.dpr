@@ -13,7 +13,8 @@ uses
   Vcl.Styles,
   view.sales in 'src\views\view.sales.pas' {viewSales},
   view.product2 in 'src\views\view.product2.pas' {viewProducts},
-  view.logs in 'src\views\view.logs.pas' {viewLogs};
+  view.logs in 'src\views\view.logs.pas' {viewLogs},
+  view.company in 'src\views\view.company.pas' {viewCompany};
 
 {$R *.res}
 
@@ -23,5 +24,6 @@ begin
   Application.CreateForm(TViewPrincipal, ViewPrincipal);
   Application.CreateForm(TServiceConnection, ServiceConnection);
   Application.CreateForm(TServiceRegister, ServiceRegister);
+  Application.CreateForm(TviewCompany, viewCompany);
   Application.Run;
 end.

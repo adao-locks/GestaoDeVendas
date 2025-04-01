@@ -1,0 +1,341 @@
+inherited viewCompany: TviewCompany
+  Caption = 'viewCompany'
+  StyleElements = [seFont, seClient, seBorder]
+  OnCreate = nil
+  TextHeight = 15
+  inherited pnlTop: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited lblTitleWindow: TLabel
+      Caption = 'Company'
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 67
+    end
+    inherited pnlLogo: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlCloseWindow: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited pnlFooter: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited btnNew: TSpeedButton
+      Visible = False
+    end
+    inherited btnEdit: TSpeedButton
+      OnClick = btnEditClick
+    end
+    inherited btnSave: TSpeedButton
+      OnClick = btnSaveClick
+    end
+    inherited btnCancel: TSpeedButton
+      OnClick = btnCancelClick
+    end
+    inherited btnDelete: TSpeedButton
+      Visible = False
+    end
+  end
+  inherited pnlBackground: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited CardPanelList: TCardPanel
+      StyleElements = [seFont, seClient, seBorder]
+      inherited cardSearch: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        inherited pnlSearch: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblSearch: TLabel
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+      end
+      inherited cardRegister: TCard
+        StyleElements = [seFont, seClient, seBorder]
+        object Label1: TLabel [0]
+          Left = 15
+          Top = 83
+          Width = 44
+          Height = 15
+          Caption = 'ID_COM'
+          FocusControl = edtIDCom
+        end
+        object Label2: TLabel [1]
+          Left = 15
+          Top = 128
+          Width = 97
+          Height = 15
+          Caption = 'COMPANY_NAME'
+          FocusControl = edtComName
+        end
+        object Label3: TLabel [2]
+          Left = 15
+          Top = 176
+          Width = 48
+          Height = 15
+          Caption = 'FANTASY'
+          FocusControl = edtFantasy
+        end
+        object Label4: TLabel [3]
+          Left = 15
+          Top = 224
+          Width = 50
+          Height = 15
+          Caption = 'EIN_CNPJ'
+          FocusControl = edtEIN
+        end
+        object Label5: TLabel [4]
+          Left = 215
+          Top = 224
+          Width = 40
+          Height = 15
+          Caption = 'PHONE'
+          FocusControl = edtPhone
+        end
+        object Label6: TLabel [5]
+          Left = 15
+          Top = 272
+          Width = 34
+          Height = 15
+          Caption = 'EMAIL'
+          FocusControl = edtEmail
+        end
+        object Label7: TLabel [6]
+          Left = 448
+          Top = 83
+          Width = 81
+          Height = 15
+          Caption = 'DATE_REGISTER'
+        end
+        object Label8: TLabel [7]
+          Left = 448
+          Top = 176
+          Width = 37
+          Height = 15
+          Caption = 'STREET'
+          FocusControl = DBEdit8
+        end
+        object Label9: TLabel [8]
+          Left = 484
+          Top = 224
+          Width = 24
+          Height = 15
+          Caption = 'CITY'
+          FocusControl = DBEdit9
+        end
+        object Label10: TLabel [9]
+          Left = 448
+          Top = 224
+          Width = 30
+          Height = 15
+          Caption = 'STATE'
+          FocusControl = DBEdit10
+        end
+        object Label11: TLabel [10]
+          Left = 448
+          Top = 128
+          Width = 17
+          Height = 15
+          Caption = 'ZIP'
+          FocusControl = edtZip
+        end
+        object Label13: TLabel [11]
+          Left = 15
+          Top = 317
+          Width = 21
+          Height = 15
+          Caption = 'SITE'
+          FocusControl = edtSite
+        end
+        object Label14: TLabel [12]
+          Left = 608
+          Top = 83
+          Width = 43
+          Height = 15
+          Caption = 'ID_USER'
+          FocusControl = edtUser
+        end
+        object Label12: TLabel [13]
+          Left = 608
+          Top = 128
+          Width = 102
+          Height = 15
+          Caption = 'ADDRESS_NUMBER'
+          FocusControl = edtNum
+        end
+        inherited pnlRegister: TPanel
+          StyleElements = [seFont, seClient, seBorder]
+          inherited lblRegister: TLabel
+            Caption = 'Register Company'
+            StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 152
+          end
+        end
+        object cbActive: TDBCheckBox
+          Left = 194
+          Top = 102
+          Width = 61
+          Height = 17
+          Caption = 'ACTIVE'
+          DataField = 'ACTIVE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 1
+        end
+        object edtIDCom: TDBEdit
+          Left = 15
+          Top = 99
+          Width = 154
+          Height = 23
+          DataField = 'ID_COM'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 2
+        end
+        object cbHeadquarters: TDBCheckBox
+          Left = 303
+          Top = 102
+          Width = 112
+          Height = 17
+          Caption = 'HEADQUARTERS'
+          DataField = 'HEADQUARTERS'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 3
+        end
+        object edtComName: TDBEdit
+          Left = 15
+          Top = 144
+          Width = 400
+          Height = 23
+          DataField = 'COMPANY_NAME'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 4
+        end
+        object edtFantasy: TDBEdit
+          Left = 15
+          Top = 192
+          Width = 400
+          Height = 23
+          DataField = 'FANTASY'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 5
+        end
+        object edtEIN: TDBEdit
+          Left = 15
+          Top = 240
+          Width = 194
+          Height = 23
+          DataField = 'EIN_CNPJ'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 6
+        end
+        object edtPhone: TDBEdit
+          Left = 215
+          Top = 240
+          Width = 200
+          Height = 23
+          DataField = 'PHONE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 7
+        end
+        object edtEmail: TDBEdit
+          Left = 15
+          Top = 288
+          Width = 400
+          Height = 23
+          DataField = 'EMAIL'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 8
+        end
+        object DBEdit8: TDBEdit
+          Left = 448
+          Top = 192
+          Width = 314
+          Height = 23
+          DataField = 'STREET'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 9
+        end
+        object DBEdit9: TDBEdit
+          Left = 484
+          Top = 240
+          Width = 278
+          Height = 23
+          DataField = 'CITY'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 10
+        end
+        object DBEdit10: TDBEdit
+          Left = 448
+          Top = 240
+          Width = 30
+          Height = 23
+          DataField = 'STATE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 11
+        end
+        object edtZip: TDBEdit
+          Left = 448
+          Top = 144
+          Width = 154
+          Height = 23
+          DataField = 'ZIP'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 12
+        end
+        object edtSite: TDBEdit
+          Left = 15
+          Top = 333
+          Width = 400
+          Height = 23
+          DataField = 'SITE'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 13
+        end
+        object edtUser: TDBEdit
+          Left = 608
+          Top = 99
+          Width = 154
+          Height = 23
+          DataField = 'ID_USER'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 14
+        end
+        object edtNum: TDBEdit
+          Left = 608
+          Top = 144
+          Width = 154
+          Height = 23
+          DataField = 'ADDRESS_NUMBER'
+          DataSource = DSData
+          Enabled = False
+          TabOrder = 15
+        end
+        object DTReg: TDateTimePicker
+          Left = 448
+          Top = 99
+          Width = 154
+          Height = 23
+          Date = 45747.000000000000000000
+          Format = 'dd/MM/yyy'
+          Time = 0.920974710650625600
+          Enabled = False
+          TabOrder = 16
+        end
+      end
+    end
+  end
+  inherited DSData: TDataSource
+    DataSet = ServiceConnection.QRYEnterprise
+  end
+end

@@ -174,7 +174,29 @@ object ServiceRegister: TServiceRegister
   object QRYSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM SALE WHERE 1=1')
+      'SELECT'
+      #9'SL.ID_SALE,'
+      #9'SL.ID_CLIENT,'
+      #9'PO1.NAME NAME_CLI,'
+      #9'SL.ID_EMPLOYEE,'
+      #9'PO2.NAME NAME_EMPL,'
+      #9'SL.PAYMENT_METHOD,'
+      #9'SL.TOTAL_AMOUNT,'
+      #9'SL.DISCOUNT,'
+      #9'SL.STATUS,'
+      #9'SL.DT_SALE,'
+      #9'SL.DT_CREATED,'
+      #9'SL.ID_COM,'
+      #9'SL."USER",'
+      #9'SL.OBSERVATION'
+      'FROM'
+      #9'SALE SL'
+      'INNER JOIN PEOPLE PO1 ON'
+      #9'SL.ID_CLIENT = PO1.PEOPLE_ID'
+      'INNER JOIN PEOPLE PO2 ON'
+      #9'SL.ID_EMPLOYEE = PO2.PEOPLE_ID'
+      'WHERE'
+      #9'1 = 1;')
     Left = 32
     Top = 80
     object QRYSaleID_SALE: TIntegerField
@@ -188,15 +210,26 @@ object ServiceRegister: TServiceRegister
       Origin = 'ID_CLIENT'
       Required = True
     end
+    object QRYSaleNAME_CLI: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME_CLI'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 150
+    end
     object QRYSaleID_EMPLOYEE: TIntegerField
       FieldName = 'ID_EMPLOYEE'
       Origin = 'ID_EMPLOYEE'
       Required = True
     end
-    object QRYSaleDT_SALE: TSQLTimeStampField
-      FieldName = 'DT_SALE'
-      Origin = 'DT_SALE'
-      Required = True
+    object QRYSaleNAME_EMPL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME_EMPL'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 150
     end
     object QRYSalePAYMENT_METHOD: TStringField
       FieldName = 'PAYMENT_METHOD'
@@ -204,16 +237,16 @@ object ServiceRegister: TServiceRegister
       Required = True
       Size = 30
     end
-    object QRYSaleDISCOUNT: TFMTBCDField
-      FieldName = 'DISCOUNT'
-      Origin = 'DISCOUNT'
+    object QRYSaleTOTAL_AMOUNT: TFMTBCDField
+      FieldName = 'TOTAL_AMOUNT'
+      Origin = 'TOTAL_AMOUNT'
       Required = True
       Precision = 18
       Size = 2
     end
-    object QRYSaleTOTAL_AMOUNT: TFMTBCDField
-      FieldName = 'TOTAL_AMOUNT'
-      Origin = 'TOTAL_AMOUNT'
+    object QRYSaleDISCOUNT: TFMTBCDField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
       Required = True
       Precision = 18
       Size = 2
@@ -223,19 +256,14 @@ object ServiceRegister: TServiceRegister
       Origin = 'STATUS'
       Required = True
     end
-    object QRYSaleOBSERVATION: TStringField
-      FieldName = 'OBSERVATION'
-      Origin = 'OBSERVATION'
-      Size = 500
+    object QRYSaleDT_SALE: TSQLTimeStampField
+      FieldName = 'DT_SALE'
+      Origin = 'DT_SALE'
+      Required = True
     end
     object QRYSaleDT_CREATED: TSQLTimeStampField
       FieldName = 'DT_CREATED'
       Origin = 'DT_CREATED'
-      Required = True
-    end
-    object QRYSaleUSER: TIntegerField
-      FieldName = 'USER'
-      Origin = '"USER"'
       Required = True
     end
     object QRYSaleID_COM: TStringField
@@ -243,6 +271,16 @@ object ServiceRegister: TServiceRegister
       Origin = 'ID_COM'
       Required = True
       Size = 11
+    end
+    object QRYSaleUSER: TIntegerField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Required = True
+    end
+    object QRYSaleOBSERVATION: TStringField
+      FieldName = 'OBSERVATION'
+      Origin = 'OBSERVATION'
+      Size = 500
     end
   end
   object QRYProduct: TFDQuery
@@ -410,7 +448,12 @@ object ServiceRegister: TServiceRegister
   object QRYItemsSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM SALE_ITEMS WHERE 1=1')
+      
+        'SELECT SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P' +
+        '.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * ' +
+        'SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE' +
+        '_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHER' +
+        'E 1=1')
     Left = 32
     Top = 136
     object QRYItemsSaleID_ITEM: TIntegerField
@@ -429,6 +472,30 @@ object ServiceRegister: TServiceRegister
       Origin = 'ID_PRODUCT'
       Required = True
       Size = 50
+    end
+    object QRYItemsSaleNAME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 150
+    end
+    object QRYItemsSaleBRAND: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'BRAND'
+      Origin = 'BRAND'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object QRYItemsSaleUN: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UN'
+      Origin = 'UN'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
     end
     object QRYItemsSaleQUANTITY: TFMTBCDField
       FieldName = 'QUANTITY'
@@ -449,6 +516,14 @@ object ServiceRegister: TServiceRegister
       Origin = 'DISCOUNT'
       Precision = 18
       Size = 2
+    end
+    object QRYItemsSaleSUBTOTAL: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
     end
     object QRYItemsSaleDT_CREATED: TSQLTimeStampField
       FieldName = 'DT_CREATED'

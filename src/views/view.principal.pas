@@ -22,7 +22,10 @@ uses
   Provider.Constants,
   view.entity,
   view.sales,
-  view.product2, view.logs, Service.Register, Service.Connection;
+  view.product2,
+  view.logs,
+  Service.Register,
+  Service.Connection, view.company;
 
 type
   TViewPrincipal = class(TForm)
@@ -55,10 +58,10 @@ type
     btnClients: TSpeedButton;
     btnProducts: TSpeedButton;
     btnLogs: TSpeedButton;
-    btnReports: TSpeedButton;
     imgUserHover: TImage;
     imgBackground: TImage;
     lblCOMID: TLabel;
+    btnCompany: TSpeedButton;
     procedure Button1Click(Sender: TObject);
     procedure btnSalesClick(Sender: TObject);
     procedure btnReportsClick(Sender: TObject);
@@ -71,6 +74,7 @@ type
     procedure lblTitleSystemMouseLeave(Sender: TObject);
     procedure imgUserDefaultMouseEnter(Sender: TObject);
     procedure imgUserHoverMouseLeave(Sender: TObject);
+    procedure btnCompanyClick(Sender: TObject);
   private
     procedure GET_LineMenu(Sender: TObject);
   public
@@ -101,6 +105,23 @@ begin
     FreeAndNil(viewEntity);
   end;
 
+end;
+
+procedure TViewPrincipal.btnCompanyClick(Sender: TObject);
+begin
+  GET_LineMenu(Sender);
+  viewCompany := TviewCompany.Create(Self);
+
+  viewCompany.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
+  viewCompany.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
+  viewCompany.Width := pnlContent.Width;
+  viewCompany.Height := pnlContent.Height;
+
+  try
+    viewCompany.ShowModal;
+  finally
+    FreeAndNil(viewCompany);
+  end;
 end;
 
 procedure TViewPrincipal.btnConfigClick(Sender: TObject);
@@ -179,9 +200,10 @@ end;
 procedure TViewPrincipal.FormShow(Sender: TObject);
 begin
 
-  GET_LineMenu(btnReports);
+  GET_LineMenu(btnCompany);
 
   lblBusiness.Caption := sCOMPANY_NAME;
+  lblUserFunction.Caption := ServiceConnection.QRYUsers.FieldByName('FUNCTION').AsString;
   lblCOMID.Caption := ('ID: ' + ServiceConnection.SERVICE_COM_ID.ToString);
   lblUserName.Caption := ServiceConnection.QRYUsers.FieldByName('NAME').AsString;
 

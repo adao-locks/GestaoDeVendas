@@ -104,13 +104,11 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
-    procedure edtPhoneChange(Sender: TObject);
     procedure LoadData;
     procedure DSDataDataChange(Sender: TObject; Field: TField);
     procedure edtEINEnter(Sender: TObject);
-    procedure rbPPClick(Sender: TObject);
     procedure rbLEClick(Sender: TObject);
-    procedure edtEINExit(Sender: TObject);
+    procedure rbPPClick(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -128,13 +126,8 @@ implementation
 procedure TviewEntity.btnCancelClick(Sender: TObject);
 begin
   inherited;
-
-  if ServiceRegister.QRYEntity.State in dsEditModes then
-  begin
-    ServiceRegister.QRYEntity.Cancel;
-    CardPanelList.ActiveCard := cardSearch;
-  end;
-
+  ServiceRegister.QRYEntity.Cancel;
+  CardPanelList.ActiveCard := cardSearch;
 end;
 
 procedure TviewEntity.btnCloseWindowClick(Sender: TObject);
@@ -241,14 +234,15 @@ begin
   tipo := ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString;
   rbPP.Checked := False;
   rbLE.Checked := False;
-  if Tipo = 'P' then
+  if tipo = 'P' then
     rbPP.Checked := True
-  else if Tipo = 'L' then
+  else if tipo = 'L' then
     rbLE.Checked := True;
   edtEIN.EditMask := '';
-  edtEIN.Enabled := FALSE;
   rbPP.Enabled := FALSE;
   rbLE.Enabled := FALSE;
+  edtEIN.Enabled := False;
+  edtEIN.Text := ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString;
   edtUpDate.Text := DateToStr(Date);
 end;
 
@@ -272,6 +266,7 @@ begin
     maxID := 1;
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
+  rbPP.Checked := true;
   edtClient.Checked := false;
   edtTransport.Checked := false;
   edtSupplier.Checked := false;
@@ -320,17 +315,15 @@ end;
 procedure TviewEntity.rbLEClick(Sender: TObject);
 begin
   inherited;
-  if edtEIN.Text = '' then
-    edtEIN.EditMask := '99.999.999/9999-99;1;_';
-  edtEIN.UnlockDrawing;
+  edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  edtEin.Text := '';
 end;
 
 procedure TviewEntity.rbPPClick(Sender: TObject);
 begin
   inherited;
-  if edtEIN.Text = '' then
-    edtEIN.EditMask := '999.999.999-99;1;_';
-  edtEIN.UnlockDrawing;
+  edtEIN.EditMask := '999.999.999-99;1;_';
+  edtEin.Text := '';
 end;
 
 procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
@@ -358,20 +351,18 @@ end;
 procedure TviewEntity.edtEINEnter(Sender: TObject);
 begin
   inherited;
-  if (rbPP.Checked = false) and (rbLE.Checked = false) then
-    ShowMessage('Please, select a type of person!')
-end;
+  if (rbPP.Checked = False) and (rbLE.Checked = False) then
+  begin
+    ShowMessage('Please, select a type of person!');
+    edtEIN.EditMask := '999.999.999-99;1;_';
+  end else if rbPP.Checked = True then
+  begin
+    edtEIN.EditMask := '999.999.999-99;1;_';
+  end else if rbLE.Checked = True then
+  begin
+    edtEIN.EditMask := '99.999.999/9999-99;1;_';
+  end;
 
-procedure TviewEntity.edtEINExit(Sender: TObject);
-begin
-  inherited;
-  edtEIN.LockDrawing;
-end;
-
-procedure TviewEntity.edtPhoneChange(Sender: TObject);
-begin
-  inherited;
-  edtPhone.EditMask := '(99) 99999-9999;1;_';
 end;
 
 end.

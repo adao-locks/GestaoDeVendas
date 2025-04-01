@@ -30,7 +30,8 @@ uses
   Service.Connection,
   Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXCtrls;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXCtrls, FireDAC.Stan.Async,
+  FireDAC.DApt;
 
 type
   TviewSales = class(TviewBaseLists)
@@ -360,7 +361,7 @@ procedure TviewSales.Get_Sales;
 begin
   ServiceRegister.QRYSale.Close;
   ServiceRegister.QRYSale.SQL.Clear;
-  ServiceRegister.QRYSale.SQL.Add('SELECT * FROM SALE WHERE 1=1');
+  ServiceRegister.QRYSale.SQL.Add('SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1');
   ServiceRegister.QRYSale.Open();
 end;
 
