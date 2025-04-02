@@ -1,0 +1,427 @@
+unit view.entity;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  Vcl.Controls,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  view.base.lists,
+  Data.DB,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.StdCtrls,
+  Vcl.WinXCtrls,
+  Vcl.WinXPanels,
+  Vcl.Buttons,
+  Vcl.ExtCtrls,
+  Service.Register,
+  Vcl.Mask,
+  Vcl.DBCtrls,
+  Data.SqlExpr,
+  Vcl.WinXPickers,
+  Vcl.CheckLst,
+  Vcl.ComCtrls, Service.Connection;
+
+type
+  TviewEntity = class(TviewBaseLists)
+    lblPeopleID: TLabel;
+    edtPeopleID: TDBEdit;
+    lblName: TLabel;
+    edtName: TDBEdit;
+    lblBirth: TLabel;
+    lblRegDate: TLabel;
+    edtRegDate: TDBEdit;
+    lblEmail: TLabel;
+    edtEmail: TDBEdit;
+    lblFantasy: TLabel;
+    edtFantasy: TDBEdit;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    edtUpDate: TDBEdit;
+    lblDateRegAsk: TLabel;
+    lblNameAsk: TLabel;
+    lblFantasyAsk: TLabel;
+    edtFantasyAsk: TSearchBox;
+    edtNameAsk: TSearchBox;
+    edtZIPAsk: TSearchBox;
+    lblZipAsk: TLabel;
+    edtStateAsk: TSearchBox;
+    lblStateAsk: TLabel;
+    edtCityAsk: TSearchBox;
+    lblCityAsk: TLabel;
+    lblDateBirthAsk: TLabel;
+    edtPhoneAsk: TSearchBox;
+    lblPhoneAsk: TLabel;
+    lblEmailAsk: TLabel;
+    edtEmailAsk: TSearchBox;
+    edtStreetAsk: TSearchBox;
+    lblStreetAsk: TLabel;
+    edtDateReg: TDateTimePicker;
+    edtDateReg2: TDateTimePicker;
+    dtBirthday: TDateTimePicker;
+    btnConsult: TButton;
+    rbPP: TRadioButton;
+    rbLE: TRadioButton;
+    lblTypePeople: TLabel;
+    cbClient: TDBCheckBox;
+    cbEmployee: TDBCheckBox;
+    cbSupplier: TDBCheckBox;
+    cbTransport: TDBCheckBox;
+    lblTitleAddress: TLabel;
+    lblZIPCode: TLabel;
+    lblComplement: TLabel;
+    lblState: TLabel;
+    lblCity: TLabel;
+    lblNeighborhood: TLabel;
+    lblStreet: TLabel;
+    lblNumberAddress: TLabel;
+    edtZIPCode: TDBEdit;
+    edtComplement: TDBEdit;
+    edtState: TDBEdit;
+    edtCity: TDBEdit;
+    edtNeighborhood: TDBEdit;
+    edtStreet: TDBEdit;
+    edtNumberAddress: TDBEdit;
+    DBEdit2: TDBEdit;
+    lblEin: TLabel;
+    lblPhone: TLabel;
+    DBEdit3: TDBEdit;
+    procedure FormShow(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure btnConsultClick(Sender: TObject);
+    procedure DBEdit2KeyPress(Sender: TObject; var Key: Char);
+    procedure DBEdit2Exit(Sender: TObject);
+    procedure DBEdit3Exit(Sender: TObject);
+  private
+  public
+    procedure GET_Entity();
+    procedure AjustarColunasDBGrid(DBGrid: TDBGrid);
+  end;
+
+
+
+var
+  viewEntity: TviewEntity;
+
+implementation
+
+{$R *.dfm}
+{ TviewEntity }
+
+procedure TviewEntity.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+  ServiceRegister.QRYEntity.Cancel;
+  CardPanelList.ActiveCard := cardSearch;
+end;
+
+procedure TviewEntity.btnCloseWindowClick(Sender: TObject);
+begin
+  inherited;
+  viewEntity.Close;
+end;
+
+procedure TviewEntity.btnConsultClick(Sender: TObject);
+var
+
+  DateRegistered1: TDate;
+  DateRegistered2: TDate;
+
+begin
+  inherited;
+
+  ServiceRegister.QRYEntity.SQL.Text := 'SELECT * FROM PEOPLE WHERE 1=1';
+
+  DateRegistered1 := edtDateReg.Date;
+  DateRegistered2 := edtDateReg2.Date;
+
+  ServiceRegister.QRYEntity.SQL.Add
+    (' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYEntity.ParamByName('DATEI').AsDate := DateRegistered1;
+  ServiceRegister.QRYEntity.ParamByName('DATEF').AsDate := DateRegistered2;
+
+  if edtNameAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND NAME LIKE :NAME');
+    ServiceRegister.QRYEntity.ParamByName('NAME').AsString :=
+      '%' + edtNameAsk.Text + '%';
+  end;
+
+  if edtFantasyAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND FANTASY LIKE :FANTASY');
+    ServiceRegister.QRYEntity.ParamByName('FANTASY').AsString :=
+      '%' + edtFantasyAsk.Text + '%';
+  end;
+
+  if edtPhoneAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND PHONE LIKE :PHONE');
+    ServiceRegister.QRYEntity.ParamByName('PHONE').AsString :=
+      '%' + edtPhoneAsk.Text + '%';
+  end;
+
+  if edtEmailAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND EMAIL LIKE :EMAIL');
+    ServiceRegister.QRYEntity.ParamByName('EMAIL').AsString :=
+      '%' + edtEmailAsk.Text + '%';
+  end;
+
+  if edtZIPAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND ZIPCODE LIKE :ZIPCODE');
+    ServiceRegister.QRYEntity.ParamByName('ZIPCODE').AsString :=
+      '%' + edtZIPAsk.Text + '%';
+  end;
+
+  if edtStateAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND STATE LIKE :STATE');
+    ServiceRegister.QRYEntity.ParamByName('STATE').AsString :=
+      '%' + edtStateAsk.Text + '%';
+  end;
+
+  if edtCityAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND CITY LIKE :CITY');
+    ServiceRegister.QRYEntity.ParamByName('-').AsString :=
+      '%' + edtCityAsk.Text + '%';
+  end;
+
+  if edtStreetAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYEntity.SQL.Add(' AND STREET LIKE :STREET');
+    ServiceRegister.QRYEntity.ParamByName('STREET').AsString :=
+      '%' + edtStreetAsk.Text + '%';
+  end;
+
+  ServiceRegister.QRYEntity.Open;
+
+end;
+
+procedure TviewEntity.btnDeleteClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYEntity.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYEntity.Delete;
+    ShowMessage('Record deleted successfully');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewEntity.btnEditClick(Sender: TObject);
+var
+  tipo: string;
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardRegister;
+  edtName.SetFocus;
+  if not ServiceRegister.QRYEntity.Active then
+    ServiceRegister.QRYEntity.Open;
+  ServiceRegister.QRYEntity.Edit;
+  ServiceRegister.QRYEntity.Refresh;
+  tipo := ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString;
+  rbPP.Checked := False;
+  rbLE.Checked := False;
+  if tipo = 'P' then
+    rbPP.Checked := True
+  else if tipo = 'L' then
+    rbLE.Checked := True;
+  rbPP.Enabled := False;
+  rbLE.Enabled := False;
+  edtUpDate.Text := DateToStr(Date);
+end;
+
+procedure TviewEntity.btnNewClick(Sender: TObject);
+var
+
+  maxID: Integer;
+
+begin
+
+  inherited;
+  CardPanelList.ActiveCard := cardRegister;
+  edtName.SetFocus;
+  ServiceRegister.QRYEntity.Insert;
+  ServiceRegister.QRYIDPeople.Close;
+  ServiceRegister.QRYIDPeople.SQL.Text :=
+    'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
+  ServiceRegister.QRYIDPeople.Open;
+  if not ServiceRegister.QRYIDPeople.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYIDPeople.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtPeopleID.Field.Value := maxID;
+  edtRegDate.Text := DateToStr(Date);
+  rbPP.Checked := True;
+  cbClient.State := cbUnchecked;
+  cbTransport.State := cbUnchecked;
+  cbSupplier.State := cbUnchecked;
+  cbEmployee.State := cbUnchecked;
+end;
+
+procedure TviewEntity.btnSaveClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYEntity.State in dsEditModes then
+  begin
+
+    ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime :=
+      dtBirthday.Date;
+
+    if ServiceRegister.QRYEntity.FieldByName('CLIENT').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('CLIENT').AsBoolean := False;
+    if ServiceRegister.QRYEntity.FieldByName('EMPLOYEE').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('EMPLOYEE').AsBoolean := False;
+    if ServiceRegister.QRYEntity.FieldByName('TRANSPORT').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('TRANSPORT').AsBoolean := False;
+    if ServiceRegister.QRYEntity.FieldByName('SUPPLIER').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('SUPPLIER').AsBoolean := False;
+
+    if rbPP.Checked then
+      ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'P'
+    else if rbLE.Checked then
+      ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'L';
+    ServiceRegister.QRYEntity.FieldByName('COM_ID').AsInteger :=
+      ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYEntity.FieldByName('USER').AsString :=
+      ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYEntity.Post;
+    ShowMessage('Registered successfully!');
+    CardPanelList.ActiveCard := cardSearch;
+
+  end;
+
+end;
+
+procedure TviewEntity.DBEdit2Exit(Sender: TObject);
+var
+  doc: string;
+begin
+  doc := DBEdit2.Text;
+  doc := StringReplace(doc, '.', '', [rfReplaceAll]);
+  doc := StringReplace(doc, '-', '', [rfReplaceAll]);
+  doc := StringReplace(doc, '/', '', [rfReplaceAll]);
+
+  case Length(doc) of
+    11:
+      DBEdit2.Text := Copy(doc, 1, 3) + '.' +
+                            Copy(doc, 4, 3) + '.' +
+                            Copy(doc, 7, 3) + '-' +
+                            Copy(doc, 10, 2);
+    14:
+      DBEdit2.Text := Copy(doc, 1, 2) + '.' +
+                            Copy(doc, 3, 3) + '.' +
+                            Copy(doc, 6, 3) + '/' +
+                            Copy(doc, 9, 4) + '-' +
+                            Copy(doc, 13, 2);
+  end;
+end;
+
+procedure TviewEntity.DBEdit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if not (Key in ['0'..'9', #8]) then
+    Key := #0;
+end;
+
+procedure TviewEntity.DBEdit3Exit(Sender: TObject);
+var
+  tel: string;
+begin
+  tel := DBEdit3.Text;
+  tel := StringReplace(tel, '(', '', [rfReplaceAll]);
+  tel := StringReplace(tel, ')', '', [rfReplaceAll]);
+  tel := StringReplace(tel, '-', '', [rfReplaceAll]);
+  tel := StringReplace(tel, ' ', '', [rfReplaceAll]);
+
+  case Length(tel) of
+    10:
+      DBEdit3.Text := '(' + Copy(tel, 1, 2) + ') ' +
+                           Copy(tel, 3, 4) + '-' +
+                           Copy(tel, 7, 4);
+    11:
+      DBEdit3.Text := '(' + Copy(tel, 1, 2) + ') ' +
+                           Copy(tel, 3, 5) + '-' +
+                           Copy(tel, 8, 4);
+  end;
+end;
+
+procedure TviewEntity.FormShow(Sender: TObject);
+begin
+  inherited;
+  GET_Entity;
+  AjustarColunasDBGrid(TDBGrid);
+end;
+
+procedure TviewEntity.GET_Entity();
+begin
+
+  ServiceRegister.QRYEntity.Close;
+  ServiceRegister.QRYEntity.SQL.Clear;
+  ServiceRegister.QRYEntity.SQL.Add
+    ('SELECT * FROM PEOPLE WHERE 1=1 ORDER BY 1');
+  ServiceRegister.QRYEntity.Open();
+
+end;
+
+
+procedure AjustarColunasDBGrid(DBGrid: TDBGrid);
+var
+  i, LarguraMaxima, LarguraTitulo, LarguraCelula, j: Integer;
+  Coluna: TColumn;
+begin
+  if not Assigned(DBGrid) or not Assigned(DBGrid.DataSource) or
+     not Assigned(DBGrid.DataSource.DataSet) then
+    Exit;
+
+  DBGrid.DataSource.DataSet.DisableControls;
+  try
+    for i := 0 to DBGrid.Columns.Count - 1 do
+    begin
+      Coluna := DBGrid.Columns[i];
+
+      // Calcula a largura do título
+      LarguraTitulo := DBGrid.Canvas.TextWidth(Coluna.Title.Caption) + 10;
+
+      // Calcula a largura máxima dos dados
+      LarguraMaxima := LarguraTitulo;
+      DBGrid.DataSource.DataSet.First;
+      for j := 0 to DBGrid.DataSource.DataSet.RecordCount - 1 do
+      begin
+        LarguraCelula := DBGrid.Canvas.TextWidth(DBGrid.DataSource.DataSet.FieldByName(Coluna.FieldName).AsString) + 10;
+        if LarguraCelula > LarguraMaxima then
+          LarguraMaxima := LarguraCelula;
+        DBGrid.DataSource.DataSet.Next;
+      end;
+
+      // Define a largura mínima da coluna
+      Coluna.Width := LarguraMaxima;
+    end;
+  finally
+    DBGrid.DataSource.DataSet.EnableControls;
+  end;
+end;
+
+
+
+end.

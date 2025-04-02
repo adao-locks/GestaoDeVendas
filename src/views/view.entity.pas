@@ -40,8 +40,6 @@ type
     lblBirth: TLabel;
     lblRegDate: TLabel;
     edtRegDate: TDBEdit;
-    lblEIN: TLabel;
-    lblPhone: TLabel;
     lblEmail: TLabel;
     edtEmail: TDBEdit;
     lblFantasy: TLabel;
@@ -72,15 +70,13 @@ type
     edtDateReg2: TDateTimePicker;
     dtBirthday: TDateTimePicker;
     btnConsult: TButton;
-    edtEIN: TMaskEdit;
     rbPP: TRadioButton;
     rbLE: TRadioButton;
-    edtPhone: TMaskEdit;
     lblTypePeople: TLabel;
-    edtClient: TDBCheckBox;
-    edtEmployee: TDBCheckBox;
-    edtSupplier: TDBCheckBox;
-    edtTransport: TDBCheckBox;
+    cbClient: TDBCheckBox;
+    cbEmployee: TDBCheckBox;
+    cbSupplier: TDBCheckBox;
+    cbTransport: TDBCheckBox;
     lblTitleAddress: TLabel;
     lblZIPCode: TLabel;
     lblComplement: TLabel;
@@ -96,6 +92,10 @@ type
     edtNeighborhood: TDBEdit;
     edtStreet: TDBEdit;
     edtNumberAddress: TDBEdit;
+    DBEdit2: TDBEdit;
+    lblEin: TLabel;
+    lblPhone: TLabel;
+    DBEdit3: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -104,11 +104,9 @@ type
     procedure btnCancelClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
-    procedure LoadData;
-    procedure DSDataDataChange(Sender: TObject; Field: TField);
-    procedure edtEINEnter(Sender: TObject);
-    procedure rbLEClick(Sender: TObject);
-    procedure rbPPClick(Sender: TObject);
+    procedure DBEdit2KeyPress(Sender: TObject; var Key: Char);
+    procedure DBEdit2Exit(Sender: TObject);
+    procedure DBEdit3Exit(Sender: TObject);
   private
   public
     procedure GET_Entity();
@@ -245,11 +243,8 @@ begin
     rbPP.Checked := True
   else if tipo = 'L' then
     rbLE.Checked := True;
-  edtEIN.EditMask := '';
   rbPP.Enabled := False;
   rbLE.Enabled := False;
-  edtEIN.Enabled := False;
-  edtEIN.Text := ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString;
   edtUpDate.Text := DateToStr(Date);
 end;
 
@@ -275,31 +270,34 @@ begin
   edtPeopleID.Field.Value := maxID;
   edtRegDate.Text := DateToStr(Date);
   rbPP.Checked := True;
-  edtClient.Checked := False;
-  edtTransport.Checked := False;
-  edtSupplier.Checked := False;
-  edtEmployee.Checked := False;
-  edtClient.State := cbUnchecked;
-  edtTransport.State := cbUnchecked;
-  edtEmployee.State := cbUnchecked;
-  edtSupplier.State := cbUnchecked;
+  cbClient.State := cbUnchecked;
+  cbTransport.State := cbUnchecked;
+  cbSupplier.State := cbUnchecked;
+  cbEmployee.State := cbUnchecked;
 end;
 
 procedure TviewEntity.btnSaveClick(Sender: TObject);
 begin
-
   inherited;
   if ServiceRegister.QRYEntity.State in dsEditModes then
   begin
 
     ServiceRegister.QRYEntity.FieldByName('DATE_BIRTH').AsDateTime :=
       dtBirthday.Date;
-    ServiceRegister.QRYEntity.FieldByName('PHONE').Text := edtPhone.Text;
+
+    if ServiceRegister.QRYEntity.FieldByName('CLIENT').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('CLIENT').AsBoolean := False;
+    if ServiceRegister.QRYEntity.FieldByName('EMPLOYEE').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('EMPLOYEE').AsBoolean := False;
+    if ServiceRegister.QRYEntity.FieldByName('TRANSPORT').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('TRANSPORT').AsBoolean := False;
+    if ServiceRegister.QRYEntity.FieldByName('SUPPLIER').IsNull then
+      ServiceRegister.QRYEntity.FieldByName('SUPPLIER').AsBoolean := False;
+
     if rbPP.Checked then
       ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'P'
     else if rbLE.Checked then
       ServiceRegister.QRYEntity.FieldByName('TYPE_PERSON').AsString := 'L';
-    ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString := edtEIN.Text;
     ServiceRegister.QRYEntity.FieldByName('COM_ID').AsInteger :=
       ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYEntity.FieldByName('USER').AsString :=
@@ -312,35 +310,57 @@ begin
 
 end;
 
-procedure TviewEntity.LoadData;
+procedure TviewEntity.DBEdit2Exit(Sender: TObject);
+var
+  doc: string;
 begin
-  edtPhone.Clear;
-  edtEIN.Clear;
-  if not ServiceRegister.QRYEntity.IsEmpty then
-  begin
-    edtPhone.Text := ServiceRegister.QRYEntity.FieldByName('PHONE').AsString;
-    edtEIN.Text := ServiceRegister.QRYEntity.FieldByName('EIN_CNPJ').AsString;
+  doc := DBEdit2.Text;
+  doc := StringReplace(doc, '.', '', [rfReplaceAll]);
+  doc := StringReplace(doc, '-', '', [rfReplaceAll]);
+  doc := StringReplace(doc, '/', '', [rfReplaceAll]);
+
+  case Length(doc) of
+    11:
+      DBEdit2.Text := Copy(doc, 1, 3) + '.' +
+                            Copy(doc, 4, 3) + '.' +
+                            Copy(doc, 7, 3) + '-' +
+                            Copy(doc, 10, 2);
+    14:
+      DBEdit2.Text := Copy(doc, 1, 2) + '.' +
+                            Copy(doc, 3, 3) + '.' +
+                            Copy(doc, 6, 3) + '/' +
+                            Copy(doc, 9, 4) + '-' +
+                            Copy(doc, 13, 2);
   end;
 end;
 
-procedure TviewEntity.rbLEClick(Sender: TObject);
+procedure TviewEntity.DBEdit2KeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
-  edtEIN.EditMask := '99.999.999/9999-99;1;_';
-  edtEIN.Text := '';
+  if not (Key in ['0'..'9', #8]) then
+    Key := #0;
 end;
 
-procedure TviewEntity.rbPPClick(Sender: TObject);
+procedure TviewEntity.DBEdit3Exit(Sender: TObject);
+var
+  tel: string;
 begin
-  inherited;
-  edtEIN.EditMask := '999.999.999-99;1;_';
-  edtEIN.Text := '';
-end;
+  tel := DBEdit3.Text;
+  tel := StringReplace(tel, '(', '', [rfReplaceAll]);
+  tel := StringReplace(tel, ')', '', [rfReplaceAll]);
+  tel := StringReplace(tel, '-', '', [rfReplaceAll]);
+  tel := StringReplace(tel, ' ', '', [rfReplaceAll]);
 
-procedure TviewEntity.DSDataDataChange(Sender: TObject; Field: TField);
-begin
-  inherited;
-  LoadData;
+  case Length(tel) of
+    10:
+      DBEdit3.Text := '(' + Copy(tel, 1, 2) + ') ' +
+                           Copy(tel, 3, 4) + '-' +
+                           Copy(tel, 7, 4);
+    11:
+      DBEdit3.Text := '(' + Copy(tel, 1, 2) + ') ' +
+                           Copy(tel, 3, 5) + '-' +
+                           Copy(tel, 8, 4);
+  end;
 end;
 
 procedure TviewEntity.FormShow(Sender: TObject);
@@ -357,25 +377,6 @@ begin
   ServiceRegister.QRYEntity.SQL.Add
     ('SELECT * FROM PEOPLE WHERE 1=1 ORDER BY 1');
   ServiceRegister.QRYEntity.Open();
-
-end;
-
-procedure TviewEntity.edtEINEnter(Sender: TObject);
-begin
-  inherited;
-  if (rbPP.Checked = False) and (rbLE.Checked = False) then
-  begin
-    ShowMessage('Please, select a type of person!');
-    edtEIN.EditMask := '999.999.999-99;1;_';
-  end
-  else if rbPP.Checked = True then
-  begin
-    edtEIN.EditMask := '999.999.999-99;1;_';
-  end
-  else if rbLE.Checked = True then
-  begin
-    edtEIN.EditMask := '99.999.999/9999-99;1;_';
-  end;
 
 end;
 

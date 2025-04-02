@@ -5,7 +5,8 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 50
+      Width = 868
+      Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 50
@@ -49,7 +50,7 @@ inherited viewEntity: TviewEntity
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 169
           inherited lblSearch: TLabel
-            Width = 109
+            Width = 1005
             Caption = 'Search Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 109
@@ -485,7 +486,6 @@ inherited viewEntity: TviewEntity
         end
       end
       inherited cardRegister: TCard
-        Caption = '(99) 99999-9999;1;_'
         StyleElements = [seFont, seClient, seBorder]
         object lblPeopleID: TLabel [0]
           Left = 9
@@ -518,21 +518,7 @@ inherited viewEntity: TviewEntity
           Caption = 'Register Date'
           FocusControl = edtRegDate
         end
-        object lblEIN: TLabel [4]
-          Left = 123
-          Top = 120
-          Width = 50
-          Height = 15
-          Caption = 'EIN/CNPJ'
-        end
-        object lblPhone: TLabel [5]
-          Left = 424
-          Top = 209
-          Width = 34
-          Height = 15
-          Caption = 'Phone'
-        end
-        object lblEmail: TLabel [6]
+        object lblEmail: TLabel [4]
           Left = 9
           Top = 209
           Width = 34
@@ -540,7 +526,7 @@ inherited viewEntity: TviewEntity
           Caption = 'E-mail'
           FocusControl = edtEmail
         end
-        object lblFantasy: TLabel [7]
+        object lblFantasy: TLabel [5]
           Left = 8
           Top = 163
           Width = 40
@@ -548,7 +534,7 @@ inherited viewEntity: TviewEntity
           Caption = 'Fantasy'
           FocusControl = edtFantasy
         end
-        object Label1: TLabel [8]
+        object Label1: TLabel [6]
           Left = 571
           Top = 74
           Width = 22
@@ -556,7 +542,7 @@ inherited viewEntity: TviewEntity
           Caption = 'OBS'
           FocusControl = DBEdit1
         end
-        object Label2: TLabel [9]
+        object Label2: TLabel [7]
           Left = 471
           Top = 120
           Width = 61
@@ -564,7 +550,7 @@ inherited viewEntity: TviewEntity
           Caption = 'Last update'
           FocusControl = edtUpDate
         end
-        object lblTypePeople: TLabel [10]
+        object lblTypePeople: TLabel [8]
           AlignWithMargins = True
           Left = 579
           Top = 124
@@ -581,7 +567,7 @@ inherited viewEntity: TviewEntity
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lblTitleAddress: TLabel [11]
+        object lblTitleAddress: TLabel [9]
           AlignWithMargins = True
           Left = 9
           Top = 260
@@ -599,7 +585,7 @@ inherited viewEntity: TviewEntity
           Font.Style = [fsBold]
           ParentFont = False
         end
-        object lblZIPCode: TLabel [12]
+        object lblZIPCode: TLabel [10]
           Left = 11
           Top = 285
           Width = 48
@@ -608,7 +594,7 @@ inherited viewEntity: TviewEntity
           Caption = 'ZIP Code'
           FocusControl = edtZIPCode
         end
-        object lblComplement: TLabel [13]
+        object lblComplement: TLabel [11]
           Left = 117
           Top = 285
           Width = 70
@@ -617,7 +603,7 @@ inherited viewEntity: TviewEntity
           Caption = 'Complement'
           FocusControl = edtComplement
         end
-        object lblState: TLabel [14]
+        object lblState: TLabel [12]
           Left = 11
           Top = 330
           Width = 26
@@ -626,7 +612,7 @@ inherited viewEntity: TviewEntity
           Caption = 'State'
           FocusControl = edtState
         end
-        object lblCity: TLabel [15]
+        object lblCity: TLabel [13]
           Left = 51
           Top = 330
           Width = 21
@@ -635,7 +621,7 @@ inherited viewEntity: TviewEntity
           Caption = 'City'
           FocusControl = edtCity
         end
-        object lblNeighborhood: TLabel [16]
+        object lblNeighborhood: TLabel [14]
           Left = 317
           Top = 330
           Width = 78
@@ -644,7 +630,7 @@ inherited viewEntity: TviewEntity
           Caption = 'Neighborhood'
           FocusControl = edtNeighborhood
         end
-        object lblStreet: TLabel [17]
+        object lblStreet: TLabel [15]
           Left = 11
           Top = 378
           Width = 30
@@ -653,7 +639,7 @@ inherited viewEntity: TviewEntity
           Caption = 'Street'
           FocusControl = edtStreet
         end
-        object lblNumberAddress: TLabel [18]
+        object lblNumberAddress: TLabel [16]
           Left = 438
           Top = 378
           Width = 89
@@ -662,10 +648,26 @@ inherited viewEntity: TviewEntity
           Caption = 'Number Address'
           FocusControl = edtNumberAddress
         end
+        object lblEin: TLabel [17]
+          Left = 124
+          Top = 120
+          Width = 59
+          Height = 15
+          Caption = 'CPF / CNPJ'
+          FocusControl = DBEdit2
+        end
+        object lblPhone: TLabel [18]
+          Left = 424
+          Top = 209
+          Width = 34
+          Height = 15
+          Caption = 'Phone'
+          FocusControl = DBEdit3
+        end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 119
+            Width = 1005
             Caption = 'Register Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 119
@@ -681,7 +683,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 6
+          TabOrder = 5
         end
         object edtName: TDBEdit
           Left = 115
@@ -703,7 +705,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 7
+          TabOrder = 6
         end
         object edtEmail: TDBEdit
           Left = 9
@@ -714,7 +716,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'EMAIL'
           DataSource = DSData
-          TabOrder = 5
+          TabOrder = 4
         end
         object edtFantasy: TDBEdit
           Left = 8
@@ -725,7 +727,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'FANTASY'
           DataSource = DSData
-          TabOrder = 4
+          TabOrder = 3
         end
         object DBEdit1: TDBEdit
           Left = 571
@@ -736,7 +738,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 11
+          TabOrder = 10
         end
         object edtUpDate: TDBEdit
           Left = 471
@@ -747,7 +749,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 8
+          TabOrder = 7
         end
         object dtBirthday: TDateTimePicker
           Left = 273
@@ -759,18 +761,7 @@ inherited viewEntity: TviewEntity
           Date = 29221.000000000000000000
           Format = 'dd/MM/yyyy'
           Time = 0.795439814814017200
-          TabOrder = 3
-        end
-        object edtEIN: TMaskEdit
-          Left = 123
-          Top = 136
-          Width = 143
-          Height = 23
-          EditMask = '999.999.999-99;1;_'
-          MaxLength = 14
           TabOrder = 2
-          Text = '   .   .   -  '
-          OnEnter = edtEINEnter
         end
         object rbPP: TRadioButton
           Left = 9
@@ -779,9 +770,8 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Physical Person'
           Checked = True
-          TabOrder = 9
+          TabOrder = 8
           TabStop = True
-          OnClick = rbPPClick
         end
         object rbLE: TRadioButton
           Left = 9
@@ -789,20 +779,9 @@ inherited viewEntity: TviewEntity
           Width = 113
           Height = 17
           Caption = 'Legal Entity'
-          TabOrder = 10
-          OnClick = rbLEClick
+          TabOrder = 9
         end
-        object edtPhone: TMaskEdit
-          Left = 424
-          Top = 225
-          Width = 139
-          Height = 23
-          EditMask = '(99) 99999-9999;1;_'
-          MaxLength = 15
-          TabOrder = 12
-          Text = '(  )      -    '
-        end
-        object edtClient: TDBCheckBox
+        object cbClient: TDBCheckBox
           AlignWithMargins = True
           Left = 584
           Top = 149
@@ -815,9 +794,11 @@ inherited viewEntity: TviewEntity
           Caption = 'CLIENT'
           DataField = 'CLIENT'
           DataSource = DSData
-          TabOrder = 13
+          TabOrder = 11
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
-        object edtEmployee: TDBCheckBox
+        object cbEmployee: TDBCheckBox
           AlignWithMargins = True
           Left = 584
           Top = 174
@@ -830,9 +811,11 @@ inherited viewEntity: TviewEntity
           Caption = 'EMPLOYEE'
           DataField = 'EMPLOYEE'
           DataSource = DSData
-          TabOrder = 14
+          TabOrder = 12
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
-        object edtSupplier: TDBCheckBox
+        object cbSupplier: TDBCheckBox
           AlignWithMargins = True
           Left = 584
           Top = 199
@@ -845,9 +828,11 @@ inherited viewEntity: TviewEntity
           Caption = 'SUPPLIER'
           DataField = 'SUPPLIER'
           DataSource = DSData
-          TabOrder = 15
+          TabOrder = 13
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
-        object edtTransport: TDBCheckBox
+        object cbTransport: TDBCheckBox
           AlignWithMargins = True
           Left = 584
           Top = 224
@@ -860,7 +845,9 @@ inherited viewEntity: TviewEntity
           Caption = 'TRANSPORT'
           DataField = 'TRANSPORT'
           DataSource = DSData
-          TabOrder = 16
+          TabOrder = 14
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
         object edtZIPCode: TDBEdit
           Left = 11
@@ -872,7 +859,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'ZIP_CODE'
           DataSource = DSData
-          TabOrder = 17
+          TabOrder = 15
         end
         object edtComplement: TDBEdit
           Left = 117
@@ -884,7 +871,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'COMPLEMENT'
           DataSource = DSData
-          TabOrder = 18
+          TabOrder = 16
         end
         object edtState: TDBEdit
           Left = 11
@@ -896,7 +883,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'STATE'
           DataSource = DSData
-          TabOrder = 19
+          TabOrder = 17
         end
         object edtCity: TDBEdit
           Left = 51
@@ -908,7 +895,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'CITY'
           DataSource = DSData
-          TabOrder = 20
+          TabOrder = 18
         end
         object edtNeighborhood: TDBEdit
           Left = 317
@@ -920,7 +907,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'NEIGHBORHOOD'
           DataSource = DSData
-          TabOrder = 21
+          TabOrder = 19
         end
         object edtStreet: TDBEdit
           Left = 11
@@ -932,7 +919,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'STREET'
           DataSource = DSData
-          TabOrder = 22
+          TabOrder = 20
         end
         object edtNumberAddress: TDBEdit
           Left = 438
@@ -944,7 +931,28 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'NUMBER_ADDRESS'
           DataSource = DSData
+          TabOrder = 21
+        end
+        object DBEdit2: TDBEdit
+          Left = 124
+          Top = 136
+          Width = 143
+          Height = 23
+          DataField = 'EIN_CNPJ'
+          DataSource = DSData
+          TabOrder = 22
+          OnExit = DBEdit2Exit
+          OnKeyPress = DBEdit2KeyPress
+        end
+        object DBEdit3: TDBEdit
+          Left = 424
+          Top = 225
+          Width = 141
+          Height = 23
+          DataField = 'PHONE'
+          DataSource = DSData
           TabOrder = 23
+          OnExit = DBEdit3Exit
         end
       end
     end
@@ -1225,7 +1233,6 @@ inherited viewEntity: TviewEntity
   end
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYEntity
-    OnDataChange = DSDataDataChange
     Left = 882
     Top = 65528
   end

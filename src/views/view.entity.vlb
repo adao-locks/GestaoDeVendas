@@ -65,7 +65,7 @@ Coordinates=10,10,138,447
 Coordinates=657,276,89,51
 
 []
-Coordinates=29,476,87,51
+Coordinates=45,565,46,51
 Visible=True
 
 [edtEmail]
@@ -92,14 +92,8 @@ Coordinates=556,466,46,51
 [lblName]
 Coordinates=118,476,46,51
 
-[lblEIN]
-Coordinates=556,676,46,51
-
 [lblRegDate]
 Coordinates=556,536,46,51
-
-[lblPhone]
-Coordinates=45,565,46,51
 
 [btnEdit]
 Coordinates=184,412,84,33
