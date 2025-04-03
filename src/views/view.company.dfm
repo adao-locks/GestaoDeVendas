@@ -213,6 +213,7 @@ inherited viewCompany: TviewCompany
           Top = 144
           Width = 400
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'COMPANY_NAME'
           DataSource = DSData
           Enabled = False
@@ -223,6 +224,7 @@ inherited viewCompany: TviewCompany
           Top = 192
           Width = 400
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'FANTASY'
           DataSource = DSData
           Enabled = False
@@ -233,6 +235,7 @@ inherited viewCompany: TviewCompany
           Top = 240
           Width = 194
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'EIN_CNPJ'
           DataSource = DSData
           Enabled = False
@@ -243,6 +246,7 @@ inherited viewCompany: TviewCompany
           Top = 240
           Width = 200
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'PHONE'
           DataSource = DSData
           Enabled = False
@@ -253,6 +257,7 @@ inherited viewCompany: TviewCompany
           Top = 288
           Width = 400
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'EMAIL'
           DataSource = DSData
           Enabled = False
@@ -263,6 +268,7 @@ inherited viewCompany: TviewCompany
           Top = 192
           Width = 314
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'STREET'
           DataSource = DSData
           Enabled = False
@@ -273,6 +279,7 @@ inherited viewCompany: TviewCompany
           Top = 240
           Width = 278
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'CITY'
           DataSource = DSData
           Enabled = False
@@ -283,6 +290,7 @@ inherited viewCompany: TviewCompany
           Top = 240
           Width = 30
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'STATE'
           DataSource = DSData
           Enabled = False
@@ -293,6 +301,7 @@ inherited viewCompany: TviewCompany
           Top = 144
           Width = 154
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'ZIP'
           DataSource = DSData
           Enabled = False
@@ -303,6 +312,7 @@ inherited viewCompany: TviewCompany
           Top = 333
           Width = 400
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'SITE'
           DataSource = DSData
           Enabled = False
@@ -323,6 +333,7 @@ inherited viewCompany: TviewCompany
           Top = 144
           Width = 154
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'ADDRESS_NUMBER'
           DataSource = DSData
           Enabled = False

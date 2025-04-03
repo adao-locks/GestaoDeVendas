@@ -184,7 +184,7 @@ inherited viewSales: TviewSales
       Height = 705
       Margins.Left = 1
       Margins.Right = 1
-      ActiveCard = cardItems
+      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -1049,6 +1049,7 @@ inherited viewSales: TviewSales
             Top = 99
             Width = 80
             Height = 21
+            CharCase = ecUpperCase
             DataField = 'ID_PRODUCT'
             DataSource = DSDataItems
             Enabled = False
@@ -1060,6 +1061,7 @@ inherited viewSales: TviewSales
             Top = 139
             Width = 70
             Height = 21
+            CharCase = ecUpperCase
             DataField = 'QUANTITY'
             DataSource = DSDataItems
             Enabled = False
@@ -1070,6 +1072,7 @@ inherited viewSales: TviewSales
             Top = 139
             Width = 70
             Height = 21
+            CharCase = ecUpperCase
             DataField = 'UNIT_PRICE'
             DataSource = DSDataItems
             Enabled = False
@@ -1080,6 +1083,7 @@ inherited viewSales: TviewSales
             Top = 139
             Width = 70
             Height = 21
+            CharCase = ecUpperCase
             DataField = 'DISCOUNT'
             DataSource = DSDataItems
             Enabled = False

@@ -184,7 +184,7 @@ inherited viewSales: TviewSales
       Height = 705
       Margins.Left = 1
       Margins.Right = 1
-      ActiveCard = cardSearch
+      ActiveCard = cardItems
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -384,7 +384,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 1
+            TabOrder = 5
           end
           object edtCategoryAsk: TSearchBox
             AlignWithMargins = True
@@ -398,7 +398,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 2
+            TabOrder = 3
           end
           object dtRegEnd: TDateTimePicker
             Left = 363
@@ -411,7 +411,7 @@ inherited viewSales: TviewSales
             Date = 54789.000000000000000000
             Format = 'dd/MM/yyyy'
             Time = 0.909075833333190500
-            TabOrder = 3
+            TabOrder = 1
           end
           object edtNameAsk: TSearchBox
             AlignWithMargins = True
@@ -425,7 +425,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 4
+            TabOrder = 2
           end
           object edtSupplierAsk: TSearchBox
             AlignWithMargins = True
@@ -439,7 +439,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 5
+            TabOrder = 4
           end
           object edtUnAsk: TSearchBox
             AlignWithMargins = True
@@ -729,7 +729,7 @@ inherited viewSales: TviewSales
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 1
+          TabOrder = 9
         end
         object edtClient: TDBEdit
           Left = 7
@@ -739,7 +739,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'ID_CLIENT'
           DataSource = DSData
-          TabOrder = 2
+          TabOrder = 1
           OnChange = edtClientChange
         end
         object edtEmployee: TDBEdit
@@ -750,7 +750,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'ID_EMPLOYEE'
           DataSource = DSData
-          TabOrder = 3
+          TabOrder = 2
           OnChange = edtEmployeeChange
         end
         object edtPayMeth: TDBEdit
@@ -761,7 +761,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'PAYMENT_METHOD'
           DataSource = DSData
-          TabOrder = 4
+          TabOrder = 6
         end
         object edtDisc: TDBEdit
           Left = 113
@@ -781,7 +781,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'TOTAL_AMOUNT'
           DataSource = DSData
-          TabOrder = 6
+          TabOrder = 4
         end
         object edtStat: TDBEdit
           Left = 163
@@ -811,7 +811,7 @@ inherited viewSales: TviewSales
           Date = 45743.000000000000000000
           Format = 'dd/MM/yyyy'
           Time = 0.899759699073911200
-          TabOrder = 9
+          TabOrder = 3
         end
         object DT_CREATED: TDateTimePicker
           Left = 475
@@ -865,185 +865,22 @@ inherited viewSales: TviewSales
         Height = 705
         CardIndex = 2
         TabOrder = 2
-        object Label13: TLabel
-          Left = 77
-          Top = 42
-          Width = 41
-          Height = 13
-          Caption = 'ID_ITEM'
-          FocusControl = edtIDItem
-        end
-        object Label14: TLabel
-          Left = 9
-          Top = 42
-          Width = 40
-          Height = 13
-          Caption = 'ID_SALE'
-          FocusControl = edtSaleID
-        end
-        object Label15: TLabel
-          Left = 9
-          Top = 83
-          Width = 67
-          Height = 13
-          Caption = 'ID_PRODUCT'
-          FocusControl = edtCodProd
-        end
-        object Label16: TLabel
-          Left = 85
-          Top = 123
-          Width = 51
-          Height = 13
-          Caption = 'QUANTITY'
-          FocusControl = edtQuant
-        end
-        object Label17: TLabel
-          Left = 9
-          Top = 123
-          Width = 59
-          Height = 13
-          Caption = 'UNIT_PRICE'
-          FocusControl = edtUnit
-        end
-        object Label18: TLabel
-          Left = 161
-          Top = 123
-          Width = 55
-          Height = 13
-          Caption = 'DISCOUNT'
-          FocusControl = edtDiscItem
-        end
-        object Label20: TLabel
-          Left = 145
-          Top = 42
-          Width = 65
-          Height = 13
-          Caption = 'DT_CREATED'
-        end
-        object lblNameProd: TLabel
-          Left = 95
-          Top = 102
-          Width = 170
-          Height = 13
-          AutoSize = False
-          Caption = 'ID_PRODUCT'
-          FocusControl = edtCodProd
-        end
-        object lblConfirmItem: TLabel
-          Left = 9
-          Top = 197
-          Width = 298
-          Height = 13
-          Alignment = taCenter
-          AutoSize = False
-          FocusControl = edtCodProd
-        end
-        object edtIDItem: TDBEdit
-          Left = 77
-          Top = 58
-          Width = 62
-          Height = 21
-          DataField = 'ID_ITEM'
-          DataSource = DSDataItems
-          Enabled = False
-          TabOrder = 0
-        end
-        object edtSaleID: TDBEdit
-          Left = 9
-          Top = 58
-          Width = 62
-          Height = 21
-          DataField = 'ID_SALE'
-          DataSource = DSDataItems
-          Enabled = False
-          TabOrder = 1
-        end
-        object edtCodProd: TDBEdit
-          Left = 9
-          Top = 99
-          Width = 80
-          Height = 21
-          DataField = 'ID_PRODUCT'
-          DataSource = DSDataItems
-          Enabled = False
-          TabOrder = 2
-          OnChange = edtCodProdChange
-        end
-        object edtQuant: TDBEdit
-          Left = 85
-          Top = 139
-          Width = 70
-          Height = 21
-          DataField = 'QUANTITY'
-          DataSource = DSDataItems
-          Enabled = False
-          TabOrder = 3
-        end
-        object edtUnit: TDBEdit
-          Left = 9
-          Top = 139
-          Width = 70
-          Height = 21
-          DataField = 'UNIT_PRICE'
-          DataSource = DSDataItems
-          Enabled = False
-          TabOrder = 4
-        end
-        object edtDiscItem: TDBEdit
-          Left = 161
-          Top = 139
-          Width = 70
-          Height = 21
-          DataField = 'DISCOUNT'
-          DataSource = DSDataItems
-          Enabled = False
-          TabOrder = 5
-        end
-        object DT_CREATED_ITEM: TDateTimePicker
-          Left = 145
-          Top = 58
-          Width = 78
-          Height = 21
-          Date = 45743.000000000000000000
-          Format = 'dd/MM/yyyy'
-          Time = 0.899759699073911200
-          Enabled = False
-          TabOrder = 6
-        end
-        object btnAddProd: TButton
-          Left = 9
-          Top = 166
-          Width = 70
-          Height = 25
-          Caption = 'Add'
-          TabOrder = 7
-          OnClick = btnAddProdClick
-        end
-        object btnRemove: TButton
-          Left = 85
-          Top = 166
-          Width = 70
-          Height = 25
-          Caption = 'Remove'
-          TabOrder = 8
-          OnClick = btnRemoveClick
-        end
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 7
-          Top = 220
+          Top = 224
           Width = 1091
-          Height = 478
+          Height = 474
           Cursor = crCross
           Margins.Left = 7
           Margins.Top = 7
           Margins.Right = 7
           Margins.Bottom = 7
-          Align = alBottom
+          Align = alClient
           DataSource = DSDataItems
           GradientEndColor = clBtnFace
           GradientStartColor = clBtnFace
-          TabOrder = 9
+          TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -11
@@ -1106,34 +943,206 @@ inherited viewSales: TviewSales
               Visible = True
             end>
         end
-        object btnConfirmItem: TButton
-          Left = 161
-          Top = 166
-          Width = 70
-          Height = 25
-          Caption = 'Confirm'
-          Enabled = False
-          TabOrder = 10
-          OnClick = btnConfirmItemClick
-        end
-        object btnCancelItem: TButton
-          Left = 237
-          Top = 166
-          Width = 70
-          Height = 25
-          Caption = 'Cancel'
-          Enabled = False
-          TabOrder = 11
-          OnClick = btnCancelItemClick
-        end
-        object btnBackItens: TButton
-          Left = 9
-          Top = 11
-          Width = 70
-          Height = 25
-          Caption = 'Back'
-          TabOrder = 12
-          OnClick = btnBackItensClick
+        object pnlContent: TPanel
+          Left = 0
+          Top = 0
+          Width = 1105
+          Height = 217
+          Align = alTop
+          BevelOuter = bvNone
+          TabOrder = 1
+          object Label13: TLabel
+            Left = 77
+            Top = 42
+            Width = 41
+            Height = 13
+            Caption = 'ID_ITEM'
+            FocusControl = edtIDItem
+          end
+          object Label14: TLabel
+            Left = 9
+            Top = 42
+            Width = 40
+            Height = 13
+            Caption = 'ID_SALE'
+            FocusControl = edtSaleID
+          end
+          object Label15: TLabel
+            Left = 9
+            Top = 83
+            Width = 67
+            Height = 13
+            Caption = 'ID_PRODUCT'
+            FocusControl = edtCodProd
+          end
+          object Label16: TLabel
+            Left = 85
+            Top = 123
+            Width = 51
+            Height = 13
+            Caption = 'QUANTITY'
+            FocusControl = edtQuant
+          end
+          object Label17: TLabel
+            Left = 9
+            Top = 123
+            Width = 59
+            Height = 13
+            Caption = 'UNIT_PRICE'
+            FocusControl = edtUnit
+          end
+          object Label18: TLabel
+            Left = 161
+            Top = 123
+            Width = 55
+            Height = 13
+            Caption = 'DISCOUNT'
+            FocusControl = edtDiscItem
+          end
+          object Label20: TLabel
+            Left = 145
+            Top = 42
+            Width = 65
+            Height = 13
+            Caption = 'DT_CREATED'
+          end
+          object lblNameProd: TLabel
+            Left = 95
+            Top = 102
+            Width = 170
+            Height = 13
+            AutoSize = False
+            Caption = 'ID_PRODUCT'
+            FocusControl = edtCodProd
+          end
+          object lblConfirmItem: TLabel
+            Left = 9
+            Top = 197
+            Width = 298
+            Height = 13
+            Alignment = taCenter
+            AutoSize = False
+            FocusControl = edtCodProd
+          end
+          object edtIDItem: TDBEdit
+            Left = 77
+            Top = 58
+            Width = 62
+            Height = 21
+            DataField = 'ID_ITEM'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 0
+          end
+          object edtSaleID: TDBEdit
+            Left = 9
+            Top = 58
+            Width = 62
+            Height = 21
+            DataField = 'ID_SALE'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 5
+          end
+          object edtCodProd: TDBEdit
+            Left = 9
+            Top = 99
+            Width = 80
+            Height = 21
+            DataField = 'ID_PRODUCT'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 1
+            OnChange = edtCodProdChange
+          end
+          object edtQuant: TDBEdit
+            Left = 85
+            Top = 139
+            Width = 70
+            Height = 21
+            DataField = 'QUANTITY'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 3
+          end
+          object edtUnit: TDBEdit
+            Left = 9
+            Top = 139
+            Width = 70
+            Height = 21
+            DataField = 'UNIT_PRICE'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 2
+          end
+          object edtDiscItem: TDBEdit
+            Left = 161
+            Top = 139
+            Width = 70
+            Height = 21
+            DataField = 'DISCOUNT'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 4
+          end
+          object DT_CREATED_ITEM: TDateTimePicker
+            Left = 145
+            Top = 58
+            Width = 78
+            Height = 21
+            Date = 45743.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.899759699073911200
+            Enabled = False
+            TabOrder = 6
+          end
+          object btnAddProd: TButton
+            Left = 9
+            Top = 166
+            Width = 70
+            Height = 25
+            Caption = 'Add'
+            TabOrder = 7
+            OnClick = btnAddProdClick
+          end
+          object btnRemove: TButton
+            Left = 85
+            Top = 166
+            Width = 70
+            Height = 25
+            Caption = 'Remove'
+            TabOrder = 8
+            OnClick = btnRemoveClick
+          end
+          object btnConfirmItem: TButton
+            Left = 161
+            Top = 166
+            Width = 70
+            Height = 25
+            Caption = 'Confirm'
+            Enabled = False
+            TabOrder = 9
+            OnClick = btnConfirmItemClick
+          end
+          object btnCancelItem: TButton
+            Left = 237
+            Top = 166
+            Width = 70
+            Height = 25
+            Caption = 'Cancel'
+            Enabled = False
+            TabOrder = 10
+            OnClick = btnCancelItemClick
+          end
+          object btnBackItens: TButton
+            Left = 9
+            Top = 11
+            Width = 70
+            Height = 25
+            Caption = 'Back'
+            TabOrder = 11
+            OnClick = btnBackItensClick
+          end
         end
       end
     end
@@ -1151,131 +1160,5 @@ inherited viewSales: TviewSales
     DataSet = ServiceRegister.QRYItemsSale
     Left = 904
     Top = 65531
-  end
-  object QRYSale: TFDQuery
-    Connection = ServiceConnection.FDConn
-    SQL.Strings = (
-      'SELECT'
-      #9'SL.ID_SALE,'
-      #9'SL.ID_CLIENT,'
-      #9'PO1.NAME NAME_CLI,'
-      #9'SL.ID_EMPLOYEE,'
-      #9'PO2.NAME NAME_EMPL,'
-      #9'SL.PAYMENT_METHOD,'
-      #9'SL.TOTAL_AMOUNT,'
-      #9'SL.DISCOUNT,'
-      #9'SL.STATUS,'
-      #9'SL.DT_SALE,'
-      #9'SL.DT_CREATED,'
-      #9'SL.ID_COM,'
-      #9'SL."USER",'
-      #9'SL.OBSERVATION'
-      'FROM'
-      #9'SALE SL'
-      'INNER JOIN PEOPLE PO1 ON'
-      #9'SL.ID_CLIENT = PO1.PEOPLE_ID'
-      'INNER JOIN PEOPLE PO2 ON'
-      #9'SL.ID_EMPLOYEE = PO2.PEOPLE_ID'
-      'WHERE'
-      #9'1 = 1;')
-    Left = 840
-    Top = 48
-    object QRYSaleID_SALE: TIntegerField
-      FieldName = 'ID_SALE'
-      Origin = 'ID_SALE'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object QRYSaleID_CLIENT: TIntegerField
-      FieldName = 'ID_CLIENT'
-      Origin = 'ID_CLIENT'
-      Required = True
-    end
-    object QRYSaleNAME_CLI: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'NAME_CLI'
-      Origin = 'NAME'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 150
-    end
-    object QRYSaleID_EMPLOYEE: TIntegerField
-      FieldName = 'ID_EMPLOYEE'
-      Origin = 'ID_EMPLOYEE'
-      Required = True
-    end
-    object QRYSaleNAME_EMPL: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'NAME_EMPL'
-      Origin = 'NAME'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 150
-    end
-    object QRYSalePAYMENT_METHOD: TStringField
-      FieldName = 'PAYMENT_METHOD'
-      Origin = 'PAYMENT_METHOD'
-      Required = True
-      Size = 30
-    end
-    object QRYSaleTOTAL_AMOUNT: TFMTBCDField
-      FieldName = 'TOTAL_AMOUNT'
-      Origin = 'TOTAL_AMOUNT'
-      Required = True
-      Precision = 18
-      Size = 2
-    end
-    object QRYSaleDISCOUNT: TFMTBCDField
-      FieldName = 'DISCOUNT'
-      Origin = 'DISCOUNT'
-      Required = True
-      Precision = 18
-      Size = 2
-    end
-    object QRYSaleSTATUS: TStringField
-      FieldName = 'STATUS'
-      Origin = 'STATUS'
-      Required = True
-    end
-    object QRYSaleDT_SALE: TSQLTimeStampField
-      FieldName = 'DT_SALE'
-      Origin = 'DT_SALE'
-      Required = True
-    end
-    object QRYSaleDT_CREATED: TSQLTimeStampField
-      FieldName = 'DT_CREATED'
-      Origin = 'DT_CREATED'
-      Required = True
-    end
-    object QRYSaleID_COM: TStringField
-      FieldName = 'ID_COM'
-      Origin = 'ID_COM'
-      Required = True
-      Size = 11
-    end
-    object QRYSaleUSER: TIntegerField
-      FieldName = 'USER'
-      Origin = '"USER"'
-      Required = True
-    end
-    object QRYSaleOBSERVATION: TStringField
-      FieldName = 'OBSERVATION'
-      Origin = 'OBSERVATION'
-      Size = 500
-    end
-  end
-  object QRYIDSale: TFDQuery
-    Connection = ServiceConnection.FDConn
-    SQL.Strings = (
-      'SELECt max(ID_SALE) MAXID FROM SALE WHERE 1=1')
-    Left = 904
-    Top = 48
-    object QRYIDSaleMAXID: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'MAXID'
-      Origin = 'MAXID'
-      ProviderFlags = []
-      ReadOnly = True
-    end
   end
 end

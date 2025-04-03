@@ -938,6 +938,7 @@ inherited viewEntity: TviewEntity
           Top = 136
           Width = 143
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'EIN_CNPJ'
           DataSource = DSData
           TabOrder = 2
@@ -949,6 +950,7 @@ inherited viewEntity: TviewEntity
           Top = 225
           Width = 141
           Height = 23
+          CharCase = ecUpperCase
           DataField = 'PHONE'
           DataSource = DSData
           TabOrder = 6
