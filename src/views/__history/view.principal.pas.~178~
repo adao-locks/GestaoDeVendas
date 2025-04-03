@@ -111,17 +111,9 @@ procedure TViewPrincipal.btnCompanyClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
   viewCompany := TviewCompany.Create(Self);
-
-  viewCompany.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewCompany.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewCompany.Width := pnlContent.Width;
-  viewCompany.Height := pnlContent.Height;
-
-  try
-    viewCompany.ShowModal;
-  finally
-    FreeAndNil(viewCompany);
-  end;
+  viewCompany.Parent := pnlContent;
+  viewCompany.Align := alClient;
+  viewCompany.Show;
 end;
 
 procedure TViewPrincipal.btnConfigClick(Sender: TObject);
@@ -131,20 +123,11 @@ end;
 
 procedure TViewPrincipal.btnProductsClick(Sender: TObject);
 begin
-
   GET_LineMenu(Sender);
   viewProducts := TviewProducts.Create(Self);
-
-  viewProducts.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewProducts.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewProducts.Width := pnlContent.Width;
-  viewProducts.Height := pnlContent.Height;
-
-  try
-    viewProducts.ShowModal;
-  finally
-    FreeAndNil(viewProducts);
-  end;
+  viewProducts.Parent := pnlContent;
+  viewProducts.Align := alClient;
+  viewProducts.Show;
 end;
 
 procedure TViewPrincipal.btnReportsClick(Sender: TObject);

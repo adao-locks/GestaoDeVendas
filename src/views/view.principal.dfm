@@ -2564,7 +2564,6 @@ object ViewPrincipal: TViewPrincipal
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitHeight = 41
         object lblBusiness: TLabel
           AlignWithMargins = True
           Left = 228
@@ -2620,7 +2619,6 @@ object ViewPrincipal: TViewPrincipal
           Color = 3989564
           ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 31
         end
       end
     end
@@ -2635,7 +2633,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 655
       object imgBackground: TImage
         Left = 0
         Top = 0

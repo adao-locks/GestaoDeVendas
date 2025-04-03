@@ -384,7 +384,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 1
+            TabOrder = 5
           end
           object edtCategoryAsk: TSearchBox
             AlignWithMargins = True
@@ -398,7 +398,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 2
+            TabOrder = 3
           end
           object dtRegEnd: TDateTimePicker
             Left = 363
@@ -411,7 +411,7 @@ inherited viewSales: TviewSales
             Date = 54789.000000000000000000
             Format = 'dd/MM/yyyy'
             Time = 0.909075833333190500
-            TabOrder = 3
+            TabOrder = 1
           end
           object edtNameAsk: TSearchBox
             AlignWithMargins = True
@@ -425,7 +425,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 4
+            TabOrder = 2
           end
           object edtSupplierAsk: TSearchBox
             AlignWithMargins = True
@@ -439,7 +439,7 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            TabOrder = 5
+            TabOrder = 4
           end
           object edtUnAsk: TSearchBox
             AlignWithMargins = True
@@ -521,55 +521,46 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'ID_EMPLOYEE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME_EMPL'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PAYMENT_METHOD'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOTAL_AMOUNT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STATUS'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_SALE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_COM'
-              Width = 64
               Visible = True
             end
             item
@@ -738,7 +729,7 @@ inherited viewSales: TviewSales
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 1
+          TabOrder = 9
         end
         object edtClient: TDBEdit
           Left = 7
@@ -748,7 +739,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'ID_CLIENT'
           DataSource = DSData
-          TabOrder = 2
+          TabOrder = 1
           OnChange = edtClientChange
         end
         object edtEmployee: TDBEdit
@@ -759,7 +750,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'ID_EMPLOYEE'
           DataSource = DSData
-          TabOrder = 3
+          TabOrder = 2
           OnChange = edtEmployeeChange
         end
         object edtPayMeth: TDBEdit
@@ -770,7 +761,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'PAYMENT_METHOD'
           DataSource = DSData
-          TabOrder = 4
+          TabOrder = 6
         end
         object edtDisc: TDBEdit
           Left = 113
@@ -790,7 +781,7 @@ inherited viewSales: TviewSales
           CharCase = ecUpperCase
           DataField = 'TOTAL_AMOUNT'
           DataSource = DSData
-          TabOrder = 6
+          TabOrder = 4
         end
         object edtStat: TDBEdit
           Left = 163
@@ -820,7 +811,7 @@ inherited viewSales: TviewSales
           Date = 45743.000000000000000000
           Format = 'dd/MM/yyyy'
           Time = 0.899759699073911200
-          TabOrder = 9
+          TabOrder = 3
         end
         object DT_CREATED: TDateTimePicker
           Left = 475
@@ -914,13 +905,11 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'NAME'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'BRAND'
-              Width = 64
               Visible = True
             end
             item
@@ -931,31 +920,26 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'QUANTITY'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UNIT_PRICE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUBTOTAL'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
-              Width = 64
               Visible = True
             end>
         end
@@ -1058,7 +1042,7 @@ inherited viewSales: TviewSales
             DataField = 'ID_SALE'
             DataSource = DSDataItems
             Enabled = False
-            TabOrder = 1
+            TabOrder = 5
           end
           object edtCodProd: TDBEdit
             Left = 9
@@ -1068,7 +1052,7 @@ inherited viewSales: TviewSales
             DataField = 'ID_PRODUCT'
             DataSource = DSDataItems
             Enabled = False
-            TabOrder = 2
+            TabOrder = 1
             OnChange = edtCodProdChange
           end
           object edtQuant: TDBEdit
@@ -1089,7 +1073,7 @@ inherited viewSales: TviewSales
             DataField = 'UNIT_PRICE'
             DataSource = DSDataItems
             Enabled = False
-            TabOrder = 4
+            TabOrder = 2
           end
           object edtDiscItem: TDBEdit
             Left = 161
@@ -1099,7 +1083,7 @@ inherited viewSales: TviewSales
             DataField = 'DISCOUNT'
             DataSource = DSDataItems
             Enabled = False
-            TabOrder = 5
+            TabOrder = 4
           end
           object DT_CREATED_ITEM: TDateTimePicker
             Left = 145

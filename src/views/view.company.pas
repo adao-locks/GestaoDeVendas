@@ -93,7 +93,6 @@ procedure TviewCompany.btnEditClick(Sender: TObject);
 begin
   inherited;
   ServiceConnection.QRYEnterprise.Edit;
-  edtIDCom.Enabled := True;
   edtComName.Enabled := True;
   edtFantasy.Enabled := True;
   edtEIN.Enabled := True;
@@ -114,7 +113,6 @@ begin
   begin
     ServiceConnection.QRYEnterprise.Post;
     ShowMessage('Registered successfully!');
-    edtIDCom.Enabled := False;
     edtComName.Enabled := False;
     edtFantasy.Enabled := False;
     edtEIN.Enabled := False;

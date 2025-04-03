@@ -77,7 +77,6 @@ type
     procedure btnCompanyClick(Sender: TObject);
   private
     procedure GET_LineMenu(Sender: TObject);
-    procedure OnCloseViewCompany(Sender: TObject; var Action: TCloseAction);
   public
 
   end;
@@ -111,13 +110,9 @@ end;
 procedure TViewPrincipal.btnCompanyClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
-  viewCompany := TviewCompany.Create(nil);
-  viewCompany.Show;
-
-  viewCompany.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewCompany.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewCompany.Width := pnlContent.Width;
-  viewCompany.Height := pnlContent.Height;
+  viewCompany := TviewCompany.Create(Self);
+  viewCompany.Parent := pnlContent;
+  viewCompany.Align := alClient;
 
   try
     viewCompany.ShowModal;
@@ -242,11 +237,6 @@ end;
 procedure TViewPrincipal.lblTitleSystemMouseLeave(Sender: TObject);
 begin
   lblTitleSystem.Font.Color := clBlack;
-end;
-
-procedure TViewPrincipal.OnCloseViewCompany(Sender: TObject;
-begin
-
 end;
 
 end.

@@ -10,7 +10,7 @@ inherited viewCompany: TviewCompany
       Height = 35
       Caption = 'Company'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 67
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -49,6 +49,7 @@ inherited viewCompany: TviewCompany
         inherited pnlSearch: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblSearch: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end
@@ -184,7 +185,7 @@ inherited viewCompany: TviewCompany
           DataField = 'ACTIVE'
           DataSource = DSData
           Enabled = False
-          TabOrder = 1
+          TabOrder = 13
         end
         object edtIDCom: TDBEdit
           Left = 15
@@ -194,7 +195,7 @@ inherited viewCompany: TviewCompany
           DataField = 'ID_COM'
           DataSource = DSData
           Enabled = False
-          TabOrder = 2
+          TabOrder = 1
         end
         object cbHeadquarters: TDBCheckBox
           Left = 303
@@ -205,7 +206,7 @@ inherited viewCompany: TviewCompany
           DataField = 'HEADQUARTERS'
           DataSource = DSData
           Enabled = False
-          TabOrder = 3
+          TabOrder = 14
         end
         object edtComName: TDBEdit
           Left = 15
@@ -215,7 +216,7 @@ inherited viewCompany: TviewCompany
           DataField = 'COMPANY_NAME'
           DataSource = DSData
           Enabled = False
-          TabOrder = 4
+          TabOrder = 2
         end
         object edtFantasy: TDBEdit
           Left = 15
@@ -225,7 +226,7 @@ inherited viewCompany: TviewCompany
           DataField = 'FANTASY'
           DataSource = DSData
           Enabled = False
-          TabOrder = 5
+          TabOrder = 3
         end
         object edtEIN: TDBEdit
           Left = 15
@@ -235,7 +236,7 @@ inherited viewCompany: TviewCompany
           DataField = 'EIN_CNPJ'
           DataSource = DSData
           Enabled = False
-          TabOrder = 6
+          TabOrder = 4
         end
         object edtPhone: TDBEdit
           Left = 215
@@ -245,7 +246,7 @@ inherited viewCompany: TviewCompany
           DataField = 'PHONE'
           DataSource = DSData
           Enabled = False
-          TabOrder = 7
+          TabOrder = 12
         end
         object edtEmail: TDBEdit
           Left = 15
@@ -255,7 +256,7 @@ inherited viewCompany: TviewCompany
           DataField = 'EMAIL'
           DataSource = DSData
           Enabled = False
-          TabOrder = 8
+          TabOrder = 5
         end
         object edtStreet: TDBEdit
           Left = 448
@@ -275,7 +276,7 @@ inherited viewCompany: TviewCompany
           DataField = 'CITY'
           DataSource = DSData
           Enabled = False
-          TabOrder = 10
+          TabOrder = 11
         end
         object edtState: TDBEdit
           Left = 448
@@ -285,7 +286,7 @@ inherited viewCompany: TviewCompany
           DataField = 'STATE'
           DataSource = DSData
           Enabled = False
-          TabOrder = 11
+          TabOrder = 10
         end
         object edtZip: TDBEdit
           Left = 448
@@ -295,7 +296,7 @@ inherited viewCompany: TviewCompany
           DataField = 'ZIP'
           DataSource = DSData
           Enabled = False
-          TabOrder = 12
+          TabOrder = 7
         end
         object edtSite: TDBEdit
           Left = 15
@@ -305,7 +306,7 @@ inherited viewCompany: TviewCompany
           DataField = 'SITE'
           DataSource = DSData
           Enabled = False
-          TabOrder = 13
+          TabOrder = 6
         end
         object edtUser: TDBEdit
           Left = 608
@@ -315,7 +316,7 @@ inherited viewCompany: TviewCompany
           DataField = 'ID_USER'
           DataSource = DSData
           Enabled = False
-          TabOrder = 14
+          TabOrder = 15
         end
         object edtNum: TDBEdit
           Left = 608
@@ -325,7 +326,7 @@ inherited viewCompany: TviewCompany
           DataField = 'ADDRESS_NUMBER'
           DataSource = DSData
           Enabled = False
-          TabOrder = 15
+          TabOrder = 8
         end
         object DTReg: TDateTimePicker
           Left = 448

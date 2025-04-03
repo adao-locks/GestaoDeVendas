@@ -6,15 +6,20 @@ inherited viewCompany: TviewCompany
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Company'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 67
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
+      inherited btnCloseWindow: TButton
+        OnClick = btnCloseWindowClick
+      end
     end
   end
   inherited pnlFooter: TPanel
@@ -111,7 +116,7 @@ inherited viewCompany: TviewCompany
           Width = 37
           Height = 15
           Caption = 'STREET'
-          FocusControl = DBEdit8
+          FocusControl = edtStreet
         end
         object Label9: TLabel [8]
           Left = 484
@@ -119,7 +124,7 @@ inherited viewCompany: TviewCompany
           Width = 24
           Height = 15
           Caption = 'CITY'
-          FocusControl = DBEdit9
+          FocusControl = edtCity
         end
         object Label10: TLabel [9]
           Left = 448
@@ -127,7 +132,7 @@ inherited viewCompany: TviewCompany
           Width = 30
           Height = 15
           Caption = 'STATE'
-          FocusControl = DBEdit10
+          FocusControl = edtState
         end
         object Label11: TLabel [10]
           Left = 448
@@ -164,6 +169,7 @@ inherited viewCompany: TviewCompany
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             Caption = 'Register Company'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 152
@@ -251,7 +257,7 @@ inherited viewCompany: TviewCompany
           Enabled = False
           TabOrder = 8
         end
-        object DBEdit8: TDBEdit
+        object edtStreet: TDBEdit
           Left = 448
           Top = 192
           Width = 314
@@ -261,7 +267,7 @@ inherited viewCompany: TviewCompany
           Enabled = False
           TabOrder = 9
         end
-        object DBEdit9: TDBEdit
+        object edtCity: TDBEdit
           Left = 484
           Top = 240
           Width = 278
@@ -271,7 +277,7 @@ inherited viewCompany: TviewCompany
           Enabled = False
           TabOrder = 10
         end
-        object DBEdit10: TDBEdit
+        object edtState: TDBEdit
           Left = 448
           Top = 240
           Width = 30

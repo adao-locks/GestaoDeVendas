@@ -90,38 +90,20 @@ implementation
 
 procedure TViewPrincipal.btnClientsClick(Sender: TObject);
 begin
-
   GET_LineMenu(Sender);
   viewEntity := TviewEntity.Create(Self);
-
-  viewEntity.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewEntity.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewEntity.Width := pnlContent.Width;
-  viewEntity.Height := pnlContent.Height;
-
-  try
-    viewEntity.ShowModal;
-  finally
-    FreeAndNil(viewEntity);
-  end;
-
+  viewEntity.Parent := pnlContent;
+  viewEntity.Align := alClient;
+  viewEntity.Show;
 end;
 
 procedure TViewPrincipal.btnCompanyClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
   viewCompany := TviewCompany.Create(Self);
-
-  viewCompany.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewCompany.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewCompany.Width := pnlContent.Width;
-  viewCompany.Height := pnlContent.Height;
-
-  try
-    viewCompany.ShowModal;
-  finally
-    FreeAndNil(viewCompany);
-  end;
+  viewCompany.Parent := pnlContent;
+  viewCompany.Align := alClient;
+  viewCompany.Show;
 end;
 
 procedure TViewPrincipal.btnConfigClick(Sender: TObject);
@@ -131,20 +113,11 @@ end;
 
 procedure TViewPrincipal.btnProductsClick(Sender: TObject);
 begin
-
   GET_LineMenu(Sender);
   viewProducts := TviewProducts.Create(Self);
-
-  viewProducts.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewProducts.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewProducts.Width := pnlContent.Width;
-  viewProducts.Height := pnlContent.Height;
-
-  try
-    viewProducts.ShowModal;
-  finally
-    FreeAndNil(viewProducts);
-  end;
+  viewProducts.Parent := pnlContent;
+  viewProducts.Align := alClient;
+  viewProducts.Show;
 end;
 
 procedure TViewPrincipal.btnReportsClick(Sender: TObject);
@@ -154,40 +127,20 @@ end;
 
 procedure TViewPrincipal.btnSalesClick(Sender: TObject);
 begin
-
   GET_LineMenu(Sender);
   viewSales := TviewSales.Create(Self);
-
-  viewSales.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewSales.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewSales.Width := pnlContent.Width;
-  viewSales.Height := pnlContent.Height;
-
-  try
-    viewSales.ShowModal;
-  finally
-    FreeAndNil(viewSales);
-  end;
-
+  viewSales.Parent := pnlContent;
+  viewSales.Align := alClient;
+  viewSales.Show;
 end;
 
 procedure TViewPrincipal.btnLogsClick(Sender: TObject);
 begin
-
   GET_LineMenu(Sender);
   viewLogs := TviewLogs.Create(Self);
-
-  viewLogs.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewLogs.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewLogs.Width := pnlContent.Width;
-  viewLogs.Height := pnlContent.Height;
-
-  try
-    viewLogs.ShowModal;
-  finally
-    FreeAndNil(viewLogs);
-  end;
-
+  viewLogs.Parent := pnlContent;
+  viewLogs.Align := alClient;
+  viewLogs.Show;
 end;
 
 procedure TViewPrincipal.Button1Click(Sender: TObject);

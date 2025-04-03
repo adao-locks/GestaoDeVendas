@@ -110,16 +110,12 @@ end;
 procedure TViewPrincipal.btnCompanyClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
-  viewCompany := TviewCompany.Create(nil); // Cria a janela sem associar ao formulário principal
-  viewCompany.Show; // Exibe de forma não modal
-
-  viewCompany.Left := pnlContent.ClientToScreen(Point(0, 0)).X;
-  viewCompany.Top := pnlContent.ClientToScreen(Point(0, 0)).Y;
-  viewCompany.Width := pnlContent.Width;
-  viewCompany.Height := pnlContent.Height;
+  viewCompany := TviewCompany.Create(Self);
+  viewCompany.Parent := pnlContent;
+  viewCompany.Align := alClient;
 
   try
-    viewCompany.ShowModal;
+    viewCompany.Show;
   finally
     FreeAndNil(viewCompany);
   end;

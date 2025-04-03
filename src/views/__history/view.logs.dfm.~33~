@@ -1,10 +1,13 @@
 inherited viewLogs: TviewLogs
+  Align = alClient
   Caption = 'Logs'
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Logs'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 33
@@ -48,18 +51,80 @@ inherited viewLogs: TviewLogs
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 121
           inherited lblSearch: TLabel
+            Width = 1005
             Caption = 'View Logs'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 85
           end
-          object Button1: TButton
+          object lblNameAsk: TLabel
+            Left = 15
+            Top = 41
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Name: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object Label1: TLabel
+            Left = 15
+            Top = 65
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'Description: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object btnConsult: TButton
             Left = 8
             Top = 89
             Width = 97
             Height = 25
+            Cursor = crHandPoint
             Caption = 'Consult'
+            ParentShowHint = False
+            ShowHint = False
             TabOrder = 0
-            OnClick = Button1Click
+            OnClick = btnConsultClick
+          end
+          object edtNameAsk: TSearchBox
+            AlignWithMargins = True
+            Left = 110
+            Top = 41
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 1
+          end
+          object SearchBox1: TSearchBox
+            AlignWithMargins = True
+            Left = 110
+            Top = 65
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            Margins.Left = 10
+            Margins.Right = 10
+            BevelInner = bvNone
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            TabOrder = 2
           end
         end
         inherited DBGData: TDBGrid
@@ -111,6 +176,7 @@ inherited viewLogs: TviewLogs
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end

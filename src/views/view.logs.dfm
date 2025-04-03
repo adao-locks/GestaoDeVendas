@@ -1,11 +1,13 @@
 inherited viewLogs: TviewLogs
+  Align = alClient
   Caption = 'Logs'
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 33
+      Width = 868
+      Height = 35
       Caption = 'Logs'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 33
@@ -41,6 +43,7 @@ inherited viewLogs: TviewLogs
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -49,7 +52,7 @@ inherited viewLogs: TviewLogs
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 121
           inherited lblSearch: TLabel
-            Width = 85
+            Width = 1005
             Caption = 'View Logs'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 85
@@ -100,7 +103,7 @@ inherited viewLogs: TviewLogs
             AlignWithMargins = True
             Left = 110
             Top = 41
-            Width = 145
+            Width = 187
             Height = 18
             Cursor = crHandPoint
             Margins.Left = 10
@@ -114,7 +117,7 @@ inherited viewLogs: TviewLogs
             AlignWithMargins = True
             Left = 110
             Top = 65
-            Width = 145
+            Width = 387
             Height = 18
             Cursor = crHandPoint
             Margins.Left = 10
@@ -174,6 +177,7 @@ inherited viewLogs: TviewLogs
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end

@@ -683,7 +683,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 5
+          TabOrder = 15
         end
         object edtName: TDBEdit
           Left = 115
@@ -705,7 +705,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 6
+          TabOrder = 16
         end
         object edtEmail: TDBEdit
           Left = 9
@@ -716,7 +716,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'EMAIL'
           DataSource = DSData
-          TabOrder = 4
+          TabOrder = 5
         end
         object edtFantasy: TDBEdit
           Left = 8
@@ -727,7 +727,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'FANTASY'
           DataSource = DSData
-          TabOrder = 3
+          TabOrder = 4
         end
         object DBEdit1: TDBEdit
           Left = 571
@@ -738,7 +738,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'OBS'
           DataSource = DSData
-          TabOrder = 10
+          TabOrder = 14
         end
         object edtUpDate: TDBEdit
           Left = 471
@@ -749,7 +749,7 @@ inherited viewEntity: TviewEntity
           DataSource = DSData
           Enabled = False
           ReadOnly = True
-          TabOrder = 7
+          TabOrder = 17
         end
         object dtBirthday: TDateTimePicker
           Left = 273
@@ -761,7 +761,7 @@ inherited viewEntity: TviewEntity
           Date = 29221.000000000000000000
           Format = 'dd/MM/yyyy'
           Time = 0.795439814814017200
-          TabOrder = 2
+          TabOrder = 3
         end
         object rbPP: TRadioButton
           Left = 9
@@ -770,7 +770,7 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Physical Person'
           Checked = True
-          TabOrder = 8
+          TabOrder = 18
           TabStop = True
         end
         object rbLE: TRadioButton
@@ -779,7 +779,7 @@ inherited viewEntity: TviewEntity
           Width = 113
           Height = 17
           Caption = 'Legal Entity'
-          TabOrder = 9
+          TabOrder = 19
         end
         object cbClient: TDBCheckBox
           AlignWithMargins = True
@@ -794,7 +794,7 @@ inherited viewEntity: TviewEntity
           Caption = 'CLIENT'
           DataField = 'CLIENT'
           DataSource = DSData
-          TabOrder = 11
+          TabOrder = 20
           ValueChecked = '1'
           ValueUnchecked = '0'
         end
@@ -811,7 +811,7 @@ inherited viewEntity: TviewEntity
           Caption = 'EMPLOYEE'
           DataField = 'EMPLOYEE'
           DataSource = DSData
-          TabOrder = 12
+          TabOrder = 21
           ValueChecked = '1'
           ValueUnchecked = '0'
         end
@@ -828,7 +828,7 @@ inherited viewEntity: TviewEntity
           Caption = 'SUPPLIER'
           DataField = 'SUPPLIER'
           DataSource = DSData
-          TabOrder = 13
+          TabOrder = 22
           ValueChecked = '1'
           ValueUnchecked = '0'
         end
@@ -845,7 +845,7 @@ inherited viewEntity: TviewEntity
           Caption = 'TRANSPORT'
           DataField = 'TRANSPORT'
           DataSource = DSData
-          TabOrder = 14
+          TabOrder = 23
           ValueChecked = '1'
           ValueUnchecked = '0'
         end
@@ -859,7 +859,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'ZIP_CODE'
           DataSource = DSData
-          TabOrder = 15
+          TabOrder = 7
         end
         object edtComplement: TDBEdit
           Left = 117
@@ -871,7 +871,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'COMPLEMENT'
           DataSource = DSData
-          TabOrder = 16
+          TabOrder = 8
         end
         object edtState: TDBEdit
           Left = 11
@@ -883,7 +883,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'STATE'
           DataSource = DSData
-          TabOrder = 17
+          TabOrder = 9
         end
         object edtCity: TDBEdit
           Left = 51
@@ -895,7 +895,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'CITY'
           DataSource = DSData
-          TabOrder = 18
+          TabOrder = 10
         end
         object edtNeighborhood: TDBEdit
           Left = 317
@@ -907,7 +907,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'NEIGHBORHOOD'
           DataSource = DSData
-          TabOrder = 19
+          TabOrder = 11
         end
         object edtStreet: TDBEdit
           Left = 11
@@ -919,7 +919,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'STREET'
           DataSource = DSData
-          TabOrder = 20
+          TabOrder = 12
         end
         object edtNumberAddress: TDBEdit
           Left = 438
@@ -931,7 +931,7 @@ inherited viewEntity: TviewEntity
           CharCase = ecUpperCase
           DataField = 'NUMBER_ADDRESS'
           DataSource = DSData
-          TabOrder = 21
+          TabOrder = 13
         end
         object DBEdit2: TDBEdit
           Left = 124
@@ -940,7 +940,7 @@ inherited viewEntity: TviewEntity
           Height = 23
           DataField = 'EIN_CNPJ'
           DataSource = DSData
-          TabOrder = 22
+          TabOrder = 2
           OnExit = DBEdit2Exit
           OnKeyPress = DBEdit2KeyPress
         end
@@ -951,7 +951,7 @@ inherited viewEntity: TviewEntity
           Height = 23
           DataField = 'PHONE'
           DataSource = DSData
-          TabOrder = 23
+          TabOrder = 6
           OnExit = DBEdit3Exit
         end
       end

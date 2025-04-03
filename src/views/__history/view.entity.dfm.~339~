@@ -350,91 +350,76 @@ inherited viewEntity: TviewEntity
             item
               Expanded = False
               FieldName = 'EIN_CNPJ'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PHONE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'EMAIL'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_BIRTH'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CLIENT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'EMPLOYEE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUPPLIER'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TRANSPORT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STREET'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NUMBER_ADDRESS'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COMPLEMENT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CITY'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NEIGHBORHOOD'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STATE'
-              Width = 64
               Visible = True
             end
             item
@@ -445,37 +430,31 @@ inherited viewEntity: TviewEntity
             item
               Expanded = False
               FieldName = 'FANTASY'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'OBS'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COM_ID'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'USER'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TYPE_PERSON'
-              Width = 64
               Visible = True
             end>
         end
@@ -507,7 +486,6 @@ inherited viewEntity: TviewEntity
         end
       end
       inherited cardRegister: TCard
-        Caption = '(99) 99999-9999;1;_'
         StyleElements = [seFont, seClient, seBorder]
         object lblPeopleID: TLabel [0]
           Left = 9
@@ -802,7 +780,6 @@ inherited viewEntity: TviewEntity
           Height = 17
           Caption = 'Legal Entity'
           TabOrder = 9
-          OnClick = rbLEClick
         end
         object cbClient: TDBCheckBox
           AlignWithMargins = True
@@ -818,6 +795,8 @@ inherited viewEntity: TviewEntity
           DataField = 'CLIENT'
           DataSource = DSData
           TabOrder = 11
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
         object cbEmployee: TDBCheckBox
           AlignWithMargins = True
@@ -833,6 +812,8 @@ inherited viewEntity: TviewEntity
           DataField = 'EMPLOYEE'
           DataSource = DSData
           TabOrder = 12
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
         object cbSupplier: TDBCheckBox
           AlignWithMargins = True
@@ -848,6 +829,8 @@ inherited viewEntity: TviewEntity
           DataField = 'SUPPLIER'
           DataSource = DSData
           TabOrder = 13
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
         object cbTransport: TDBCheckBox
           AlignWithMargins = True
@@ -863,6 +846,8 @@ inherited viewEntity: TviewEntity
           DataField = 'TRANSPORT'
           DataSource = DSData
           TabOrder = 14
+          ValueChecked = '1'
+          ValueUnchecked = '0'
         end
         object edtZIPCode: TDBEdit
           Left = 11
@@ -956,6 +941,8 @@ inherited viewEntity: TviewEntity
           DataField = 'EIN_CNPJ'
           DataSource = DSData
           TabOrder = 22
+          OnExit = DBEdit2Exit
+          OnKeyPress = DBEdit2KeyPress
         end
         object DBEdit3: TDBEdit
           Left = 424
@@ -965,6 +952,7 @@ inherited viewEntity: TviewEntity
           DataField = 'PHONE'
           DataSource = DSData
           TabOrder = 23
+          OnExit = DBEdit3Exit
         end
       end
     end
@@ -1245,7 +1233,6 @@ inherited viewEntity: TviewEntity
   end
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYEntity
-    OnDataChange = DSDataDataChange
     Left = 882
     Top = 65528
   end

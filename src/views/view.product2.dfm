@@ -5,7 +5,8 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 54
+      Width = 868
+      Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 54
@@ -49,7 +50,7 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
-            Width = 128
+            Width = 1005
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -466,7 +467,7 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 138
+            Width = 1005
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138
@@ -483,7 +484,7 @@ inherited viewProducts: TviewProducts
           DataSource = DSData
           ParentShowHint = False
           ShowHint = False
-          TabOrder = 1
+          TabOrder = 7
         end
         object edtBrand: TDBEdit
           Left = 161
@@ -494,7 +495,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'BRAND'
           DataSource = DSData
-          TabOrder = 2
+          TabOrder = 5
         end
         object edtCategory: TDBEdit
           Left = 55
@@ -505,7 +506,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'CATEGORY'
           DataSource = DSData
-          TabOrder = 3
+          TabOrder = 4
         end
         object edtDateReg: TDBEdit
           Left = 86
@@ -517,7 +518,7 @@ inherited viewProducts: TviewProducts
           DataField = 'DATE_REGISTER'
           DataSource = DSData
           Enabled = False
-          TabOrder = 4
+          TabOrder = 8
         end
         object edtDescription: TDBEdit
           Left = 9
@@ -528,7 +529,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'DESCRIPTION'
           DataSource = DSData
-          TabOrder = 5
+          TabOrder = 2
         end
         object edtIdProd: TDBEdit
           Left = 9
@@ -542,7 +543,7 @@ inherited viewProducts: TviewProducts
           Enabled = False
           ParentCtl3D = False
           ReadOnly = True
-          TabOrder = 6
+          TabOrder = 9
         end
         object edtName: TDBEdit
           Left = 65
@@ -553,7 +554,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'NAME'
           DataSource = DSData
-          TabOrder = 7
+          TabOrder = 1
         end
         object edtSupplier: TDBEdit
           Left = 267
@@ -564,7 +565,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'SUPPLIER'
           DataSource = DSData
-          TabOrder = 8
+          TabOrder = 6
         end
         object edtUn: TDBEdit
           Left = 9
@@ -575,7 +576,7 @@ inherited viewProducts: TviewProducts
           CharCase = ecUpperCase
           DataField = 'UN'
           DataSource = DSData
-          TabOrder = 9
+          TabOrder = 3
         end
       end
     end
