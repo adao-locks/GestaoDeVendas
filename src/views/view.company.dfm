@@ -6,7 +6,8 @@ inherited viewCompany: TviewCompany
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 67
+      Width = 868
+      Height = 35
       Caption = 'Company'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 67
@@ -18,7 +19,6 @@ inherited viewCompany: TviewCompany
       StyleElements = [seFont, seClient, seBorder]
       inherited btnCloseWindow: TButton
         OnClick = btnCloseWindowClick
-        ExplicitLeft = 8
       end
     end
   end
@@ -169,7 +169,7 @@ inherited viewCompany: TviewCompany
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 152
+            Width = 1005
             Caption = 'Register Company'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 152

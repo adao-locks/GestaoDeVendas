@@ -2410,9 +2410,12 @@ object ViewPrincipal: TViewPrincipal
       Align = alBottom
       BiDiMode = bdLeftToRight
       Caption = 'Exit'
+      DoubleBuffered = True
       ImageIndex = 5
+      ImageMargins.Left = 5
       Images = ImageList1
       ParentBiDiMode = False
+      ParentDoubleBuffered = False
       TabOrder = 0
       OnClick = Button1Click
     end
@@ -2546,9 +2549,9 @@ object ViewPrincipal: TViewPrincipal
     TabOrder = 2
     object pnlBottom: TPanel
       Left = 0
-      Top = 655
+      Top = 640
       Width = 1237
-      Height = 41
+      Height = 56
       Align = alBottom
       BevelOuter = bvNone
       ParentBackground = False
@@ -2557,16 +2560,17 @@ object ViewPrincipal: TViewPrincipal
         Left = 836
         Top = 0
         Width = 401
-        Height = 41
+        Height = 56
         Align = alRight
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 41
         object lblBusiness: TLabel
           AlignWithMargins = True
           Left = 228
           Top = 10
           Width = 153
-          Height = 21
+          Height = 36
           Margins.Left = 20
           Margins.Top = 10
           Margins.Right = 20
@@ -2606,7 +2610,7 @@ object ViewPrincipal: TViewPrincipal
           Left = 5
           Top = 5
           Width = 2
-          Height = 31
+          Height = 46
           Margins.Left = 5
           Margins.Top = 5
           Margins.Right = 5
@@ -2616,6 +2620,7 @@ object ViewPrincipal: TViewPrincipal
           Color = 3989564
           ParentBackground = False
           TabOrder = 0
+          ExplicitHeight = 31
         end
       end
     end
@@ -2623,18 +2628,19 @@ object ViewPrincipal: TViewPrincipal
       Left = 0
       Top = 0
       Width = 1237
-      Height = 655
+      Height = 640
       Margins.Top = 0
       Align = alClient
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitHeight = 655
       object imgBackground: TImage
         Left = 0
         Top = 0
         Width = 1237
-        Height = 655
+        Height = 640
         Align = alClient
         Center = True
         DragKind = dkDock
@@ -3835,8 +3841,7 @@ object ViewPrincipal: TViewPrincipal
           0051451400514514005145140051451400514514005145140051451400514514
           005145140051451400514514005145140051451401FFD9}
         ShowHint = False
-        ExplicitWidth = 1900
-        ExplicitHeight = 498
+        ExplicitHeight = 642
       end
     end
   end
