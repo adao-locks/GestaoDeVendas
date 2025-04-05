@@ -449,17 +449,22 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       
-        'SELECT SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P' +
-        '.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * ' +
-        'SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE' +
-        '_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHER' +
-        'E 1=1')
+        'SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.B' +
+        'RAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_P' +
+        'RICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FR' +
+        'OM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_' +
+        'ID WHERE 1=1')
     Left = 32
     Top = 136
+    object QRYItemsSaleID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
     object QRYItemsSaleID_ITEM: TIntegerField
       FieldName = 'ID_ITEM'
       Origin = 'ID_ITEM'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object QRYItemsSaleID_SALE: TIntegerField
@@ -538,6 +543,20 @@ object ServiceRegister: TServiceRegister
     Left = 120
     Top = 136
     object QRYIDItemsSaleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYIDItems: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECt max(ID) MAXID FROM SALE_ITEMS WHERE 1=1')
+    Left = 200
+    Top = 136
+    object IntegerField1: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'MAXID'
       Origin = 'MAXID'

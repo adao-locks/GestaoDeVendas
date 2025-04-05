@@ -68,13 +68,6 @@ type
     QRYItemsSale: TFDQuery;
     QRYIDItemsSale: TFDQuery;
     QRYIDItemsSaleMAXID: TIntegerField;
-    QRYItemsSaleID_ITEM: TIntegerField;
-    QRYItemsSaleID_SALE: TIntegerField;
-    QRYItemsSaleID_PRODUCT: TStringField;
-    QRYItemsSaleQUANTITY: TFMTBCDField;
-    QRYItemsSaleUNIT_PRICE: TFMTBCDField;
-    QRYItemsSaleDISCOUNT: TFMTBCDField;
-    QRYItemsSaleDT_CREATED: TSQLTimeStampField;
     QRYProductPROD_ID: TIntegerField;
     QRYProductNAME: TStringField;
     QRYProductDESCRIPTION: TStringField;
@@ -87,10 +80,6 @@ type
     QRYProductDATE_UPDATED: TSQLTimeStampField;
     QRYProductUSER: TStringField;
     QRYProductCOM_ID: TStringField;
-    QRYItemsSaleNAME: TStringField;
-    QRYItemsSaleBRAND: TStringField;
-    QRYItemsSaleUN: TStringField;
-    QRYItemsSaleSUBTOTAL: TBCDField;
     QRYSaleID_SALE: TIntegerField;
     QRYSaleID_CLIENT: TIntegerField;
     QRYSaleNAME_CLI: TStringField;
@@ -105,6 +94,20 @@ type
     QRYSaleID_COM: TStringField;
     QRYSaleUSER: TIntegerField;
     QRYSaleOBSERVATION: TStringField;
+    QRYItemsSaleID: TIntegerField;
+    QRYItemsSaleID_ITEM: TIntegerField;
+    QRYItemsSaleID_SALE: TIntegerField;
+    QRYItemsSaleID_PRODUCT: TStringField;
+    QRYItemsSaleNAME: TStringField;
+    QRYItemsSaleBRAND: TStringField;
+    QRYItemsSaleUN: TStringField;
+    QRYItemsSaleQUANTITY: TFMTBCDField;
+    QRYItemsSaleUNIT_PRICE: TFMTBCDField;
+    QRYItemsSaleDISCOUNT: TFMTBCDField;
+    QRYItemsSaleSUBTOTAL: TBCDField;
+    QRYItemsSaleDT_CREATED: TSQLTimeStampField;
+    QRYIDItems: TFDQuery;
+    IntegerField1: TIntegerField;
   private
     { Private declarations }
   public

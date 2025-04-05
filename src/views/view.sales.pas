@@ -31,7 +31,7 @@ uses
   Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXCtrls, FireDAC.Stan.Async,
-  FireDAC.DApt;
+  FireDAC.DApt, view.entity;
 
 type
   TviewSales = class(TviewBaseLists)
@@ -106,6 +106,12 @@ type
     btnConfirmItem: TButton;
     btnCancelItem: TButton;
     btnBackItens: TButton;
+    Label19: TLabel;
+    edtID: TDBEdit;
+    ComboMethod: TComboBox;
+    ComboStatus: TComboBox;
+    btnCreateEntity1: TButton;
+    btnCreateEntity2: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -113,7 +119,7 @@ type
     procedure btnEditClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
-    procedure btnProductsClick(Sender: TObject);
+    procedure btnCreateEntity(Sender: TObject);
     procedure btnAddProdClick(Sender: TObject);
     procedure edtClientChange(Sender: TObject);
     procedure edtEmployeeChange(Sender: TObject);
@@ -122,6 +128,7 @@ type
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCancelItemClick(Sender: TObject);
     procedure btnBackItensClick(Sender: TObject);
+    procedure btnCreateEntityClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -137,24 +144,43 @@ implementation
 {$R *.dfm}
 
 procedure TviewSales.btnAddProdClick(Sender: TObject);
+var
+  id : integer;
+  maxID : integer;
 begin
   inherited;
-  if ServiceRegister.QRYSale.State in dsEditModes then
-  begin
     CardPanelList.ActiveCard := cardItems;
     ServiceRegister.QRYItemsSale.Insert;
+
+    edtSaleID.Field.Value := edtSale.Text;
+
+
+
     ServiceRegister.QRYIDItemsSale.Close;
     ServiceRegister.QRYIDItemsSale.SQL.Text :=
       'SELECt MAX(ID_ITEM) MAXID FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
-    ServiceRegister.QRYIDItemsSale.ParamByName('ID_SALE').AsInteger :=
-      edtSale.Field.Value;
+    ServiceRegister.QRYIDItemsSale.ParamByName('ID_SALE').asString :=
+      edtSale.Text;
     ServiceRegister.QRYIDItemsSale.Open;
     if not ServiceRegister.QRYIDItemsSale.FieldByName('MAXID').IsNull then
       edtIDItem.Field.Value := ServiceRegister.QRYIDItemsSale.FieldByName
         ('MAXID').AsInteger + 1
     else
       edtIDItem.Field.Value := 1;
-    edtSaleID.Field.Value := edtSale.Field.Value;
+
+
+
+    ServiceRegister.QRYIDItems.Close;
+    ServiceRegister.QRYIDItems.SQL.Text := 'SELECt MAX(ID) MAXID FROM SALE_ITEMS WHERE 1=1';
+    ServiceRegister.QRYIDItems.Open;
+    if not ServiceRegister.QRYIDItems.FieldByName('MAXID').IsNull then
+      edtID.Field.Value := ServiceRegister.QRYIDItems.FieldByName
+        ('MAXID').AsInteger + 1
+    else
+      edtID.Field.Value := 1;
+
+
+
     DT_CREATED.Date := Now;
     edtCodProd.Enabled := True;
     edtUnit.Enabled := True;
@@ -164,7 +190,6 @@ begin
     btnConfirmItem.Enabled := True;
     btnCancelItem.Enabled := True;
     btnRemove.Enabled := False;
-  end;
 end;
 
 procedure TviewSales.btnBackItensClick(Sender: TObject);
@@ -179,6 +204,7 @@ begin
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
     ServiceRegister.QRYSale.Cancel;
+    ServiceRegister.QRYItemsSale.Cancel;
     CardPanelList.ActiveCard := cardSearch;
   end;
 end;
@@ -206,6 +232,7 @@ begin
   ServiceRegister.QRYItemsSale.FieldByName('DT_CREATED').AsDateTime :=
     DT_CREATED_ITEM.DateTime;
   ServiceRegister.QRYItemsSale.Post;
+  Get_Itens;
   lblConfirmItem.Caption := 'Item registered successfully';
   btnConfirmItem.Enabled := False;
   btnCancelItem.Enabled := False;
@@ -256,11 +283,23 @@ begin
   edtStat.Text := 'PENDING';
 end;
 
-procedure TviewSales.btnProductsClick(Sender: TObject);
+procedure TviewSales.btnCreateEntity(Sender: TObject);
 begin
   inherited;
   CardPanelList.ActiveCard := cardItems;
   Get_Itens;
+end;
+
+procedure TviewSales.btnCreateEntityClick(Sender: TObject);
+begin
+  inherited;
+  viewEntity := TviewEntity.Create(Self);
+
+  viewEntity.Left := (Screen.Width) div 4;
+  viewEntity.Top := (Screen.Height) div 4;
+
+  viewEntity.ShowModal;
+  CardPanelList.ActiveCard := cardRegister;
 end;
 
 procedure TviewSales.btnRemoveClick(Sender: TObject);
@@ -278,6 +317,8 @@ begin
   inherited;
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
+    ServiceRegister.QRYSale.FieldByName('PAYMENT_METHOD').AsString := ComboMethod.Text;
+    ServiceRegister.QRYSale.FieldByName('STATUS').AsString := ComboStatus.Text;
     ServiceRegister.QRYSale.FieldByName('DT_SALE').AsDateTime :=
       DT_SALE.DateTime;
     ServiceRegister.QRYSale.FieldByName('DT_CREATED').AsDateTime :=
@@ -328,10 +369,14 @@ begin
   ServiceRegister.QRYNamePeople.Open;
 
   if not ServiceRegister.QRYNamePeople.IsEmpty then
+  begin
     lblClient.Caption := ServiceRegister.QRYNamePeople.FieldByName
-      ('NAME').AsString
+      ('NAME').AsString;
+  end
   else
+  begin
     lblClient.Caption := 'CLIENT NOT FOUND!';
+  end;
 end;
 
 procedure TviewSales.edtEmployeeChange(Sender: TObject);
@@ -352,10 +397,14 @@ begin
   ServiceRegister.QRYNamePeople.Open;
 
   if not ServiceRegister.QRYNamePeople.IsEmpty then
+  begin
     lblEmployee.Caption := ServiceRegister.QRYNamePeople.FieldByName
-      ('NAME').AsString
+      ('NAME').AsString;
+  end
   else
+  begin
     lblEmployee.Caption := 'EMPLOYEE NOT FOUND!';
+  end;
 end;
 
 procedure TviewSales.FormShow(Sender: TObject);
@@ -370,7 +419,7 @@ begin
   ServiceRegister.QRYItemsSale.Close;
   ServiceRegister.QRYItemsSale.SQL.Clear;
   ServiceRegister.QRYItemsSale.SQL.Add
-    ('SELECT SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE');
+    ('SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE');
   ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsString := edtSale.Text;
   ServiceRegister.QRYItemsSale.Open();
 end;
