@@ -31,7 +31,7 @@ uses
   Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXCtrls, FireDAC.Stan.Async,
-  FireDAC.DApt, view.entity;
+  FireDAC.DApt, view.entity, view.product2, FMX.Dialogs;
 
 type
   TviewSales = class(TviewBaseLists)
@@ -55,8 +55,6 @@ type
     Label10: TLabel;
     DT_SALE: TDateTimePicker;
     DT_CREATED: TDateTimePicker;
-    lblEmployee: TLabel;
-    lblClient: TLabel;
     Label11: TLabel;
     edtCom: TDBEdit;
     Label12: TLabel;
@@ -112,6 +110,9 @@ type
     ComboStatus: TComboBox;
     btnCreateEntity1: TButton;
     btnCreateEntity2: TButton;
+    btnProdConsult: TButton;
+    edtNameClient: TDBEdit;
+    edtNameEmployee: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -121,14 +122,19 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure btnCreateEntity(Sender: TObject);
     procedure btnAddProdClick(Sender: TObject);
-    procedure edtClientChange(Sender: TObject);
-    procedure edtEmployeeChange(Sender: TObject);
     procedure edtCodProdChange(Sender: TObject);
     procedure btnConfirmItemClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCancelItemClick(Sender: TObject);
     procedure btnBackItensClick(Sender: TObject);
     procedure btnCreateEntityClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnProdConsultClick(Sender: TObject);
+    procedure edtCodProdExit(Sender: TObject);
+    procedure btnProductsClick(Sender: TObject);
+    procedure edtEmployeeExit(Sender: TObject);
+    procedure edtClientExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -149,7 +155,7 @@ var
   maxID : integer;
 begin
   inherited;
-    CardPanelList.ActiveCard := cardItems;
+
     ServiceRegister.QRYItemsSale.Insert;
 
     edtSaleID.Field.Value := edtSale.Text;
@@ -189,7 +195,6 @@ begin
     DT_CREATED_ITEM.Date := Now;
     btnConfirmItem.Enabled := True;
     btnCancelItem.Enabled := True;
-    btnRemove.Enabled := False;
 end;
 
 procedure TviewSales.btnBackItensClick(Sender: TObject);
@@ -217,6 +222,10 @@ begin
     ServiceRegister.QRYItemsSale.Cancel;
     btnConfirmItem.Enabled := False;
     btnCancelItem.Enabled := False;
+    edtCodProd.Enabled := False;
+    edtUnit.Enabled := False;
+    edtQuant.Enabled := False;
+    edtDiscItem.Enabled := False;
   end;
 end;
 
@@ -229,13 +238,16 @@ end;
 procedure TviewSales.btnConfirmItemClick(Sender: TObject);
 begin
   inherited;
-  ServiceRegister.QRYItemsSale.FieldByName('DT_CREATED').AsDateTime :=
-    DT_CREATED_ITEM.DateTime;
+  ServiceRegister.QRYItemsSale.FieldByName('DT_CREATED').AsDateTime := DT_CREATED_ITEM.DateTime;
   ServiceRegister.QRYItemsSale.Post;
   Get_Itens;
   lblConfirmItem.Caption := 'Item registered successfully';
   btnConfirmItem.Enabled := False;
   btnCancelItem.Enabled := False;
+  edtCodProd.Enabled := False;
+  edtUnit.Enabled := False;
+  edtQuant.Enabled := False;
+  edtDiscItem.Enabled := False;
 end;
 
 procedure TviewSales.btnDeleteClick(Sender: TObject);
@@ -283,6 +295,35 @@ begin
   edtStat.Text := 'PENDING';
 end;
 
+procedure TviewSales.btnProdConsultClick(Sender: TObject);
+begin
+  inherited;
+
+  viewProducts := TviewProducts.Create(Self);
+
+  viewProducts.Left := (Screen.Width) div 4;
+  viewProducts.Top := (Screen.Height) div 4;
+
+  viewProducts.ShowModal;
+
+end;
+
+procedure TviewSales.btnProductsClick(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardItems;
+
+  ServiceRegister.QRYItemsSale.Cancel;
+  btnConfirmItem.Enabled := False;
+  btnCancelItem.Enabled := False;
+  edtCodProd.Enabled := False;
+  edtUnit.Enabled := False;
+  edtQuant.Enabled := False;
+  edtDiscItem.Enabled := False;
+
+end;
+
 procedure TviewSales.btnCreateEntity(Sender: TObject);
 begin
   inherited;
@@ -293,13 +334,14 @@ end;
 procedure TviewSales.btnCreateEntityClick(Sender: TObject);
 begin
   inherited;
+
   viewEntity := TviewEntity.Create(Self);
 
   viewEntity.Left := (Screen.Width) div 4;
   viewEntity.Top := (Screen.Height) div 4;
 
   viewEntity.ShowModal;
-  CardPanelList.ActiveCard := cardRegister;
+
 end;
 
 procedure TviewSales.btnRemoveClick(Sender: TObject);
@@ -329,6 +371,35 @@ begin
   end;
 end;
 
+procedure TviewSales.edtClientExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(edtClient.Text) <> '' then
+  begin
+    try
+      ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToInt(edtClient.Text);
+      ServiceRegister.QRYNamePeople.Open;
+      if not ServiceRegister.QRYNamePeople.IsEmpty then
+      begin
+        edtNameClient.Text := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString;
+      end
+      else
+      begin
+        edtNameClient.Clear;
+        ShowMessage('ID'#39's entity not found, please, enter a valid ID or register a new.');
+        edtClient.SetFocus;
+      end;
+
+    finally
+      ServiceRegister.QRYNamePeople.Close;
+    end;
+  end
+  else
+  begin
+    edtNameClient.Clear;
+  end;
+end;
+
 procedure TviewSales.edtCodProdChange(Sender: TObject);
 begin
   inherited;
@@ -352,59 +423,59 @@ begin
     lblNameProd.Caption := 'PRODUCT NOT FOUND!';
 end;
 
-procedure TviewSales.edtClientChange(Sender: TObject);
+procedure TviewSales.edtCodProdExit(Sender: TObject);
 begin
   inherited;
-  if Trim(edtClient.Text) = '' then
+  if not ServiceRegister.QRYProductPROD_ID.Value = edtCodProd.Field.Value then
   begin
-    lblClient.Caption := 'CLIENT NAME';
-    Exit;
-  end;
-
-  ServiceRegister.QRYNamePeople.Close;
-  ServiceRegister.QRYNamePeople.SQL.Text :=
-    'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND CLIENT = TRUE';
-  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger :=
-    StrToIntDef(edtClient.Text, 0);
-  ServiceRegister.QRYNamePeople.Open;
-
-  if not ServiceRegister.QRYNamePeople.IsEmpty then
-  begin
-    lblClient.Caption := ServiceRegister.QRYNamePeople.FieldByName
-      ('NAME').AsString;
-  end
-  else
-  begin
-    lblClient.Caption := 'CLIENT NOT FOUND!';
+    edtCodProd.SetFocus;
   end;
 end;
 
-procedure TviewSales.edtEmployeeChange(Sender: TObject);
+
+procedure TviewSales.edtEmployeeExit(Sender: TObject);
 begin
   inherited;
-  if Trim(edtEmployee.Text) = '' then
+  if Trim(edtEmployee.Text) <> '' then
   begin
-    lblEmployee.Caption := 'EMPLOYEE NAME';
-    Exit;
-  end;
+    try
+      ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToInt(edtEmployee.Text);
+      ServiceRegister.QRYNamePeople.Open;
+      if not ServiceRegister.QRYNamePeople.IsEmpty then
+      begin
+        edtNameEmployee.Text := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString;
+      end
+      else
+      begin
+        edtNameEmployee.Clear;
+        ShowMessage('ID'#39's entity not found, please, enter a valid ID or register a new.');
+        edtEmployee.SetFocus;
+      end;
 
-  ServiceRegister.QRYNamePeople.Close;
-  ServiceRegister.QRYNamePeople.SQL.Clear;
-  ServiceRegister.QRYNamePeople.SQL.Add
-    ('SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID AND EMPLOYEE = TRUE');
-  ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger :=
-    StrToIntDef(edtEmployee.Text, 0);
-  ServiceRegister.QRYNamePeople.Open;
-
-  if not ServiceRegister.QRYNamePeople.IsEmpty then
-  begin
-    lblEmployee.Caption := ServiceRegister.QRYNamePeople.FieldByName
-      ('NAME').AsString;
+    finally
+      ServiceRegister.QRYNamePeople.Close;
+    end;
   end
   else
   begin
-    lblEmployee.Caption := 'EMPLOYEE NOT FOUND!';
+    edtNameEmployee.Clear;
   end;
+end;
+
+procedure TviewSales.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  if ServiceRegister.QRYItemsSale.State in dsEditModes then
+  begin
+    ServiceRegister.QRYItemsSale.Cancel;
+    ServiceRegister.QRYSale.Cancel;
+  end;
+end;
+
+procedure TviewSales.FormCreate(Sender: TObject);
+begin
+  inherited;
+  ServiceRegister.QRYItemsSale.Open;
 end;
 
 procedure TviewSales.FormShow(Sender: TObject);
@@ -418,8 +489,9 @@ procedure TviewSales.Get_Itens;
 begin
   ServiceRegister.QRYItemsSale.Close;
   ServiceRegister.QRYItemsSale.SQL.Clear;
-  ServiceRegister.QRYItemsSale.SQL.Add
-    ('SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE');
+  ServiceRegister.QRYItemsSale.SQL.Add('SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, ');
+  ServiceRegister.QRYItemsSale.SQL.Add('SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED ');
+  ServiceRegister.QRYItemsSale.SQL.Add('FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE ORDER BY SI.ID');
   ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsString := edtSale.Text;
   ServiceRegister.QRYItemsSale.Open();
 end;

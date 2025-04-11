@@ -1,0 +1,20 @@
+unit Service.functions;
+
+interface
+
+uses view.entity, view.company, view.principal, view.product2,
+  Service.Connection, view.sales, Service.Register;
+
+implementation
+
+procedure modalEntity(Sender: TObject);
+begin
+  viewEntity := TviewEntity.Create(Self);
+
+  viewEntity.Left := (Screen.Width) div 4;
+  viewEntity.Top := (Screen.Height) div 4;
+
+  viewEntity.ShowModal;
+end;
+
+end.

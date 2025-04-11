@@ -1,0 +1,38 @@
+unit Service.Colors;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs;
+
+const
+  BackgoundColor: TColor = $00F0F0F0;
+  MainTextColor: TAlphaColor = $FF000000;
+  LineDivisor: TAlphaColor = $003CE03C;
+
+  PrimaryColor: TAlphaColor = $FFADD8E6;
+  PrimaryColorDark: TAlphaColor = $FF87CEEB;
+  SecondaryColor: TAlphaColor = $FF90EE90;
+  SecondaryColorDark: TAlphaColor = $FF3CB371;
+
+  CorSucesso: TAlphaColor = $FFE0EEE0;
+  CorSucessoTexto: TAlphaColor = $FF2E8B57;
+  CorAlerta: TAlphaColor = $FFFFFACD;
+  CorAlertaTexto: TAlphaColor = $FFB8860B;
+  CorErro: TAlphaColor = $FFF08080;
+  CorErroTexto: TAlphaColor = $FF8B0000;
+
+  CorTextoSecundario: TAlphaColor = $00000000;   // Cinza médio (dim gray)
+  CorTextoInativo: TAlphaColor = claDarkGray;  // Cinza claro escuro (dark gray)
+
+  CorBordaPadrao: TAlphaColor = claDarkGray;    // Cinza claro escuro
+  CorFundoInput: TAlphaColor = claWhite;       // Branco
+  CorTextoInput: TAlphaColor = claBlack;       // Preto
+  CorFundoBotaoPadrao: TAlphaColor = claSilver;    // Cinza claro
+  CorTextoBotaoPadrao: TAlphaColor = claBlack;     // Preto
+  CorFundoBotaoPrimario: TAlphaColor = CorPrimariaAcento;
+  CorTextoBotaoPrimario: TAlphaColor = claWhite;      // Branco
+
+implementation
+
+end.

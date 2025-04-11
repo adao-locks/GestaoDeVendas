@@ -69,6 +69,7 @@ type
   end;
 
 var
+
   ServiceConnection: TServiceConnection;
 
 implementation

@@ -1,0 +1,170 @@
+unit Service.Connection;
+
+interface
+
+
+  // Cores Primárias (Tons de Cinza)
+  CorFundoPrincipal: TColor = $00F0F0F0; // Cinza bem claro (quase branco)
+  CorTextoPrincipal: TColor = $00333333; // Cinza escuro (quase preto)
+  CorLinhaDivisoria: TColor = $00D3D3D3; // Cinza claro (prata)
+
+  // Cores Secundárias (Azul e Verde - Tons Suaves)
+  CorPrimariaAcento: TColor = $00ADD8E6; // Azul claro (suave)
+  CorPrimariaAcentoEscuro: TColor = $0087CEEB; // Azul médio
+  CorSecundariaAcento: TColor = $0090EE90; // Verde claro (suave)
+  CorSecundariaAcentoEscuro: TColor = $003CB371; // Verde médio
+
+  // Cores de Feedback (Suaves)
+  CorSucesso: TColor = $00E0EEE0; // Verde bem claro
+  CorSucessoTexto: TColor = $002E8B57; // Verde escuro
+  CorAlerta: TColor = $00FFFACD; // Amarelo claro
+  CorAlertaTexto: TColor = $00B8860B; // Dourado escuro
+  CorErro: TColor = $00F08080; // Vermelho claro
+  CorErroTexto: TColor = $008B0000; // Vermelho escuro
+
+  // Cores de Texto Alternativas
+  CorTextoSecundario: TColor = $00696969; // Cinza médio (dim gray)
+  CorTextoInativo: TColor = $00A9A9A9; // Cinza claro escuro (dark gray)
+
+  // Cores de Componentes (Padrões Minimalistas)
+  CorBordaPadrao: TColor = $00A9A9A9; // Cinza claro escuro
+  CorFundoInput: TColor = $00FFFFFF; // Branco
+  CorTextoInput: TColor = $00000000; // Preto
+  CorFundoBotaoPadrao: TColor = $00E0E0E0; // Cinza claro
+  CorTextoBotaoPadrao: TColor = $00333333; // Cinza escuro
+  CorFundoBotaoPrimario: TColor = CorPrimariaAcento;
+  CorTextoBotaoPrimario: TColor = $00FFFFFF; // Branco
+
+uses
+  System.SysUtils,
+  System.Classes,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.VCLUI.Wait,
+  Data.DB,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.UI,
+  FireDAC.Phys.FBDef,
+  FireDAC.Phys.IBBase,
+  FireDAC.Phys.FB,
+  System.IniFiles,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+  Provider.Constants;
+
+type
+  TServiceConnection = class(TDataModule)
+    FDConn: TFDConnection;
+    WaitCursor: TFDGUIxWaitCursor;
+    FBDriverLink: TFDPhysFBDriverLink;
+    QRYEnterprise: TFDQuery;
+    QRYUsers: TFDQuery;
+    QRYUsersID: TIntegerField;
+    QRYUsersNAME: TStringField;
+    QRYUsersMASTER: TStringField;
+    QRYUsersPASSWORD: TBlobField;
+    QRYUsersSTATUS: TBooleanField;
+    QRYUsersFUNCTION: TStringField;
+    QRYEnterpriseACTIVE: TBooleanField;
+    QRYEnterpriseHEADQUARTERS: TBooleanField;
+    QRYEnterpriseCOMPANY_NAME: TStringField;
+    QRYEnterpriseFANTASY: TStringField;
+    QRYEnterpriseEIN_CNPJ: TStringField;
+    QRYEnterprisePHONE: TStringField;
+    QRYEnterpriseEMAIL: TStringField;
+    QRYEnterpriseDATE_REGISTER: TDateField;
+    QRYEnterpriseSTREET: TStringField;
+    QRYEnterpriseCITY: TStringField;
+    QRYEnterpriseSTATE: TStringField;
+    QRYEnterpriseZIP: TStringField;
+    QRYEnterpriseADDRESS_NUMBER: TStringField;
+    QRYEnterpriseSITE: TStringField;
+    QRYEnterpriseID_USER: TIntegerField;
+    QRYEnterpriseID_COM: TIntegerField;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  var
+    SERVICE_COM_ID: integer;
+    SERVICE_USER: STRING;
+  end;
+
+var
+
+  ServiceConnection: TServiceConnection;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+{$R *.dfm}
+
+procedure TServiceConnection.DataModuleCreate(Sender: TObject);
+var
+  LIniFile: TIniFile;
+  LDatabase: string;
+  LDrive: string;
+  LUser_Name: string;
+  LPassword: string;
+  LServidor: string;
+  LPort: integer;
+  LPath: string;
+
+begin
+
+  try
+
+    FDConn.Connected := false;
+
+    LPath := ExtractFileDir(ParamStr(0)) + '\login.ini';
+
+    LIniFile := TIniFile.Create(LPath);
+
+    LDatabase := LIniFile.ReadString('connection', 'Path', LDatabase);
+    LDrive := LIniFile.ReadString('connection', 'Driver', LDrive);
+    LServidor := LIniFile.ReadString('connection', 'Host', LServidor);
+    LPort := LIniFile.ReadInteger('connection', 'Port', LPort);
+
+    LUser_Name := 'SYSDBA';
+    LPassword := 'masterkey';
+
+    FDConn.Params.Values['Database'] := LDatabase;
+    FDConn.Params.Values['User_Name'] := LUser_Name;
+    FDConn.Params.Values['Password'] := LPassword;
+    FDConn.Params.Values['Server'] := LServidor;
+    FDConn.Params.Values['Port'] := LPort.ToString;
+
+  finally
+
+    FreeAndNil(LIniFile);
+
+  end;
+
+  QRYEnterprise.Close;
+  QRYEnterprise.Params[0].AsInteger := 1;
+  QRYEnterprise.Open();
+
+  QRYUsers.Close;
+  QRYUsers.Params[0].AsInteger := 1;
+  QRYUsers.Open();
+
+  iCOD_COMPANY := QRYEnterpriseID_COM.AsInteger;
+  SERVICE_COM_ID := iCOD_COMPANY;
+  sCOMPANY_NAME := QRYEnterpriseCOMPANY_NAME.AsString;
+  sUSER := QRYUsersID.AsInteger;
+  SERVICE_USER := sUSER.ToString;
+
+end;
+
+end.

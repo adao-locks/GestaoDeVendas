@@ -1,0 +1,20 @@
+unit Service.Colors;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs;
+
+const
+  BackgoundColor: TColor = $00F0F0F0;
+  MainTextColor: TColor = $00000000;
+  LineDivisor: TColor = $003CE03C;
+
+  PrimaryColor: TAlphaColor = $FFADD8E6;
+  PrimaryColorDark: TAlphaColor = $FF87CEEB;
+  SecondaryColor: TAlphaColor = $FF90EE90;
+  SecondaryColorDark: TAlphaColor = $FF3CB371;
+
+implementation
+
+end.

@@ -5,6 +5,7 @@ inherited viewSales: TviewSales
   ClientWidth = 1107
   Font.Height = -11
   StyleElements = [seFont, seClient, seBorder]
+  OnClose = FormClose
   ExplicitWidth = 1107
   ExplicitHeight = 768
   TextHeight = 13
@@ -581,14 +582,13 @@ inherited viewSales: TviewSales
       inherited cardRegister: TCard
         Width = 1105
         Height = 705
-        Cursor = crHandPoint
+        Cursor = crNo
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
         Margins.Bottom = 2
         StyleElements = [seFont, seClient, seBorder]
-        ExplicitLeft = -48
-        ExplicitTop = -2
+        ExplicitTop = 24
         ExplicitWidth = 1105
         ExplicitHeight = 705
         object Label1: TLabel [0]
@@ -669,25 +669,7 @@ inherited viewSales: TviewSales
           Height = 13
           Caption = 'DT_CREATED'
         end
-        object lblEmployee: TLabel [10]
-          Left = 103
-          Top = 163
-          Width = 215
-          Height = 13
-          AutoSize = False
-          Caption = 'EMPLOYEE NOT FOUND!'
-          FocusControl = edtEmployee
-        end
-        object lblClient: TLabel [11]
-          Left = 103
-          Top = 124
-          Width = 215
-          Height = 13
-          AutoSize = False
-          Caption = 'CLIENT NOT FOUND!'
-          FocusControl = edtClient
-        end
-        object Label11: TLabel [12]
+        object Label11: TLabel [10]
           Left = 75
           Top = 66
           Width = 42
@@ -695,7 +677,7 @@ inherited viewSales: TviewSales
           Caption = 'COM_ID'
           FocusControl = edtCom
         end
-        object Label12: TLabel [13]
+        object Label12: TLabel [11]
           Left = 151
           Top = 66
           Width = 27
@@ -751,7 +733,7 @@ inherited viewSales: TviewSales
           DataField = 'ID_CLIENT'
           DataSource = DSData
           TabOrder = 1
-          OnChange = edtClientChange
+          OnExit = edtClientExit
         end
         object edtEmployee: TDBEdit
           Left = 7
@@ -763,7 +745,7 @@ inherited viewSales: TviewSales
           DataField = 'ID_EMPLOYEE'
           DataSource = DSData
           TabOrder = 2
-          OnChange = edtEmployeeChange
+          OnExit = edtEmployeeExit
         end
         object edtPayMeth: TDBEdit
           Left = 13
@@ -881,7 +863,7 @@ inherited viewSales: TviewSales
           Height = 25
           Caption = 'Manage Products'
           TabOrder = 13
-          OnClick = btnAddProdClick
+          OnClick = btnProductsClick
         end
         object ComboMethod: TComboBox
           Left = 7
@@ -933,6 +915,30 @@ inherited viewSales: TviewSales
           Images = imgList
           TabOrder = 17
           OnClick = btnCreateEntityClick
+        end
+        object edtNameClient: TDBEdit
+          Left = 103
+          Top = 121
+          Width = 226
+          Height = 21
+          Cursor = crNo
+          BiDiMode = bdLeftToRight
+          CharCase = ecUpperCase
+          Enabled = False
+          ParentBiDiMode = False
+          TabOrder = 18
+        end
+        object edtNameEmployee: TDBEdit
+          Left = 103
+          Top = 160
+          Width = 226
+          Height = 21
+          Cursor = crNo
+          BiDiMode = bdLeftToRight
+          CharCase = ecUpperCase
+          Enabled = False
+          ParentBiDiMode = False
+          TabOrder = 19
         end
       end
       object cardItems: TCard
@@ -1102,7 +1108,7 @@ inherited viewSales: TviewSales
             Caption = 'DT_CREATED'
           end
           object lblNameProd: TLabel
-            Left = 93
+            Left = 121
             Top = 141
             Width = 170
             Height = 13
@@ -1158,6 +1164,7 @@ inherited viewSales: TviewSales
             Enabled = False
             TabOrder = 1
             OnChange = edtCodProdChange
+            OnExit = edtCodProdExit
           end
           object edtQuant: TDBEdit
             Left = 83
@@ -1259,6 +1266,16 @@ inherited viewSales: TviewSales
             DataSource = DSDataItems
             Enabled = False
             TabOrder = 12
+          end
+          object btnProdConsult: TButton
+            Left = 93
+            Top = 138
+            Width = 22
+            Height = 21
+            ImageIndex = 6
+            Images = imgList
+            TabOrder = 13
+            OnClick = btnProdConsultClick
           end
         end
       end

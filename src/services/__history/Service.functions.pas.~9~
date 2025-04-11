@@ -1,0 +1,17 @@
+unit Service.functions;
+
+interface
+
+implementation
+
+procedure modalEntity(Sender: TObject);
+begin
+  viewEntity := TviewEntity.Create(Self);
+
+  viewEntity.Left := (Screen.Width) div 4;
+  viewEntity.Top := (Screen.Height) div 4;
+
+  viewEntity.ShowModal;
+end;
+
+end.

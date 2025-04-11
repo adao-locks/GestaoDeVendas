@@ -1,0 +1,15 @@
+unit Service.functions;
+
+interface          
+
+uses view.entity, view.company, view.principal, view.product2,
+  Service.Connection, view.sales, Service.Register;
+
+implementation                
+
+procedure modalEntity(Sender: TObject);
+begin
+
+end;
+
+end.

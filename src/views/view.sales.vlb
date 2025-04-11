@@ -74,9 +74,6 @@ Coordinates=1048,696,53,58
 [btnEdit]
 Coordinates=1831,832,55,36
 
-[lblEmployee]
-Coordinates=80,764,85,58
-
 [edtEmployee]
 Coordinates=1732,832,89,36
 
@@ -118,9 +115,6 @@ Coordinates=520,832,53,58
 
 [Label2]
 Coordinates=1722,696,53,58
-
-[lblClient]
-Coordinates=887,696,61,58
 
 [lblZipAsk]
 Coordinates=319,764,67,58
@@ -252,5 +246,5 @@ Coordinates=1820,764,99,58
 Coordinates=980,10,187,190
 
 []
-Coordinates=937,606,89,58
+Coordinates=80,764,85,58
 

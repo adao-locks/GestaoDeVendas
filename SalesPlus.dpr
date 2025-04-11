@@ -14,7 +14,8 @@ uses
   view.sales in 'src\views\view.sales.pas' {viewSales},
   view.product2 in 'src\views\view.product2.pas' {viewProducts},
   view.logs in 'src\views\view.logs.pas' {viewLogs},
-  view.company in 'src\views\view.company.pas' {viewCompany};
+  view.company in 'src\views\view.company.pas' {viewCompany},
+  Service.Colors in 'src\services\Service.Colors.pas';
 
 {$R *.res}
 
