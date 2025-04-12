@@ -31,7 +31,6 @@ type
     pnlFooter: TPanel;
     pnlLogo: TPanel;
     pnlCloseWindow: TPanel;
-    btnCloseWindow: TButton;
     ImgList: TImageList;
     lblTitleWindow: TLabel;
     btnNew: TSpeedButton;
@@ -49,6 +48,7 @@ type
     lblRegister: TLabel;
     DBGData: TDBGrid;
     DSData: TDataSource;
+    btnCloseWindow: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

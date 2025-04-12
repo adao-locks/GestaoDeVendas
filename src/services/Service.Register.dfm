@@ -428,12 +428,12 @@ object ServiceRegister: TServiceRegister
   object QRYNameProduct: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID')
+      'SELECT NAME FROM PRODUCT WHERE PROD_ID = :ID')
     Left = 192
     Top = 248
     ParamData = <
       item
-        Name = 'PROD_ID'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null

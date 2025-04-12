@@ -582,7 +582,7 @@ inherited viewSales: TviewSales
       inherited cardRegister: TCard
         Width = 1105
         Height = 705
-        Cursor = crHandPoint
+        Cursor = crNo
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -733,6 +733,7 @@ inherited viewSales: TviewSales
           DataField = 'ID_CLIENT'
           DataSource = DSData
           TabOrder = 1
+          OnExit = edtClientExit
         end
         object edtEmployee: TDBEdit
           Left = 7
@@ -920,11 +921,9 @@ inherited viewSales: TviewSales
           Top = 121
           Width = 226
           Height = 21
-          Cursor = crHandPoint
+          Cursor = crNo
           BiDiMode = bdLeftToRight
           CharCase = ecUpperCase
-          DataField = 'ID_CLIENT'
-          DataSource = DSData
           Enabled = False
           ParentBiDiMode = False
           TabOrder = 18
@@ -934,11 +933,9 @@ inherited viewSales: TviewSales
           Top = 160
           Width = 226
           Height = 21
-          Cursor = crHandPoint
+          Cursor = crNo
           BiDiMode = bdLeftToRight
           CharCase = ecUpperCase
-          DataField = 'ID_CLIENT'
-          DataSource = DSData
           Enabled = False
           ParentBiDiMode = False
           TabOrder = 19
@@ -1166,7 +1163,6 @@ inherited viewSales: TviewSales
             DataSource = DSDataItems
             Enabled = False
             TabOrder = 1
-            OnChange = edtCodProdChange
             OnExit = edtCodProdExit
           end
           object edtQuant: TDBEdit

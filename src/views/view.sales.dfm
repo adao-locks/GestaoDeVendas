@@ -57,21 +57,6 @@ inherited viewSales: TviewSales
       ExplicitLeft = 1036
       ExplicitWidth = 71
       ExplicitHeight = 32
-      inherited btnCloseWindow: TButton
-        Left = 6
-        Top = 4
-        Width = 61
-        Height = 24
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
-        OnClick = btnCloseWindowClick
-        ExplicitLeft = 6
-        ExplicitTop = 4
-        ExplicitWidth = 61
-        ExplicitHeight = 24
-      end
     end
   end
   inherited pnlFooter: TPanel
@@ -166,6 +151,12 @@ inherited viewSales: TviewSales
       ExplicitWidth = 72
       ExplicitHeight = 22
     end
+    inherited btnCloseWindow: TButton
+      Height = 21
+      OnClick = btnCloseWindowClick
+      ExplicitLeft = 5
+      ExplicitHeight = 21
+    end
   end
   inherited pnlBackground: TPanel
     Top = 32
@@ -185,6 +176,7 @@ inherited viewSales: TviewSales
       Height = 705
       Margins.Left = 1
       Margins.Right = 1
+      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -506,28 +498,31 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'ID_SALE'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_CLIENT'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME_CLI'
+              Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_EMPLOYEE'
-              Width = 64
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME_EMPL'
-              Width = 64
+              Width = 150
               Visible = True
             end
             item
@@ -1107,15 +1102,6 @@ inherited viewSales: TviewSales
             Height = 13
             Caption = 'DT_CREATED'
           end
-          object lblNameProd: TLabel
-            Left = 121
-            Top = 141
-            Width = 170
-            Height = 13
-            AutoSize = False
-            Caption = 'ID_PRODUCT'
-            FocusControl = edtCodProd
-          end
           object lblConfirmItem: TLabel
             Left = 7
             Top = 236
@@ -1163,7 +1149,6 @@ inherited viewSales: TviewSales
             DataSource = DSDataItems
             Enabled = False
             TabOrder = 1
-            OnChange = edtCodProdChange
             OnExit = edtCodProdExit
           end
           object edtQuant: TDBEdit
@@ -1276,6 +1261,15 @@ inherited viewSales: TviewSales
             Images = imgList
             TabOrder = 13
             OnClick = btnProdConsultClick
+          end
+          object edtNameProd: TDBEdit
+            Left = 121
+            Top = 138
+            Width = 184
+            Height = 21
+            CharCase = ecUpperCase
+            Enabled = False
+            TabOrder = 14
           end
         end
       end

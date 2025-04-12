@@ -122,7 +122,6 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure btnCreateEntity(Sender: TObject);
     procedure btnAddProdClick(Sender: TObject);
-    procedure edtCodProdChange(Sender: TObject);
     procedure btnConfirmItemClick(Sender: TObject);
     procedure btnRemoveClick(Sender: TObject);
     procedure btnCancelItemClick(Sender: TObject);
@@ -133,6 +132,8 @@ type
     procedure btnProdConsultClick(Sender: TObject);
     procedure edtCodProdExit(Sender: TObject);
     procedure btnProductsClick(Sender: TObject);
+    procedure edtEmployeeExit(Sender: TObject);
+    procedure edtClientExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -369,27 +370,33 @@ begin
   end;
 end;
 
-procedure TviewSales.edtCodProdChange(Sender: TObject);
+procedure TviewSales.edtClientExit(Sender: TObject);
 begin
   inherited;
-  if Trim(edtCodProd.Text) = '' then
+  if Trim(edtClient.Text) <> '' then
   begin
-    lblNameProd.Caption := 'PRODUCT NAME';
-    Exit;
-  end;
+    try
+      ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToInt(edtClient.Text);
+      ServiceRegister.QRYNamePeople.Open;
+      if not ServiceRegister.QRYNamePeople.IsEmpty then
+      begin
+        edtNameClient.Text := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString;
+      end
+      else
+      begin
+        edtNameClient.Clear;
+        ShowMessage('ID'#39's entity not found, please, enter a valid ID or register a new.');
+        edtClient.SetFocus;
+      end;
 
-  ServiceRegister.QRYNameProduct.Close;
-  ServiceRegister.QRYNameProduct.SQL.Text :=
-    'SELECT NAME FROM PRODUCT WHERE PROD_ID = :PROD_ID';
-  ServiceRegister.QRYNameProduct.ParamByName('PROD_ID').AsInteger :=
-    StrToIntDef(edtCodProd.Text, 0);
-  ServiceRegister.QRYNameProduct.Open;
-
-  if not ServiceRegister.QRYNameProduct.IsEmpty then
-    lblNameProd.Caption := ServiceRegister.QRYNameProduct.FieldByName
-      ('NAME').AsString
+    finally
+      ServiceRegister.QRYNamePeople.Close;
+    end;
+  end
   else
-    lblNameProd.Caption := 'PRODUCT NOT FOUND!';
+  begin
+    edtNameClient.Clear;
+  end;
 end;
 
 procedure TviewSales.edtCodProdExit(Sender: TObject);
@@ -401,6 +408,35 @@ begin
   end;
 end;
 
+
+procedure TviewSales.edtEmployeeExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(edtEmployee.Text) <> '' then
+  begin
+    try
+      ServiceRegister.QRYNamePeople.ParamByName('ID').AsInteger := StrToInt(edtEmployee.Text);
+      ServiceRegister.QRYNamePeople.Open;
+      if not ServiceRegister.QRYNamePeople.IsEmpty then
+      begin
+        edtNameEmployee.Text := ServiceRegister.QRYNamePeople.FieldByName('NAME').AsString;
+      end
+      else
+      begin
+        edtNameEmployee.Clear;
+        ShowMessage('ID'#39's entity not found, please, enter a valid ID or register a new.');
+        edtEmployee.SetFocus;
+      end;
+
+    finally
+      ServiceRegister.QRYNamePeople.Close;
+    end;
+  end
+  else
+  begin
+    edtNameEmployee.Clear;
+  end;
+end;
 
 procedure TviewSales.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

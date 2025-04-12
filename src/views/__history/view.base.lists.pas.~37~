@@ -32,7 +32,7 @@ type
     pnlLogo: TPanel;
     pnlCloseWindow: TPanel;
     btnCloseWindow: TButton;
-    imgList: TImageList;
+    ImgList: TImageList;
     lblTitleWindow: TLabel;
     btnNew: TSpeedButton;
     btnEdit: TSpeedButton;
@@ -50,6 +50,8 @@ type
     DBGData: TDBGrid;
     DSData: TDataSource;
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -62,6 +64,27 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TviewBaseLists.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FormatSettings.ShortDateFormat := 'DD/MM/YYYY';
+  FormatSettings.DateSeparator := '/';
+  FormatSettings.DecimalSeparator := '.';
+end;
+
+procedure TviewBaseLists.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+
+  if Key = VK_ESCAPE then
+    Self.Close;
+
+  if Key = VK_RETURN then
+    perform(WM_NEXTDLGCTL, 0, 0);
+
+end;
 
 procedure TviewBaseLists.FormShow(Sender: TObject);
 begin

@@ -215,7 +215,7 @@ inherited viewBaseLists: TviewBaseLists
     Height = 480
     Align = alClient
     BevelOuter = bvNone
-    Color = clMedGray
+    Color = clDarkseagreen
     ParentBackground = False
     TabOrder = 2
     object CardPanelList: TCardPanel
@@ -287,8 +287,10 @@ inherited viewBaseLists: TviewBaseLists
           Margins.Bottom = 5
           Align = alClient
           BorderStyle = bsNone
-          Color = clSilver
+          Color = clMedGray
           DataSource = DSData
+          GradientEndColor = clSilver
+          GradientStartColor = clSilver
           Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
           ReadOnly = True
           TabOrder = 1
@@ -305,7 +307,6 @@ inherited viewBaseLists: TviewBaseLists
         Width = 1020
         Height = 480
         CardIndex = 1
-        Color = clSilver
         ParentBackground = False
         TabOrder = 1
         object pnlRegister: TPanel

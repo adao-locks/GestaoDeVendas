@@ -56,25 +56,6 @@ inherited viewBaseLists: TviewBaseLists
       Color = clDarkseagreen
       ParentBackground = False
       TabOrder = 1
-      object btnCloseWindow: TButton
-        AlignWithMargins = True
-        Left = 5
-        Top = 5
-        Width = 68
-        Height = 25
-        Cursor = crHandPoint
-        Margins.Left = 5
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
-        Align = alRight
-        BiDiMode = bdLeftToRight
-        Caption = 'Close'
-        ImageIndex = 0
-        Images = imgList
-        ParentBiDiMode = False
-        TabOrder = 0
-      end
     end
   end
   object pnlFooter: TPanel
@@ -206,6 +187,27 @@ inherited viewBaseLists: TviewBaseLists
       Font.Style = [fsBold]
       ParentFont = False
       ExplicitLeft = 515
+    end
+    object btnCloseWindow: TButton
+      AlignWithMargins = True
+      Left = 5
+      Top = 5
+      Width = 68
+      Height = 25
+      Cursor = crHandPoint
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alLeft
+      BiDiMode = bdLeftToRight
+      Caption = 'Close'
+      ImageIndex = 0
+      ImageMargins.Left = 4
+      Images = imgList
+      ParentBiDiMode = False
+      TabOrder = 0
+      ExplicitLeft = 8
     end
   end
   object pnlBackground: TPanel

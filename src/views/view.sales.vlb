@@ -10,9 +10,6 @@ Coordinates=1177,10,165,190
 [edtSupplierAsk]
 Coordinates=396,764,101,58
 
-[btnCloseWindow]
-Coordinates=462,696,111,58
-
 [ServiceRegister.QRYSale]
 Coordinates=603,10,163,322
 
@@ -246,5 +243,5 @@ Coordinates=1820,764,99,58
 Coordinates=980,10,187,190
 
 []
-Coordinates=80,764,85,58
+Coordinates=462,696,111,58
 

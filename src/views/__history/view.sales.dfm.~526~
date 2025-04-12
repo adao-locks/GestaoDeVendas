@@ -185,6 +185,7 @@ inherited viewSales: TviewSales
       Height = 705
       Margins.Left = 1
       Margins.Right = 1
+      ActiveCard = cardItems
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -582,7 +583,7 @@ inherited viewSales: TviewSales
       inherited cardRegister: TCard
         Width = 1105
         Height = 705
-        Cursor = crHandPoint
+        Cursor = crNo
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -733,6 +734,7 @@ inherited viewSales: TviewSales
           DataField = 'ID_CLIENT'
           DataSource = DSData
           TabOrder = 1
+          OnExit = edtClientExit
         end
         object edtEmployee: TDBEdit
           Left = 7
@@ -744,6 +746,7 @@ inherited viewSales: TviewSales
           DataField = 'ID_EMPLOYEE'
           DataSource = DSData
           TabOrder = 2
+          OnExit = edtEmployeeExit
         end
         object edtPayMeth: TDBEdit
           Left = 13
@@ -1105,15 +1108,6 @@ inherited viewSales: TviewSales
             Height = 13
             Caption = 'DT_CREATED'
           end
-          object lblNameProd: TLabel
-            Left = 121
-            Top = 141
-            Width = 170
-            Height = 13
-            AutoSize = False
-            Caption = 'ID_PRODUCT'
-            FocusControl = edtCodProd
-          end
           object lblConfirmItem: TLabel
             Left = 7
             Top = 236
@@ -1161,7 +1155,6 @@ inherited viewSales: TviewSales
             DataSource = DSDataItems
             Enabled = False
             TabOrder = 1
-            OnChange = edtCodProdChange
             OnExit = edtCodProdExit
           end
           object edtQuant: TDBEdit
@@ -1274,6 +1267,15 @@ inherited viewSales: TviewSales
             Images = imgList
             TabOrder = 13
             OnClick = btnProdConsultClick
+          end
+          object edtNameProd: TDBEdit
+            Left = 121
+            Top = 138
+            Width = 184
+            Height = 21
+            CharCase = ecUpperCase
+            Enabled = False
+            TabOrder = 14
           end
         end
       end
