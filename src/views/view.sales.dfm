@@ -151,8 +151,9 @@ inherited viewSales: TviewSales
       ExplicitWidth = 72
       ExplicitHeight = 22
     end
-    inherited btnCloseWindow: TButton
+    inherited btnCloseWindow: TSpeedButton
       Height = 21
+      Flat = True
       OnClick = btnCloseWindowClick
       ExplicitLeft = 5
       ExplicitHeight = 21
@@ -528,43 +529,36 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'PAYMENT_METHOD'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOTAL_AMOUNT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STATUS'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_SALE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_COM'
-              Width = 64
               Visible = True
             end
             item
@@ -583,7 +577,6 @@ inherited viewSales: TviewSales
         Margins.Right = 2
         Margins.Bottom = 2
         StyleElements = [seFont, seClient, seBorder]
-        ExplicitTop = 24
         ExplicitWidth = 1105
         ExplicitHeight = 705
         object Label1: TLabel [0]

@@ -25,7 +25,7 @@ uses
   view.product2,
   view.logs,
   Service.Register,
-  Service.Connection, view.company, Service.Colors;
+  Service.Connection, view.company, Service.Colors, view.size;
 
 type
   TViewPrincipal = class(TForm)
@@ -62,6 +62,7 @@ type
     imgBackground: TImage;
     lblCOMID: TLabel;
     btnCompany: TSpeedButton;
+    SpeedButton1: TSpeedButton;
     procedure Button1Click(Sender: TObject);
     procedure btnSalesClick(Sender: TObject);
     procedure btnReportsClick(Sender: TObject);
@@ -137,10 +138,10 @@ end;
 procedure TViewPrincipal.btnLogsClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
-  viewLogs := TviewLogs.Create(Self);
-  viewLogs.Parent := pnlContent;
-  viewLogs.Align := alClient;
-  viewLogs.Show;
+  viewSize := TviewSize.Create(Self);
+  viewSize.Parent := pnlContent;
+  viewSize.Align := alClient;
+  viewSize.Show;
 end;
 
 procedure TViewPrincipal.Button1Click(Sender: TObject);

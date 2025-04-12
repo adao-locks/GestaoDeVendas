@@ -184,6 +184,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\services\Service.Colors.pas"/>
+        <DCCReference Include="src\views\view.size.pas">
+            <Form>viewSize</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

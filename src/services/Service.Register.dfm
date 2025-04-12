@@ -1,5 +1,5 @@
 object ServiceRegister: TServiceRegister
-  Height = 330
+  Height = 785
   Width = 677
   object QRYEntity: TFDQuery
     Connection = ServiceConnection.FDConn
@@ -557,6 +557,50 @@ object ServiceRegister: TServiceRegister
     Left = 200
     Top = 136
     object IntegerField1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYSize: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM "SIZE" WHERE 1=1')
+    Left = 32
+    Top = 304
+    object QRYSizeID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYSizeSIZE: TStringField
+      FieldName = 'SIZE'
+      Origin = '"SIZE"'
+      Size = 10
+    end
+    object QRYSizeWEIGHT: TFloatField
+      FieldName = 'WEIGHT'
+      Origin = 'WEIGHT'
+    end
+    object QRYSizeLENGTH: TFloatField
+      FieldName = 'LENGTH'
+      Origin = '"LENGTH"'
+    end
+    object QRYSizeHEIGHT: TFloatField
+      FieldName = 'HEIGHT'
+      Origin = 'HEIGHT'
+    end
+  end
+  object QRYIDSize: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT MAX(ID) MAXID FROM "SIZE" WHERE 1=1')
+    Left = 96
+    Top = 304
+    object QRYIDSizeMAXID: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'MAXID'
       Origin = 'MAXID'

@@ -6,20 +6,15 @@ inherited viewCompany: TviewCompany
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       Caption = 'Company'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 868
+      ExplicitWidth = 67
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
-      inherited btnCloseWindow: TButton
-        OnClick = btnCloseWindowClick
-      end
     end
   end
   inherited pnlFooter: TPanel
@@ -39,17 +34,22 @@ inherited viewCompany: TviewCompany
     inherited btnDelete: TSpeedButton
       Visible = False
     end
+    inherited btnCloseWindow: TSpeedButton
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
+        CardVisible = False
+        Enabled = False
         StyleElements = [seFont, seClient, seBorder]
         inherited pnlSearch: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblSearch: TLabel
-            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end
@@ -170,7 +170,6 @@ inherited viewCompany: TviewCompany
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
             Caption = 'Register Company'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 152

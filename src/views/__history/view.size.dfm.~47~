@@ -1,0 +1,283 @@
+inherited viewSize: TviewSize
+  Caption = 'viewSize'
+  ClientHeight = 760
+  ClientWidth = 1171
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitWidth = 1171
+  ExplicitHeight = 760
+  TextHeight = 15
+  inherited pnlTop: TPanel
+    Width = 1171
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 1171
+    inherited lblTitleWindow: TLabel
+      Width = 1015
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlLogo: TPanel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited pnlCloseWindow: TPanel
+      Left = 1093
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitLeft = 1093
+    end
+  end
+  inherited pnlFooter: TPanel
+    Top = 725
+    Width = 1171
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 725
+    ExplicitWidth = 1171
+    inherited btnNew: TSpeedButton
+      Left = 1086
+      OnClick = btnNewClick
+      ExplicitLeft = 1086
+    end
+    inherited btnEdit: TSpeedButton
+      Left = 996
+      OnClick = btnEditClick
+      ExplicitLeft = 996
+    end
+    inherited btnSave: TSpeedButton
+      Left = 906
+      OnClick = btnSaveClick
+      ExplicitLeft = 906
+    end
+    inherited btnCancel: TSpeedButton
+      Left = 816
+      OnClick = btnCancelClick
+      ExplicitLeft = 816
+    end
+    inherited btnDelete: TSpeedButton
+      Left = 726
+      OnClick = btnDeleteClick
+      ExplicitLeft = 726
+    end
+    inherited btnCloseWindow: TSpeedButton
+      Left = 0
+      Top = 0
+      Width = 78
+      Height = 35
+      Align = alLeft
+      Flat = True
+      OnClick = btnCloseWindowClick
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 78
+      ExplicitHeight = 35
+    end
+  end
+  inherited pnlBackground: TPanel
+    Width = 1171
+    Height = 690
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitWidth = 1171
+    ExplicitHeight = 690
+    inherited CardPanelList: TCardPanel
+      Width = 1167
+      Height = 690
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 1167
+      ExplicitHeight = 690
+      inherited cardSearch: TCard
+        Width = 1167
+        Height = 690
+        CardVisible = False
+        Enabled = False
+        Locked = True
+        StyleElements = [seFont, seClient, seBorder]
+        ExplicitWidth = 1167
+        ExplicitHeight = 690
+        inherited pnlSearch: TPanel
+          Width = 1167
+          StyleElements = [seFont, seClient, seBorder]
+          ExplicitWidth = 1167
+          inherited lblSearch: TLabel
+            Width = 1152
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        inherited DBGData: TDBGrid
+          Width = 1157
+          Height = 615
+        end
+      end
+      inherited cardRegister: TCard
+        Width = 1167
+        Height = 690
+        StyleElements = [seFont, seClient, seBorder]
+        ExplicitWidth = 1167
+        ExplicitHeight = 690
+        inherited pnlRegister: TPanel
+          Width = 1167
+          StyleElements = [seFont, seClient, seBorder]
+          ExplicitWidth = 1167
+          inherited lblRegister: TLabel
+            Width = 1152
+            StyleElements = [seFont, seClient, seBorder]
+          end
+        end
+        object pnlFormRegister: TPanel
+          Left = 0
+          Top = 65
+          Width = 1167
+          Height = 96
+          Align = alTop
+          TabOrder = 1
+          object Label1: TLabel
+            Left = 6
+            Top = 4
+            Width = 11
+            Height = 15
+            Caption = 'ID'
+            FocusControl = edtID
+          end
+          object Label2: TLabel
+            Left = 6
+            Top = 47
+            Width = 22
+            Height = 15
+            Caption = 'SIZE'
+            FocusControl = edtSize
+          end
+          object Label3: TLabel
+            Left = 72
+            Top = 47
+            Width = 43
+            Height = 15
+            Caption = 'WEIGHT'
+            FocusControl = edtWeight
+          end
+          object Label4: TLabel
+            Left = 138
+            Top = 47
+            Width = 44
+            Height = 15
+            Caption = 'LENGTH'
+            FocusControl = edtLength
+          end
+          object Label5: TLabel
+            Left = 204
+            Top = 47
+            Width = 41
+            Height = 15
+            Caption = 'HEIGHT'
+            FocusControl = edtHeight
+          end
+          object edtID: TDBEdit
+            Left = 6
+            Top = 20
+            Width = 60
+            Height = 23
+            DataField = 'ID'
+            DataSource = DataSource1
+            Enabled = False
+            TabOrder = 0
+          end
+          object edtSize: TDBEdit
+            Left = 6
+            Top = 63
+            Width = 60
+            Height = 23
+            DataField = 'SIZE'
+            DataSource = DataSource1
+            TabOrder = 1
+          end
+          object edtWeight: TDBEdit
+            Left = 72
+            Top = 63
+            Width = 60
+            Height = 23
+            DataField = 'WEIGHT'
+            DataSource = DataSource1
+            TabOrder = 2
+          end
+          object edtLength: TDBEdit
+            Left = 138
+            Top = 63
+            Width = 60
+            Height = 23
+            DataField = 'LENGTH'
+            DataSource = DataSource1
+            TabOrder = 3
+          end
+          object edtHeight: TDBEdit
+            Left = 204
+            Top = 63
+            Width = 60
+            Height = 23
+            DataField = 'HEIGHT'
+            DataSource = DataSource1
+            TabOrder = 4
+          end
+        end
+        object pnlGrid: TPanel
+          Left = 0
+          Top = 161
+          Width = 1167
+          Height = 529
+          Align = alClient
+          Caption = 'pnlGrid'
+          TabOrder = 2
+          object DBSizes: TDBGrid
+            AlignWithMargins = True
+            Left = 6
+            Top = 6
+            Width = 1155
+            Height = 517
+            Cursor = crCross
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clMedGray
+            DataSource = DataSource1
+            GradientEndColor = clSilver
+            GradientStartColor = clSilver
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ReadOnly = True
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ID'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'SIZE'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'WEIGHT'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'LENGTH'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'HEIGHT'
+                Visible = True
+              end>
+          end
+        end
+      end
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = ServiceRegister.QRYSize
+    Left = 920
+  end
+end

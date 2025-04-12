@@ -1,0 +1,157 @@
+unit view.size;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
+  System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
+  Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls,
+  Service.Register;
+
+type
+  TviewSize = class(TviewBaseLists)
+    DataSource1: TDataSource;
+    pnlFormRegister: TPanel;
+    pnlGrid: TPanel;
+    DBSizes: TDBGrid;
+    Label1: TLabel;
+    edtID: TDBEdit;
+    Label2: TLabel;
+    edtSize: TDBEdit;
+    Label3: TLabel;
+    edtWeight: TDBEdit;
+    Label4: TLabel;
+    edtLength: TDBEdit;
+    Label5: TLabel;
+    edtHeight: TDBEdit;
+    procedure btnCloseWindowClick(Sender: TObject);
+    procedure btnNewClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure Get_Sizes();
+  end;
+
+var
+  viewSize: TviewSize;
+
+implementation
+
+{$R *.dfm}
+
+procedure TviewSize.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYSize.State in dsEditModes then
+  begin
+    ServiceRegister.QRYSize.Cancel;
+    edtSize.Enabled := False;
+    edtWeight.Enabled := False;
+    edtLength.Enabled := False;
+    edtHeight.Enabled := False;
+  end;
+  Get_Sizes;
+
+end;
+
+procedure TviewSize.btnCloseWindowClick(Sender: TObject);
+begin
+  inherited;
+  viewSize.Close;
+end;
+
+procedure TviewSize.btnDeleteClick(Sender: TObject);
+begin
+  inherited;
+  ServiceRegister.QRYSize.Delete;
+  if (ServiceRegister.QRYSize.State in dsEditModes) then
+  begin
+    edtSize.Enabled := False;
+    edtWeight.Enabled := False;
+    edtLength.Enabled := False;
+    edtHeight.Enabled := False;
+  end;
+end;
+
+procedure TviewSize.btnEditClick(Sender: TObject);
+begin
+  inherited;
+  if not (ServiceRegister.QRYSize.State in dsEditModes) then
+  begin
+    ServiceRegister.QRYSize.Edit;
+    edtSize.Enabled := True;
+    edtWeight.Enabled := True;
+    edtLength.Enabled := True;
+    edtHeight.Enabled := True;
+    edtSize.SetFocus;
+  end;
+end;
+
+procedure TviewSize.btnNewClick(Sender: TObject);
+var
+
+  maxID: integer;
+
+begin
+  inherited;
+
+  ServiceRegister.QRYSize.Insert;
+  ServiceRegister.QRYIDSize.Open;
+  if not ServiceRegister.QRYIDSize.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYIDSize.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtID.Field.Value := maxID;
+  edtSize.Enabled := True;
+  edtSize.SetFocus;
+  edtWeight.Enabled := True;
+  edtLength.Enabled := True;
+  edtHeight.Enabled := True;
+end;
+
+procedure TviewSize.btnSaveClick(Sender: TObject);
+begin
+  inherited;
+  if (ServiceRegister.QRYSize.State in dsEditModes) then
+  begin
+    if edtWeight.Field.Value = '' then
+      edtWeight.Field.Value := 0;
+    if edtLength.Field.Value = '' then
+      edtLength.Field.Value := 0;
+    if edtHeight.Field.Value = '' then
+      edtHeight.Field.Value := 0;
+    ServiceRegister.QRYSize.Post;
+    edtSize.Enabled := False;
+    edtWeight.Enabled := False;
+    edtLength.Enabled := False;
+    edtHeight.Enabled := False;
+  end;
+  Get_Sizes;
+end;
+
+procedure TviewSize.FormShow(Sender: TObject);
+begin
+  inherited;
+  CardPanelList.ActiveCard := cardRegister;
+  ServiceRegister.QRYSize.Open();
+  Get_Sizes();
+end;
+
+procedure TviewSize.Get_Sizes;
+begin
+
+  ServiceRegister.QRYSize.Close;
+  ServiceRegister.QRYSize.SQL.Clear;
+  ServiceRegister.QRYSize.SQL.Add('SELECT * FROM "SIZE" WHERE 1=1');
+  ServiceRegister.QRYSize.Open();
+
+end;
+
+end.

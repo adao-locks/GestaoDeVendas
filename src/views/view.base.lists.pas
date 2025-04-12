@@ -48,7 +48,7 @@ type
     lblRegister: TLabel;
     DBGData: TDBGrid;
     DSData: TDataSource;
-    btnCloseWindow: TButton;
+    btnCloseWindow: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

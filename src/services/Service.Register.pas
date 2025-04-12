@@ -108,6 +108,14 @@ type
     QRYItemsSaleDT_CREATED: TSQLTimeStampField;
     QRYIDItems: TFDQuery;
     IntegerField1: TIntegerField;
+    QRYSize: TFDQuery;
+    QRYIDSize: TFDQuery;
+    QRYIDSizeMAXID: TIntegerField;
+    QRYSizeID: TIntegerField;
+    QRYSizeSIZE: TStringField;
+    QRYSizeWEIGHT: TFloatField;
+    QRYSizeLENGTH: TFloatField;
+    QRYSizeHEIGHT: TFloatField;
   private
     { Private declarations }
   public

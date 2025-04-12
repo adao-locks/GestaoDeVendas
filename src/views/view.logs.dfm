@@ -6,8 +6,6 @@ inherited viewLogs: TviewLogs
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       Caption = 'Logs'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 33
@@ -17,9 +15,6 @@ inherited viewLogs: TviewLogs
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
-      inherited btnCloseWindow: TButton
-        OnClick = btnCloseWindowClick
-      end
     end
   end
   inherited pnlFooter: TPanel
@@ -39,6 +34,10 @@ inherited viewLogs: TviewLogs
     inherited btnDelete: TSpeedButton
       Visible = False
     end
+    inherited btnCloseWindow: TSpeedButton
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -52,7 +51,6 @@ inherited viewLogs: TviewLogs
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 121
           inherited lblSearch: TLabel
-            Width = 1005
             Caption = 'View Logs'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 85
@@ -177,7 +175,6 @@ inherited viewLogs: TviewLogs
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end

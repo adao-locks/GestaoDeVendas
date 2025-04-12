@@ -5,8 +5,6 @@ inherited viewEntity: TviewEntity
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       Caption = 'Entities'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 50
@@ -16,9 +14,6 @@ inherited viewEntity: TviewEntity
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
-      inherited btnCloseWindow: TButton
-        OnClick = btnCloseWindowClick
-      end
     end
   end
   inherited pnlFooter: TPanel
@@ -38,6 +33,10 @@ inherited viewEntity: TviewEntity
     inherited btnDelete: TSpeedButton
       OnClick = btnDeleteClick
     end
+    inherited btnCloseWindow: TSpeedButton
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -50,7 +49,6 @@ inherited viewEntity: TviewEntity
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 169
           inherited lblSearch: TLabel
-            Width = 1005
             Caption = 'Search Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 109
@@ -667,7 +665,6 @@ inherited viewEntity: TviewEntity
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
             Caption = 'Register Entity'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 119

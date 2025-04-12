@@ -188,26 +188,14 @@ inherited viewBaseLists: TviewBaseLists
       ParentFont = False
       ExplicitLeft = 515
     end
-    object btnCloseWindow: TButton
-      AlignWithMargins = True
-      Left = 5
-      Top = 5
-      Width = 68
+    object btnCloseWindow: TSpeedButton
+      Left = 2
+      Top = 6
+      Width = 64
       Height = 25
-      Cursor = crHandPoint
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Align = alLeft
-      BiDiMode = bdLeftToRight
       Caption = 'Close'
       ImageIndex = 0
-      ImageMargins.Left = 4
       Images = imgList
-      ParentBiDiMode = False
-      TabOrder = 0
-      ExplicitLeft = 8
     end
   end
   object pnlBackground: TPanel

@@ -5,8 +5,6 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 54
@@ -16,9 +14,6 @@ inherited viewProducts: TviewProducts
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
-      inherited btnCloseWindow: TButton
-        OnClick = btnCloseWindowClick
-      end
     end
   end
   inherited pnlFooter: TPanel
@@ -38,6 +33,10 @@ inherited viewProducts: TviewProducts
     inherited btnDelete: TSpeedButton
       OnClick = btnDeleteClick
     end
+    inherited btnCloseWindow: TSpeedButton
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
@@ -50,7 +49,6 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
-            Width = 1005
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -467,7 +465,6 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138
