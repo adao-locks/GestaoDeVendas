@@ -13,7 +13,9 @@ inherited viewSize: TviewSize
     inherited lblTitleWindow: TLabel
       Width = 1015
       Height = 35
+      Caption = 'Sizes'
       StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 35
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -32,26 +34,36 @@ inherited viewSize: TviewSize
     ExplicitWidth = 1171
     inherited btnNew: TSpeedButton
       Left = 1086
+      Enabled = False
+      Visible = False
       OnClick = btnNewClick
       ExplicitLeft = 1086
     end
     inherited btnEdit: TSpeedButton
       Left = 996
+      Enabled = False
+      Visible = False
       OnClick = btnEditClick
       ExplicitLeft = 996
     end
     inherited btnSave: TSpeedButton
       Left = 906
+      Enabled = False
+      Visible = False
       OnClick = btnSaveClick
       ExplicitLeft = 906
     end
     inherited btnCancel: TSpeedButton
       Left = 816
+      Enabled = False
+      Visible = False
       OnClick = btnCancelClick
       ExplicitLeft = 816
     end
     inherited btnDelete: TSpeedButton
       Left = 726
+      Enabled = False
+      Visible = False
       OnClick = btnDeleteClick
       ExplicitLeft = 726
     end
@@ -116,176 +128,1094 @@ inherited viewSize: TviewSize
           ExplicitWidth = 1167
           inherited lblRegister: TLabel
             Width = 1152
+            Caption = 'Register Sizes and Ranges'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 217
           end
         end
-        object pnlFormRegister: TPanel
+        object pnlSizes: TPanel
           Left = 0
           Top = 65
-          Width = 1167
-          Height = 96
-          Align = alTop
+          Width = 500
+          Height = 625
+          Align = alLeft
+          BevelOuter = bvNone
           TabOrder = 1
-          object Label1: TLabel
-            Left = 6
-            Top = 4
-            Width = 11
-            Height = 15
-            Caption = 'ID'
-            FocusControl = edtID
-          end
-          object Label2: TLabel
-            Left = 6
-            Top = 47
-            Width = 22
-            Height = 15
-            Caption = 'SIZE'
-            FocusControl = edtSize
-          end
-          object Label3: TLabel
-            Left = 72
-            Top = 47
-            Width = 43
-            Height = 15
-            Caption = 'WEIGHT'
-            FocusControl = edtWeight
-          end
-          object Label4: TLabel
-            Left = 138
-            Top = 47
-            Width = 44
-            Height = 15
-            Caption = 'LENGTH'
-            FocusControl = edtLength
-          end
-          object Label5: TLabel
-            Left = 204
-            Top = 47
-            Width = 41
-            Height = 15
-            Caption = 'HEIGHT'
-            FocusControl = edtHeight
-          end
-          object edtID: TDBEdit
-            Left = 6
-            Top = 20
-            Width = 60
-            Height = 23
-            DataField = 'ID'
-            DataSource = DataSource1
-            Enabled = False
+          OnResize = pnlSizesResize
+          object pnlSize: TPanel
+            Left = 0
+            Top = 0
+            Width = 500
+            Height = 96
+            Align = alTop
+            BevelOuter = bvNone
             TabOrder = 0
+            object Label1: TLabel
+              Left = 6
+              Top = 4
+              Width = 11
+              Height = 15
+              Caption = 'ID'
+              FocusControl = edtIDSize
+            end
+            object Label2: TLabel
+              Left = 6
+              Top = 47
+              Width = 22
+              Height = 15
+              Caption = 'SIZE'
+              FocusControl = edtSize
+            end
+            object Label3: TLabel
+              Left = 72
+              Top = 47
+              Width = 43
+              Height = 15
+              Caption = 'WEIGHT'
+              FocusControl = edtWeight
+            end
+            object Label4: TLabel
+              Left = 138
+              Top = 47
+              Width = 44
+              Height = 15
+              Caption = 'LENGTH'
+              FocusControl = edtLength
+            end
+            object Label5: TLabel
+              Left = 204
+              Top = 47
+              Width = 41
+              Height = 15
+              Caption = 'HEIGHT'
+              FocusControl = edtHeight
+            end
+            object edtIDSize: TDBEdit
+              Left = 6
+              Top = 20
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'ID'
+              DataSource = DSData2
+              Enabled = False
+              TabOrder = 0
+            end
+            object edtSize: TDBEdit
+              Left = 6
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE'
+              DataSource = DSData2
+              Enabled = False
+              TabOrder = 1
+            end
+            object edtWeight: TDBEdit
+              Left = 72
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'WEIGHT'
+              DataSource = DSData2
+              Enabled = False
+              TabOrder = 2
+            end
+            object edtLength: TDBEdit
+              Left = 138
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'LENGTH'
+              DataSource = DSData2
+              Enabled = False
+              TabOrder = 3
+            end
+            object edtHeight: TDBEdit
+              Left = 204
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'HEIGHT'
+              DataSource = DSData2
+              Enabled = False
+              TabOrder = 4
+            end
           end
-          object edtSize: TDBEdit
-            Left = 6
-            Top = 63
-            Width = 60
-            Height = 23
-            CharCase = ecUpperCase
-            DataField = 'SIZE'
-            DataSource = DataSource1
-            Enabled = False
+          object pnlGridSize: TPanel
+            Left = 0
+            Top = 96
+            Width = 500
+            Height = 529
+            Align = alClient
+            BevelOuter = bvNone
+            Caption = 'pnlGridSize'
             TabOrder = 1
-          end
-          object edtWeight: TDBEdit
-            Left = 72
-            Top = 63
-            Width = 60
-            Height = 23
-            CharCase = ecUpperCase
-            DataField = 'WEIGHT'
-            DataSource = DataSource1
-            Enabled = False
-            TabOrder = 2
-          end
-          object edtLength: TDBEdit
-            Left = 138
-            Top = 63
-            Width = 60
-            Height = 23
-            CharCase = ecUpperCase
-            DataField = 'LENGTH'
-            DataSource = DataSource1
-            Enabled = False
-            TabOrder = 3
-          end
-          object edtHeight: TDBEdit
-            Left = 204
-            Top = 63
-            Width = 60
-            Height = 23
-            CharCase = ecUpperCase
-            DataField = 'HEIGHT'
-            DataSource = DataSource1
-            Enabled = False
-            TabOrder = 4
+            object DBSizes: TDBGrid
+              AlignWithMargins = True
+              Left = 5
+              Top = 5
+              Width = 490
+              Height = 471
+              Cursor = crCross
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Align = alClient
+              BorderStyle = bsNone
+              Color = clMedGray
+              DataSource = DSData2
+              GradientEndColor = clSilver
+              GradientStartColor = clSilver
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ReadOnly = True
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -12
+              TitleFont.Name = 'Segoe UI'
+              TitleFont.Style = []
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'ID'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'WEIGHT'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'LENGTH'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'HEIGHT'
+                  Visible = True
+                end>
+            end
+            object pnlCrudSize: TPanel
+              Left = 0
+              Top = 481
+              Width = 500
+              Height = 48
+              Align = alBottom
+              BevelOuter = bvNone
+              TabOrder = 1
+              object btnDeleteSize: TSpeedButton
+                AlignWithMargins = True
+                Left = 55
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Delete'
+                ImageIndex = 5
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnDeleteClick
+                ExplicitLeft = 36
+                ExplicitTop = 2
+              end
+              object btnCancelSize: TSpeedButton
+                AlignWithMargins = True
+                Left = 145
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Cancel'
+                ImageIndex = 4
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnCancelClick
+                ExplicitLeft = 150
+                ExplicitTop = 13
+              end
+              object btnSaveSize: TSpeedButton
+                AlignWithMargins = True
+                Left = 235
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Save'
+                ImageIndex = 3
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnSaveClick
+                ExplicitLeft = 276
+                ExplicitTop = 2
+              end
+              object btnEditSize: TSpeedButton
+                AlignWithMargins = True
+                Left = 325
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Edit'
+                ImageIndex = 2
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnEditClick
+                ExplicitLeft = 342
+                ExplicitTop = 2
+              end
+              object btnNewSize: TSpeedButton
+                AlignWithMargins = True
+                Left = 415
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'New'
+                ImageIndex = 1
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnNewClick
+                ExplicitLeft = 426
+                ExplicitTop = 2
+              end
+            end
           end
         end
-        object pnlGrid: TPanel
-          Left = 0
-          Top = 161
-          Width = 1167
-          Height = 529
+        object pnlSizeRange: TPanel
+          Left = 500
+          Top = 65
+          Width = 667
+          Height = 625
           Align = alClient
-          Caption = 'pnlGrid'
+          BevelOuter = bvNone
           TabOrder = 2
-          object DBSizes: TDBGrid
-            AlignWithMargins = True
-            Left = 6
-            Top = 6
-            Width = 1155
-            Height = 517
-            Cursor = crCross
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Align = alClient
-            BorderStyle = bsNone
-            Color = clMedGray
-            DataSource = DataSource1
-            GradientEndColor = clSilver
-            GradientStartColor = clSilver
-            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-            ReadOnly = True
+          object pnlRangeSize: TPanel
+            Left = 0
+            Top = 0
+            Width = 667
+            Height = 137
+            Align = alTop
+            BevelOuter = bvNone
             TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -12
-            TitleFont.Name = 'Segoe UI'
-            TitleFont.Style = []
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'ID'
-                Visible = True
+            object Label6: TLabel
+              Left = 5
+              Top = 4
+              Width = 11
+              Height = 15
+              Caption = 'ID'
+              FocusControl = edtIDRange
+            end
+            object Label7: TLabel
+              Left = 71
+              Top = 4
+              Width = 34
+              Height = 15
+              Caption = 'NAME'
+              FocusControl = edtNameRange
+            end
+            object Label8: TLabel
+              Left = 5
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE1'
+              FocusControl = edtSz1
+            end
+            object Label9: TLabel
+              Left = 71
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE2'
+              FocusControl = edtSz2
+            end
+            object Label10: TLabel
+              Left = 137
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE3'
+              FocusControl = edtSz3
+            end
+            object Label11: TLabel
+              Left = 203
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE4'
+              FocusControl = edtSz4
+            end
+            object Label12: TLabel
+              Left = 269
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE5'
+              FocusControl = edtSz5
+            end
+            object Label13: TLabel
+              Left = 335
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE6'
+              FocusControl = edtSz6
+            end
+            object Label14: TLabel
+              Left = 401
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE7'
+              FocusControl = edtSz7
+            end
+            object Label15: TLabel
+              Left = 467
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE8'
+              FocusControl = edtSz8
+            end
+            object Label16: TLabel
+              Left = 533
+              Top = 47
+              Width = 28
+              Height = 15
+              Caption = 'SIZE9'
+              FocusControl = edtSz9
+            end
+            object Label17: TLabel
+              Left = 599
+              Top = 47
+              Width = 34
+              Height = 15
+              Caption = 'SIZE10'
+              FocusControl = edtSz10
+            end
+            object Label18: TLabel
+              Left = 5
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE11'
+              FocusControl = edtSz11
+            end
+            object Label19: TLabel
+              Left = 71
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE12'
+              FocusControl = edtSz12
+            end
+            object Label20: TLabel
+              Left = 137
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE13'
+              FocusControl = edtSz13
+            end
+            object Label21: TLabel
+              Left = 203
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE14'
+              FocusControl = edtSz14
+            end
+            object Label22: TLabel
+              Left = 269
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE15'
+              FocusControl = edtSz15
+            end
+            object Label23: TLabel
+              Left = 335
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE16'
+              FocusControl = edtSz16
+            end
+            object Label24: TLabel
+              Left = 401
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE17'
+              FocusControl = edtSz17
+            end
+            object Label25: TLabel
+              Left = 467
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE18'
+              FocusControl = edtSz18
+            end
+            object Label26: TLabel
+              Left = 533
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE19'
+              FocusControl = edtSz19
+            end
+            object Label27: TLabel
+              Left = 599
+              Top = 91
+              Width = 34
+              Height = 15
+              Caption = 'SIZE20'
+              FocusControl = edtSz20
+            end
+            object edtIDRange: TDBEdit
+              Left = 5
+              Top = 20
+              Width = 60
+              Height = 23
+              DataField = 'ID'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 0
+            end
+            object edtNameRange: TDBEdit
+              Left = 71
+              Top = 20
+              Width = 300
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'NAME'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 1
+              OnExit = edtNameRangeExit
+            end
+            object edtSz1: TDBEdit
+              Left = 5
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE1'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 2
+              OnExit = edtSz1Exit
+            end
+            object edtSz2: TDBEdit
+              Left = 71
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE2'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 3
+              OnExit = edtSz2Exit
+            end
+            object edtSz3: TDBEdit
+              Left = 137
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE3'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 4
+              OnExit = edtSz3Exit
+            end
+            object edtSz4: TDBEdit
+              Left = 203
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE4'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 5
+              OnExit = edtSz4Exit
+            end
+            object edtSz5: TDBEdit
+              Left = 269
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE5'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 6
+              OnExit = edtSz5Exit
+            end
+            object edtSz6: TDBEdit
+              Left = 335
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE6'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 7
+              OnExit = edtSz6Exit
+            end
+            object edtSz7: TDBEdit
+              Left = 401
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE7'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 8
+              OnExit = edtSz7Exit
+            end
+            object edtSz8: TDBEdit
+              Left = 467
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE8'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 9
+              OnExit = edtSz8Exit
+            end
+            object edtSz9: TDBEdit
+              Left = 533
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE9'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 10
+              OnExit = edtSz9Exit
+            end
+            object edtSz10: TDBEdit
+              Left = 599
+              Top = 63
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE10'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 11
+              OnExit = edtSz10Exit
+            end
+            object edtSz11: TDBEdit
+              Left = 5
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE11'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 12
+              OnExit = edtSz11Exit
+            end
+            object edtSz12: TDBEdit
+              Left = 71
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE12'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 13
+              OnExit = edtSz12Exit
+            end
+            object edtSz13: TDBEdit
+              Left = 137
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE13'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 14
+              OnExit = edtSz13Exit
+            end
+            object edtSz14: TDBEdit
+              Left = 203
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE14'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 15
+              OnExit = edtSz14Exit
+            end
+            object edtSz15: TDBEdit
+              Left = 269
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE15'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 16
+              OnExit = edtSz15Exit
+            end
+            object edtSz16: TDBEdit
+              Left = 335
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE16'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 17
+              OnExit = edtSz16Exit
+            end
+            object edtSz17: TDBEdit
+              Left = 401
+              Top = 108
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE17'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 18
+              OnExit = edtSz17Exit
+            end
+            object edtSz18: TDBEdit
+              Left = 467
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE18'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 19
+              OnExit = edtSz18Exit
+            end
+            object edtSz19: TDBEdit
+              Left = 533
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE19'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 20
+              OnExit = edtSz19Exit
+            end
+            object edtSz20: TDBEdit
+              Left = 599
+              Top = 107
+              Width = 60
+              Height = 23
+              CharCase = ecUpperCase
+              DataField = 'SIZE20'
+              DataSource = DSData
+              Enabled = False
+              TabOrder = 21
+              OnExit = edtSz20Exit
+            end
+          end
+          object pnlGridRange: TPanel
+            Left = 0
+            Top = 137
+            Width = 667
+            Height = 488
+            Align = alClient
+            BevelOuter = bvNone
+            TabOrder = 1
+            object DBGrid1: TDBGrid
+              AlignWithMargins = True
+              Left = 5
+              Top = 5
+              Width = 657
+              Height = 430
+              Cursor = crCross
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Align = alClient
+              BorderStyle = bsNone
+              Color = clMedGray
+              DataSource = DSData
+              GradientEndColor = clSilver
+              GradientStartColor = clSilver
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ReadOnly = True
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -12
+              TitleFont.Name = 'Segoe UI'
+              TitleFont.Style = []
+              Columns = <
+                item
+                  Expanded = False
+                  FieldName = 'ID'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'NAME'
+                  Width = 150
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE1'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE2'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE3'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE4'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE5'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE6'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE7'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE8'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE9'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE10'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE11'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE12'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE13'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE14'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE15'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE16'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE17'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE18'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE19'
+                  Width = 50
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'SIZE20'
+                  Width = 50
+                  Visible = True
+                end>
+            end
+            object pnlCrudRange: TPanel
+              Left = 0
+              Top = 440
+              Width = 667
+              Height = 48
+              Align = alBottom
+              BevelOuter = bvNone
+              TabOrder = 1
+              object btnDeleteRange: TSpeedButton
+                AlignWithMargins = True
+                Left = 222
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Delete'
+                ImageIndex = 5
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnDeleteRangeClick
+                ExplicitLeft = 191
               end
-              item
-                Expanded = False
-                FieldName = 'SIZE'
-                Visible = True
+              object btnCancelRange: TSpeedButton
+                AlignWithMargins = True
+                Left = 312
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Cancel'
+                ImageIndex = 4
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnCancelRangeClick
+                ExplicitLeft = 289
               end
-              item
-                Expanded = False
-                FieldName = 'WEIGHT'
-                Visible = True
+              object btnSaveRange: TSpeedButton
+                AlignWithMargins = True
+                Left = 402
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Save'
+                ImageIndex = 3
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnSaveRangeClick
+                ExplicitLeft = 445
               end
-              item
-                Expanded = False
-                FieldName = 'LENGTH'
-                Visible = True
+              object btnEditRange: TSpeedButton
+                AlignWithMargins = True
+                Left = 492
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'Edit'
+                ImageIndex = 2
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnEditRangeClick
+                ExplicitLeft = 539
+                ExplicitTop = 480
+                ExplicitHeight = 41
               end
-              item
-                Expanded = False
-                FieldName = 'HEIGHT'
-                Visible = True
-              end>
+              object btnNewRange: TSpeedButton
+                AlignWithMargins = True
+                Left = 582
+                Top = 5
+                Width = 80
+                Height = 38
+                Cursor = crHandPoint
+                Margins.Left = 5
+                Margins.Top = 5
+                Margins.Right = 5
+                Margins.Bottom = 5
+                Align = alRight
+                Caption = 'New'
+                ImageIndex = 1
+                Images = imgList
+                Flat = True
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsBold]
+                ParentFont = False
+                OnClick = btnNewRangeClick
+                ExplicitLeft = 617
+                ExplicitTop = 2
+              end
+            end
           end
         end
       end
     end
   end
-  object DataSource1: TDataSource
+  inherited DSData: TDataSource
+    DataSet = ServiceRegister.QRYRange
+  end
+  object DSData2: TDataSource
     DataSet = ServiceRegister.QRYSize
     Left = 920
   end

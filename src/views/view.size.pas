@@ -11,20 +11,81 @@ uses
 
 type
   TviewSize = class(TviewBaseLists)
-    DataSource1: TDataSource;
-    pnlFormRegister: TPanel;
-    pnlGrid: TPanel;
-    DBSizes: TDBGrid;
+    DSData2: TDataSource;
+    pnlSizes: TPanel;
+    pnlSize: TPanel;
     Label1: TLabel;
-    edtID: TDBEdit;
     Label2: TLabel;
-    edtSize: TDBEdit;
     Label3: TLabel;
-    edtWeight: TDBEdit;
     Label4: TLabel;
-    edtLength: TDBEdit;
     Label5: TLabel;
+    edtIDSize: TDBEdit;
+    edtSize: TDBEdit;
+    edtWeight: TDBEdit;
+    edtLength: TDBEdit;
     edtHeight: TDBEdit;
+    pnlGridSize: TPanel;
+    DBSizes: TDBGrid;
+    pnlSizeRange: TPanel;
+    pnlRangeSize: TPanel;
+    pnlGridRange: TPanel;
+    DBGrid1: TDBGrid;
+    pnlCrudRange: TPanel;
+    btnDeleteRange: TSpeedButton;
+    btnCancelRange: TSpeedButton;
+    btnSaveRange: TSpeedButton;
+    btnEditRange: TSpeedButton;
+    btnNewRange: TSpeedButton;
+    pnlCrudSize: TPanel;
+    btnDeleteSize: TSpeedButton;
+    btnCancelSize: TSpeedButton;
+    btnSaveSize: TSpeedButton;
+    btnEditSize: TSpeedButton;
+    btnNewSize: TSpeedButton;
+    Label6: TLabel;
+    edtIDRange: TDBEdit;
+    Label7: TLabel;
+    edtNameRange: TDBEdit;
+    Label8: TLabel;
+    edtSz1: TDBEdit;
+    Label9: TLabel;
+    edtSz2: TDBEdit;
+    Label10: TLabel;
+    edtSz3: TDBEdit;
+    Label11: TLabel;
+    edtSz4: TDBEdit;
+    Label12: TLabel;
+    edtSz5: TDBEdit;
+    Label13: TLabel;
+    edtSz6: TDBEdit;
+    Label14: TLabel;
+    edtSz7: TDBEdit;
+    Label15: TLabel;
+    edtSz8: TDBEdit;
+    Label16: TLabel;
+    edtSz9: TDBEdit;
+    Label17: TLabel;
+    edtSz10: TDBEdit;
+    Label18: TLabel;
+    edtSz11: TDBEdit;
+    Label19: TLabel;
+    edtSz12: TDBEdit;
+    Label20: TLabel;
+    edtSz13: TDBEdit;
+    Label21: TLabel;
+    edtSz14: TDBEdit;
+    Label22: TLabel;
+    edtSz15: TDBEdit;
+    Label23: TLabel;
+    edtSz16: TDBEdit;
+    Label24: TLabel;
+    edtSz17: TDBEdit;
+    Label25: TLabel;
+    edtSz18: TDBEdit;
+    Label26: TLabel;
+    edtSz19: TDBEdit;
+    Label27: TLabel;
+    edtSz20: TDBEdit;
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
@@ -32,10 +93,38 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure pnlSizesResize(Sender: TObject);
+    procedure btnNewRangeClick(Sender: TObject);
+    procedure btnEditRangeClick(Sender: TObject);
+    procedure btnSaveRangeClick(Sender: TObject);
+    procedure btnCancelRangeClick(Sender: TObject);
+    procedure btnDeleteRangeClick(Sender: TObject);
+    procedure edtSz1Exit(Sender: TObject);
+    procedure edtSz2Exit(Sender: TObject);
+    procedure edtNameRangeExit(Sender: TObject);
+    procedure edtSz4Exit(Sender: TObject);
+    procedure edtSz3Exit(Sender: TObject);
+    procedure edtSz7Exit(Sender: TObject);
+    procedure edtSz8Exit(Sender: TObject);
+    procedure edtSz9Exit(Sender: TObject);
+    procedure edtSz10Exit(Sender: TObject);
+    procedure edtSz11Exit(Sender: TObject);
+    procedure edtSz12Exit(Sender: TObject);
+    procedure edtSz13Exit(Sender: TObject);
+    procedure edtSz14Exit(Sender: TObject);
+    procedure edtSz15Exit(Sender: TObject);
+    procedure edtSz16Exit(Sender: TObject);
+    procedure edtSz18Exit(Sender: TObject);
+    procedure edtSz19Exit(Sender: TObject);
+    procedure edtSz6Exit(Sender: TObject);
+    procedure edtSz5Exit(Sender: TObject);
+    procedure edtSz17Exit(Sender: TObject);
+    procedure edtSz20Exit(Sender: TObject);
   private
     { Private declarations }
   public
     procedure Get_Sizes();
+    procedure Get_Range();
   end;
 
 var
@@ -61,6 +150,37 @@ begin
 
 end;
 
+procedure TviewSize.btnCancelRangeClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYRange.State in dsEditModes then
+  begin
+    ServiceRegister.QRYRange.Cancel;
+    edtNameRange.Enabled := False;
+    edtSz1.Enabled := False;
+    edtSz2.Enabled := False;
+    edtSz3.Enabled := False;
+    edtSz4.Enabled := False;
+    edtSz5.Enabled := False;
+    edtSz6.Enabled := False;
+    edtSz7.Enabled := False;
+    edtSz8.Enabled := False;
+    edtSz9.Enabled := False;
+    edtSz10.Enabled := False;
+    edtSz11.Enabled := False;
+    edtSz12.Enabled := False;
+    edtSz13.Enabled := False;
+    edtSz14.Enabled := False;
+    edtSz15.Enabled := False;
+    edtSz16.Enabled := False;
+    edtSz17.Enabled := False;
+    edtSz18.Enabled := False;
+    edtSz19.Enabled := False;
+    edtSz20.Enabled := False;
+  end;
+  Get_Sizes;
+end;
+
 procedure TviewSize.btnCloseWindowClick(Sender: TObject);
 begin
   inherited;
@@ -80,6 +200,36 @@ begin
   end;
 end;
 
+procedure TviewSize.btnDeleteRangeClick(Sender: TObject);
+begin
+  inherited;
+  ServiceRegister.QRYRange.Delete;
+  if (ServiceRegister.QRYRange.State in dsEditModes) then
+  begin
+    edtNameRange.Enabled := False;
+    edtSz1.Enabled := False;
+    edtSz2.Enabled := False;
+    edtSz3.Enabled := False;
+    edtSz4.Enabled := False;
+    edtSz5.Enabled := False;
+    edtSz6.Enabled := False;
+    edtSz7.Enabled := False;
+    edtSz8.Enabled := False;
+    edtSz9.Enabled := False;
+    edtSz10.Enabled := False;
+    edtSz11.Enabled := False;
+    edtSz12.Enabled := False;
+    edtSz13.Enabled := False;
+    edtSz14.Enabled := False;
+    edtSz15.Enabled := False;
+    edtSz16.Enabled := False;
+    edtSz17.Enabled := False;
+    edtSz18.Enabled := False;
+    edtSz19.Enabled := False;
+    edtSz20.Enabled := False;
+  end;
+end;
+
 procedure TviewSize.btnEditClick(Sender: TObject);
 begin
   inherited;
@@ -91,6 +241,37 @@ begin
     edtLength.Enabled := True;
     edtHeight.Enabled := True;
     edtSize.SetFocus;
+  end;
+end;
+
+procedure TviewSize.btnEditRangeClick(Sender: TObject);
+begin
+  inherited;
+  if not (ServiceRegister.QRYRange.State in dsEditModes) then
+  begin
+    ServiceRegister.QRYRange.Edit;
+    edtNameRange.Enabled := True;
+    edtSz1.Enabled := True;
+    edtSz2.Enabled := True;
+    edtSz3.Enabled := True;
+    edtSz4.Enabled := True;
+    edtSz5.Enabled := True;
+    edtSz6.Enabled := True;
+    edtSz7.Enabled := True;
+    edtSz8.Enabled := True;
+    edtSz9.Enabled := True;
+    edtSz10.Enabled := True;
+    edtSz11.Enabled := True;
+    edtSz12.Enabled := True;
+    edtSz13.Enabled := True;
+    edtSz14.Enabled := True;
+    edtSz15.Enabled := True;
+    edtSz16.Enabled := True;
+    edtSz17.Enabled := True;
+    edtSz18.Enabled := True;
+    edtSz19.Enabled := True;
+    edtSz20.Enabled := True;
+    edtNameRange.SetFocus;
   end;
 end;
 
@@ -108,13 +289,49 @@ begin
     maxID := ServiceRegister.QRYIDSize.FieldByName('MaxID').AsInteger + 1
   else
     maxID := 1;
-  edtID.Field.Value := maxID;
+  edtIDSize.Field.Value := maxID;
   edtSize.Enabled := True;
   edtSize.SetFocus;
   edtWeight.Enabled := True;
   edtLength.Enabled := True;
   edtHeight.Enabled := True;
   ServiceRegister.QRYIDSize.Close;
+end;
+
+procedure TviewSize.btnNewRangeClick(Sender: TObject);
+var
+  maxID: integer;
+begin
+  inherited;
+  edtNameRange.Enabled := True;
+  edtNameRange.SetFocus;
+  ServiceRegister.QRYRange.Insert;
+  ServiceRegister.QRYIDRange.Open;
+  if not ServiceRegister.QRYIDRange.FieldByName('MaxID').IsNull then
+    maxID := ServiceRegister.QRYIDRange.FieldByName('MaxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtIDRange.Field.Value := maxID;
+  edtSz1.Enabled := True;
+  edtSz2.Enabled := True;
+  edtSz3.Enabled := True;
+  edtSz4.Enabled := True;
+  edtSz5.Enabled := True;
+  edtSz6.Enabled := True;
+  edtSz7.Enabled := True;
+  edtSz8.Enabled := True;
+  edtSz9.Enabled := True;
+  edtSz10.Enabled := True;
+  edtSz11.Enabled := True;
+  edtSz12.Enabled := True;
+  edtSz13.Enabled := True;
+  edtSz14.Enabled := True;
+  edtSz15.Enabled := True;
+  edtSz16.Enabled := True;
+  edtSz17.Enabled := True;
+  edtSz18.Enabled := True;
+  edtSz19.Enabled := True;
+  edtSz20.Enabled := True;
 end;
 
 procedure TviewSize.btnSaveClick(Sender: TObject);
@@ -137,12 +354,679 @@ begin
   Get_Sizes;
 end;
 
+procedure TviewSize.btnSaveRangeClick(Sender: TObject);
+begin
+  inherited;
+  if ServiceRegister.QRYRange.State in dsEditModes then
+  begin
+    ServiceRegister.QRYRange.Post;
+    edtNameRange.Enabled := False;
+    edtSz1.Enabled := False;
+    edtSz2.Enabled := False;
+    edtSz3.Enabled := False;
+    edtSz4.Enabled := False;
+    edtSz5.Enabled := False;
+    edtSz6.Enabled := False;
+    edtSz7.Enabled := False;
+    edtSz8.Enabled := False;
+    edtSz9.Enabled := False;
+    edtSz10.Enabled := False;
+    edtSz11.Enabled := False;
+    edtSz12.Enabled := False;
+    edtSz13.Enabled := False;
+    edtSz14.Enabled := False;
+    edtSz15.Enabled := False;
+    edtSz16.Enabled := False;
+    edtSz17.Enabled := False;
+    edtSz18.Enabled := False;
+    edtSz19.Enabled := False;
+    edtSz20.Enabled := False;
+  end;
+  Get_Range;
+  Get_Sizes;
+end;
+
+procedure TviewSize.edtNameRangeExit(Sender: TObject);
+begin
+  inherited;
+  edtSz1.SetFocus;
+end;
+
+procedure TviewSize.edtSz10Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz10.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz10.Field.Value := '';
+        edtSz10.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz11.SetFocus;
+end;
+
+procedure TviewSize.edtSz11Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz11.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz11.Field.Value := '';
+        edtSz11.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz12.SetFocus;
+end;
+
+procedure TviewSize.edtSz12Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz12.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz12.Field.Value := '';
+        edtSz12.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz13.SetFocus;
+end;
+
+procedure TviewSize.edtSz13Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz13.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz13.Field.Value := '';
+        edtSz13.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz14.SetFocus;
+end;
+
+procedure TviewSize.edtSz14Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz14.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz14.Field.Value := '';
+        edtSz14.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz15.SetFocus;
+end;
+
+procedure TviewSize.edtSz15Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz15.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz15.Field.Value := '';
+        edtSz15.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz16.SetFocus;
+end;
+
+procedure TviewSize.edtSz16Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz16.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz16.Field.Value := '';
+        edtSz16.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz17.SetFocus;
+end;
+
+procedure TviewSize.edtSz17Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz17.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz17.Field.Value := '';
+        edtSz17.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz18.SetFocus;
+end;
+
+procedure TviewSize.edtSz18Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz18.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz18.Field.Value := '';
+        edtSz18.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz19.SetFocus;
+end;
+
+procedure TviewSize.edtSz19Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz19.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz19.Field.Value := '';
+        edtSz19.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz20.SetFocus;
+end;
+
+procedure TviewSize.edtSz1Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz1.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('NAME').AsString := SizeID;
+    try
+      Open;
+      if (FieldByName('NAME').AsString = '') OR (FieldByName('NAME').IsNull) then
+      begin
+        ShowMessage('Size not found!');
+        edtSz1.Field.Value := '';
+        edtSz1.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+end;
+
+procedure TviewSize.edtSz20Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz20.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz20.Field.Value := '';
+        edtSz20.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+end;
+
+procedure TviewSize.edtSz2Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz2.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz2.Field.Value := '';
+        edtSz2.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz3.SetFocus;
+end;
+
+procedure TviewSize.edtSz3Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz3.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz3.Field.Value := '';
+        edtSz3.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz4.SetFocus;
+end;
+
+procedure TviewSize.edtSz4Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz4.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz4.Field.Value := '';
+        edtSz4.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz5.SetFocus;
+end;
+
+procedure TviewSize.edtSz5Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz5.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz5.Field.Value := '';
+        edtSz5.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz6.SetFocus;
+end;
+procedure TviewSize.edtSz6Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz6.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz6.Field.Value := '';
+        edtSz6.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz7.SetFocus;
+end;
+
+procedure TviewSize.edtSz7Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz7.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz7.Field.Value := '';
+        edtSz7.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz8.SetFocus;
+end;
+
+procedure TviewSize.edtSz8Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz8.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsInteger = 0 then
+      begin
+        ShowMessage('Size not found!');
+        edtSz8.Field.Value := '';
+        edtSz8.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz9.SetFocus;
+end;
+
+procedure TviewSize.edtSz9Exit(Sender: TObject);
+var
+  SizeID: string;
+begin
+  SizeID := Trim(edtSz9.Text);
+
+  if SizeID = '' then
+  begin
+    Exit;
+  end;
+
+  with ServiceRegister.QRYSizeExist do
+  begin
+    Close;
+    ParamByName('SIZE').AsString := SizeID;
+    try
+      Open;
+      if FieldByName('SIZE').AsString = '' then
+      begin
+        ShowMessage('Size not found!');
+        edtSz9.Field.Value := '';
+        edtSz9.SetFocus;
+      end;
+    finally
+      Close;
+    end;
+  end;
+  Get_Sizes;
+  edtSz10.SetFocus;
+end;
+
 procedure TviewSize.FormShow(Sender: TObject);
 begin
   inherited;
   CardPanelList.ActiveCard := cardRegister;
   ServiceRegister.QRYSize.Open();
+  ServiceRegister.QRYRange.Open();
   Get_Sizes();
+  Get_Range();
+end;
+
+procedure TviewSize.Get_Range;
+begin
+
+  ServiceRegister.QRYRange.Close;
+  ServiceRegister.QRYRange.SQL.Clear;
+  ServiceRegister.QRYRange.SQL.Add('SELECT * FROM SIZE_RANGE WHERE 1=1');
+  ServiceRegister.QRYRange.Open();
+
 end;
 
 procedure TviewSize.Get_Sizes;
@@ -153,6 +1037,13 @@ begin
   ServiceRegister.QRYSize.SQL.Add('SELECT * FROM "SIZE" WHERE 1=1');
   ServiceRegister.QRYSize.Open();
 
+end;
+
+procedure TviewSize.pnlSizesResize(Sender: TObject);
+begin
+  inherited;
+  pnlSizes.Align := alLeft;
+  //pnlSizes.Width := ClientWidth div 2;         deixa 50% do AlClient
 end;
 
 end.

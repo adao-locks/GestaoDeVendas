@@ -1,13 +1,13 @@
 inherited viewSales: TviewSales
   Left = 0
   Caption = 'Sales'
-  ClientHeight = 768
+  ClientHeight = 602
   ClientWidth = 1107
   Font.Height = -11
   StyleElements = [seFont, seClient, seBorder]
   OnClose = FormClose
   ExplicitWidth = 1107
-  ExplicitHeight = 768
+  ExplicitHeight = 602
   TextHeight = 13
   inherited pnlTop: TPanel
     Width = 1107
@@ -60,7 +60,7 @@ inherited viewSales: TviewSales
     end
   end
   inherited pnlFooter: TPanel
-    Top = 737
+    Top = 571
     Width = 1107
     Height = 31
     Margins.Left = 2
@@ -162,7 +162,7 @@ inherited viewSales: TviewSales
   inherited pnlBackground: TPanel
     Top = 32
     Width = 1107
-    Height = 705
+    Height = 539
     Margins.Left = 2
     Margins.Top = 2
     Margins.Right = 2
@@ -174,7 +174,7 @@ inherited viewSales: TviewSales
     inherited CardPanelList: TCardPanel
       Left = 1
       Width = 1105
-      Height = 705
+      Height = 539
       Margins.Left = 1
       Margins.Right = 1
       ActiveCard = cardSearch
@@ -184,7 +184,7 @@ inherited viewSales: TviewSales
       ExplicitHeight = 705
       inherited cardSearch: TCard
         Width = 1105
-        Height = 705
+        Height = 539
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -489,7 +489,7 @@ inherited viewSales: TviewSales
           Left = 4
           Top = 173
           Width = 1097
-          Height = 528
+          Height = 362
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -570,7 +570,7 @@ inherited viewSales: TviewSales
       end
       inherited cardRegister: TCard
         Width = 1105
-        Height = 705
+        Height = 539
         Cursor = crNo
         Margins.Left = 2
         Margins.Top = 2
@@ -933,15 +933,16 @@ inherited viewSales: TviewSales
         Left = 0
         Top = 0
         Width = 1105
-        Height = 705
+        Height = 539
         CardIndex = 2
         TabOrder = 2
+        ExplicitHeight = 705
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 7
           Top = 256
           Width = 1091
-          Height = 442
+          Height = 276
           Cursor = crCross
           Margins.Left = 7
           Margins.Top = 7

@@ -1,0 +1,655 @@
+object ServiceRegister: TServiceRegister
+  Height = 785
+  Width = 677
+  object QRYEntity: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE')
+    Left = 32
+    Top = 24
+    ParamData = <
+      item
+        Name = 'PEOPLE'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYEntityPEOPLE_ID: TIntegerField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'PEOPLE_ID'
+      Origin = 'PEOPLE_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYEntityNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 150
+    end
+    object QRYEntityEIN_CNPJ: TStringField
+      FieldName = 'EIN_CNPJ'
+      Origin = 'EIN_CNPJ'
+    end
+    object QRYEntityPHONE: TStringField
+      FieldName = 'PHONE'
+      Origin = 'PHONE'
+      Size = 15
+    end
+    object QRYEntityEMAIL: TStringField
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 100
+    end
+    object QRYEntityDATE_BIRTH: TDateField
+      FieldName = 'DATE_BIRTH'
+      Origin = 'DATE_BIRTH'
+    end
+    object QRYEntityDATE_REGISTER: TDateField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
+    object QRYEntityCLIENT: TBooleanField
+      FieldName = 'CLIENT'
+      Origin = 'CLIENT'
+      Required = True
+    end
+    object QRYEntityEMPLOYEE: TBooleanField
+      FieldName = 'EMPLOYEE'
+      Origin = 'EMPLOYEE'
+      Required = True
+    end
+    object QRYEntitySUPPLIER: TBooleanField
+      FieldName = 'SUPPLIER'
+      Origin = 'SUPPLIER'
+      Required = True
+    end
+    object QRYEntityTRANSPORT: TBooleanField
+      FieldName = 'TRANSPORT'
+      Origin = 'TRANSPORT'
+      Required = True
+    end
+    object QRYEntitySTREET: TStringField
+      FieldName = 'STREET'
+      Origin = 'STREET'
+      Size = 150
+    end
+    object QRYEntityNUMBER_ADDRESS: TStringField
+      FieldName = 'NUMBER_ADDRESS'
+      Origin = 'NUMBER_ADDRESS'
+      Size = 10
+    end
+    object QRYEntityCOMPLEMENT: TStringField
+      FieldName = 'COMPLEMENT'
+      Origin = 'COMPLEMENT'
+      Size = 255
+    end
+    object QRYEntityCITY: TStringField
+      FieldName = 'CITY'
+      Origin = 'CITY'
+      Size = 100
+    end
+    object QRYEntityNEIGHBORHOOD: TStringField
+      FieldName = 'NEIGHBORHOOD'
+      Origin = 'NEIGHBORHOOD'
+      Size = 100
+    end
+    object QRYEntitySTATE: TStringField
+      FieldName = 'STATE'
+      Origin = 'STATE'
+      Size = 2
+    end
+    object QRYEntityZIP_CODE: TStringField
+      FieldName = 'ZIP_CODE'
+      Origin = 'ZIP_CODE'
+      Size = 10
+    end
+    object QRYEntityFANTASY: TStringField
+      FieldName = 'FANTASY'
+      Origin = 'FANTASY'
+      Size = 150
+    end
+    object QRYEntityOBS: TStringField
+      FieldName = 'OBS'
+      Origin = 'OBS'
+      Size = 255
+    end
+    object QRYEntityDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
+    end
+    object QRYEntityCOM_ID: TStringField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+      Size = 4
+    end
+    object QRYEntityUSER: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object QRYEntityTYPE_PERSON: TStringField
+      FieldName = 'TYPE_PERSON'
+      Origin = 'TYPE_PERSON'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object QRYLogs: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM LOGS WHERE 1=1')
+    Left = 32
+    Top = 192
+    object QRYLogsLANCTO: TIntegerField
+      FieldName = 'LANCTO'
+      Origin = 'LANCTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYLogsUSER: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object QRYLogsDATE: TSQLTimeStampField
+      FieldName = 'DATE'
+      Origin = '"DATE"'
+    end
+    object QRYLogsDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      Size = 255
+    end
+    object QRYLogsPAGE: TStringField
+      FieldName = 'PAGE'
+      Origin = '"PAGE"'
+      Size = 100
+    end
+    object QRYLogsCOMPANY: TIntegerField
+      FieldName = 'COMPANY'
+      Origin = 'COMPANY'
+    end
+  end
+  object QRYSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT'
+      #9'SL.ID_SALE,'
+      #9'SL.ID_CLIENT,'
+      #9'PO1.NAME NAME_CLI,'
+      #9'SL.ID_EMPLOYEE,'
+      #9'PO2.NAME NAME_EMPL,'
+      #9'SL.PAYMENT_METHOD,'
+      #9'SL.TOTAL_AMOUNT,'
+      #9'SL.DISCOUNT,'
+      #9'SL.STATUS,'
+      #9'SL.DT_SALE,'
+      #9'SL.DT_CREATED,'
+      #9'SL.ID_COM,'
+      #9'SL."USER",'
+      #9'SL.OBSERVATION'
+      'FROM'
+      #9'SALE SL'
+      'INNER JOIN PEOPLE PO1 ON'
+      #9'SL.ID_CLIENT = PO1.PEOPLE_ID'
+      'INNER JOIN PEOPLE PO2 ON'
+      #9'SL.ID_EMPLOYEE = PO2.PEOPLE_ID'
+      'WHERE'
+      #9'1 = 1;')
+    Left = 32
+    Top = 80
+    object QRYSaleID_SALE: TIntegerField
+      FieldName = 'ID_SALE'
+      Origin = 'ID_SALE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYSaleID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Origin = 'ID_CLIENT'
+      Required = True
+    end
+    object QRYSaleNAME_CLI: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME_CLI'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 150
+    end
+    object QRYSaleID_EMPLOYEE: TIntegerField
+      FieldName = 'ID_EMPLOYEE'
+      Origin = 'ID_EMPLOYEE'
+      Required = True
+    end
+    object QRYSaleNAME_EMPL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME_EMPL'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 150
+    end
+    object QRYSalePAYMENT_METHOD: TStringField
+      FieldName = 'PAYMENT_METHOD'
+      Origin = 'PAYMENT_METHOD'
+      Required = True
+      Size = 30
+    end
+    object QRYSaleTOTAL_AMOUNT: TFMTBCDField
+      FieldName = 'TOTAL_AMOUNT'
+      Origin = 'TOTAL_AMOUNT'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object QRYSaleDISCOUNT: TFMTBCDField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object QRYSaleSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+      Required = True
+    end
+    object QRYSaleDT_SALE: TSQLTimeStampField
+      FieldName = 'DT_SALE'
+      Origin = 'DT_SALE'
+      Required = True
+    end
+    object QRYSaleDT_CREATED: TSQLTimeStampField
+      FieldName = 'DT_CREATED'
+      Origin = 'DT_CREATED'
+      Required = True
+    end
+    object QRYSaleID_COM: TStringField
+      FieldName = 'ID_COM'
+      Origin = 'ID_COM'
+      Required = True
+      Size = 11
+    end
+    object QRYSaleUSER: TIntegerField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Required = True
+    end
+    object QRYSaleOBSERVATION: TStringField
+      FieldName = 'OBSERVATION'
+      Origin = 'OBSERVATION'
+      Size = 500
+    end
+  end
+  object QRYProduct: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+    Left = 32
+    Top = 248
+    ParamData = <
+      item
+        Name = 'PRODUCT'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYProductPROD_ID: TIntegerField
+      FieldName = 'PROD_ID'
+      Origin = 'PROD_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYProductNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 150
+    end
+    object QRYProductDESCRIPTION: TStringField
+      FieldName = 'DESCRIPTION'
+      Origin = 'DESCRIPTION'
+      Size = 255
+    end
+    object QRYProductCATEGORY: TStringField
+      FieldName = 'CATEGORY'
+      Origin = 'CATEGORY'
+      Size = 50
+    end
+    object QRYProductSUPPLIER: TStringField
+      FieldName = 'SUPPLIER'
+      Origin = 'SUPPLIER'
+      Size = 100
+    end
+    object QRYProductACTIVE: TBooleanField
+      FieldName = 'ACTIVE'
+      Origin = '"ACTIVE"'
+    end
+    object QRYProductDATE_REGISTER: TSQLTimeStampField
+      FieldName = 'DATE_REGISTER'
+      Origin = 'DATE_REGISTER'
+    end
+    object QRYProductBRAND: TStringField
+      FieldName = 'BRAND'
+      Origin = 'BRAND'
+      Size = 60
+    end
+    object QRYProductUN: TStringField
+      FieldName = 'UN'
+      Origin = 'UN'
+      Size = 10
+    end
+    object QRYProductDATE_UPDATED: TSQLTimeStampField
+      FieldName = 'DATE_UPDATED'
+      Origin = 'DATE_UPDATED'
+    end
+    object QRYProductUSER: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object QRYProductCOM_ID: TStringField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+      Size = 4
+    end
+  end
+  object QRYIDPeople: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT max(PEOPLE_ID) MAXID FROM PEOPLE')
+    Left = 104
+    Top = 24
+    object QRYIDPeopleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYIDProd: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT max(PROD_ID) MAXID FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+    Left = 104
+    Top = 248
+    ParamData = <
+      item
+        Name = 'PRODUCT'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYIDProdMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYIDSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECt max(ID_SALE) MAXID FROM SALE WHERE 1=1')
+    Left = 88
+    Top = 80
+    object QRYIDSaleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYNamePeople: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID')
+    Left = 192
+    Top = 24
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYNamePeopleNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 150
+    end
+  end
+  object QRYNameProduct: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT NAME FROM PRODUCT WHERE PROD_ID = :ID')
+    Left = 192
+    Top = 248
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYNameProductNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 150
+    end
+  end
+  object QRYItemsSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      
+        'SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.B' +
+        'RAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_P' +
+        'RICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FR' +
+        'OM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_' +
+        'ID WHERE 1=1')
+    Left = 32
+    Top = 136
+    object QRYItemsSaleID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYItemsSaleID_ITEM: TIntegerField
+      FieldName = 'ID_ITEM'
+      Origin = 'ID_ITEM'
+      Required = True
+    end
+    object QRYItemsSaleID_SALE: TIntegerField
+      FieldName = 'ID_SALE'
+      Origin = 'ID_SALE'
+      Required = True
+    end
+    object QRYItemsSaleID_PRODUCT: TStringField
+      FieldName = 'ID_PRODUCT'
+      Origin = 'ID_PRODUCT'
+      Required = True
+      Size = 50
+    end
+    object QRYItemsSaleNAME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 150
+    end
+    object QRYItemsSaleBRAND: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'BRAND'
+      Origin = 'BRAND'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
+    end
+    object QRYItemsSaleUN: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UN'
+      Origin = 'UN'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
+    end
+    object QRYItemsSaleQUANTITY: TFMTBCDField
+      FieldName = 'QUANTITY'
+      Origin = 'QUANTITY'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleUNIT_PRICE: TFMTBCDField
+      FieldName = 'UNIT_PRICE'
+      Origin = 'UNIT_PRICE'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleDISCOUNT: TFMTBCDField
+      FieldName = 'DISCOUNT'
+      Origin = 'DISCOUNT'
+      Precision = 18
+      Size = 2
+    end
+    object QRYItemsSaleSUBTOTAL: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'SUBTOTAL'
+      Origin = 'SUBTOTAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Precision = 18
+    end
+    object QRYItemsSaleDT_CREATED: TSQLTimeStampField
+      FieldName = 'DT_CREATED'
+      Origin = 'DT_CREATED'
+      Required = True
+    end
+  end
+  object QRYIDItemsSale: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECt max(ID_ITEM) MAXID FROM SALE_ITEMS WHERE 1=1')
+    Left = 120
+    Top = 136
+    object QRYIDItemsSaleMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYIDItems: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECt max(ID) MAXID FROM SALE_ITEMS WHERE 1=1')
+    Left = 200
+    Top = 136
+    object IntegerField1: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYSize: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM "SIZE" WHERE 1=1')
+    Left = 32
+    Top = 304
+    object QRYSizeID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYSizeSIZE: TStringField
+      FieldName = 'SIZE'
+      Origin = '"SIZE"'
+      Size = 10
+    end
+    object QRYSizeWEIGHT: TFloatField
+      FieldName = 'WEIGHT'
+      Origin = 'WEIGHT'
+    end
+    object QRYSizeLENGTH: TFloatField
+      FieldName = 'LENGTH'
+      Origin = '"LENGTH"'
+    end
+    object QRYSizeHEIGHT: TFloatField
+      FieldName = 'HEIGHT'
+      Origin = 'HEIGHT'
+    end
+  end
+  object QRYIDSize: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT MAX(ID) MAXID FROM "SIZE" WHERE 1=1')
+    Left = 88
+    Top = 304
+    object QRYIDSizeMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYRange: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM SIZE_RANGE WHERE 1=1')
+    Left = 32
+    Top = 368
+    object IntegerField2: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object StringField1: TStringField
+      FieldName = 'SIZE'
+      Origin = '"SIZE"'
+      Size = 10
+    end
+    object FloatField1: TFloatField
+      FieldName = 'WEIGHT'
+      Origin = 'WEIGHT'
+    end
+    object FloatField2: TFloatField
+      FieldName = 'LENGTH'
+      Origin = '"LENGTH"'
+    end
+    object FloatField3: TFloatField
+      FieldName = 'HEIGHT'
+      Origin = 'HEIGHT'
+    end
+  end
+  object QRYIDRange: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT MAX(ID) MAXID FROM SIZE_RANGE WHERE 1=1')
+    Left = 104
+    Top = 368
+    object IntegerField3: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+end
