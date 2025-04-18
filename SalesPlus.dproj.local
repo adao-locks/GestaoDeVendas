@@ -64,15 +64,16 @@
     <Transaction>2025/03/31 21:06:29.000.485,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
     <Transaction>2025/03/31 21:07:21.000.726,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\views\view.company.dfm=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.dfm</Transaction>
     <Transaction>2025/03/31 21:07:21.000.726,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\views\view.company.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 18:24:11.088,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 18:25:28.546,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\services\Service.functions.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 18:29:01.428,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\services\Service.functions.pas=</Transaction>
-    <Transaction>2025/04/11 18:46:04.346,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 18:46:39.967,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\services\Service.Colors.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 22:18:01.516,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 22:18:28.315,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\views\view.size.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 22:18:28.315,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\views\view.size.dfm=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.dfm</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <Transaction>2025/04/11 18:24:11.000.088,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 18:25:28.000.546,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\services\Service.functions.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 18:29:01.000.428,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\services\Service.functions.pas=</Transaction>
+    <Transaction>2025/04/11 18:46:04.000.346,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 18:46:39.000.967,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\services\Service.Colors.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 22:18:01.000.516,=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 22:18:28.000.315,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\views\view.size.pas=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 22:18:28.000.315,C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\src\views\view.size.dfm=C:\Users\PC Gamer\Documents\TEMP[PROJETOS]\DELPHI\GestaoDeVendas\Unit1.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="src"/>
     <File Path="src\providers"/>
     <File Path="src\providers\Provider.Constants.pas"/>
