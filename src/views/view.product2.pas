@@ -48,6 +48,9 @@ type
     lblStateAsk: TLabel;
     lblZipAsk: TLabel;
     btnConsult: TButton;
+    Label9: TLabel;
+    edtSizeRange: TDBEdit;
+    edtSizes: TDBEdit;
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);

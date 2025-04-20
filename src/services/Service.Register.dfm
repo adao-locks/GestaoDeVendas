@@ -313,6 +313,10 @@ object ServiceRegister: TServiceRegister
       Origin = 'DESCRIPTION'
       Size = 255
     end
+    object QRYProductSIZE_RANGE: TIntegerField
+      FieldName = 'SIZE_RANGE'
+      Origin = 'SIZE_RANGE'
+    end
     object QRYProductCATEGORY: TStringField
       FieldName = 'CATEGORY'
       Origin = 'CATEGORY'
@@ -593,6 +597,16 @@ object ServiceRegister: TServiceRegister
       FieldName = 'HEIGHT'
       Origin = 'HEIGHT'
     end
+    object QRYSizeUSER: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object QRYSizeCOM_ID: TStringField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+      Size = 4
+    end
   end
   object QRYIDSize: TFDQuery
     Connection = ServiceConnection.FDConn
@@ -726,6 +740,16 @@ object ServiceRegister: TServiceRegister
       FieldName = 'SIZE20'
       Origin = 'SIZE20'
       Size = 10
+    end
+    object QRYRangeUSER: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object QRYRangeCOM_ID: TStringField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+      Size = 4
     end
   end
   object QRYIDRange: TFDQuery

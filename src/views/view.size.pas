@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Service.Register;
+  Service.Register, Service.Connection;
 
 type
   TviewSize = class(TviewBaseLists)
@@ -345,6 +345,10 @@ begin
       edtLength.Field.Value := 0;
     if edtHeight.Field.Value = '' then
       edtHeight.Field.Value := 0;
+    ServiceRegister.QRYSize.FieldByName('COM_ID').AsInteger :=
+      ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYSize.FieldByName('USER').AsString :=
+      ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYSize.Post;
     edtSize.Enabled := False;
     edtWeight.Enabled := False;
@@ -359,6 +363,10 @@ begin
   inherited;
   if ServiceRegister.QRYRange.State in dsEditModes then
   begin
+    ServiceRegister.QRYRange.FieldByName('COM_ID').AsInteger :=
+      ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYRange.FieldByName('USER').AsString :=
+      ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYRange.Post;
     edtNameRange.Enabled := False;
     edtSz1.Enabled := False;
