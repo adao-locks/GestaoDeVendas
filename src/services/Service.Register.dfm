@@ -745,7 +745,7 @@ object ServiceRegister: TServiceRegister
   object QRYSizeExist: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT "SIZE" NAME FROM "SIZE" WHERE ID = :ID')
+      'SELECT "SIZE" FROM "SIZE" WHERE "SIZE" = :ID')
     Left = 160
     Top = 304
     ParamData = <
@@ -755,8 +755,8 @@ object ServiceRegister: TServiceRegister
         ParamType = ptInput
         Value = Null
       end>
-    object QRYSizeExistNAME: TStringField
-      FieldName = 'NAME'
+    object QRYSizeExistSIZE: TStringField
+      FieldName = 'SIZE'
       Origin = '"SIZE"'
       Size = 10
     end

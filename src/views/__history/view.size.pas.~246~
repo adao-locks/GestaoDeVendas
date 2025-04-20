@@ -11,7 +11,7 @@ uses
 
 type
   TviewSize = class(TviewBaseLists)
-    DataSource1: TDataSource;
+    DSData2: TDataSource;
     pnlSizes: TPanel;
     pnlSize: TPanel;
     Label1: TLabel;
@@ -715,7 +715,6 @@ begin
 
   with ServiceRegister.QRYSizeExist do
   begin
-    Open;
     Close;
     ParamByName('SIZE').AsString := SizeID;
     try
@@ -731,7 +730,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz2.SetFocus;
 end;
 
 procedure TviewSize.edtSz20Exit(Sender: TObject);

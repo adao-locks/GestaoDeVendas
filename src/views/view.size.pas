@@ -406,10 +406,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz10.Field.Value := '';
@@ -420,7 +420,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz11.SetFocus;
 end;
 
 procedure TviewSize.edtSz11Exit(Sender: TObject);
@@ -437,10 +436,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz11.Field.Value := '';
@@ -451,7 +450,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz12.SetFocus;
 end;
 
 procedure TviewSize.edtSz12Exit(Sender: TObject);
@@ -468,10 +466,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz12.Field.Value := '';
@@ -482,7 +480,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz13.SetFocus;
 end;
 
 procedure TviewSize.edtSz13Exit(Sender: TObject);
@@ -499,10 +496,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz13.Field.Value := '';
@@ -513,7 +510,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz14.SetFocus;
 end;
 
 procedure TviewSize.edtSz14Exit(Sender: TObject);
@@ -530,10 +526,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz14.Field.Value := '';
@@ -544,7 +540,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz15.SetFocus;
 end;
 
 procedure TviewSize.edtSz15Exit(Sender: TObject);
@@ -561,10 +556,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz15.Field.Value := '';
@@ -575,7 +570,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz16.SetFocus;
 end;
 
 procedure TviewSize.edtSz16Exit(Sender: TObject);
@@ -592,10 +586,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz16.Field.Value := '';
@@ -606,7 +600,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz17.SetFocus;
 end;
 
 procedure TviewSize.edtSz17Exit(Sender: TObject);
@@ -623,10 +616,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz17.Field.Value := '';
@@ -637,7 +630,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz18.SetFocus;
 end;
 
 procedure TviewSize.edtSz18Exit(Sender: TObject);
@@ -654,10 +646,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz18.Field.Value := '';
@@ -668,7 +660,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz19.SetFocus;
 end;
 
 procedure TviewSize.edtSz19Exit(Sender: TObject);
@@ -685,10 +676,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz19.Field.Value := '';
@@ -699,7 +690,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz20.SetFocus;
 end;
 
 procedure TviewSize.edtSz1Exit(Sender: TObject);
@@ -716,10 +706,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('NAME').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if (FieldByName('NAME').AsString = '') OR (FieldByName('NAME').IsNull) then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz1.Field.Value := '';
@@ -746,10 +736,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz20.Field.Value := '';
@@ -776,10 +766,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz2.Field.Value := '';
@@ -790,7 +780,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz3.SetFocus;
 end;
 
 procedure TviewSize.edtSz3Exit(Sender: TObject);
@@ -807,10 +796,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz3.Field.Value := '';
@@ -821,7 +810,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz4.SetFocus;
 end;
 
 procedure TviewSize.edtSz4Exit(Sender: TObject);
@@ -838,10 +826,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz4.Field.Value := '';
@@ -852,7 +840,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz5.SetFocus;
 end;
 
 procedure TviewSize.edtSz5Exit(Sender: TObject);
@@ -869,10 +856,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz5.Field.Value := '';
@@ -883,7 +870,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz6.SetFocus;
 end;
 procedure TviewSize.edtSz6Exit(Sender: TObject);
 var
@@ -899,10 +885,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz6.Field.Value := '';
@@ -913,7 +899,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz7.SetFocus;
 end;
 
 procedure TviewSize.edtSz7Exit(Sender: TObject);
@@ -930,10 +915,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz7.Field.Value := '';
@@ -944,7 +929,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz8.SetFocus;
 end;
 
 procedure TviewSize.edtSz8Exit(Sender: TObject);
@@ -961,10 +945,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsInteger = 0 then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz8.Field.Value := '';
@@ -975,7 +959,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz9.SetFocus;
 end;
 
 procedure TviewSize.edtSz9Exit(Sender: TObject);
@@ -992,10 +975,10 @@ begin
   with ServiceRegister.QRYSizeExist do
   begin
     Close;
-    ParamByName('SIZE').AsString := SizeID;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if FieldByName('SIZE').AsString = '' then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz9.Field.Value := '';
@@ -1006,7 +989,6 @@ begin
     end;
   end;
   Get_Sizes;
-  edtSz10.SetFocus;
 end;
 
 procedure TviewSize.FormShow(Sender: TObject);

@@ -142,7 +142,7 @@ type
     QRYRangeSIZE19: TStringField;
     QRYRangeSIZE20: TStringField;
     QRYSizeExist: TFDQuery;
-    QRYSizeExistNAME: TStringField;
+    QRYSizeExistSIZE: TStringField;
   private
     { Private declarations }
   public

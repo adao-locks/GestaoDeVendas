@@ -598,7 +598,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT MAX(ID) MAXID FROM "SIZE" WHERE 1=1')
-    Left = 96
+    Left = 88
     Top = 304
     object QRYIDSizeMAXID: TIntegerField
       AutoGenerateValue = arDefault
@@ -606,6 +606,159 @@ object ServiceRegister: TServiceRegister
       Origin = 'MAXID'
       ProviderFlags = []
       ReadOnly = True
+    end
+  end
+  object QRYRange: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM SIZE_RANGE WHERE 1=1')
+    Left = 32
+    Top = 368
+    object QRYRangeID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYRangeNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 50
+    end
+    object QRYRangeSIZE1: TStringField
+      FieldName = 'SIZE1'
+      Origin = 'SIZE1'
+      Required = True
+      Size = 10
+    end
+    object QRYRangeSIZE2: TStringField
+      FieldName = 'SIZE2'
+      Origin = 'SIZE2'
+      Size = 10
+    end
+    object QRYRangeSIZE3: TStringField
+      FieldName = 'SIZE3'
+      Origin = 'SIZE3'
+      Size = 10
+    end
+    object QRYRangeSIZE4: TStringField
+      FieldName = 'SIZE4'
+      Origin = 'SIZE4'
+      Size = 10
+    end
+    object QRYRangeSIZE5: TStringField
+      FieldName = 'SIZE5'
+      Origin = 'SIZE5'
+      Size = 10
+    end
+    object QRYRangeSIZE6: TStringField
+      FieldName = 'SIZE6'
+      Origin = 'SIZE6'
+      Size = 10
+    end
+    object QRYRangeSIZE7: TStringField
+      FieldName = 'SIZE7'
+      Origin = 'SIZE7'
+      Size = 10
+    end
+    object QRYRangeSIZE8: TStringField
+      FieldName = 'SIZE8'
+      Origin = 'SIZE8'
+      Size = 10
+    end
+    object QRYRangeSIZE9: TStringField
+      FieldName = 'SIZE9'
+      Origin = 'SIZE9'
+      Size = 10
+    end
+    object QRYRangeSIZE10: TStringField
+      FieldName = 'SIZE10'
+      Origin = 'SIZE10'
+      Size = 10
+    end
+    object QRYRangeSIZE11: TStringField
+      FieldName = 'SIZE11'
+      Origin = 'SIZE11'
+      Size = 10
+    end
+    object QRYRangeSIZE12: TStringField
+      FieldName = 'SIZE12'
+      Origin = 'SIZE12'
+      Size = 10
+    end
+    object QRYRangeSIZE13: TStringField
+      FieldName = 'SIZE13'
+      Origin = 'SIZE13'
+      Size = 10
+    end
+    object QRYRangeSIZE14: TStringField
+      FieldName = 'SIZE14'
+      Origin = 'SIZE14'
+      Size = 10
+    end
+    object QRYRangeSIZE15: TStringField
+      FieldName = 'SIZE15'
+      Origin = 'SIZE15'
+      Size = 10
+    end
+    object QRYRangeSIZE16: TStringField
+      FieldName = 'SIZE16'
+      Origin = 'SIZE16'
+      Size = 10
+    end
+    object QRYRangeSIZE17: TStringField
+      FieldName = 'SIZE17'
+      Origin = 'SIZE17'
+      Size = 10
+    end
+    object QRYRangeSIZE18: TStringField
+      FieldName = 'SIZE18'
+      Origin = 'SIZE18'
+      Size = 10
+    end
+    object QRYRangeSIZE19: TStringField
+      FieldName = 'SIZE19'
+      Origin = 'SIZE19'
+      Size = 10
+    end
+    object QRYRangeSIZE20: TStringField
+      FieldName = 'SIZE20'
+      Origin = 'SIZE20'
+      Size = 10
+    end
+  end
+  object QRYIDRange: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT MAX(ID) MAXID FROM SIZE_RANGE WHERE 1=1')
+    Left = 104
+    Top = 368
+    object IntegerField3: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+  end
+  object QRYSizeExist: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT "SIZE" NAME FROM "SIZE" WHERE ID = :ID')
+    Left = 160
+    Top = 304
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object QRYSizeExistNAME: TStringField
+      FieldName = 'NAME'
+      Origin = '"SIZE"'
+      Size = 10
     end
   end
 end

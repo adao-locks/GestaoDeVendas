@@ -11,7 +11,7 @@ uses
 
 type
   TviewSize = class(TviewBaseLists)
-    DataSource1: TDataSource;
+    DSData2: TDataSource;
     pnlSizes: TPanel;
     pnlSize: TPanel;
     Label1: TLabel;
@@ -715,11 +715,11 @@ begin
 
   with ServiceRegister.QRYSizeExist do
   begin
-    ServiceRegister.QRYSizeExist.Open;
-    ParamByName('NAME').AsString := SizeID;
+    Close;
+    ParamByName('ID').AsString := SizeID;
     try
       Open;
-      if (FieldByName('NAME').AsString = '') OR (FieldByName('NAME').IsNull) then
+      if (FieldByName('SIZE').AsString = '') OR (FieldByName('SIZE').IsNull) then
       begin
         ShowMessage('Size not found!');
         edtSz1.Field.Value := '';

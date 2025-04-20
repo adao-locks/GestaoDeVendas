@@ -15,7 +15,7 @@ inherited viewSize: TviewSize
       Height = 35
       Caption = 'Sizes'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 35
+      ExplicitWidth = 1015
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -772,7 +772,7 @@ inherited viewSize: TviewSize
             end
             object edtSz10: TDBEdit
               Left = 599
-              Top = 63
+              Top = 62
               Width = 60
               Height = 23
               CharCase = ecUpperCase
@@ -796,7 +796,7 @@ inherited viewSize: TviewSize
             end
             object edtSz12: TDBEdit
               Left = 71
-              Top = 107
+              Top = 108
               Width = 60
               Height = 23
               CharCase = ecUpperCase

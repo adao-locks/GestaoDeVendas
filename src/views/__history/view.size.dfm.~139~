@@ -15,7 +15,7 @@ inherited viewSize: TviewSize
       Height = 35
       Caption = 'Sizes'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 35
+      ExplicitWidth = 1015
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -197,7 +197,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'ID'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 0
             end
@@ -208,7 +208,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'SIZE'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 1
             end
@@ -219,7 +219,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'WEIGHT'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 2
             end
@@ -230,7 +230,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'LENGTH'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 3
             end
@@ -241,7 +241,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'HEIGHT'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 4
             end
@@ -269,7 +269,7 @@ inherited viewSize: TviewSize
               Align = alClient
               BorderStyle = bsNone
               Color = clMedGray
-              DataSource = DataSource1
+              DataSource = DSData2
               GradientEndColor = clSilver
               GradientStartColor = clSilver
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -696,7 +696,6 @@ inherited viewSize: TviewSize
               DataSource = DSData
               Enabled = False
               TabOrder = 4
-              OnChange = edtSz3Change
               OnExit = edtSz3Exit
             end
             object edtSz4: TDBEdit
@@ -721,6 +720,7 @@ inherited viewSize: TviewSize
               DataSource = DSData
               Enabled = False
               TabOrder = 6
+              OnExit = edtSz5Exit
             end
             object edtSz6: TDBEdit
               Left = 335
@@ -772,7 +772,7 @@ inherited viewSize: TviewSize
             end
             object edtSz10: TDBEdit
               Left = 599
-              Top = 63
+              Top = 62
               Width = 60
               Height = 23
               CharCase = ecUpperCase
@@ -856,7 +856,7 @@ inherited viewSize: TviewSize
             end
             object edtSz17: TDBEdit
               Left = 401
-              Top = 107
+              Top = 108
               Width = 60
               Height = 23
               CharCase = ecUpperCase
@@ -864,7 +864,7 @@ inherited viewSize: TviewSize
               DataSource = DSData
               Enabled = False
               TabOrder = 18
-              OnChange = edtSz17Change
+              OnExit = edtSz17Exit
             end
             object edtSz18: TDBEdit
               Left = 467
@@ -900,7 +900,7 @@ inherited viewSize: TviewSize
               DataSource = DSData
               Enabled = False
               TabOrder = 21
-              OnChange = edtSz20Change
+              OnExit = edtSz20Exit
             end
           end
           object pnlGridRange: TPanel
@@ -1215,7 +1215,7 @@ inherited viewSize: TviewSize
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYRange
   end
-  object DataSource1: TDataSource
+  object DSData2: TDataSource
     DataSet = ServiceRegister.QRYSize
     Left = 920
   end
