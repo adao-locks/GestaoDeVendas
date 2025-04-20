@@ -68,7 +68,7 @@ inherited viewSales: TviewSales
     Margins.Right = 2
     Margins.Bottom = 2
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 737
+    ExplicitTop = 571
     ExplicitWidth = 1107
     ExplicitHeight = 31
     inherited btnNew: TSpeedButton
@@ -170,18 +170,17 @@ inherited viewSales: TviewSales
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 32
     ExplicitWidth = 1107
-    ExplicitHeight = 705
+    ExplicitHeight = 539
     inherited CardPanelList: TCardPanel
       Left = 1
       Width = 1105
       Height = 539
       Margins.Left = 1
       Margins.Right = 1
-      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
-      ExplicitHeight = 705
+      ExplicitHeight = 539
       inherited cardSearch: TCard
         Width = 1105
         Height = 539
@@ -191,7 +190,7 @@ inherited viewSales: TviewSales
         Margins.Bottom = 2
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1105
-        ExplicitHeight = 705
+        ExplicitHeight = 539
         inherited pnlSearch: TPanel
           Width = 1105
           Height = 169
@@ -578,7 +577,7 @@ inherited viewSales: TviewSales
         Margins.Bottom = 2
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1105
-        ExplicitHeight = 705
+        ExplicitHeight = 539
         object Label1: TLabel [0]
           Left = 7
           Top = 66
@@ -936,7 +935,6 @@ inherited viewSales: TviewSales
         Height = 539
         CardIndex = 2
         TabOrder = 2
-        ExplicitHeight = 705
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 7

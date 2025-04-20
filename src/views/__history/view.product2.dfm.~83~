@@ -5,6 +5,8 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Product'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 54
@@ -34,6 +36,7 @@ inherited viewProducts: TviewProducts
       OnClick = btnDeleteClick
     end
     inherited btnCloseWindow: TSpeedButton
+      Flat = True
       OnClick = btnCloseWindowClick
     end
   end
@@ -48,6 +51,7 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 170
           inherited lblSearch: TLabel
+            Width = 1005
             Caption = 'Search Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 128
@@ -421,7 +425,7 @@ inherited viewProducts: TviewProducts
         end
         object Label4: TLabel [3]
           Left = 55
-          Top = 204
+          Top = 246
           Width = 48
           Height = 15
           Caption = 'Category'
@@ -429,7 +433,7 @@ inherited viewProducts: TviewProducts
         end
         object Label5: TLabel [4]
           Left = 267
-          Top = 204
+          Top = 246
           Width = 43
           Height = 15
           Caption = 'Supplier'
@@ -447,7 +451,7 @@ inherited viewProducts: TviewProducts
         end
         object Label7: TLabel [6]
           Left = 161
-          Top = 204
+          Top = 246
           Width = 31
           Height = 15
           Caption = 'Brand'
@@ -455,15 +459,24 @@ inherited viewProducts: TviewProducts
         end
         object Label8: TLabel [7]
           Left = 9
-          Top = 204
+          Top = 246
           Width = 15
           Height = 15
           Caption = 'Un'
           FocusControl = edtUn
         end
+        object Label9: TLabel [8]
+          Left = 9
+          Top = 203
+          Width = 56
+          Height = 15
+          Caption = 'Size Range'
+          FocusControl = edtSizeRange
+        end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             Caption = 'Register Product'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 138
@@ -484,7 +497,7 @@ inherited viewProducts: TviewProducts
         end
         object edtBrand: TDBEdit
           Left = 161
-          Top = 220
+          Top = 262
           Width = 100
           Height = 23
           Cursor = crHandPoint
@@ -495,7 +508,7 @@ inherited viewProducts: TviewProducts
         end
         object edtCategory: TDBEdit
           Left = 55
-          Top = 220
+          Top = 262
           Width = 100
           Height = 23
           Cursor = crHandPoint
@@ -554,7 +567,7 @@ inherited viewProducts: TviewProducts
         end
         object edtSupplier: TDBEdit
           Left = 267
-          Top = 220
+          Top = 262
           Width = 118
           Height = 23
           Cursor = crHandPoint
@@ -565,7 +578,7 @@ inherited viewProducts: TviewProducts
         end
         object edtUn: TDBEdit
           Left = 9
-          Top = 220
+          Top = 262
           Width = 40
           Height = 23
           Cursor = crHandPoint
@@ -573,6 +586,27 @@ inherited viewProducts: TviewProducts
           DataField = 'UN'
           DataSource = DSData
           TabOrder = 3
+        end
+        object edtSizeRange: TDBEdit
+          Left = 9
+          Top = 219
+          Width = 60
+          Height = 23
+          CharCase = ecUpperCase
+          DataField = 'SIZE_RANGE'
+          DataSource = DSData
+          TabOrder = 10
+          OnExit = edtSizeRangeExit
+        end
+        object edtSizes: TDBEdit
+          Left = 75
+          Top = 219
+          Width = 310
+          Height = 23
+          CharCase = ecUpperCase
+          DataField = 'SIZE_RANGE'
+          DataSource = DSData
+          TabOrder = 11
         end
       end
     end

@@ -116,6 +116,38 @@ type
     QRYSizeWEIGHT: TFloatField;
     QRYSizeLENGTH: TFloatField;
     QRYSizeHEIGHT: TFloatField;
+    QRYRange: TFDQuery;
+    QRYIDRange: TFDQuery;
+    IntegerField3: TIntegerField;
+    QRYRangeID: TIntegerField;
+    QRYRangeNAME: TStringField;
+    QRYRangeSIZE1: TStringField;
+    QRYRangeSIZE2: TStringField;
+    QRYRangeSIZE3: TStringField;
+    QRYRangeSIZE4: TStringField;
+    QRYRangeSIZE5: TStringField;
+    QRYRangeSIZE6: TStringField;
+    QRYRangeSIZE7: TStringField;
+    QRYRangeSIZE8: TStringField;
+    QRYRangeSIZE9: TStringField;
+    QRYRangeSIZE10: TStringField;
+    QRYRangeSIZE11: TStringField;
+    QRYRangeSIZE12: TStringField;
+    QRYRangeSIZE13: TStringField;
+    QRYRangeSIZE14: TStringField;
+    QRYRangeSIZE15: TStringField;
+    QRYRangeSIZE16: TStringField;
+    QRYRangeSIZE17: TStringField;
+    QRYRangeSIZE18: TStringField;
+    QRYRangeSIZE19: TStringField;
+    QRYRangeSIZE20: TStringField;
+    QRYSizeExist: TFDQuery;
+    QRYSizeExistSIZE: TStringField;
+    QRYProductSIZE_RANGE: TIntegerField;
+    QRYRangeUSER: TStringField;
+    QRYRangeCOM_ID: TStringField;
+    QRYSizeUSER: TStringField;
+    QRYSizeCOM_ID: TStringField;
   private
     { Private declarations }
   public

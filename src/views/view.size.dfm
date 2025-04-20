@@ -1,10 +1,10 @@
 inherited viewSize: TviewSize
   Caption = 'viewSize'
-  ClientHeight = 760
+  ClientHeight = 600
   ClientWidth = 1171
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 1171
-  ExplicitHeight = 760
+  ExplicitHeight = 600
   TextHeight = 15
   inherited pnlTop: TPanel
     Width = 1171
@@ -15,7 +15,7 @@ inherited viewSize: TviewSize
       Height = 35
       Caption = 'Sizes'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 1015
+      ExplicitWidth = 35
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -27,10 +27,10 @@ inherited viewSize: TviewSize
     end
   end
   inherited pnlFooter: TPanel
-    Top = 725
+    Top = 565
     Width = 1171
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 725
+    ExplicitTop = 565
     ExplicitWidth = 1171
     inherited btnNew: TSpeedButton
       Left = 1086
@@ -83,25 +83,25 @@ inherited viewSize: TviewSize
   end
   inherited pnlBackground: TPanel
     Width = 1171
-    Height = 690
+    Height = 530
     StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 1171
-    ExplicitHeight = 690
+    ExplicitHeight = 530
     inherited CardPanelList: TCardPanel
       Width = 1167
-      Height = 690
+      Height = 530
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 1167
-      ExplicitHeight = 690
+      ExplicitHeight = 530
       inherited cardSearch: TCard
         Width = 1167
-        Height = 690
+        Height = 530
         CardVisible = False
         Enabled = False
         Locked = True
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1167
-        ExplicitHeight = 690
+        ExplicitHeight = 530
         inherited pnlSearch: TPanel
           Width = 1167
           StyleElements = [seFont, seClient, seBorder]
@@ -113,15 +113,15 @@ inherited viewSize: TviewSize
         end
         inherited DBGData: TDBGrid
           Width = 1157
-          Height = 615
+          Height = 455
         end
       end
       inherited cardRegister: TCard
         Width = 1167
-        Height = 690
+        Height = 530
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1167
-        ExplicitHeight = 690
+        ExplicitHeight = 530
         inherited pnlRegister: TPanel
           Width = 1167
           StyleElements = [seFont, seClient, seBorder]
@@ -137,7 +137,7 @@ inherited viewSize: TviewSize
           Left = 0
           Top = 65
           Width = 500
-          Height = 625
+          Height = 465
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
@@ -161,33 +161,33 @@ inherited viewSize: TviewSize
             object Label2: TLabel
               Left = 6
               Top = 47
-              Width = 22
+              Width = 20
               Height = 15
-              Caption = 'SIZE'
+              Caption = 'Size'
               FocusControl = edtSize
             end
             object Label3: TLabel
               Left = 72
               Top = 47
-              Width = 43
+              Width = 38
               Height = 15
-              Caption = 'WEIGHT'
+              Caption = 'Weight'
               FocusControl = edtWeight
             end
             object Label4: TLabel
               Left = 138
               Top = 47
-              Width = 44
+              Width = 37
               Height = 15
-              Caption = 'LENGTH'
+              Caption = 'Length'
               FocusControl = edtLength
             end
             object Label5: TLabel
               Left = 204
               Top = 47
-              Width = 41
+              Width = 36
               Height = 15
-              Caption = 'HEIGHT'
+              Caption = 'Height'
               FocusControl = edtHeight
             end
             object edtIDSize: TDBEdit
@@ -250,7 +250,7 @@ inherited viewSize: TviewSize
             Left = 0
             Top = 96
             Width = 500
-            Height = 529
+            Height = 369
             Align = alClient
             BevelOuter = bvNone
             Caption = 'pnlGridSize'
@@ -260,7 +260,7 @@ inherited viewSize: TviewSize
               Left = 5
               Top = 5
               Width = 490
-              Height = 471
+              Height = 311
               Cursor = crCross
               Margins.Left = 5
               Margins.Top = 5
@@ -309,7 +309,7 @@ inherited viewSize: TviewSize
             end
             object pnlCrudSize: TPanel
               Left = 0
-              Top = 481
+              Top = 321
               Width = 500
               Height = 48
               Align = alBottom
@@ -452,7 +452,7 @@ inherited viewSize: TviewSize
           Left = 500
           Top = 65
           Width = 667
-          Height = 625
+          Height = 465
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
@@ -475,169 +475,169 @@ inherited viewSize: TviewSize
             object Label7: TLabel
               Left = 71
               Top = 4
-              Width = 34
+              Width = 32
               Height = 15
-              Caption = 'NAME'
+              Caption = 'Name'
               FocusControl = edtNameRange
             end
             object Label8: TLabel
               Left = 5
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE1'
+              Caption = 'Size 1'
               FocusControl = edtSz1
             end
             object Label9: TLabel
               Left = 71
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE2'
+              Caption = 'Size 2'
               FocusControl = edtSz2
             end
             object Label10: TLabel
               Left = 137
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE3'
+              Caption = 'Size 3'
               FocusControl = edtSz3
             end
             object Label11: TLabel
               Left = 203
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE4'
+              Caption = 'Size 4'
               FocusControl = edtSz4
             end
             object Label12: TLabel
               Left = 269
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE5'
+              Caption = 'Size 5'
               FocusControl = edtSz5
             end
             object Label13: TLabel
               Left = 335
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE6'
+              Caption = 'Size 6'
               FocusControl = edtSz6
             end
             object Label14: TLabel
               Left = 401
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE7'
+              Caption = 'Size 7'
               FocusControl = edtSz7
             end
             object Label15: TLabel
               Left = 467
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE8'
+              Caption = 'Size 8'
               FocusControl = edtSz8
             end
             object Label16: TLabel
               Left = 533
               Top = 47
-              Width = 28
+              Width = 29
               Height = 15
-              Caption = 'SIZE9'
+              Caption = 'Size 9'
               FocusControl = edtSz9
             end
             object Label17: TLabel
               Left = 599
               Top = 47
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE10'
+              Caption = 'Size 10'
               FocusControl = edtSz10
             end
             object Label18: TLabel
               Left = 5
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE11'
+              Caption = 'Size 11'
               FocusControl = edtSz11
             end
             object Label19: TLabel
               Left = 71
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE12'
+              Caption = 'Size 12'
               FocusControl = edtSz12
             end
             object Label20: TLabel
               Left = 137
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE13'
+              Caption = 'Size 13'
               FocusControl = edtSz13
             end
             object Label21: TLabel
               Left = 203
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE14'
+              Caption = 'Size 14'
               FocusControl = edtSz14
             end
             object Label22: TLabel
               Left = 269
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE15'
+              Caption = 'Size 15'
               FocusControl = edtSz15
             end
             object Label23: TLabel
               Left = 335
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE16'
+              Caption = 'Size 16'
               FocusControl = edtSz16
             end
             object Label24: TLabel
               Left = 401
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE17'
+              Caption = 'Size 17'
               FocusControl = edtSz17
             end
             object Label25: TLabel
               Left = 467
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE18'
+              Caption = 'Size 18'
               FocusControl = edtSz18
             end
             object Label26: TLabel
               Left = 533
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE19'
+              Caption = 'Size 19'
               FocusControl = edtSz19
             end
             object Label27: TLabel
               Left = 599
               Top = 91
-              Width = 34
+              Width = 35
               Height = 15
-              Caption = 'SIZE20'
+              Caption = 'Size 20'
               FocusControl = edtSz20
             end
             object edtIDRange: TDBEdit
@@ -907,7 +907,7 @@ inherited viewSize: TviewSize
             Left = 0
             Top = 137
             Width = 667
-            Height = 488
+            Height = 328
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
@@ -916,7 +916,7 @@ inherited viewSize: TviewSize
               Left = 5
               Top = 5
               Width = 657
-              Height = 430
+              Height = 270
               Cursor = crCross
               Margins.Left = 5
               Margins.Top = 5
@@ -1072,7 +1072,7 @@ inherited viewSize: TviewSize
             end
             object pnlCrudRange: TPanel
               Left = 0
-              Top = 440
+              Top = 280
               Width = 667
               Height = 48
               Align = alBottom

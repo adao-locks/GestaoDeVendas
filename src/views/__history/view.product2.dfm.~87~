@@ -617,7 +617,6 @@ inherited viewProducts: TviewProducts
           ImageIndex = 6
           Images = imgList
           TabOrder = 12
-          OnClick = btnCreateEntity1Click
         end
       end
     end

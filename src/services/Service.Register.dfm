@@ -785,4 +785,141 @@ object ServiceRegister: TServiceRegister
       Size = 10
     end
   end
+  object QRYRangeConsult: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM SIZE_RANGE WHERE ID = :ID')
+    Left = 176
+    Top = 368
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object IntegerField2: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object StringField1: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 50
+    end
+    object StringField2: TStringField
+      FieldName = 'SIZE1'
+      Origin = 'SIZE1'
+      Required = True
+      Size = 10
+    end
+    object StringField3: TStringField
+      FieldName = 'SIZE2'
+      Origin = 'SIZE2'
+      Size = 10
+    end
+    object StringField4: TStringField
+      FieldName = 'SIZE3'
+      Origin = 'SIZE3'
+      Size = 10
+    end
+    object StringField5: TStringField
+      FieldName = 'SIZE4'
+      Origin = 'SIZE4'
+      Size = 10
+    end
+    object StringField6: TStringField
+      FieldName = 'SIZE5'
+      Origin = 'SIZE5'
+      Size = 10
+    end
+    object StringField7: TStringField
+      FieldName = 'SIZE6'
+      Origin = 'SIZE6'
+      Size = 10
+    end
+    object StringField8: TStringField
+      FieldName = 'SIZE7'
+      Origin = 'SIZE7'
+      Size = 10
+    end
+    object StringField9: TStringField
+      FieldName = 'SIZE8'
+      Origin = 'SIZE8'
+      Size = 10
+    end
+    object StringField10: TStringField
+      FieldName = 'SIZE9'
+      Origin = 'SIZE9'
+      Size = 10
+    end
+    object StringField11: TStringField
+      FieldName = 'SIZE10'
+      Origin = 'SIZE10'
+      Size = 10
+    end
+    object StringField12: TStringField
+      FieldName = 'SIZE11'
+      Origin = 'SIZE11'
+      Size = 10
+    end
+    object StringField13: TStringField
+      FieldName = 'SIZE12'
+      Origin = 'SIZE12'
+      Size = 10
+    end
+    object StringField14: TStringField
+      FieldName = 'SIZE13'
+      Origin = 'SIZE13'
+      Size = 10
+    end
+    object StringField15: TStringField
+      FieldName = 'SIZE14'
+      Origin = 'SIZE14'
+      Size = 10
+    end
+    object StringField16: TStringField
+      FieldName = 'SIZE15'
+      Origin = 'SIZE15'
+      Size = 10
+    end
+    object StringField17: TStringField
+      FieldName = 'SIZE16'
+      Origin = 'SIZE16'
+      Size = 10
+    end
+    object StringField18: TStringField
+      FieldName = 'SIZE17'
+      Origin = 'SIZE17'
+      Size = 10
+    end
+    object StringField19: TStringField
+      FieldName = 'SIZE18'
+      Origin = 'SIZE18'
+      Size = 10
+    end
+    object StringField20: TStringField
+      FieldName = 'SIZE19'
+      Origin = 'SIZE19'
+      Size = 10
+    end
+    object StringField21: TStringField
+      FieldName = 'SIZE20'
+      Origin = 'SIZE20'
+      Size = 10
+    end
+    object StringField22: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object StringField23: TStringField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+      Size = 4
+    end
+  end
 end

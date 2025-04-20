@@ -8,7 +8,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.Mask,
-  Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ComCtrls, Service.Connection;
+  Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ComCtrls, Service.Connection, view.size,
+  Vcl.ActnMan, Vcl.ActnColorMaps;
 
 type
   TviewProducts = class(TviewBaseLists)
@@ -51,6 +52,7 @@ type
     Label9: TLabel;
     edtSizeRange: TDBEdit;
     edtSizes: TDBEdit;
+    btnCreateEntity1: TButton;
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
@@ -60,6 +62,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
+    procedure edtSizeRangeExit(Sender: TObject);
+    procedure btnCreateEntity1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -164,6 +168,18 @@ begin
 
 end;
 
+procedure TviewProducts.btnCreateEntity1Click(Sender: TObject);
+begin
+  inherited;
+
+  viewSize := TviewSize.Create(Self);
+
+  viewSize.Left := (Screen.Width) div 4;
+  viewSize.Top := (Screen.Height) div 4;
+
+  viewSize.ShowModal;
+end;
+
 procedure TviewProducts.btnDeleteClick(Sender: TObject);
 begin
   inherited;
@@ -218,7 +234,6 @@ begin
 
   if ServiceRegister.QRYProduct.State in dsEditModes then
   begin
-
     ServiceRegister.QRYProduct.FieldByName('COM_ID').AsInteger :=
       ServiceConnection.SERVICE_COM_ID;
     ServiceRegister.QRYProduct.FieldByName('USER').AsString :=
@@ -229,6 +244,35 @@ begin
 
   end;
 
+end;
+
+procedure TviewProducts.edtSizeRangeExit(Sender: TObject);
+begin
+  inherited;
+  if Trim(edtSizeRange.Text) <> '' then
+  begin
+    try
+      ServiceRegister.QRYRangeConsult.ParamByName('ID').AsInteger := StrToInt(edtSizeRange.Text);
+      ServiceRegister.QRYRangeConsult.Open;
+      if not ServiceRegister.QRYRangeConsult.IsEmpty then
+      begin
+        edtSizes.Text := ServiceRegister.QRYRangeConsult.FieldByName('NAME').AsString;
+      end
+      else
+      begin
+        edtSizes.Clear;
+        ShowMessage('ID'#39's size range not found, please, enter a valid ID or register a new.');
+        edtSizeRange.SetFocus;
+      end;
+
+    finally
+      ServiceRegister.QRYRangeConsult.Close;
+    end;
+  end
+  else
+  begin
+    edtSizeRange.Clear;
+  end;
 end;
 
 procedure TviewProducts.FormCreate(Sender: TObject);

@@ -1,10 +1,10 @@
 inherited viewSize: TviewSize
   Caption = 'viewSize'
-  ClientHeight = 760
+  ClientHeight = 600
   ClientWidth = 1171
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 1171
-  ExplicitHeight = 760
+  ExplicitHeight = 600
   TextHeight = 15
   inherited pnlTop: TPanel
     Width = 1171
@@ -15,7 +15,7 @@ inherited viewSize: TviewSize
       Height = 35
       Caption = 'Sizes'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 35
+      ExplicitWidth = 1015
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -27,7 +27,7 @@ inherited viewSize: TviewSize
     end
   end
   inherited pnlFooter: TPanel
-    Top = 725
+    Top = 565
     Width = 1171
     StyleElements = [seFont, seClient, seBorder]
     ExplicitTop = 725
@@ -83,19 +83,19 @@ inherited viewSize: TviewSize
   end
   inherited pnlBackground: TPanel
     Width = 1171
-    Height = 690
+    Height = 530
     StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 1171
     ExplicitHeight = 690
     inherited CardPanelList: TCardPanel
       Width = 1167
-      Height = 690
+      Height = 530
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 1167
       ExplicitHeight = 690
       inherited cardSearch: TCard
         Width = 1167
-        Height = 690
+        Height = 530
         CardVisible = False
         Enabled = False
         Locked = True
@@ -113,12 +113,12 @@ inherited viewSize: TviewSize
         end
         inherited DBGData: TDBGrid
           Width = 1157
-          Height = 615
+          Height = 455
         end
       end
       inherited cardRegister: TCard
         Width = 1167
-        Height = 690
+        Height = 530
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1167
         ExplicitHeight = 690
@@ -137,11 +137,12 @@ inherited viewSize: TviewSize
           Left = 0
           Top = 65
           Width = 500
-          Height = 625
+          Height = 465
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
           OnResize = pnlSizesResize
+          ExplicitHeight = 625
           object pnlSize: TPanel
             Left = 0
             Top = 0
@@ -197,7 +198,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'ID'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 0
             end
@@ -208,7 +209,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'SIZE'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 1
             end
@@ -219,7 +220,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'WEIGHT'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 2
             end
@@ -230,7 +231,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'LENGTH'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 3
             end
@@ -241,7 +242,7 @@ inherited viewSize: TviewSize
               Height = 23
               CharCase = ecUpperCase
               DataField = 'HEIGHT'
-              DataSource = DataSource1
+              DataSource = DSData2
               Enabled = False
               TabOrder = 4
             end
@@ -250,17 +251,18 @@ inherited viewSize: TviewSize
             Left = 0
             Top = 96
             Width = 500
-            Height = 529
+            Height = 369
             Align = alClient
             BevelOuter = bvNone
             Caption = 'pnlGridSize'
             TabOrder = 1
+            ExplicitHeight = 529
             object DBSizes: TDBGrid
               AlignWithMargins = True
               Left = 5
               Top = 5
               Width = 490
-              Height = 471
+              Height = 311
               Cursor = crCross
               Margins.Left = 5
               Margins.Top = 5
@@ -269,7 +271,7 @@ inherited viewSize: TviewSize
               Align = alClient
               BorderStyle = bsNone
               Color = clMedGray
-              DataSource = DataSource1
+              DataSource = DSData2
               GradientEndColor = clSilver
               GradientStartColor = clSilver
               Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -309,12 +311,13 @@ inherited viewSize: TviewSize
             end
             object pnlCrudSize: TPanel
               Left = 0
-              Top = 481
+              Top = 321
               Width = 500
               Height = 48
               Align = alBottom
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitTop = 481
               object btnDeleteSize: TSpeedButton
                 AlignWithMargins = True
                 Left = 55
@@ -452,10 +455,11 @@ inherited viewSize: TviewSize
           Left = 500
           Top = 65
           Width = 667
-          Height = 625
+          Height = 465
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitHeight = 625
           object pnlRangeSize: TPanel
             Left = 0
             Top = 0
@@ -696,7 +700,6 @@ inherited viewSize: TviewSize
               DataSource = DSData
               Enabled = False
               TabOrder = 4
-              OnChange = edtSz3Change
               OnExit = edtSz3Exit
             end
             object edtSz4: TDBEdit
@@ -773,7 +776,7 @@ inherited viewSize: TviewSize
             end
             object edtSz10: TDBEdit
               Left = 599
-              Top = 63
+              Top = 62
               Width = 60
               Height = 23
               CharCase = ecUpperCase
@@ -797,7 +800,7 @@ inherited viewSize: TviewSize
             end
             object edtSz12: TDBEdit
               Left = 71
-              Top = 107
+              Top = 108
               Width = 60
               Height = 23
               CharCase = ecUpperCase
@@ -901,23 +904,24 @@ inherited viewSize: TviewSize
               DataSource = DSData
               Enabled = False
               TabOrder = 21
-              OnChange = edtSz20Change
+              OnExit = edtSz20Exit
             end
           end
           object pnlGridRange: TPanel
             Left = 0
             Top = 137
             Width = 667
-            Height = 488
+            Height = 328
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
+            ExplicitHeight = 488
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 5
               Top = 5
               Width = 657
-              Height = 430
+              Height = 270
               Cursor = crCross
               Margins.Left = 5
               Margins.Top = 5
@@ -1073,12 +1077,13 @@ inherited viewSize: TviewSize
             end
             object pnlCrudRange: TPanel
               Left = 0
-              Top = 440
+              Top = 280
               Width = 667
               Height = 48
               Align = alBottom
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitTop = 440
               object btnDeleteRange: TSpeedButton
                 AlignWithMargins = True
                 Left = 222
@@ -1216,7 +1221,7 @@ inherited viewSize: TviewSize
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYRange
   end
-  object DataSource1: TDataSource
+  object DSData2: TDataSource
     DataSet = ServiceRegister.QRYSize
     Left = 920
   end
