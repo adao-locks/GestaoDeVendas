@@ -364,7 +364,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT max(PEOPLE_ID) MAXID FROM PEOPLE')
-    Left = 104
+    Left = 137
     Top = 24
     object QRYIDPeopleMAXID: TIntegerField
       AutoGenerateValue = arDefault
@@ -378,7 +378,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT max(PROD_ID) MAXID FROM PRODUCT WHERE PROD_ID = :PRODUCT')
-    Left = 104
+    Left = 136
     Top = 248
     ParamData = <
       item
@@ -399,7 +399,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECt max(ID_SALE) MAXID FROM SALE WHERE 1=1')
-    Left = 88
+    Left = 137
     Top = 80
     object QRYIDSaleMAXID: TIntegerField
       AutoGenerateValue = arDefault
@@ -413,7 +413,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID')
-    Left = 192
+    Left = 256
     Top = 24
     ParamData = <
       item
@@ -433,7 +433,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT NAME FROM PRODUCT WHERE PROD_ID = :ID')
-    Left = 192
+    Left = 256
     Top = 248
     ParamData = <
       item
@@ -544,7 +544,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECt max(ID_ITEM) MAXID FROM SALE_ITEMS WHERE 1=1')
-    Left = 120
+    Left = 136
     Top = 136
     object QRYIDItemsSaleMAXID: TIntegerField
       AutoGenerateValue = arDefault
@@ -558,7 +558,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECt max(ID) MAXID FROM SALE_ITEMS WHERE 1=1')
-    Left = 200
+    Left = 256
     Top = 136
     object IntegerField1: TIntegerField
       AutoGenerateValue = arDefault
@@ -612,7 +612,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT MAX(ID) MAXID FROM "SIZE" WHERE 1=1')
-    Left = 88
+    Left = 137
     Top = 304
     object QRYIDSizeMAXID: TIntegerField
       AutoGenerateValue = arDefault
@@ -627,7 +627,7 @@ object ServiceRegister: TServiceRegister
     SQL.Strings = (
       'SELECT * FROM SIZE_RANGE WHERE 1=1')
     Left = 32
-    Top = 368
+    Top = 360
     object QRYRangeID: TIntegerField
       FieldName = 'ID'
       Origin = 'ID'
@@ -756,8 +756,8 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT MAX(ID) MAXID FROM SIZE_RANGE WHERE 1=1')
-    Left = 104
-    Top = 368
+    Left = 136
+    Top = 360
     object IntegerField3: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'MAXID'
@@ -770,7 +770,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT "SIZE" FROM "SIZE" WHERE "SIZE" = :ID')
-    Left = 160
+    Left = 256
     Top = 304
     ParamData = <
       item
@@ -789,8 +789,8 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT * FROM SIZE_RANGE WHERE ID = :ID')
-    Left = 176
-    Top = 368
+    Left = 259
+    Top = 360
     ParamData = <
       item
         Name = 'ID'
@@ -920,6 +920,77 @@ object ServiceRegister: TServiceRegister
       FieldName = 'COM_ID'
       Origin = 'COM_ID'
       Size = 4
+    end
+  end
+  object QRYColor: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT * FROM COLOR WHERE 1=1')
+    Left = 32
+    Top = 416
+    object QRYColorID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QRYColorNAME: TStringField
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      Required = True
+      Size = 100
+    end
+    object QRYColorACTIVE: TBooleanField
+      FieldName = 'ACTIVE'
+      Origin = '"ACTIVE"'
+    end
+    object QRYColorCOM_ID: TStringField
+      FieldName = 'COM_ID'
+      Origin = 'COM_ID'
+      Size = 10
+    end
+    object QRYColorUSER: TStringField
+      FieldName = 'USER'
+      Origin = '"USER"'
+      Size = 100
+    end
+    object QRYColorRGB: TStringField
+      FieldName = 'RGB'
+      Origin = 'RGB'
+      Size = 100
+    end
+    object QRYColorHEX: TStringField
+      FieldName = 'HEX'
+      Origin = 'HEX'
+      Size = 100
+    end
+    object QRYColorCMYK: TStringField
+      FieldName = 'CMYK'
+      Origin = 'CMYK'
+      Size = 100
+    end
+    object QRYColorHSL: TStringField
+      FieldName = 'HSL'
+      Origin = 'HSL'
+      Size = 100
+    end
+    object QRYColorDT_CREATED: TSQLTimeStampField
+      FieldName = 'DT_CREATED'
+      Origin = 'DT_CREATED'
+    end
+  end
+  object QRYIDColor: TFDQuery
+    Connection = ServiceConnection.FDConn
+    SQL.Strings = (
+      'SELECT max(ID) maxID FROM COLOR WHERE 1=1')
+    Left = 136
+    Top = 416
+    object QRYIDColorMAXID: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'MAXID'
+      Origin = 'MAXID'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

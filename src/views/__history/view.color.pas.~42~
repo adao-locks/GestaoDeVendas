@@ -1,0 +1,181 @@
+unit view.color;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
+  System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
+  Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Connection, Service.Register,
+  Vcl.DBCtrls, Vcl.Mask, Provider.Constants;
+
+type
+  TviewColor = class(TviewBaseLists)
+    Label1: TLabel;
+    edtID: TDBEdit;
+    Label2: TLabel;
+    edtName: TDBEdit;
+    CBActive: TDBCheckBox;
+    Label3: TLabel;
+    EDTDTCreated: TDBEdit;
+    Label4: TLabel;
+    edtRGB1: TDBEdit;
+    Label5: TLabel;
+    edtHEX: TDBEdit;
+    Label6: TLabel;
+    edtCMYK1: TDBEdit;
+    Label7: TLabel;
+    edtRGB2: TDBEdit;
+    edtRGB3: TDBEdit;
+    lblRGB: TLabel;
+    lblCMYK: TLabel;
+    lblHSL: TLabel;
+    lblHEX: TLabel;
+    edtCMYK2: TDBEdit;
+    edtCMYK3: TDBEdit;
+    edtCMYK4: TDBEdit;
+    edtHSL1: TDBEdit;
+    edtHSL2: TDBEdit;
+    edtHSL3: TDBEdit;
+    procedure btnNewClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnEditClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure edtRGB1Change(Sender: TObject);
+    procedure edtRGB2Change(Sender: TObject);
+    procedure edtRGB3Change(Sender: TObject);
+    procedure edtHEXChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure RGBUpdate();
+    procedure HEXUpdate();
+  end;
+
+var
+  viewColor: TviewColor;
+
+implementation
+
+{$R *.dfm}
+
+procedure TviewColor.btnCancelClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYColor.State in dsEditModes then
+  begin
+    ServiceRegister.QRYColor.Cancel;
+    CardPanelList.ActiveCard := cardRegister;
+  end;
+
+end;
+
+procedure TviewColor.btnDeleteClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYColor.RecordCount > 0 then
+  begin
+    ServiceRegister.QRYColor.Delete;
+    ShowMessage('Record deleted successfully');
+    CardPanelList.ActiveCard := cardSearch;
+  end;
+
+end;
+
+procedure TviewColor.btnEditClick(Sender: TObject);
+begin
+  inherited;
+
+  edtName.SetFocus;
+  ServiceRegister.QRYColor.Edit;
+
+end;
+
+procedure TviewColor.btnNewClick(Sender: TObject);
+var
+  maxID: integer;
+begin
+  inherited;
+
+  edtName.Enabled := True;
+  edtRGB1.Enabled := True;
+  edtRGB2.Enabled := True;
+  edtRGB3.Enabled := True;
+  edtName.SetFocus;
+  ServiceRegister.QRYColor.Insert;
+  ServiceRegister.QRYIDColor.Open;
+  if not ServiceRegister.QRYIDColor.FieldByName('maxID').IsNull then
+    maxID := ServiceRegister.QRYIDColor.FieldByName('maxID').AsInteger + 1
+  else
+    maxID := 1;
+  edtID.Field.Value := maxID;
+  EDTDTCreated.Text := DateToStr(Date);
+  CBActive.State := cbChecked;
+
+end;
+
+procedure TviewColor.btnSaveClick(Sender: TObject);
+begin
+  inherited;
+
+  if ServiceRegister.QRYColor.State in dsEditModes then
+  begin
+    ServiceRegister.QRYColor.FieldByName('COM_ID').AsInteger := ServiceConnection.SERVICE_COM_ID;
+    ServiceRegister.QRYColor.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
+    ServiceRegister.QRYColor.Post;
+    cardRegister.Enabled := False;
+    ShowMessage('Registered successfully!');
+  end;
+end;
+
+procedure TviewColor.edtHEXChange(Sender: TObject);
+begin
+  inherited;
+  HEXUpdate();
+end;
+
+procedure TviewColor.edtRGB1Change(Sender: TObject);
+begin
+  inherited;
+  RGBUpdate();
+end;
+
+procedure TviewColor.edtRGB2Change(Sender: TObject);
+begin
+  inherited;
+  RGBUpdate();
+end;
+
+procedure TviewColor.edtRGB3Change(Sender: TObject);
+begin
+  inherited;
+  RGBUpdate();
+end;
+
+procedure TviewColor.FormShow(Sender: TObject);
+begin
+  inherited;
+
+  CardPanelList.ActiveCard := cardRegister;
+  cardRegister.Enabled := True;
+  ServiceRegister.QRYColor.Open;
+
+end;
+
+procedure TviewColor.HEXUpdate;
+begin
+  lblHEX.Caption := ( '#' + edtHEX.Text );
+end;
+
+procedure TviewColor.RGBUpdate;
+begin
+
+  lblRGB.Caption := ('(' + edtRGB1.Text + ', ' + edtRGB2.Text + ', ' + edtRGB3.Text + ' )');
+
+end;
+
+end.

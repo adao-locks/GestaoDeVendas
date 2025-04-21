@@ -16,7 +16,8 @@ uses
   view.logs in 'src\views\view.logs.pas' {viewLogs},
   view.company in 'src\views\view.company.pas' {viewCompany},
   Service.Colors in 'src\services\Service.Colors.pas',
-  view.size in 'src\views\view.size.pas' {viewSize};
+  view.size in 'src\views\view.size.pas' {viewSize},
+  view.color in 'src\views\view.color.pas' {viewColor};
 
 {$R *.res}
 
@@ -26,6 +27,7 @@ begin
   Application.CreateForm(TViewPrincipal, ViewPrincipal);
   Application.CreateForm(TServiceRegister, ServiceRegister);
   Application.CreateForm(TServiceConnection, ServiceConnection);
+  Application.CreateForm(TviewColor, viewColor);
   Application.Run;
 
 end.

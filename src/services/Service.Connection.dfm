@@ -4,12 +4,14 @@ object ServiceConnection: TServiceConnection
   Width = 431
   object FDConn: TFDConnection
     Params.Strings = (
-      'Database=C:\database\SalesPlus\DATABASE.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'
       'Server=localhost'
       'CharacterSet=win1252'
+      
+        'Database=C:\Users\adao.locks\Documents\Projects\DELPHI\GestaoDeV' +
+        'endas\database\DATABASE.FDB'
       'DriverID=FB')
     LoginPrompt = False
     Left = 40

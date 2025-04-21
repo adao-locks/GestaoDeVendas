@@ -173,6 +173,19 @@ type
     StringField21: TStringField;
     StringField22: TStringField;
     StringField23: TStringField;
+    QRYColor: TFDQuery;
+    QRYColorID: TIntegerField;
+    QRYColorNAME: TStringField;
+    QRYColorACTIVE: TBooleanField;
+    QRYColorCOM_ID: TStringField;
+    QRYColorUSER: TStringField;
+    QRYColorRGB: TStringField;
+    QRYColorHEX: TStringField;
+    QRYColorCMYK: TStringField;
+    QRYColorHSL: TStringField;
+    QRYColorDT_CREATED: TSQLTimeStampField;
+    QRYIDColor: TFDQuery;
+    QRYIDColorMAXID: TIntegerField;
   private
     { Private declarations }
   public
