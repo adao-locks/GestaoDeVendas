@@ -57,6 +57,14 @@ inherited viewColor: TviewColor
       OnClick = btnDeleteClick
       ExplicitLeft = 676
     end
+    inherited btnCloseWindow: TSpeedButton
+      Left = 0
+      Top = 0
+      Height = 35
+      Align = alLeft
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     Width = 1121
@@ -67,13 +75,13 @@ inherited viewColor: TviewColor
     inherited CardPanelList: TCardPanel
       Width = 1117
       Height = 465
+      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 1117
       ExplicitHeight = 465
       inherited cardSearch: TCard
         Width = 1117
         Height = 465
-        CardVisible = False
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1117
         ExplicitHeight = 465
@@ -89,14 +97,60 @@ inherited viewColor: TviewColor
         inherited DBGData: TDBGrid
           Width = 1107
           Height = 390
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ID'
+              Width = 32
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NAME'
+              Width = 140
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'RGB'
+              Width = 161
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'HEX'
+              Width = 118
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CMYK'
+              Width = 168
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'HSL'
+              Width = 188
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ACTIVE'
+              Width = 44
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DT_CREATED'
+              Visible = True
+            end>
         end
       end
       inherited cardRegister: TCard
         Width = 1117
         Height = 465
         StyleElements = [seFont, seClient, seBorder]
-        ExplicitLeft = -3
-        ExplicitTop = -16
         ExplicitWidth = 1117
         ExplicitHeight = 465
         object Label1: TLabel [0]
@@ -110,9 +164,9 @@ inherited viewColor: TviewColor
         object Label2: TLabel [1]
           Left = 8
           Top = 122
-          Width = 34
+          Width = 32
           Height = 15
-          Caption = 'NAME'
+          Caption = 'Name'
           FocusControl = edtName
         end
         object Label3: TLabel [2]
@@ -120,7 +174,7 @@ inherited viewColor: TviewColor
           Top = 122
           Width = 66
           Height = 15
-          Caption = 'DT_CREATED'
+          Caption = 'Date created'
           FocusControl = EDTDTCreated
         end
         object Label4: TLabel [3]
@@ -168,12 +222,12 @@ inherited viewColor: TviewColor
           Caption = '(%, %, %, %)'
         end
         object lblHSL: TLabel [9]
-          Left = 116
+          Left = 152
           Top = 329
           Width = 190
           Height = 15
           AutoSize = False
-          Caption = '(0'#176', 0%, 0%)'
+          Caption = '('#176', %, % / )'
         end
         object lblHEX: TLabel [10]
           Left = 114
@@ -223,7 +277,7 @@ inherited viewColor: TviewColor
           Top = 93
           Width = 97
           Height = 17
-          Caption = 'ACTIVE'
+          Caption = 'Active'
           DataField = 'ACTIVE'
           DataSource = DSData
           TabOrder = 4
@@ -246,8 +300,11 @@ inherited viewColor: TviewColor
           Width = 30
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 3
           TabOrder = 5
           OnChange = edtRGB1Change
+          OnExit = edtRGB1Exit
+          OnKeyPress = edtRGB1KeyPress
         end
         object edtRGB2: TEdit
           Left = 44
@@ -255,8 +312,11 @@ inherited viewColor: TviewColor
           Width = 30
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 3
           TabOrder = 6
           OnChange = edtRGB2Change
+          OnExit = edtRGB2Exit
+          OnKeyPress = edtRGB2KeyPress
         end
         object edtRGB3: TEdit
           Left = 80
@@ -264,8 +324,11 @@ inherited viewColor: TviewColor
           Width = 30
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 3
           TabOrder = 7
           OnChange = edtRGB3Change
+          OnExit = edtRGB3Exit
+          OnKeyPress = edtRGB3KeyPress
         end
         object edtHEX: TEdit
           Left = 8
@@ -273,8 +336,8 @@ inherited viewColor: TviewColor
           Width = 100
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 6
           TabOrder = 8
-          Text = 'EDIT1'
           OnChange = edtHEXChange
         end
         object edtHSL1: TEdit
@@ -283,8 +346,11 @@ inherited viewColor: TviewColor
           Width = 30
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 3
           TabOrder = 9
-          Text = 'EDIT1'
+          OnChange = edtHSL1Change
+          OnExit = edtHSL1Exit
+          OnKeyPress = edtHSL1KeyPress
         end
         object edtHSL2: TEdit
           Left = 44
@@ -292,8 +358,11 @@ inherited viewColor: TviewColor
           Width = 30
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 3
           TabOrder = 10
-          Text = 'EDIT1'
+          OnChange = edtHSL2Change
+          OnExit = edtHSL2Exit
+          OnKeyPress = edtHSL2KeyPress
         end
         object edtHSL3: TEdit
           Left = 80
@@ -301,51 +370,74 @@ inherited viewColor: TviewColor
           Width = 30
           Height = 23
           CharCase = ecUpperCase
+          MaxLength = 3
           TabOrder = 11
-          Text = 'EDIT1'
+          OnChange = edtHSL3Change
+          OnExit = edtHSL3Exit
+          OnKeyPress = edtHSL3KeyPress
+        end
+        object edtHSL4: TEdit
+          Left = 116
+          Top = 326
+          Width = 30
+          Height = 23
+          CharCase = ecUpperCase
+          MaxLength = 4
+          TabOrder = 12
+          OnChange = edtHSL3Change
+          OnExit = edtHSL4Exit
+          OnKeyPress = edtHSL4KeyPress
+        end
+        object edtCMYK1: TEdit
+          Left = 8
+          Top = 279
+          Width = 30
+          Height = 23
+          CharCase = ecUpperCase
+          MaxLength = 3
+          TabOrder = 13
+          OnChange = edtCMYK1Change
+          OnExit = edtCMYK1Exit
+          OnKeyPress = edtCMYK1KeyPress
+        end
+        object edtCMYK2: TEdit
+          Left = 44
+          Top = 279
+          Width = 30
+          Height = 23
+          CharCase = ecUpperCase
+          MaxLength = 3
+          TabOrder = 14
+          OnChange = edtCMYK2Change
+          OnExit = edtCMYK2Exit
+          OnKeyPress = edtCMYK2KeyPress
+        end
+        object edtCMYK3: TEdit
+          Left = 80
+          Top = 279
+          Width = 30
+          Height = 23
+          CharCase = ecUpperCase
+          MaxLength = 3
+          TabOrder = 15
+          OnChange = edtCMYK3Change
+          OnExit = edtCMYK3Exit
+          OnKeyPress = edtCMYK3KeyPress
+        end
+        object edtCMYK4: TEdit
+          Left = 116
+          Top = 279
+          Width = 30
+          Height = 23
+          CharCase = ecUpperCase
+          MaxLength = 3
+          TabOrder = 16
+          OnChange = edtCMYK4Change
+          OnExit = edtCMYK4Exit
+          OnKeyPress = edtCMYK4KeyPress
         end
       end
     end
-  end
-  object edtCMYK1: TEdit [3]
-    Left = 10
-    Top = 314
-    Width = 30
-    Height = 23
-    CharCase = ecUpperCase
-    TabOrder = 3
-    Text = 'EDIT1'
-    OnChange = edtCMYK1Change
-  end
-  object edtCMYK2: TEdit [4]
-    Left = 46
-    Top = 314
-    Width = 30
-    Height = 23
-    CharCase = ecUpperCase
-    TabOrder = 4
-    Text = 'EDIT1'
-    OnChange = edtCMYK2Change
-  end
-  object edtCMYK3: TEdit [5]
-    Left = 82
-    Top = 314
-    Width = 30
-    Height = 23
-    CharCase = ecUpperCase
-    TabOrder = 5
-    Text = 'EDIT1'
-    OnChange = edtCMYK3Change
-  end
-  object edtCMYK4: TEdit [6]
-    Left = 118
-    Top = 314
-    Width = 30
-    Height = 23
-    CharCase = ecUpperCase
-    TabOrder = 6
-    Text = 'EDIT1'
-    OnChange = edtCMYK4Change
   end
   inherited DSData: TDataSource
     DataSet = ServiceRegister.QRYColor

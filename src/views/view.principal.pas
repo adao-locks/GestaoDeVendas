@@ -78,6 +78,7 @@ type
     procedure imgUserHoverMouseLeave(Sender: TObject);
     procedure btnCompanyClick(Sender: TObject);
     procedure btnSizesClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     procedure GET_LineMenu(Sender: TObject);
   public
@@ -149,10 +150,10 @@ end;
 procedure TViewPrincipal.btnLogsClick(Sender: TObject);
 begin
   GET_LineMenu(Sender);
-  viewColor := TviewColor.Create(Self);
-  viewColor.Parent := pnlContent;
-  viewColor.Align := alClient;
-  viewColor.Show;
+  viewLogs := TviewLogs.Create(Self);
+  viewLogs.Parent := pnlContent;
+  viewLogs.Align := alClient;
+  viewLogs.Show;
 end;
 
 procedure TViewPrincipal.Button1Click(Sender: TObject);
@@ -205,6 +206,15 @@ end;
 procedure TViewPrincipal.lblTitleSystemMouseLeave(Sender: TObject);
 begin
   lblTitleSystem.Font.Color := clBlack;
+end;
+
+procedure TViewPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+  GET_LineMenu(Sender);
+  viewColor := TviewColor.Create(Self);
+  viewColor.Parent := pnlContent;
+  viewColor.Align := alClient;
+  viewColor.Show;
 end;
 
 end.

@@ -189,10 +189,11 @@ inherited viewBaseLists: TviewBaseLists
       ExplicitLeft = 515
     end
     object btnCloseWindow: TSpeedButton
-      Left = 2
-      Top = 6
-      Width = 64
-      Height = 25
+      Left = 0
+      Top = 0
+      Width = 78
+      Height = 35
+      Align = alLeft
       Caption = 'Close'
       ImageIndex = 0
       Images = imgList

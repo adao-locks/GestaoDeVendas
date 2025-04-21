@@ -2142,7 +2142,6 @@ object ViewPrincipal: TViewPrincipal
     Padding.Right = 10
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1366
     object pnlLogo: TPanel
       Left = 10
       Top = 0
@@ -2213,7 +2212,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clDarkseagreen
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 1140
       object pnlLineUser: TPanel
         AlignWithMargins = True
         Left = 0
@@ -2404,7 +2402,6 @@ object ViewPrincipal: TViewPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitHeight = 696
     object Button1: TButton
       AlignWithMargins = True
       Left = 35
@@ -2427,7 +2424,6 @@ object ViewPrincipal: TViewPrincipal
       ParentDoubleBuffered = False
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitTop = 654
     end
     object pnlShapeMenu: TPanel
       Left = 10
@@ -2439,7 +2435,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clCream
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 639
       object ShapeMenu: TShape
         Left = 0
         Top = 0
@@ -2457,7 +2452,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clCream
       ParentBackground = False
       TabOrder = 2
-      ExplicitHeight = 639
       object btnConfig: TSpeedButton
         AlignWithMargins = True
         Left = 0
@@ -2564,7 +2558,7 @@ object ViewPrincipal: TViewPrincipal
         ImageIndex = 8
         Images = ImageList1
         Flat = True
-        OnClick = btnLogsClick
+        OnClick = SpeedButton1Click
         ExplicitLeft = 4
         ExplicitTop = 180
       end
@@ -2594,8 +2588,6 @@ object ViewPrincipal: TViewPrincipal
     Color = clCream
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 1237
-    ExplicitHeight = 696
     object pnlBottom: TPanel
       Left = 0
       Top = 521
@@ -2606,8 +2598,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clCream
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 640
-      ExplicitWidth = 1237
       object pnlBusiness: TPanel
         Left = 537
         Top = 0
@@ -2618,7 +2608,6 @@ object ViewPrincipal: TViewPrincipal
         Color = clCream
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 836
         object lblBusiness: TLabel
           AlignWithMargins = True
           Left = 228
@@ -2688,8 +2677,6 @@ object ViewPrincipal: TViewPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1237
-      ExplicitHeight = 640
       object imgBackground: TImage
         Left = 0
         Top = 0
