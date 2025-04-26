@@ -161,7 +161,7 @@ inherited viewColor: TviewColor
           Top = 74
           Width = 39
           Height = 15
-          Caption = 'Codigo'
+          Caption = 'C'#243'digo'
           FocusControl = edtID
         end
         object Label2: TLabel [1]

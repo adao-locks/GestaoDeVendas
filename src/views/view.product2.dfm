@@ -41,7 +41,6 @@ inherited viewProducts: TviewProducts
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -382,9 +381,9 @@ inherited viewProducts: TviewProducts
         object Label1: TLabel [0]
           Left = 9
           Top = 115
-          Width = 11
+          Width = 39
           Height = 15
-          Caption = 'ID'
+          Caption = 'C'#243'digo'
           FocusControl = edtIdProd
         end
         object Label2: TLabel [1]

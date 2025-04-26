@@ -12,10 +12,9 @@ inherited viewColor: TviewColor
     ExplicitWidth = 1121
     inherited lblTitleWindow: TLabel
       Width = 965
-      Height = 35
-      Caption = 'Colors'
+      Caption = 'Cores'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 45
+      ExplicitWidth = 40
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -57,6 +56,10 @@ inherited viewColor: TviewColor
       OnClick = btnDeleteClick
       ExplicitLeft = 676
     end
+    inherited btnCloseWindow: TSpeedButton
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     Width = 1121
@@ -82,7 +85,9 @@ inherited viewColor: TviewColor
           ExplicitWidth = 1117
           inherited lblSearch: TLabel
             Width = 1102
+            Caption = 'Pesquisa Cores'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 126
           end
         end
         inherited DBGData: TDBGrid
@@ -92,47 +97,55 @@ inherited viewColor: TviewColor
             item
               Expanded = False
               FieldName = 'ID'
-              Width = 32
+              Title.Caption = 'Codigo'
+              Width = 46
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
-              Width = 140
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'ACTIVE'
+              Title.Caption = 'Nome'
+              Width = 196
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'RGB'
-              Width = 161
+              Width = 147
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'HEX'
-              Width = 118
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CMYK'
-              Width = 168
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'HSL'
-              Width = 188
+              Width = 114
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
+              Title.Caption = 'Data Cria'#231#227'o'
+              Width = 153
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ACTIVE'
+              Title.Caption = 'Ativo'
+              Width = 46
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'COM_ID'
+              Title.Caption = 'ID Empresa'
+              Width = 52
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER'
+              Title.Caption = 'ID Usu'#225'rio'
+              Width = 169
               Visible = True
             end>
         end
@@ -146,25 +159,25 @@ inherited viewColor: TviewColor
         object Label1: TLabel [0]
           Left = 8
           Top = 74
-          Width = 11
+          Width = 39
           Height = 15
-          Caption = 'ID'
+          Caption = 'Codigo'
           FocusControl = edtID
         end
         object Label2: TLabel [1]
           Left = 8
           Top = 122
-          Width = 32
+          Width = 33
           Height = 15
-          Caption = 'Name'
+          Caption = 'Nome'
           FocusControl = edtName
         end
         object Label3: TLabel [2]
           Left = 224
           Top = 122
-          Width = 66
+          Width = 67
           Height = 15
-          Caption = 'Date created'
+          Caption = 'Data Cria'#231#227'o'
           FocusControl = EDTDTCreated
         end
         object Label4: TLabel [3]
@@ -181,21 +194,7 @@ inherited viewColor: TviewColor
           Height = 15
           Caption = 'HEX'
         end
-        object Label6: TLabel [5]
-          Left = 8
-          Top = 263
-          Width = 33
-          Height = 15
-          Caption = 'CMYK'
-        end
-        object Label7: TLabel [6]
-          Left = 8
-          Top = 311
-          Width = 21
-          Height = 15
-          Caption = 'HSL'
-        end
-        object lblRGB: TLabel [7]
+        object lblRGB: TLabel [5]
           Left = 116
           Top = 186
           Width = 188
@@ -203,23 +202,7 @@ inherited viewColor: TviewColor
           AutoSize = False
           Caption = '(, , )'
         end
-        object lblCMYK: TLabel [8]
-          Left = 152
-          Top = 282
-          Width = 152
-          Height = 15
-          AutoSize = False
-          Caption = '(%, %, %, %)'
-        end
-        object lblHSL: TLabel [9]
-          Left = 152
-          Top = 329
-          Width = 190
-          Height = 15
-          AutoSize = False
-          Caption = '('#176', %, % / )'
-        end
-        object lblHEX: TLabel [10]
+        object lblHEX: TLabel [6]
           Left = 114
           Top = 234
           Width = 190
@@ -267,7 +250,7 @@ inherited viewColor: TviewColor
           Top = 93
           Width = 97
           Height = 17
-          Caption = 'Active'
+          Caption = 'Ativo'
           DataField = 'ACTIVE'
           DataSource = DSData
           TabOrder = 4
@@ -329,102 +312,6 @@ inherited viewColor: TviewColor
           MaxLength = 6
           TabOrder = 8
           OnChange = edtHEXChange
-        end
-        object edtHSL1: TEdit
-          Left = 8
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 9
-          OnChange = edtHSL1Change
-          OnExit = edtHSL1Exit
-          OnKeyPress = edtHSL1KeyPress
-        end
-        object edtHSL2: TEdit
-          Left = 44
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 10
-          OnChange = edtHSL2Change
-          OnExit = edtHSL2Exit
-          OnKeyPress = edtHSL2KeyPress
-        end
-        object edtHSL3: TEdit
-          Left = 80
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 11
-          OnChange = edtHSL3Change
-          OnExit = edtHSL3Exit
-          OnKeyPress = edtHSL3KeyPress
-        end
-        object edtHSL4: TEdit
-          Left = 116
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 4
-          TabOrder = 12
-          OnChange = edtHSL3Change
-          OnExit = edtHSL4Exit
-          OnKeyPress = edtHSL4KeyPress
-        end
-        object edtCMYK1: TEdit
-          Left = 8
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 13
-          OnChange = edtCMYK1Change
-          OnExit = edtCMYK1Exit
-          OnKeyPress = edtCMYK1KeyPress
-        end
-        object edtCMYK2: TEdit
-          Left = 44
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 14
-          OnChange = edtCMYK2Change
-          OnExit = edtCMYK2Exit
-          OnKeyPress = edtCMYK2KeyPress
-        end
-        object edtCMYK3: TEdit
-          Left = 80
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 15
-          OnChange = edtCMYK3Change
-          OnExit = edtCMYK3Exit
-          OnKeyPress = edtCMYK3KeyPress
-        end
-        object edtCMYK4: TEdit
-          Left = 116
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 16
-          OnChange = edtCMYK4Change
-          OnExit = edtCMYK4Exit
-          OnKeyPress = edtCMYK4KeyPress
         end
       end
     end

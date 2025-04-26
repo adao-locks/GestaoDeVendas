@@ -1,10 +1,10 @@
 inherited viewSize: TviewSize
   Caption = 'viewSize'
-  ClientHeight = 760
+  ClientHeight = 600
   ClientWidth = 1171
   StyleElements = [seFont, seClient, seBorder]
   ExplicitWidth = 1171
-  ExplicitHeight = 760
+  ExplicitHeight = 600
   TextHeight = 15
   inherited pnlTop: TPanel
     Width = 1171
@@ -12,10 +12,9 @@ inherited viewSize: TviewSize
     ExplicitWidth = 1171
     inherited lblTitleWindow: TLabel
       Width = 1015
-      Height = 35
       Caption = 'Sizes'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 1015
+      ExplicitWidth = 35
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -27,10 +26,10 @@ inherited viewSize: TviewSize
     end
   end
   inherited pnlFooter: TPanel
-    Top = 725
+    Top = 565
     Width = 1171
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 725
+    ExplicitTop = 565
     ExplicitWidth = 1171
     inherited btnNew: TSpeedButton
       Left = 1086
@@ -68,40 +67,31 @@ inherited viewSize: TviewSize
       ExplicitLeft = 726
     end
     inherited btnCloseWindow: TSpeedButton
-      Left = 0
-      Top = 0
-      Width = 78
-      Height = 35
-      Align = alLeft
       Flat = True
       OnClick = btnCloseWindowClick
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 78
-      ExplicitHeight = 35
     end
   end
   inherited pnlBackground: TPanel
     Width = 1171
-    Height = 690
+    Height = 530
     StyleElements = [seFont, seClient, seBorder]
     ExplicitWidth = 1171
-    ExplicitHeight = 690
+    ExplicitHeight = 530
     inherited CardPanelList: TCardPanel
       Width = 1167
-      Height = 690
+      Height = 530
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 1167
-      ExplicitHeight = 690
+      ExplicitHeight = 530
       inherited cardSearch: TCard
         Width = 1167
-        Height = 690
+        Height = 530
         CardVisible = False
         Enabled = False
         Locked = True
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1167
-        ExplicitHeight = 690
+        ExplicitHeight = 530
         inherited pnlSearch: TPanel
           Width = 1167
           StyleElements = [seFont, seClient, seBorder]
@@ -113,15 +103,15 @@ inherited viewSize: TviewSize
         end
         inherited DBGData: TDBGrid
           Width = 1157
-          Height = 615
+          Height = 455
         end
       end
       inherited cardRegister: TCard
         Width = 1167
-        Height = 690
+        Height = 530
         StyleElements = [seFont, seClient, seBorder]
         ExplicitWidth = 1167
-        ExplicitHeight = 690
+        ExplicitHeight = 530
         inherited pnlRegister: TPanel
           Width = 1167
           StyleElements = [seFont, seClient, seBorder]
@@ -136,8 +126,8 @@ inherited viewSize: TviewSize
         object pnlSizes: TPanel
           Left = 0
           Top = 65
-          Width = 500
-          Height = 625
+          Width = 449
+          Height = 465
           Align = alLeft
           BevelOuter = bvNone
           TabOrder = 1
@@ -145,49 +135,50 @@ inherited viewSize: TviewSize
           object pnlSize: TPanel
             Left = 0
             Top = 0
-            Width = 500
+            Width = 449
             Height = 96
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitWidth = 500
             object Label1: TLabel
               Left = 6
               Top = 4
-              Width = 11
+              Width = 39
               Height = 15
-              Caption = 'ID'
+              Caption = 'C'#243'digo'
               FocusControl = edtIDSize
             end
             object Label2: TLabel
               Left = 6
               Top = 47
-              Width = 22
+              Width = 49
               Height = 15
-              Caption = 'SIZE'
+              Caption = 'Tamanho'
               FocusControl = edtSize
             end
             object Label3: TLabel
               Left = 72
               Top = 47
-              Width = 43
+              Width = 25
               Height = 15
-              Caption = 'WEIGHT'
+              Caption = 'Peso'
               FocusControl = edtWeight
             end
             object Label4: TLabel
               Left = 138
               Top = 47
-              Width = 44
+              Width = 40
               Height = 15
-              Caption = 'LENGTH'
+              Caption = 'Compr.'
               FocusControl = edtLength
             end
             object Label5: TLabel
               Left = 204
               Top = 47
-              Width = 41
+              Width = 32
               Height = 15
-              Caption = 'HEIGHT'
+              Caption = 'Altura'
               FocusControl = edtHeight
             end
             object edtIDSize: TDBEdit
@@ -249,18 +240,19 @@ inherited viewSize: TviewSize
           object pnlGridSize: TPanel
             Left = 0
             Top = 96
-            Width = 500
-            Height = 529
+            Width = 449
+            Height = 369
             Align = alClient
             BevelOuter = bvNone
             Caption = 'pnlGridSize'
             TabOrder = 1
+            ExplicitWidth = 500
             object DBSizes: TDBGrid
               AlignWithMargins = True
               Left = 5
               Top = 5
-              Width = 490
-              Height = 471
+              Width = 439
+              Height = 311
               Cursor = crCross
               Margins.Left = 5
               Margins.Top = 5
@@ -284,40 +276,46 @@ inherited viewSize: TviewSize
                 item
                   Expanded = False
                   FieldName = 'ID'
+                  Title.Caption = 'C'#243'digo'
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE'
+                  Title.Caption = 'Tamanho'
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'WEIGHT'
+                  Title.Caption = 'Peso'
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'LENGTH'
+                  Title.Caption = 'Comprimento'
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'HEIGHT'
+                  Title.Caption = 'Altura'
                   Visible = True
                 end>
             end
             object pnlCrudSize: TPanel
               Left = 0
-              Top = 481
-              Width = 500
+              Top = 321
+              Width = 449
               Height = 48
               Align = alBottom
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 500
               object btnDeleteSize: TSpeedButton
                 AlignWithMargins = True
-                Left = 55
+                Left = 4
                 Top = 5
                 Width = 80
                 Height = 38
@@ -327,7 +325,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Delete'
+                Caption = 'Deletar'
                 ImageIndex = 5
                 Images = imgList
                 Flat = True
@@ -343,7 +341,7 @@ inherited viewSize: TviewSize
               end
               object btnCancelSize: TSpeedButton
                 AlignWithMargins = True
-                Left = 145
+                Left = 94
                 Top = 5
                 Width = 80
                 Height = 38
@@ -353,7 +351,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Cancel'
+                Caption = 'Cancelar'
                 ImageIndex = 4
                 Images = imgList
                 Flat = True
@@ -369,7 +367,7 @@ inherited viewSize: TviewSize
               end
               object btnSaveSize: TSpeedButton
                 AlignWithMargins = True
-                Left = 235
+                Left = 184
                 Top = 5
                 Width = 80
                 Height = 38
@@ -379,7 +377,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Save'
+                Caption = 'Salvar'
                 ImageIndex = 3
                 Images = imgList
                 Flat = True
@@ -395,7 +393,7 @@ inherited viewSize: TviewSize
               end
               object btnEditSize: TSpeedButton
                 AlignWithMargins = True
-                Left = 325
+                Left = 274
                 Top = 5
                 Width = 80
                 Height = 38
@@ -405,7 +403,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Edit'
+                Caption = 'Editar'
                 ImageIndex = 2
                 Images = imgList
                 Flat = True
@@ -421,7 +419,7 @@ inherited viewSize: TviewSize
               end
               object btnNewSize: TSpeedButton
                 AlignWithMargins = True
-                Left = 415
+                Left = 364
                 Top = 5
                 Width = 80
                 Height = 38
@@ -431,7 +429,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'New'
+                Caption = 'Novo'
                 ImageIndex = 1
                 Images = imgList
                 Flat = True
@@ -449,195 +447,203 @@ inherited viewSize: TviewSize
           end
         end
         object pnlSizeRange: TPanel
-          Left = 500
+          Left = 449
           Top = 65
-          Width = 667
-          Height = 625
+          Width = 718
+          Height = 465
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitLeft = 465
+          ExplicitWidth = 702
           object pnlRangeSize: TPanel
             Left = 0
             Top = 0
-            Width = 667
+            Width = 718
             Height = 137
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
+            ExplicitLeft = 3
+            ExplicitTop = 6
+            ExplicitWidth = 702
+            DesignSize = (
+              718
+              137)
             object Label6: TLabel
               Left = 5
               Top = 4
-              Width = 11
+              Width = 39
               Height = 15
-              Caption = 'ID'
+              Caption = 'C'#243'digo'
               FocusControl = edtIDRange
             end
             object Label7: TLabel
               Left = 71
               Top = 4
-              Width = 34
+              Width = 33
               Height = 15
-              Caption = 'NAME'
+              Caption = 'Nome'
               FocusControl = edtNameRange
             end
             object Label8: TLabel
               Left = 5
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE1'
+              Caption = 'Tamanho 1'
               FocusControl = edtSz1
             end
             object Label9: TLabel
-              Left = 71
+              Left = 76
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE2'
+              Caption = 'Tamanho 2'
               FocusControl = edtSz2
             end
             object Label10: TLabel
-              Left = 137
+              Left = 147
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE3'
+              Caption = 'Tamanho 3'
               FocusControl = edtSz3
             end
             object Label11: TLabel
-              Left = 203
+              Left = 218
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE4'
+              Caption = 'Tamanho 4'
               FocusControl = edtSz4
             end
             object Label12: TLabel
-              Left = 269
+              Left = 289
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE5'
+              Caption = 'Tamanho 5'
               FocusControl = edtSz5
             end
             object Label13: TLabel
-              Left = 335
+              Left = 360
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE6'
+              Caption = 'Tamanho 6'
               FocusControl = edtSz6
             end
             object Label14: TLabel
-              Left = 401
+              Left = 431
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE7'
+              Caption = 'Tamanho 7'
               FocusControl = edtSz7
             end
             object Label15: TLabel
-              Left = 467
+              Left = 502
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE8'
+              Caption = 'Tamanho 8'
               FocusControl = edtSz8
             end
             object Label16: TLabel
-              Left = 533
+              Left = 573
               Top = 47
-              Width = 28
+              Width = 58
               Height = 15
-              Caption = 'SIZE9'
+              Caption = 'Tamanho 9'
               FocusControl = edtSz9
             end
             object Label17: TLabel
-              Left = 599
+              Left = 644
               Top = 47
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE10'
+              Caption = 'Tamanho 10'
               FocusControl = edtSz10
             end
             object Label18: TLabel
               Left = 5
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE11'
+              Caption = 'Tamanho 11'
               FocusControl = edtSz11
             end
             object Label19: TLabel
-              Left = 71
+              Left = 76
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE12'
+              Caption = 'Tamanho 12'
               FocusControl = edtSz12
             end
             object Label20: TLabel
-              Left = 137
+              Left = 147
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE13'
+              Caption = 'Tamanho 13'
               FocusControl = edtSz13
             end
             object Label21: TLabel
-              Left = 203
+              Left = 218
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE14'
+              Caption = 'Tamanho 14'
               FocusControl = edtSz14
             end
             object Label22: TLabel
-              Left = 269
+              Left = 289
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE15'
+              Caption = 'Tamanho 15'
               FocusControl = edtSz15
             end
             object Label23: TLabel
-              Left = 335
+              Left = 360
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE16'
+              Caption = 'Tamanho 16'
               FocusControl = edtSz16
             end
             object Label24: TLabel
-              Left = 401
-              Top = 91
-              Width = 34
+              Left = 431
+              Top = 90
+              Width = 64
               Height = 15
-              Caption = 'SIZE17'
+              Caption = 'Tamanho 17'
               FocusControl = edtSz17
             end
             object Label25: TLabel
-              Left = 467
+              Left = 502
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE18'
+              Caption = 'Tamanho 18'
               FocusControl = edtSz18
             end
             object Label26: TLabel
-              Left = 533
+              Left = 573
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE19'
+              Caption = 'Tamanho 19'
               FocusControl = edtSz19
             end
             object Label27: TLabel
-              Left = 599
+              Left = 644
               Top = 91
-              Width = 34
+              Width = 64
               Height = 15
-              Caption = 'SIZE20'
+              Caption = 'Tamanho 20'
               FocusControl = edtSz20
             end
             object edtIDRange: TDBEdit
@@ -645,6 +651,7 @@ inherited viewSize: TviewSize
               Top = 20
               Width = 60
               Height = 23
+              Anchors = [akTop, akRight]
               DataField = 'ID'
               DataSource = DSData
               Enabled = False
@@ -655,6 +662,7 @@ inherited viewSize: TviewSize
               Top = 20
               Width = 300
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'NAME'
               DataSource = DSData
@@ -665,8 +673,9 @@ inherited viewSize: TviewSize
             object edtSz1: TDBEdit
               Left = 5
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE1'
               DataSource = DSData
@@ -675,10 +684,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz1Exit
             end
             object edtSz2: TDBEdit
-              Left = 71
+              Left = 76
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE2'
               DataSource = DSData
@@ -687,10 +697,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz2Exit
             end
             object edtSz3: TDBEdit
-              Left = 137
+              Left = 147
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE3'
               DataSource = DSData
@@ -699,10 +710,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz3Exit
             end
             object edtSz4: TDBEdit
-              Left = 203
+              Left = 218
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE4'
               DataSource = DSData
@@ -711,10 +723,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz4Exit
             end
             object edtSz5: TDBEdit
-              Left = 269
+              Left = 289
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE5'
               DataSource = DSData
@@ -723,10 +736,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz5Exit
             end
             object edtSz6: TDBEdit
-              Left = 335
+              Left = 360
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE6'
               DataSource = DSData
@@ -735,10 +749,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz6Exit
             end
             object edtSz7: TDBEdit
-              Left = 401
+              Left = 431
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE7'
               DataSource = DSData
@@ -747,10 +762,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz7Exit
             end
             object edtSz8: TDBEdit
-              Left = 467
+              Left = 502
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE8'
               DataSource = DSData
@@ -759,10 +775,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz8Exit
             end
             object edtSz9: TDBEdit
-              Left = 533
+              Left = 573
               Top = 63
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE9'
               DataSource = DSData
@@ -771,10 +788,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz9Exit
             end
             object edtSz10: TDBEdit
-              Left = 599
-              Top = 62
-              Width = 60
+              Left = 644
+              Top = 63
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE10'
               DataSource = DSData
@@ -785,8 +803,9 @@ inherited viewSize: TviewSize
             object edtSz11: TDBEdit
               Left = 5
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE11'
               DataSource = DSData
@@ -795,10 +814,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz11Exit
             end
             object edtSz12: TDBEdit
-              Left = 71
-              Top = 108
-              Width = 60
+              Left = 76
+              Top = 107
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE12'
               DataSource = DSData
@@ -807,10 +827,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz12Exit
             end
             object edtSz13: TDBEdit
-              Left = 137
+              Left = 147
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE13'
               DataSource = DSData
@@ -819,10 +840,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz13Exit
             end
             object edtSz14: TDBEdit
-              Left = 203
+              Left = 218
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE14'
               DataSource = DSData
@@ -831,10 +853,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz14Exit
             end
             object edtSz15: TDBEdit
-              Left = 269
+              Left = 289
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE15'
               DataSource = DSData
@@ -843,10 +866,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz15Exit
             end
             object edtSz16: TDBEdit
-              Left = 335
+              Left = 360
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE16'
               DataSource = DSData
@@ -855,10 +879,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz16Exit
             end
             object edtSz17: TDBEdit
-              Left = 401
-              Top = 108
-              Width = 60
+              Left = 431
+              Top = 107
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE17'
               DataSource = DSData
@@ -867,10 +892,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz17Exit
             end
             object edtSz18: TDBEdit
-              Left = 467
+              Left = 502
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE18'
               DataSource = DSData
@@ -879,10 +905,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz18Exit
             end
             object edtSz19: TDBEdit
-              Left = 533
+              Left = 573
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE19'
               DataSource = DSData
@@ -891,10 +918,11 @@ inherited viewSize: TviewSize
               OnExit = edtSz19Exit
             end
             object edtSz20: TDBEdit
-              Left = 599
+              Left = 644
               Top = 107
-              Width = 60
+              Width = 65
               Height = 23
+              Anchors = [akTop, akRight]
               CharCase = ecUpperCase
               DataField = 'SIZE20'
               DataSource = DSData
@@ -906,17 +934,18 @@ inherited viewSize: TviewSize
           object pnlGridRange: TPanel
             Left = 0
             Top = 137
-            Width = 667
-            Height = 488
+            Width = 718
+            Height = 328
             Align = alClient
             BevelOuter = bvNone
             TabOrder = 1
+            ExplicitWidth = 667
             object DBGrid1: TDBGrid
               AlignWithMargins = True
               Left = 5
               Top = 5
-              Width = 657
-              Height = 430
+              Width = 708
+              Height = 270
               Cursor = crCross
               Margins.Left = 5
               Margins.Top = 5
@@ -940,147 +969,170 @@ inherited viewSize: TviewSize
                 item
                   Expanded = False
                   FieldName = 'ID'
+                  Title.Caption = 'C'#243'digo'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'NAME'
+                  Title.Caption = 'Nome'
                   Width = 150
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE1'
+                  Title.Caption = 'Tamanho 1'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE2'
+                  Title.Caption = 'Tamanho 2'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE3'
+                  Title.Caption = 'Tamanho 3'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE4'
+                  Title.Caption = 'Tamanho 4'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE5'
+                  Title.Caption = 'Tamanho 5'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE6'
+                  Title.Caption = 'Tamanho 6'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE7'
+                  Title.Caption = 'Tamanho 7'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE8'
+                  Title.Caption = 'Tamanho 8'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE9'
+                  Title.Caption = 'Tamanho 9'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE10'
+                  Title.Caption = 'Tamanho 10'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE11'
+                  Title.Caption = 'Tamanho 11'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE12'
+                  Title.Caption = 'Tamanho 12'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE13'
+                  Title.Caption = 'Tamanho 13'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE14'
+                  Title.Caption = 'Tamanho 14'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE15'
+                  Title.Caption = 'Tamanho 15'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE16'
+                  Title.Caption = 'Tamanho 16'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE17'
+                  Title.Caption = 'Tamanho 17'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE18'
+                  Title.Caption = 'Tamanho 18'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE19'
+                  Title.Caption = 'Tamanho 19'
                   Width = 50
                   Visible = True
                 end
                 item
                   Expanded = False
                   FieldName = 'SIZE20'
+                  Title.Caption = 'Tamanho 20'
                   Width = 50
                   Visible = True
                 end>
             end
             object pnlCrudRange: TPanel
               Left = 0
-              Top = 440
-              Width = 667
+              Top = 280
+              Width = 718
               Height = 48
               Align = alBottom
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 667
               object btnDeleteRange: TSpeedButton
                 AlignWithMargins = True
-                Left = 222
+                Left = 273
                 Top = 5
                 Width = 80
                 Height = 38
@@ -1090,7 +1142,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Delete'
+                Caption = 'Deletar'
                 ImageIndex = 5
                 Images = imgList
                 Flat = True
@@ -1105,7 +1157,7 @@ inherited viewSize: TviewSize
               end
               object btnCancelRange: TSpeedButton
                 AlignWithMargins = True
-                Left = 312
+                Left = 363
                 Top = 5
                 Width = 80
                 Height = 38
@@ -1115,7 +1167,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Cancel'
+                Caption = 'Cancelar'
                 ImageIndex = 4
                 Images = imgList
                 Flat = True
@@ -1130,7 +1182,7 @@ inherited viewSize: TviewSize
               end
               object btnSaveRange: TSpeedButton
                 AlignWithMargins = True
-                Left = 402
+                Left = 453
                 Top = 5
                 Width = 80
                 Height = 38
@@ -1140,7 +1192,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Save'
+                Caption = 'Salvar'
                 ImageIndex = 3
                 Images = imgList
                 Flat = True
@@ -1155,7 +1207,7 @@ inherited viewSize: TviewSize
               end
               object btnEditRange: TSpeedButton
                 AlignWithMargins = True
-                Left = 492
+                Left = 543
                 Top = 5
                 Width = 80
                 Height = 38
@@ -1165,7 +1217,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'Edit'
+                Caption = 'Editar'
                 ImageIndex = 2
                 Images = imgList
                 Flat = True
@@ -1182,7 +1234,7 @@ inherited viewSize: TviewSize
               end
               object btnNewRange: TSpeedButton
                 AlignWithMargins = True
-                Left = 582
+                Left = 633
                 Top = 5
                 Width = 80
                 Height = 38
@@ -1192,7 +1244,7 @@ inherited viewSize: TviewSize
                 Margins.Right = 5
                 Margins.Bottom = 5
                 Align = alRight
-                Caption = 'New'
+                Caption = 'Novo'
                 ImageIndex = 1
                 Images = imgList
                 Flat = True
