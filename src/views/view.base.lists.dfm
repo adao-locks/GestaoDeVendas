@@ -194,7 +194,7 @@ inherited viewBaseLists: TviewBaseLists
       Width = 78
       Height = 35
       Align = alLeft
-      Caption = 'Fechar'
+      Caption = 'Sair'
       ImageIndex = 0
       Images = imgList
       Font.Charset = DEFAULT_CHARSET

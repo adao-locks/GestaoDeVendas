@@ -12,10 +12,9 @@ inherited viewColor: TviewColor
     ExplicitWidth = 1121
     inherited lblTitleWindow: TLabel
       Width = 965
-      Height = 35
-      Caption = 'Colors'
+      Caption = 'Cores'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 45
+      ExplicitWidth = 40
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -71,7 +70,6 @@ inherited viewColor: TviewColor
     inherited CardPanelList: TCardPanel
       Width = 1117
       Height = 465
-      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 1117
       ExplicitHeight = 465
@@ -87,7 +85,9 @@ inherited viewColor: TviewColor
           ExplicitWidth = 1117
           inherited lblSearch: TLabel
             Width = 1102
+            Caption = 'Pesquisa Cores'
             StyleElements = [seFont, seClient, seBorder]
+            ExplicitWidth = 126
           end
         end
         inherited DBGData: TDBGrid
@@ -97,12 +97,14 @@ inherited viewColor: TviewColor
             item
               Expanded = False
               FieldName = 'ID'
+              Title.Caption = 'Codigo'
               Width = 46
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
+              Title.Caption = 'Nome'
               Width = 196
               Visible = True
             end
@@ -121,24 +123,28 @@ inherited viewColor: TviewColor
             item
               Expanded = False
               FieldName = 'DT_CREATED'
+              Title.Caption = 'Data Cria'#231#227'o'
               Width = 153
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ACTIVE'
+              Title.Caption = 'Ativo'
               Width = 46
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COM_ID'
+              Title.Caption = 'ID Empresa'
               Width = 52
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'USER'
+              Title.Caption = 'ID Usu'#225'rio'
               Width = 169
               Visible = True
             end>
@@ -153,25 +159,25 @@ inherited viewColor: TviewColor
         object Label1: TLabel [0]
           Left = 8
           Top = 74
-          Width = 11
+          Width = 39
           Height = 15
-          Caption = 'ID'
+          Caption = 'Codigo'
           FocusControl = edtID
         end
         object Label2: TLabel [1]
           Left = 8
           Top = 122
-          Width = 32
+          Width = 33
           Height = 15
-          Caption = 'Name'
+          Caption = 'Nome'
           FocusControl = edtName
         end
         object Label3: TLabel [2]
           Left = 224
           Top = 122
-          Width = 66
+          Width = 67
           Height = 15
-          Caption = 'Date created'
+          Caption = 'Data Cria'#231#227'o'
           FocusControl = EDTDTCreated
         end
         object Label4: TLabel [3]
@@ -244,7 +250,7 @@ inherited viewColor: TviewColor
           Top = 93
           Width = 97
           Height = 17
-          Caption = 'Active'
+          Caption = 'Ativo'
           DataField = 'ACTIVE'
           DataSource = DSData
           TabOrder = 4

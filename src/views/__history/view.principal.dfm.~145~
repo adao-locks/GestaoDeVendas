@@ -2404,18 +2404,18 @@ object ViewPrincipal: TViewPrincipal
     TabOrder = 1
     object Button1: TButton
       AlignWithMargins = True
-      Left = 25
+      Left = 35
       Top = 535
-      Width = 79
+      Width = 59
       Height = 32
       Cursor = crHandPoint
-      Margins.Left = 15
+      Margins.Left = 25
       Margins.Top = 5
-      Margins.Right = 15
+      Margins.Right = 25
       Margins.Bottom = 0
       Align = alBottom
       BiDiMode = bdLeftToRight
-      Caption = 'Fechar'
+      Caption = 'Exit'
       DoubleBuffered = True
       ImageIndex = 5
       ImageMargins.Left = 5
@@ -2424,8 +2424,6 @@ object ViewPrincipal: TViewPrincipal
       ParentDoubleBuffered = False
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitLeft = 35
-      ExplicitWidth = 60
     end
     object pnlShapeMenu: TPanel
       Left = 10
@@ -2466,7 +2464,7 @@ object ViewPrincipal: TViewPrincipal
         Margins.Right = 0
         Margins.Bottom = 20
         Align = alBottom
-        Caption = 'Config.'
+        Caption = 'Config'
         ImageIndex = 7
         Images = ImageList1
         Flat = True
@@ -2481,7 +2479,7 @@ object ViewPrincipal: TViewPrincipal
         Height = 45
         Cursor = crHandPoint
         Align = alTop
-        Caption = 'Vendas'
+        Caption = 'Sales'
         ImageIndex = 0
         Images = ImageList1
         Flat = True
@@ -2496,7 +2494,7 @@ object ViewPrincipal: TViewPrincipal
         Height = 45
         Cursor = crHandPoint
         Align = alTop
-        Caption = 'Entidade'
+        Caption = 'Entity'
         ImageIndex = 4
         Images = ImageList1
         Flat = True
@@ -2511,7 +2509,7 @@ object ViewPrincipal: TViewPrincipal
         Height = 45
         Cursor = crHandPoint
         Align = alTop
-        Caption = 'Produtos'
+        Caption = 'Products'
         ImageIndex = 3
         Images = ImageList1
         Flat = True
@@ -2541,7 +2539,7 @@ object ViewPrincipal: TViewPrincipal
         Height = 45
         Cursor = crHandPoint
         Align = alTop
-        Caption = 'Empresa'
+        Caption = 'Company'
         ImageIndex = 1
         Images = ImageList1
         Flat = True
@@ -2556,7 +2554,7 @@ object ViewPrincipal: TViewPrincipal
         Height = 45
         Cursor = crHandPoint
         Align = alTop
-        Caption = 'Cores'
+        Caption = 'Colors'
         ImageIndex = 8
         Images = ImageList1
         Flat = True
@@ -2571,7 +2569,7 @@ object ViewPrincipal: TViewPrincipal
         Height = 45
         Cursor = crHandPoint
         Align = alTop
-        Caption = 'Tamanhos'
+        Caption = 'Sizes'
         ImageIndex = 6
         Images = ImageList1
         Flat = True
