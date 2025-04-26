@@ -9,7 +9,7 @@ uses
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.Mask,
   Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ComCtrls, Service.Connection, view.size,
-  Vcl.ActnMan, Vcl.ActnColorMaps;
+  Vcl.ActnMan, Vcl.ActnColorMaps, Provider.Utils;
 
 type
   TviewProducts = class(TviewBaseLists)
@@ -68,7 +68,6 @@ type
     { Private declarations }
   public
     procedure Get_Product();
-    procedure ResizeDBGridColumns(DBGrid: TDBGrid);
   end;
 
 var
@@ -87,6 +86,8 @@ begin
   begin
     ServiceRegister.QRYProduct.Cancel;
     CardPanelList.ActiveCard := cardSearch;
+    ResizeDBGridColumns(DBGData);
+    AlighDBGridColumns(DBGData);
   end;
 
 end;
@@ -96,77 +97,6 @@ begin
   inherited;
   viewProducts.Close;
 end;
-
-
-
-
-procedure TviewProducts.ResizeDBGridColumns(DBGrid: TDBGrid);
-var
-  DataSet: TDataSet;
-  i, Largura, MaxLargura, LarguraTitulo: Integer;
-  TextoColuna, TextoCampo: string;
-  BookMark: TBookmark;
-begin
-  if not Assigned(DBGrid) or not Assigned(DBGrid.DataSource) or
-     not Assigned(DBGrid.DataSource.DataSet) or
-     (DBGrid.DataSource.DataSet.RecordCount = 0) then
-    Exit;
-
-  DataSet := DBGrid.DataSource.DataSet;
-
-  DataSet.DisableControls;
-  try
-    // Salva a posição atual
-    BookMark := DataSet.GetBookmark;
-
-    // Para cada coluna do grid
-    for i := 0 to DBGrid.Columns.Count - 1 do
-    begin
-      TextoColuna := DBGrid.Columns[i].Title.Caption;
-      // Largura do título da coluna (+ margem de 20 pixels)
-      LarguraTitulo := DBGrid.Canvas.TextWidth(TextoColuna) + 20;
-
-      // Inicializa MaxLargura com zero para comparar apenas com valores do banco
-      MaxLargura := 0;
-
-      // Percorre todos os registros para encontrar o texto mais longo
-      DataSet.First;
-      while not DataSet.Eof do
-      begin
-        if Assigned(DBGrid.Columns[i].Field) then
-        begin
-          TextoCampo := DBGrid.Columns[i].Field.AsString;
-          Largura := DBGrid.Canvas.TextWidth(TextoCampo) + 20; // Margem de 20 pixels
-
-          if Largura > MaxLargura then
-            MaxLargura := Largura;
-        end;
-        DataSet.Next;
-      end;
-
-      // Aqui está a diferença: compara MaxLargura com LarguraTitulo
-      // Se o título for maior que qualquer valor do banco, usa o tamanho do título
-      if LarguraTitulo > MaxLargura then
-        MaxLargura := LarguraTitulo;
-
-      // Define a nova largura da coluna
-      DBGrid.Columns[i].Width := MaxLargura;
-    end;
-
-    // Restaura a posição original do dataset
-    if DataSet.BookmarkValid(BookMark) then
-      DataSet.GotoBookmark(BookMark);
-    DataSet.FreeBookmark(BookMark);
-
-  finally
-    // Reativa os controles
-    DataSet.EnableControls;
-  end;
-end;
-
-
-
-
 
 procedure TviewProducts.btnConsultClick(Sender: TObject);
 var
@@ -238,6 +168,7 @@ begin
 
   ServiceRegister.QRYProduct.Open;
   ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 
@@ -314,6 +245,8 @@ begin
     ServiceRegister.QRYProduct.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
+    ResizeDBGridColumns(DBGData);
+    AlighDBGridColumns(DBGData);
 
   end;
 
@@ -362,6 +295,7 @@ begin
 
   Get_Product;
   ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 

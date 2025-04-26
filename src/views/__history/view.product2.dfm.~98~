@@ -325,15 +325,6 @@ inherited viewProducts: TviewProducts
             TabOrder = 9
             OnClick = btnConsultClick
           end
-          object Button1: TButton
-            Left = 667
-            Top = 108
-            Width = 97
-            Height = 25
-            Caption = 'Teste'
-            TabOrder = 10
-            OnClick = Button1Click
-          end
         end
         inherited DBGData: TDBGrid
           Top = 175

@@ -38,8 +38,6 @@ type
     edtSupplierAsk: TSearchBox;
     edtUnAsk: TSearchBox;
     edtUserRegAsk: TSearchBox;
-    edtUserUpAsk: TSearchBox;
-    lblCityAsk: TLabel;
     lblDateBirthAsk: TLabel;
     lblDateRegAsk: TLabel;
     lblEmailAsk: TLabel;
@@ -157,13 +155,6 @@ begin
     ServiceRegister.QRYProduct.SQL.Add(' AND USER_ID LIKE :USER');
     ServiceRegister.QRYProduct.ParamByName('USER').AsString :=
       '%' + edtUserRegAsk.Text + '%';
-  end;
-
-  if edtUserUpAsk.Text <> '' then
-  begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND USER_UPDATE LIKE :USER');
-    ServiceRegister.QRYProduct.ParamByName('USER').AsString :=
-      '%' + edtUserUpAsk.Text + '%';
   end;
 
   ServiceRegister.QRYProduct.Open;

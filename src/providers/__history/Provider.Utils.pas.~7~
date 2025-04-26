@@ -31,7 +31,7 @@ begin
     for i := 0 to DBGrid.Columns.Count - 1 do
     begin
       TextoColuna := DBGrid.Columns[i].Title.Caption;
-      LarguraTitulo := DBGrid.Canvas.TextWidth(TextoColuna) + 10;
+      LarguraTitulo := DBGrid.Canvas.TextWidth(TextoColuna) + 20;
 
       MaxLargura := 0;
 
@@ -41,7 +41,7 @@ begin
         if Assigned(DBGrid.Columns[i].Field) then
         begin
           TextoCampo := DBGrid.Columns[i].Field.AsString;
-          Largura := DBGrid.Canvas.TextWidth(TextoCampo) + 10;
+          Largura := DBGrid.Canvas.TextWidth(TextoCampo) + 20;
 
           if Largura > MaxLargura then
             MaxLargura := Largura;

@@ -5,11 +5,9 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Width = 868
-      Height = 35
-      Caption = 'Product'
+      Caption = 'Produto'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 868
+      ExplicitWidth = 56
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -48,38 +46,22 @@ inherited viewProducts: TviewProducts
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
         inherited pnlSearch: TPanel
-          Height = 170
+          Height = 153
           StyleElements = [seFont, seClient, seBorder]
-          ExplicitHeight = 170
+          ExplicitHeight = 153
           inherited lblSearch: TLabel
-            Width = 1005
-            Caption = 'Search Product'
+            Caption = 'Pesquisa de Produto'
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 128
-          end
-          object lblCityAsk: TLabel
-            Left = 269
-            Top = 116
-            Width = 90
-            Height = 17
-            Alignment = taRightJustify
-            AutoSize = False
-            Caption = 'User Updated: '
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
+            ExplicitWidth = 172
           end
           object lblDateBirthAsk: TLabel
-            Left = 269
+            Left = 287
             Top = 43
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Between: '
+            Caption = 'Ate: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -94,7 +76,7 @@ inherited viewProducts: TviewProducts
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Date Register: '
+            Caption = 'Cadastro De: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -103,13 +85,13 @@ inherited viewProducts: TviewProducts
             ParentFont = False
           end
           object lblEmailAsk: TLabel
-            Left = 14
-            Top = 140
+            Left = 284
+            Top = 93
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Brand: '
+            Caption = 'Marca: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -124,7 +106,7 @@ inherited viewProducts: TviewProducts
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Category: '
+            Caption = 'Categoria: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -139,7 +121,7 @@ inherited viewProducts: TviewProducts
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Name: '
+            Caption = 'Nome: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -148,13 +130,13 @@ inherited viewProducts: TviewProducts
             ParentFont = False
           end
           object lblPhoneAsk: TLabel
-            Left = 14
-            Top = 116
+            Left = 284
+            Top = 68
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Supplier: '
+            Caption = 'Fornecedor: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -163,13 +145,13 @@ inherited viewProducts: TviewProducts
             ParentFont = False
           end
           object lblStateAsk: TLabel
-            Left = 269
-            Top = 92
-            Width = 90
+            Left = 268
+            Top = 117
+            Width = 109
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'User Register: '
+            Caption = 'Usu'#225'rio Cadastro: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -178,8 +160,8 @@ inherited viewProducts: TviewProducts
             ParentFont = False
           end
           object lblZipAsk: TLabel
-            Left = 269
-            Top = 68
+            Left = 16
+            Top = 115
             Width = 90
             Height = 17
             Alignment = taRightJustify
@@ -207,8 +189,8 @@ inherited viewProducts: TviewProducts
           end
           object edtBrandAsk: TSearchBox
             AlignWithMargins = True
-            Left = 111
-            Top = 140
+            Left = 381
+            Top = 93
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -234,7 +216,7 @@ inherited viewProducts: TviewProducts
             TabOrder = 2
           end
           object dtRegEnd: TDateTimePicker
-            Left = 363
+            Left = 381
             Top = 39
             Width = 145
             Height = 23
@@ -262,8 +244,8 @@ inherited viewProducts: TviewProducts
           end
           object edtSupplierAsk: TSearchBox
             AlignWithMargins = True
-            Left = 111
-            Top = 116
+            Left = 381
+            Top = 68
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -276,8 +258,8 @@ inherited viewProducts: TviewProducts
           end
           object edtUnAsk: TSearchBox
             AlignWithMargins = True
-            Left = 363
-            Top = 68
+            Left = 110
+            Top = 115
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -290,8 +272,8 @@ inherited viewProducts: TviewProducts
           end
           object edtUserRegAsk: TSearchBox
             AlignWithMargins = True
-            Left = 363
-            Top = 92
+            Left = 381
+            Top = 117
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -302,65 +284,57 @@ inherited viewProducts: TviewProducts
             CharCase = ecUpperCase
             TabOrder = 7
           end
-          object edtUserUpAsk: TSearchBox
-            AlignWithMargins = True
-            Left = 363
-            Top = 116
-            Width = 145
-            Height = 18
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            BevelInner = bvNone
-            BorderStyle = bsNone
-            CharCase = ecUpperCase
-            TabOrder = 8
-          end
           object btnConsult: TButton
-            Left = 520
-            Top = 132
+            Left = 539
+            Top = 113
             Width = 97
             Height = 25
-            Caption = 'Consult'
-            TabOrder = 9
+            Caption = 'Consultar'
+            TabOrder = 8
             OnClick = btnConsultClick
           end
         end
         inherited DBGData: TDBGrid
-          Top = 175
-          Height = 300
+          Top = 158
+          Height = 317
           Columns = <
             item
               Expanded = False
               FieldName = 'ACTIVE'
+              Title.Caption = 'Ativo'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PROD_ID'
+              Title.Caption = 'Codigo'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
+              Title.Caption = 'Nome'
               Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRIPTION'
+              Title.Caption = 'Descri'#231#227'o'
               Width = 150
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CATEGORY'
+              Title.Caption = 'Categoria'
               Width = 100
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUPPLIER'
+              Title.Caption = 'Fornecedor'
               Width = 100
               Visible = True
             end
@@ -373,30 +347,33 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'BRAND'
+              Title.Caption = 'Marca'
               Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'USER_ID'
+              Title.Caption = 'Usu'#225'rio Cadastro'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
+              Title.Caption = 'Data Cadastro'
               Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'USER_UPDATE'
-              Visible = True
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
-              Width = 64
-              Visible = True
+              Width = -1
+              Visible = False
             end>
         end
       end
@@ -413,76 +390,75 @@ inherited viewProducts: TviewProducts
         object Label2: TLabel [1]
           Left = 65
           Top = 115
-          Width = 32
+          Width = 33
           Height = 15
-          Caption = 'Name'
+          Caption = 'Nome'
           FocusControl = edtName
         end
         object Label3: TLabel [2]
           Left = 9
           Top = 160
-          Width = 60
+          Width = 51
           Height = 15
-          Caption = 'Description'
+          Caption = 'Descri'#231#227'o'
           FocusControl = edtDescription
         end
         object Label4: TLabel [3]
           Left = 55
           Top = 246
-          Width = 48
+          Width = 51
           Height = 15
-          Caption = 'Category'
+          Caption = 'Categoria'
           FocusControl = edtCategory
         end
         object Label5: TLabel [4]
           Left = 267
           Top = 246
-          Width = 43
+          Width = 60
           Height = 15
-          Caption = 'Supplier'
+          Caption = 'Fornecedor'
           FocusControl = edtSupplier
         end
         object Label6: TLabel [5]
           Left = 86
           Top = 69
-          Width = 69
+          Width = 99
           Height = 15
           AutoSize = False
-          Caption = 'Date Register'
+          Caption = 'Data Cadastrada'
           Enabled = False
           FocusControl = edtDateReg
         end
         object Label7: TLabel [6]
           Left = 161
           Top = 246
-          Width = 31
+          Width = 33
           Height = 15
-          Caption = 'Brand'
+          Caption = 'Marca'
           FocusControl = edtBrand
         end
         object Label8: TLabel [7]
           Left = 9
           Top = 246
-          Width = 15
+          Width = 17
           Height = 15
-          Caption = 'Un'
+          Caption = 'UN'
           FocusControl = edtUn
         end
         object Label9: TLabel [8]
           Left = 9
           Top = 203
-          Width = 56
+          Width = 95
           Height = 15
-          Caption = 'Size Range'
+          Caption = 'Faixa de Tamanho'
           FocusControl = edtSizeRange
         end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Width = 1005
-            Caption = 'Register Product'
+            Caption = 'Cadastro de Produtos'
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 138
+            ExplicitWidth = 182
           end
         end
         object cbActive: TDBCheckBox
@@ -491,7 +467,7 @@ inherited viewProducts: TviewProducts
           Width = 70
           Height = 17
           Cursor = crHandPoint
-          Caption = 'ACTIVE'
+          Caption = 'Ativo'
           DataField = 'ACTIVE'
           DataSource = DSData
           ParentShowHint = False
@@ -523,7 +499,7 @@ inherited viewProducts: TviewProducts
         object edtDateReg: TDBEdit
           Left = 86
           Top = 85
-          Width = 80
+          Width = 99
           Height = 23
           AutoSize = False
           CharCase = ecUpperCase

@@ -80,7 +80,7 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alRight
-      Caption = 'New'
+      Caption = 'Novo'
       ImageIndex = 1
       Images = imgList
       Flat = True
@@ -104,7 +104,7 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alRight
-      Caption = 'Edit'
+      Caption = 'Editar'
       ImageIndex = 2
       Images = imgList
       Flat = True
@@ -128,7 +128,7 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alRight
-      Caption = 'Save'
+      Caption = 'Salvar'
       ImageIndex = 3
       Images = imgList
       Flat = True
@@ -152,7 +152,7 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alRight
-      Caption = 'Cancel'
+      Caption = 'Cancelar'
       ImageIndex = 4
       Images = imgList
       Flat = True
@@ -176,7 +176,7 @@ inherited viewBaseLists: TviewBaseLists
       Margins.Right = 5
       Margins.Bottom = 5
       Align = alRight
-      Caption = 'Delete'
+      Caption = 'Deletar'
       ImageIndex = 5
       Images = imgList
       Flat = True
@@ -194,9 +194,15 @@ inherited viewBaseLists: TviewBaseLists
       Width = 78
       Height = 35
       Align = alLeft
-      Caption = 'Close'
+      Caption = 'Fechar'
       ImageIndex = 0
       Images = imgList
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object pnlBackground: TPanel

@@ -7,9 +7,9 @@ inherited viewProducts: TviewProducts
     inherited lblTitleWindow: TLabel
       Width = 868
       Height = 35
-      Caption = 'Product'
+      Caption = 'Produto'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 54
+      ExplicitWidth = 56
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -383,6 +383,7 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
+              Width = 64
               Visible = True
             end
             item
@@ -393,6 +394,7 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
+              Width = 64
               Visible = True
             end>
         end
@@ -410,76 +412,76 @@ inherited viewProducts: TviewProducts
         object Label2: TLabel [1]
           Left = 65
           Top = 115
-          Width = 32
+          Width = 33
           Height = 15
-          Caption = 'Name'
+          Caption = 'Nome'
           FocusControl = edtName
         end
         object Label3: TLabel [2]
           Left = 9
           Top = 160
-          Width = 60
+          Width = 51
           Height = 15
-          Caption = 'Description'
+          Caption = 'Descri'#231#227'o'
           FocusControl = edtDescription
         end
         object Label4: TLabel [3]
           Left = 55
           Top = 246
-          Width = 48
+          Width = 51
           Height = 15
-          Caption = 'Category'
+          Caption = 'Categoria'
           FocusControl = edtCategory
         end
         object Label5: TLabel [4]
           Left = 267
           Top = 246
-          Width = 43
+          Width = 60
           Height = 15
-          Caption = 'Supplier'
+          Caption = 'Fornecedor'
           FocusControl = edtSupplier
         end
         object Label6: TLabel [5]
           Left = 86
           Top = 69
-          Width = 69
+          Width = 99
           Height = 15
           AutoSize = False
-          Caption = 'Date Register'
+          Caption = 'Data Cadastrada'
           Enabled = False
           FocusControl = edtDateReg
         end
         object Label7: TLabel [6]
           Left = 161
           Top = 246
-          Width = 31
+          Width = 33
           Height = 15
-          Caption = 'Brand'
+          Caption = 'Marca'
           FocusControl = edtBrand
         end
         object Label8: TLabel [7]
           Left = 9
           Top = 246
-          Width = 15
+          Width = 17
           Height = 15
-          Caption = 'Un'
+          Caption = 'UN'
           FocusControl = edtUn
         end
         object Label9: TLabel [8]
           Left = 9
           Top = 203
-          Width = 56
+          Width = 95
           Height = 15
-          Caption = 'Size Range'
+          Caption = 'Faixa de Tamanho'
           FocusControl = edtSizeRange
         end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
             Width = 1005
-            Caption = 'Register Product'
+            Caption = 'Cadastro de Produtos'
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 138
+            ExplicitWidth = 182
           end
         end
         object cbActive: TDBCheckBox
@@ -488,7 +490,7 @@ inherited viewProducts: TviewProducts
           Width = 70
           Height = 17
           Cursor = crHandPoint
-          Caption = 'ACTIVE'
+          Caption = 'Ativo'
           DataField = 'ACTIVE'
           DataSource = DSData
           ParentShowHint = False
@@ -520,7 +522,7 @@ inherited viewProducts: TviewProducts
         object edtDateReg: TDBEdit
           Left = 86
           Top = 85
-          Width = 80
+          Width = 99
           Height = 23
           AutoSize = False
           CharCase = ecUpperCase
