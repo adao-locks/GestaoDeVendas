@@ -27,11 +27,11 @@ inherited viewSales: TviewSales
       Margins.Top = 2
       Margins.Right = 2
       Margins.Bottom = 2
-      Caption = 'Sales'
+      Caption = 'Vendas'
       Font.Height = -14
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 70
-      ExplicitWidth = 30
+      ExplicitWidth = 44
       ExplicitHeight = 19
     end
     inherited pnlLogo: TPanel
@@ -177,7 +177,6 @@ inherited viewSales: TviewSales
       Height = 539
       Margins.Left = 1
       Margins.Right = 1
-      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -199,6 +198,8 @@ inherited viewSales: TviewSales
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
+          Font.Height = -11
+          ParentFont = False
           StyleElements = [seFont, seClient, seBorder]
           ExplicitWidth = 1105
           ExplicitHeight = 153
@@ -209,12 +210,12 @@ inherited viewSales: TviewSales
             Height = 20
             Margins.Left = 14
             Margins.Top = 4
-            Caption = 'Search Sale'
+            Caption = 'Pesquisa de Vendas'
             Font.Height = -15
             StyleElements = [seFont, seClient, seBorder]
             ExplicitLeft = 14
             ExplicitTop = 4
-            ExplicitWidth = 76
+            ExplicitWidth = 128
             ExplicitHeight = 20
           end
           object lblDateBirthAsk: TLabel
@@ -224,7 +225,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Between: '
+            Caption = 'Ate: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -239,7 +240,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Date Register: '
+            Caption = 'Cadastro De: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -269,7 +270,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Employee: '
+            Caption = 'Funcionario: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -284,7 +285,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Client: '
+            Caption = 'Cliente: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -299,7 +300,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Pay. Method: '
+            Caption = 'M'#233'todo Pag.: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -314,7 +315,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Between: '
+            Caption = 'Ate: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -329,7 +330,7 @@ inherited viewSales: TviewSales
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Date Sale: '
+            Caption = 'Venda De: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -362,6 +363,12 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 5
           end
           object edtEmployeeAsk: TSearchBox
@@ -376,6 +383,12 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 3
           end
           object dtRegEnd: TDateTimePicker
@@ -403,6 +416,12 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 2
           end
           object edtPayMethodAsk: TSearchBox
@@ -417,6 +436,12 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 4
           end
           object btnConsult: TButton
@@ -424,11 +449,11 @@ inherited viewSales: TviewSales
             Top = 113
             Width = 97
             Height = 25
-            Caption = 'Consult'
+            Caption = 'Consultar'
             TabOrder = 6
             OnClick = btnConsultClick
           end
-          object DateTimePicker1: TDateTimePicker
+          object dtSaleIni: TDateTimePicker
             Left = 110
             Top = 68
             Width = 145
@@ -441,7 +466,7 @@ inherited viewSales: TviewSales
             Time = 0.909075833333190500
             TabOrder = 7
           end
-          object DateTimePicker2: TDateTimePicker
+          object dtSaleEnd: TDateTimePicker
             Left = 363
             Top = 68
             Width = 145
@@ -469,79 +494,100 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'ID_SALE'
-              Width = 60
+              Title.Caption = 'C'#243'digo'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_CLIENT'
-              Width = 60
+              Title.Caption = 'C'#243'digo Cliente'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME_CLI'
-              Width = 150
+              Title.Caption = 'Nome Cliente'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_EMPLOYEE'
-              Width = 60
+              Title.Caption = 'C'#243'digo Funcion'#225'rio'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME_EMPL'
-              Width = 150
+              Title.Caption = 'Nome Funcion'#225'rio'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PAYMENT_METHOD'
+              Title.Caption = 'M'#233'todo Pagamento'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOTAL_AMOUNT'
+              Title.Caption = 'Total'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
+              Title.Caption = 'Desconto'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STATUS'
+              Title.Caption = 'Status'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_SALE'
+              Title.Caption = 'Data Venda'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
+              Title.Caption = 'Data Cadastro'
+              Width = 95
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_COM'
-              Visible = True
+              Title.Caption = 'C'#243'digo Empresa'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'USER'
-              Visible = True
+              Title.Caption = 'C'#243'digo Usuario'
+              Width = -1
+              Visible = False
             end>
         end
       end
       inherited cardRegister: TCard
         Width = 1105
         Height = 539
-        Cursor = crNo
+        Cursor = crArrow
         Margins.Left = 2
         Margins.Top = 2
         Margins.Right = 2
@@ -552,95 +598,95 @@ inherited viewSales: TviewSales
         object Label1: TLabel [0]
           Left = 7
           Top = 66
-          Width = 40
+          Width = 59
           Height = 13
-          Caption = 'ID_SALE'
+          Caption = 'C'#243'd. Venda'
           FocusControl = edtSale
         end
         object Label2: TLabel [1]
           Left = 7
           Top = 105
-          Width = 51
+          Width = 77
           Height = 13
-          Caption = 'ID_CLIENT'
+          Caption = 'C'#243'digo Cliente'
           FocusControl = edtClient
         end
         object Label3: TLabel [2]
           Left = 7
           Top = 144
-          Width = 69
+          Width = 103
           Height = 13
-          Caption = 'ID_EMPLOYEE'
+          Caption = 'C'#243'digo Funcion'#225'rio'
           FocusControl = edtEmployee
         end
         object Label4: TLabel [3]
           Left = 7
           Top = 186
-          Width = 43
+          Width = 59
           Height = 13
-          Caption = 'DT_SALE'
+          Caption = 'Data Venda'
         end
         object Label5: TLabel [4]
           Left = 7
           Top = 270
-          Width = 98
+          Width = 102
           Height = 13
-          Caption = 'PAYMENT_METHOD'
+          Caption = 'M'#233'todo Pagamento'
           FocusControl = edtPayMeth
         end
         object Label6: TLabel [5]
           Left = 113
           Top = 230
-          Width = 55
+          Width = 49
           Height = 13
-          Caption = 'DISCOUNT'
+          Caption = 'Desconto'
           FocusControl = edtDisc
         end
         object Label7: TLabel [6]
           Left = 7
           Top = 230
-          Width = 84
+          Width = 25
           Height = 13
-          Caption = 'TOTAL_AMOUNT'
+          Caption = 'Total'
           FocusControl = edtTot
         end
         object Label8: TLabel [7]
           Left = 113
           Top = 270
-          Width = 37
+          Width = 32
           Height = 13
-          Caption = 'STATUS'
+          Caption = 'Status'
           FocusControl = edtStat
         end
         object Label9: TLabel [8]
           Left = 475
           Top = 105
-          Width = 72
+          Width = 24
           Height = 13
-          Caption = 'OBSERVATION'
+          Caption = 'OBS:'
           FocusControl = edtObs
         end
         object Label10: TLabel [9]
           Left = 475
           Top = 66
-          Width = 65
+          Width = 73
           Height = 13
-          Caption = 'DT_CREATED'
+          Caption = 'Data Cadastro'
         end
         object Label11: TLabel [10]
           Left = 75
           Top = 66
-          Width = 42
+          Width = 70
           Height = 13
-          Caption = 'COM_ID'
+          Caption = 'C'#243'd. Empresa'
           FocusControl = edtCom
         end
         object Label12: TLabel [11]
           Left = 151
           Top = 66
-          Width = 27
+          Width = 67
           Height = 13
-          Caption = 'USER'
+          Caption = 'C'#243'd. Usu'#225'rio'
           FocusControl = edtUser
         end
         inherited pnlRegister: TPanel
@@ -710,7 +756,7 @@ inherited viewSales: TviewSales
           Top = 286
           Width = 101
           Height = 21
-          Cursor = crHandPoint
+          Cursor = crArrow
           CharCase = ecUpperCase
           DataField = 'PAYMENT_METHOD'
           DataSource = DSData
@@ -744,7 +790,7 @@ inherited viewSales: TviewSales
           Top = 286
           Width = 108
           Height = 21
-          Cursor = crHandPoint
+          Cursor = crArrow
           CharCase = ecUpperCase
           DataField = 'STATUS'
           DataSource = DSData
@@ -819,7 +865,7 @@ inherited viewSales: TviewSales
           Top = 313
           Width = 206
           Height = 25
-          Caption = 'Manage Products'
+          Caption = 'Controle de Itens'
           TabOrder = 13
           OnClick = btnProductsClick
         end

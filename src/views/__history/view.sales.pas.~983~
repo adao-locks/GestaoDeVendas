@@ -259,66 +259,52 @@ var
 begin
   inherited;
 
-  ServiceRegister.QRYProduct.SQL.Text := 'SELECT * FROM PRODUCT WHERE 1=1';
+  ServiceRegister.QRYSale.SQL.Text := 'SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1';
 
   DateRegistered1 := dtRegIni.Date;
   DateRegistered2 := dtRegEnd.Date;
+  DateSale1 := dtSaleIni.Date;
+  DateSale2 := dtSaleEnd.Date;
 
-  ServiceRegister.QRYProduct.SQL.Add
-    (' AND DATE_REGISTER BETWEEN :DATEI AND :DATEF');
-  ServiceRegister.QRYProduct.ParamByName('DATEI').AsDate := DateRegistered1;
-  ServiceRegister.QRYProduct.ParamByName('DATEF').AsDate := DateRegistered2;
+  ServiceRegister.QRYSale.SQL.Add
+    (' AND SL.DT_CREATED BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYSale.ParamByName('DATEI').AsDate := DateRegistered1;
+  ServiceRegister.QRYSale.ParamByName('DATEF').AsDate := DateRegistered2;
+
+  ServiceRegister.QRYSale.SQL.Add
+    (' AND SL.DT_SALE BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYSale.ParamByName('DATEI').AsDate := DateSale1;
+  ServiceRegister.QRYSale.ParamByName('DATEF').AsDate := DateSale2;
 
   if edtNameAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND NAME LIKE :NAME');
-    ServiceRegister.QRYProduct.ParamByName('NAME').AsString :=
+    ServiceRegister.QRYSale.SQL.Add(' AND PO1.NAME LIKE :NAMECLI');
+    ServiceRegister.QRYSale.ParamByName('NAMECLI').AsString :=
       '%' + edtNameAsk.Text + '%';
   end;
 
-  if edtCategoryAsk.Text <> '' then
+  if edtEmployeeAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND CATEGORY LIKE :CATEGORY');
-    ServiceRegister.QRYProduct.ParamByName('CATEGORY').AsString :=
-      '%' + edtCategoryAsk.Text + '%';
+    ServiceRegister.QRYSale.SQL.Add(' AND PO2.NAME LIKE :NAMEEMP');
+    ServiceRegister.QRYSale.ParamByName('NAMEEMP').AsString :=
+      '%' + edtEmployeeAsk.Text + '%';
   end;
 
-  if edtBrandAsk.Text <> '' then
+  if edtPayMethodAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND BRAND LIKE :BRAND');
-    ServiceRegister.QRYProduct.ParamByName('BRAND').AsString :=
-      '%' + edtBrandAsk.Text + '%';
+    ServiceRegister.QRYSale.SQL.Add(' AND SL.PAYMENT_METHOD LIKE :PAYMENT');
+    ServiceRegister.QRYSale.ParamByName('PAYMENT').AsString :=
+      '%' + edtPayMethodAsk.Text + '%';
   end;
 
-  if edtSupplierAsk.Text <> '' then
+  if edtStatusAsk.Text <> '' then
   begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND SUPPLIER LIKE :SUPPLIER');
-    ServiceRegister.QRYProduct.ParamByName('SUPPLIER').AsString :=
-      '%' + edtSupplierAsk.Text + '%';
+    ServiceRegister.QRYSale.SQL.Add(' AND SL.STATUS LIKE :STATUS');
+    ServiceRegister.QRYSale.ParamByName('STATUS').AsString :=
+      '%' + edtStatusAsk.Text + '%';
   end;
 
-  if edtUnAsk.Text <> '' then
-  begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND UN LIKE :UN');
-    ServiceRegister.QRYProduct.ParamByName('UN').AsString :=
-      '%' + edtUnAsk.Text + '%';
-  end;
-
-  if edtUserRegAsk.Text <> '' then
-  begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND USER_ID LIKE :USER');
-    ServiceRegister.QRYProduct.ParamByName('USER').AsString :=
-      '%' + edtUserRegAsk.Text + '%';
-  end;
-
-  if edtUserUpAsk.Text <> '' then
-  begin
-    ServiceRegister.QRYProduct.SQL.Add(' AND USER_UPDATE LIKE :USER');
-    ServiceRegister.QRYProduct.ParamByName('USER').AsString :=
-      '%' + edtUserUpAsk.Text + '%';
-  end;
-
-  ServiceRegister.QRYProduct.Open;
+  ServiceRegister.QRYSale.Open;
   ResizeDBGridColumns(DBGData);
   AlighDBGridColumns(DBGData);
 end;

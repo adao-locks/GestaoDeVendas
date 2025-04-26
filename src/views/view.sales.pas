@@ -350,8 +350,8 @@ begin
   edtUser.Text := ServiceConnection.SERVICE_USER;
   edtDisc.Field.Value := 0;
   edtTot.Field.Value := 0;
-  edtPayMeth.Text := 'CASH';
-  edtStat.Text := 'PENDING';
+  edtPayMeth.Text := 'DINHEIRO';
+  edtStat.Text := 'PENDENTE';
 end;
 
 procedure TviewSales.btnProdConsultClick(Sender: TObject);
