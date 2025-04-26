@@ -7,9 +7,6 @@ Coordinates=1493,606,76,58
 [ServiceRegister.QRYLogs]
 Coordinates=1177,10,165,190
 
-[edtSupplierAsk]
-Coordinates=396,764,101,58
-
 [ServiceRegister.QRYSale]
 Coordinates=603,10,163,322
 
@@ -18,9 +15,6 @@ Coordinates=384,696,68,58
 
 [lblPhoneAsk]
 Coordinates=354,832,86,58
-
-[edtBrandAsk]
-Coordinates=871,764,88,58
 
 [DBGrid1]
 Coordinates=298,900,64,36
@@ -47,9 +41,6 @@ Coordinates=102,696,83,58
 [ServiceRegister.QRYProduct]
 Coordinates=412,10,181,322
 
-[edtUserUpAsk]
-Coordinates=1515,764,97,58
-
 [ServiceRegister.QRYIDItemsSale]
 Coordinates=10,606,207,80
 
@@ -74,9 +65,6 @@ Coordinates=1831,832,55,36
 [edtEmployee]
 Coordinates=1732,832,89,36
 
-[edtUnAsk]
-Coordinates=583,832,70,58
-
 [lblDateBirthAsk]
 Coordinates=1299,606,103,58
 
@@ -86,17 +74,11 @@ Coordinates=1267,764,76,58
 [pnlFooter]
 Coordinates=687,764,69,58
 
-[edtUserRegAsk]
-Coordinates=1785,696,104,58
-
 [DBGData]
 Coordinates=1653,832,69,36
 
 [DSDataItems]
 Coordinates=413,507,91,36
-
-[lblEmailAsk]
-Coordinates=1208,606,81,58
 
 [imgList]
 Coordinates=1371,166,56,36
@@ -113,17 +95,11 @@ Coordinates=520,832,53,58
 [Label2]
 Coordinates=1722,696,53,58
 
-[lblZipAsk]
-Coordinates=319,764,67,58
-
 [lblTitleWindow]
 Coordinates=653,696,98,58
 
 [ServiceRegister.QRYIDSale]
 Coordinates=1760,10,175,80
-
-[lblStateAsk]
-Coordinates=1500,696,79,58
 
 [edtUser]
 Coordinates=1583,832,60,36
@@ -142,9 +118,6 @@ Coordinates=1111,696,88,58
 
 [ServiceConnection.QRYEnterprise]
 Coordinates=189,10,213,410
-
-[lblCityAsk]
-Coordinates=1209,696,71,58
 
 [edtClient]
 Coordinates=1374,832,66,36
@@ -233,9 +206,6 @@ Coordinates=227,606,190,80
 [dtRegIni]
 Coordinates=311,696,63,58
 
-[edtCategoryAsk]
-Coordinates=195,696,106,58
-
 [DT_CREATED]
 Coordinates=1820,764,99,58
 
@@ -243,5 +213,17 @@ Coordinates=1820,764,99,58
 Coordinates=980,10,187,190
 
 []
-Coordinates=462,696,111,58
+Coordinates=1515,764,97,58
+
+[edtEmployeeAsk]
+Coordinates=195,696,106,58
+
+[edtPayMethodAsk]
+Coordinates=396,764,101,58
+
+[lblStatusAsk]
+Coordinates=1208,606,81,58
+
+[edtStatusAsk]
+Coordinates=871,764,88,58
 

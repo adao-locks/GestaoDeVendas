@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Connection, Service.Register,
-  Vcl.DBCtrls, Vcl.Mask, Provider.Constants;
+  Vcl.DBCtrls, Vcl.Mask, Provider.Constants, Provider.Utils;
 
 type
   TviewColor = class(TviewBaseLists)
@@ -20,24 +20,12 @@ type
     EDTDTCreated: TDBEdit;
     Label4: TLabel;
     Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
     lblRGB: TLabel;
-    lblCMYK: TLabel;
-    lblHSL: TLabel;
     lblHEX: TLabel;
     edtRGB1: TEdit;
     edtRGB2: TEdit;
     edtRGB3: TEdit;
     edtHEX: TEdit;
-    edtHSL1: TEdit;
-    edtHSL2: TEdit;
-    edtHSL3: TEdit;
-    edtHSL4: TEdit;
-    edtCMYK1: TEdit;
-    edtCMYK2: TEdit;
-    edtCMYK3: TEdit;
-    edtCMYK4: TEdit;
     procedure btnNewClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -48,49 +36,22 @@ type
     procedure edtRGB2Change(Sender: TObject);
     procedure edtRGB3Change(Sender: TObject);
     procedure edtHEXChange(Sender: TObject);
-    procedure edtCMYK1Change(Sender: TObject);
-    procedure edtCMYK2Change(Sender: TObject);
-    procedure edtCMYK3Change(Sender: TObject);
-    procedure edtCMYK4Change(Sender: TObject);
-    procedure edtHSL1Change(Sender: TObject);
-    procedure edtHSL2Change(Sender: TObject);
-    procedure edtHSL3Change(Sender: TObject);
     procedure edtRGB1KeyPress(Sender: TObject; var Key: Char);
     procedure edtRGB2KeyPress(Sender: TObject; var Key: Char);
     procedure edtRGB3KeyPress(Sender: TObject; var Key: Char);
-    procedure edtCMYK1KeyPress(Sender: TObject; var Key: Char);
-    procedure edtCMYK2KeyPress(Sender: TObject; var Key: Char);
-    procedure edtCMYK3KeyPress(Sender: TObject; var Key: Char);
-    procedure edtCMYK4KeyPress(Sender: TObject; var Key: Char);
-    procedure edtHSL1KeyPress(Sender: TObject; var Key: Char);
-    procedure edtHSL2KeyPress(Sender: TObject; var Key: Char);
-    procedure edtHSL3KeyPress(Sender: TObject; var Key: Char);
     procedure edtRGB1Exit(Sender: TObject);
     procedure edtRGB2Exit(Sender: TObject);
     procedure edtRGB3Exit(Sender: TObject);
-    procedure edtCMYK1Exit(Sender: TObject);
-    procedure edtCMYK2Exit(Sender: TObject);
-    procedure edtCMYK3Exit(Sender: TObject);
-    procedure edtCMYK4Exit(Sender: TObject);
-    procedure edtHSL1Exit(Sender: TObject);
-    procedure edtHSL2Exit(Sender: TObject);
-    procedure edtHSL3Exit(Sender: TObject);
-    procedure edtHSL4Exit(Sender: TObject);
-    procedure edtHSL4KeyPress(Sender: TObject; var Key: Char);
     procedure btnCloseWindowClick(Sender: TObject);
   private
     { Private declarations }
   public
     procedure RGBUpdate();
     procedure HEXUpdate();
-    procedure CMYKUpdate();
-    procedure HSLUpdate();
     procedure ValidarLimite(Edit: TEdit; MinValue, MaxValue: Integer);
     procedure ValidarBinario(Edit: TEdit; MinValue, MaxValue: Integer);
     procedure RGBValueToEdit();
     procedure HEXValueToEdit();
-    procedure CMYKValueToEdit();
-    procedure HSLValueToEdit();
   end;
 
 var
@@ -113,40 +74,6 @@ begin
   edtRGB1.Text := Valores[0];
   edtRGB2.Text := Valores[1];
   edtRGB3.Text := Valores[2];
-
-end;
-
-procedure TviewColor.CMYKValueToEdit;
-var
-  Texto: string;
-  Valores: TArray<string>;
-begin
-  Texto := lblCMYK.Caption;
-  Texto := Texto.Replace('(', '').Replace(')', '').Replace(' ', '').Replace('%', '');
-
-  Valores := Texto.Split([',']);
-
-  edtCMYK1.Text := Valores[0];
-  edtCMYK2.Text := Valores[1];
-  edtCMYK3.Text := Valores[2];
-  edtCMYK4.Text := Valores[3];
-
-end;
-
-procedure TviewColor.HSLValueToEdit;
-var
-  Texto: string;
-  Valores: TArray<string>;
-begin
-  Texto := lblHSL.Caption;
-  Texto := Texto.Replace('(', '').Replace(')', '').Replace(' ', '').Replace('%', '').Replace('°', '').Replace('/', ',');
-
-  Valores := Texto.Split([',']);
-
-  edtHSL1.Text := Valores[0];
-  edtHSL2.Text := Valores[1];
-  edtHSL3.Text := Valores[2];
-  edtHSL4.Text := Valores[3];
 
 end;
 
@@ -234,13 +161,8 @@ begin
   ServiceRegister.QRYColor.Edit;
   lblRGB.Caption := ServiceRegister.QRYColor.FieldByName('RGB').AsString;
   lblHEX.Caption := ServiceRegister.QRYColor.FieldByName('HEX').AsString;
-  lblCMYK.Caption := ServiceRegister.QRYColor.FieldByName('CMYK').AsString;
-  lblHSL.Caption := ServiceRegister.QRYColor.FieldByName('HSL').AsString;
   RGBValueToEdit();
   HEXValueToEdit();
-  CMYKValueToEdit();
-  HSLValueToEdit();
-
 end;
 
 procedure TviewColor.btnNewClick(Sender: TObject);
@@ -260,6 +182,10 @@ begin
   edtID.Field.Value := maxID;
   EDTDTCreated.Text := DateToStr(Date);
   CBActive.State := cbChecked;
+  edtRGB1.Text := '';
+  edtRGB2.Text := '';
+  edtRGB3.Text := '';
+  edtHEX.Text := '';
 
 end;
 
@@ -273,8 +199,6 @@ begin
     ServiceRegister.QRYColor.FieldByName('USER').AsString := ServiceConnection.SERVICE_USER;
     ServiceRegister.QRYColor.FieldByName('RGB').AsString := lblRGB.Caption;
     ServiceRegister.QRYColor.FieldByName('HEX').AsString := lblHEX.Caption;
-    ServiceRegister.QRYColor.FieldByName('CMYK').AsString := lblCMYK.Caption;
-    ServiceRegister.QRYColor.FieldByName('HSL').AsString := lblHSL.Caption;
     ServiceRegister.QRYColor.Post;
     ShowMessage('Registered successfully!');
 
@@ -282,169 +206,10 @@ begin
   end;
 end;
 
-procedure TviewColor.CMYKUpdate;
-begin
-
-  lblCMYK.Caption := ('(' + edtCMYK1.Text + '%, ' + edtCMYK2.Text + '%, ' + edtCMYK3.Text + '%, ' + edtCMYK4.Text + '%)');
-
-end;
-
-procedure TviewColor.edtCMYK1Change(Sender: TObject);
-begin
-  inherited;
-  CMYKUpdate();
-end;
-
-procedure TviewColor.edtCMYK1Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtCMYK1, 0, 100);
-end;
-
-procedure TviewColor.edtCMYK1KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
-procedure TviewColor.edtCMYK2Change(Sender: TObject);
-begin
-  inherited;
-  CMYKUpdate();
-end;
-
-procedure TviewColor.edtCMYK2Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtCMYK2, 0, 100);
-end;
-
-procedure TviewColor.edtCMYK2KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
-procedure TviewColor.edtCMYK3Change(Sender: TObject);
-begin
-  inherited;
-  CMYKUpdate();
-end;
-
-procedure TviewColor.edtCMYK3Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtCMYK3, 0, 100);
-end;
-
-procedure TviewColor.edtCMYK3KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
-procedure TviewColor.edtCMYK4Change(Sender: TObject);
-begin
-  inherited;
-  CMYKUpdate();
-end;
-
-procedure TviewColor.edtCMYK4Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtCMYK4, 0, 100);
-end;
-
-procedure TviewColor.edtCMYK4KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
 procedure TviewColor.edtHEXChange(Sender: TObject);
 begin
   inherited;
   HEXUpdate();
-end;
-
-procedure TviewColor.edtHSL1Change(Sender: TObject);
-begin
-  inherited;
-  HSLUpdate;
-end;
-
-procedure TviewColor.edtHSL1Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtHSL1, 0, 360);
-end;
-
-procedure TviewColor.edtHSL1KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
-procedure TviewColor.edtHSL2Change(Sender: TObject);
-begin
-  inherited;
-  HSLUpdate;
-end;
-
-procedure TviewColor.edtHSL2Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtHSL2, 0, 100);
-end;
-
-procedure TviewColor.edtHSL2KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
-procedure TviewColor.edtHSL3Change(Sender: TObject);
-begin
-  inherited;
-  HSLUpdate;
-end;
-
-procedure TviewColor.edtHSL3Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarLimite(edtHSL3, 0, 100);
-end;
-
-procedure TviewColor.edtHSL3KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if not (Key in ['0'..'9', #8]) then
-    Key := #0;
-end;
-
-procedure TviewColor.edtHSL4Exit(Sender: TObject);
-begin
-  inherited;
-  ValidarBinario(edtHSL4, 0, 1);
-end;
-
-procedure TviewColor.edtHSL4KeyPress(Sender: TObject; var Key: Char);
-begin
-  inherited;
-  if Key = ',' then
-  begin
-    // Se já tiver uma vírgula no texto, bloqueia
-    if Pos(',', TEdit(Sender).Text) > 0 then
-      Key := #0;
-  end
-  else if not (Key in ['0'..'9', #8]) then
-    Key := #0;
 end;
 
 procedure TviewColor.edtRGB1Change(Sender: TObject);
@@ -511,19 +276,14 @@ begin
   CardPanelList.ActiveCard := cardSearch;
   cardRegister.Enabled := True;
   ServiceRegister.QRYColor.Open;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 
 procedure TviewColor.HEXUpdate;
 begin
   lblHEX.Caption := ( '#' + edtHEX.Text );
-end;
-
-procedure TviewColor.HSLUpdate;
-begin
-
-  lblHSL.Caption := ( '(' + edtHSL1.Text + '°, ' + edtHSL2.Text + '%, ' + edtHSL3.Text + '% / ' + edtHSL4.Text + ')' );
-
 end;
 
 procedure TviewColor.RGBUpdate;

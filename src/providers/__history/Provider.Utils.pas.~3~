@@ -1,0 +1,9 @@
+unit Provider.Utils;
+
+interface
+
+  procedure ResizeDBGridColumns(DBGrid: TDBGrid);
+
+implementation
+
+end.

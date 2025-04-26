@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Service.Register, Service.Connection;
+  Service.Register, Service.Connection, Provider.Utils;
 
 type
   TviewSize = class(TviewBaseLists)
@@ -356,6 +356,8 @@ begin
     edtHeight.Enabled := False;
   end;
   Get_Sizes;
+  ResizeDBGridColumns(DBSizes);
+  AlighDBGridColumns(DBSizes);
 end;
 
 procedure TviewSize.btnSaveRangeClick(Sender: TObject);
@@ -392,6 +394,8 @@ begin
   end;
   Get_Range;
   Get_Sizes;
+  ResizeDBGridColumns(DBGrid1);
+  AlighDBGridColumns(DBGrid1);
 end;
 
 procedure TviewSize.edtNameRangeExit(Sender: TObject);
@@ -1007,6 +1011,10 @@ begin
   ServiceRegister.QRYRange.Open();
   Get_Sizes();
   Get_Range();
+  ResizeDBGridColumns(DBSizes);
+  AlighDBGridColumns(DBSizes);
+  ResizeDBGridColumns(DBGrid1);
+  AlighDBGridColumns(DBGrid1);
 end;
 
 procedure TviewSize.Get_Range;

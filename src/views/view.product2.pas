@@ -9,7 +9,7 @@ uses
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.Mask,
   Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ComCtrls, Service.Connection, view.size,
-  Vcl.ActnMan, Vcl.ActnColorMaps;
+  Vcl.ActnMan, Vcl.ActnColorMaps, Provider.Utils;
 
 type
   TviewProducts = class(TviewBaseLists)
@@ -86,6 +86,8 @@ begin
   begin
     ServiceRegister.QRYProduct.Cancel;
     CardPanelList.ActiveCard := cardSearch;
+    ResizeDBGridColumns(DBGData);
+    AlighDBGridColumns(DBGData);
   end;
 
 end;
@@ -165,6 +167,8 @@ begin
   end;
 
   ServiceRegister.QRYProduct.Open;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 
@@ -241,6 +245,8 @@ begin
     ServiceRegister.QRYProduct.Post;
     ShowMessage('Registered successfully!');
     CardPanelList.ActiveCard := cardSearch;
+    ResizeDBGridColumns(DBGData);
+    AlighDBGridColumns(DBGData);
 
   end;
 
@@ -288,6 +294,8 @@ begin
   inherited;
 
   Get_Product;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 

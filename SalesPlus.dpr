@@ -17,7 +17,8 @@ uses
   view.company in 'src\views\view.company.pas' {viewCompany},
   Service.Colors in 'src\services\Service.Colors.pas',
   view.size in 'src\views\view.size.pas' {viewSize},
-  view.color in 'src\views\view.color.pas' {viewColor};
+  view.color in 'src\views\view.color.pas' {viewColor},
+  Provider.Utils in 'src\providers\Provider.Utils.pas';
 
 {$R *.res}
 

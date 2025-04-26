@@ -31,7 +31,7 @@ uses
   Vcl.ComCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXCtrls, FireDAC.Stan.Async,
-  FireDAC.DApt, view.entity, view.product2, FMX.Dialogs;
+  FireDAC.DApt, view.entity, view.product2, FMX.Dialogs, Provider.Utils;
 
 type
   TviewSales = class(TviewBaseLists)
@@ -63,24 +63,18 @@ type
     cardItems: TCard;
     DSDataItems: TDataSource;
     DBGrid1: TDBGrid;
-    lblCityAsk: TLabel;
     lblDateBirthAsk: TLabel;
     lblDateRegAsk: TLabel;
-    lblEmailAsk: TLabel;
+    lblStatusAsk: TLabel;
     lblFantasyAsk: TLabel;
     lblNameAsk: TLabel;
     lblPhoneAsk: TLabel;
-    lblStateAsk: TLabel;
-    lblZipAsk: TLabel;
     dtRegIni: TDateTimePicker;
-    edtBrandAsk: TSearchBox;
-    edtCategoryAsk: TSearchBox;
+    edtStatusAsk: TSearchBox;
+    edtEmployeeAsk: TSearchBox;
     dtRegEnd: TDateTimePicker;
     edtNameAsk: TSearchBox;
-    edtSupplierAsk: TSearchBox;
-    edtUnAsk: TSearchBox;
-    edtUserRegAsk: TSearchBox;
-    edtUserUpAsk: TSearchBox;
+    edtPayMethodAsk: TSearchBox;
     btnConsult: TButton;
     pnlContent: TPanel;
     Label13: TLabel;
@@ -113,6 +107,10 @@ type
     edtNameClient: TDBEdit;
     edtNameEmployee: TDBEdit;
     edtNameProd: TDBEdit;
+    Label21: TLabel;
+    Label22: TLabel;
+    dtSaleIni: TDateTimePicker;
+    dtSaleEnd: TDateTimePicker;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnCloseWindowClick(Sender: TObject);
@@ -134,6 +132,7 @@ type
     procedure btnProductsClick(Sender: TObject);
     procedure edtEmployeeExit(Sender: TObject);
     procedure edtClientExit(Sender: TObject);
+    procedure btnConsultClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -247,6 +246,67 @@ begin
   edtUnit.Enabled := False;
   edtQuant.Enabled := False;
   edtDiscItem.Enabled := False;
+end;
+
+procedure TviewSales.btnConsultClick(Sender: TObject);
+var
+
+  DateRegistered1: TDate;
+  DateRegistered2: TDate;
+  DateSale1: TDate;
+  DateSale2: TDate;
+
+begin
+  inherited;
+
+  ServiceRegister.QRYSale.SQL.Text := 'SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1';
+
+  DateRegistered1 := dtRegIni.Date;
+  DateRegistered2 := dtRegEnd.Date;
+  DateSale1 := dtSaleIni.Date;
+  DateSale2 := dtSaleEnd.Date;
+
+  ServiceRegister.QRYSale.SQL.Add
+    (' AND SL.DT_CREATED BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYSale.ParamByName('DATEI').AsDate := DateRegistered1;
+  ServiceRegister.QRYSale.ParamByName('DATEF').AsDate := DateRegistered2;
+
+  ServiceRegister.QRYSale.SQL.Add
+    (' AND SL.DT_SALE BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYSale.ParamByName('DATEI').AsDate := DateSale1;
+  ServiceRegister.QRYSale.ParamByName('DATEF').AsDate := DateSale2;
+
+  if edtNameAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYSale.SQL.Add(' AND PO1.NAME LIKE :NAMECLI');
+    ServiceRegister.QRYSale.ParamByName('NAMECLI').AsString :=
+      '%' + edtNameAsk.Text + '%';
+  end;
+
+  if edtEmployeeAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYSale.SQL.Add(' AND PO2.NAME LIKE :NAMEEMP');
+    ServiceRegister.QRYSale.ParamByName('NAMEEMP').AsString :=
+      '%' + edtEmployeeAsk.Text + '%';
+  end;
+
+  if edtPayMethodAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYSale.SQL.Add(' AND SL.PAYMENT_METHOD LIKE :PAYMENT');
+    ServiceRegister.QRYSale.ParamByName('PAYMENT').AsString :=
+      '%' + edtPayMethodAsk.Text + '%';
+  end;
+
+  if edtStatusAsk.Text <> '' then
+  begin
+    ServiceRegister.QRYSale.SQL.Add(' AND SL.STATUS LIKE :STATUS');
+    ServiceRegister.QRYSale.ParamByName('STATUS').AsString :=
+      '%' + edtStatusAsk.Text + '%';
+  end;
+
+  ServiceRegister.QRYSale.Open;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 end;
 
 procedure TviewSales.btnDeleteClick(Sender: TObject);
@@ -480,6 +540,8 @@ begin
   inherited;
   Get_Sales;
   CardPanelList.ActiveCard := cardSearch;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 end;
 
 procedure TviewSales.Get_Itens;

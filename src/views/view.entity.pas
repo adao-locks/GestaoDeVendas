@@ -29,7 +29,7 @@ uses
   Data.SqlExpr,
   Vcl.WinXPickers,
   Vcl.CheckLst,
-  Vcl.ComCtrls, Service.Connection;
+  Vcl.ComCtrls, Service.Connection, Provider.Utils;
 
 type
   TviewEntity = class(TviewBaseLists)
@@ -209,6 +209,8 @@ begin
   end;
 
   ServiceRegister.QRYEntity.Open;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 
@@ -367,6 +369,8 @@ procedure TviewEntity.FormShow(Sender: TObject);
 begin
   inherited;
   GET_Entity;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 end;
 
 procedure TviewEntity.GET_Entity();

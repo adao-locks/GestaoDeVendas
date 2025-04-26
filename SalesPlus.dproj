@@ -192,6 +192,7 @@
             <Form>viewColor</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\providers\Provider.Utils.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

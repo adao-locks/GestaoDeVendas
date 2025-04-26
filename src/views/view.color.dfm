@@ -58,10 +58,6 @@ inherited viewColor: TviewColor
       ExplicitLeft = 676
     end
     inherited btnCloseWindow: TSpeedButton
-      Left = 0
-      Top = 0
-      Height = 35
-      Align = alLeft
       Flat = True
       OnClick = btnCloseWindowClick
     end
@@ -101,48 +97,49 @@ inherited viewColor: TviewColor
             item
               Expanded = False
               FieldName = 'ID'
-              Width = 32
+              Width = 46
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
-              Width = 140
+              Width = 196
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'RGB'
-              Width = 161
+              Width = 147
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'HEX'
-              Width = 118
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CMYK'
-              Width = 168
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'HSL'
-              Width = 188
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'ACTIVE'
-              Width = 44
+              Width = 114
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
+              Width = 153
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ACTIVE'
+              Width = 46
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'COM_ID'
+              Width = 52
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USER'
+              Width = 169
               Visible = True
             end>
         end
@@ -191,21 +188,7 @@ inherited viewColor: TviewColor
           Height = 15
           Caption = 'HEX'
         end
-        object Label6: TLabel [5]
-          Left = 8
-          Top = 263
-          Width = 33
-          Height = 15
-          Caption = 'CMYK'
-        end
-        object Label7: TLabel [6]
-          Left = 8
-          Top = 311
-          Width = 21
-          Height = 15
-          Caption = 'HSL'
-        end
-        object lblRGB: TLabel [7]
+        object lblRGB: TLabel [5]
           Left = 116
           Top = 186
           Width = 188
@@ -213,23 +196,7 @@ inherited viewColor: TviewColor
           AutoSize = False
           Caption = '(, , )'
         end
-        object lblCMYK: TLabel [8]
-          Left = 152
-          Top = 282
-          Width = 152
-          Height = 15
-          AutoSize = False
-          Caption = '(%, %, %, %)'
-        end
-        object lblHSL: TLabel [9]
-          Left = 152
-          Top = 329
-          Width = 190
-          Height = 15
-          AutoSize = False
-          Caption = '('#176', %, % / )'
-        end
-        object lblHEX: TLabel [10]
+        object lblHEX: TLabel [6]
           Left = 114
           Top = 234
           Width = 190
@@ -339,102 +306,6 @@ inherited viewColor: TviewColor
           MaxLength = 6
           TabOrder = 8
           OnChange = edtHEXChange
-        end
-        object edtHSL1: TEdit
-          Left = 8
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 9
-          OnChange = edtHSL1Change
-          OnExit = edtHSL1Exit
-          OnKeyPress = edtHSL1KeyPress
-        end
-        object edtHSL2: TEdit
-          Left = 44
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 10
-          OnChange = edtHSL2Change
-          OnExit = edtHSL2Exit
-          OnKeyPress = edtHSL2KeyPress
-        end
-        object edtHSL3: TEdit
-          Left = 80
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 11
-          OnChange = edtHSL3Change
-          OnExit = edtHSL3Exit
-          OnKeyPress = edtHSL3KeyPress
-        end
-        object edtHSL4: TEdit
-          Left = 116
-          Top = 326
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 4
-          TabOrder = 12
-          OnChange = edtHSL3Change
-          OnExit = edtHSL4Exit
-          OnKeyPress = edtHSL4KeyPress
-        end
-        object edtCMYK1: TEdit
-          Left = 8
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 13
-          OnChange = edtCMYK1Change
-          OnExit = edtCMYK1Exit
-          OnKeyPress = edtCMYK1KeyPress
-        end
-        object edtCMYK2: TEdit
-          Left = 44
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 14
-          OnChange = edtCMYK2Change
-          OnExit = edtCMYK2Exit
-          OnKeyPress = edtCMYK2KeyPress
-        end
-        object edtCMYK3: TEdit
-          Left = 80
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 15
-          OnChange = edtCMYK3Change
-          OnExit = edtCMYK3Exit
-          OnKeyPress = edtCMYK3KeyPress
-        end
-        object edtCMYK4: TEdit
-          Left = 116
-          Top = 279
-          Width = 30
-          Height = 23
-          CharCase = ecUpperCase
-          MaxLength = 3
-          TabOrder = 16
-          OnChange = edtCMYK4Change
-          OnExit = edtCMYK4Exit
-          OnKeyPress = edtCMYK4KeyPress
         end
       end
     end

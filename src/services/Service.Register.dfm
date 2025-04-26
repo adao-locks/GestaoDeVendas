@@ -964,16 +964,6 @@ object ServiceRegister: TServiceRegister
       Origin = 'HEX'
       Size = 100
     end
-    object QRYColorCMYK: TStringField
-      FieldName = 'CMYK'
-      Origin = 'CMYK'
-      Size = 100
-    end
-    object QRYColorHSL: TStringField
-      FieldName = 'HSL'
-      Origin = 'HSL'
-      Size = 100
-    end
     object QRYColorDT_CREATED: TSQLTimeStampField
       FieldName = 'DT_CREATED'
       Origin = 'DT_CREATED'

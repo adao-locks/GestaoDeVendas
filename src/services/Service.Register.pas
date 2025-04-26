@@ -181,8 +181,6 @@ type
     QRYColorUSER: TStringField;
     QRYColorRGB: TStringField;
     QRYColorHEX: TStringField;
-    QRYColorCMYK: TStringField;
-    QRYColorHSL: TStringField;
     QRYColorDT_CREATED: TSQLTimeStampField;
     QRYIDColor: TFDQuery;
     QRYIDColorMAXID: TIntegerField;

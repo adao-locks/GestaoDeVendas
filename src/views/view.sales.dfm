@@ -152,7 +152,7 @@ inherited viewSales: TviewSales
       ExplicitHeight = 22
     end
     inherited btnCloseWindow: TSpeedButton
-      Height = 21
+      Height = 31
       Flat = True
       OnClick = btnCloseWindowClick
       ExplicitLeft = 5
@@ -177,6 +177,7 @@ inherited viewSales: TviewSales
       Height = 539
       Margins.Left = 1
       Margins.Right = 1
+      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -193,14 +194,15 @@ inherited viewSales: TviewSales
         ExplicitHeight = 539
         inherited pnlSearch: TPanel
           Width = 1105
-          Height = 169
+          Height = 153
           Margins.Left = 2
           Margins.Top = 2
           Margins.Right = 2
           Margins.Bottom = 2
+          ParentFont = False
           StyleElements = [seFont, seClient, seBorder]
           ExplicitWidth = 1105
-          ExplicitHeight = 169
+          ExplicitHeight = 153
           inherited lblSearch: TLabel
             Left = 14
             Top = 4
@@ -215,21 +217,6 @@ inherited viewSales: TviewSales
             ExplicitTop = 4
             ExplicitWidth = 76
             ExplicitHeight = 20
-          end
-          object lblCityAsk: TLabel
-            Left = 269
-            Top = 116
-            Width = 90
-            Height = 17
-            Alignment = taRightJustify
-            AutoSize = False
-            Caption = 'User Updated: '
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'Segoe UI'
-            Font.Style = []
-            ParentFont = False
           end
           object lblDateBirthAsk: TLabel
             Left = 269
@@ -261,14 +248,14 @@ inherited viewSales: TviewSales
             Font.Style = []
             ParentFont = False
           end
-          object lblEmailAsk: TLabel
-            Left = 14
-            Top = 140
+          object lblStatusAsk: TLabel
+            Left = 266
+            Top = 121
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Brand: '
+            Caption = 'Status: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -278,12 +265,12 @@ inherited viewSales: TviewSales
           end
           object lblFantasyAsk: TLabel
             Left = 15
-            Top = 92
+            Top = 121
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Name Employee: '
+            Caption = 'Employee: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -293,12 +280,12 @@ inherited viewSales: TviewSales
           end
           object lblNameAsk: TLabel
             Left = 15
-            Top = 68
+            Top = 97
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Name Client: '
+            Caption = 'Client: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -307,8 +294,8 @@ inherited viewSales: TviewSales
             ParentFont = False
           end
           object lblPhoneAsk: TLabel
-            Left = 14
-            Top = 116
+            Left = 266
+            Top = 97
             Width = 90
             Height = 17
             Alignment = taRightJustify
@@ -321,14 +308,14 @@ inherited viewSales: TviewSales
             Font.Style = []
             ParentFont = False
           end
-          object lblStateAsk: TLabel
+          object Label21: TLabel
             Left = 269
-            Top = 92
+            Top = 72
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'User Register: '
+            Caption = 'Between: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -336,14 +323,14 @@ inherited viewSales: TviewSales
             Font.Style = []
             ParentFont = False
           end
-          object lblZipAsk: TLabel
-            Left = 269
-            Top = 68
+          object Label22: TLabel
+            Left = 15
+            Top = 70
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Un: '
+            Caption = 'Date Sale: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -364,10 +351,10 @@ inherited viewSales: TviewSales
             Time = 0.909075833333190500
             TabOrder = 0
           end
-          object edtBrandAsk: TSearchBox
+          object edtStatusAsk: TSearchBox
             AlignWithMargins = True
-            Left = 111
-            Top = 140
+            Left = 363
+            Top = 121
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -376,12 +363,18 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 5
           end
-          object edtCategoryAsk: TSearchBox
+          object edtEmployeeAsk: TSearchBox
             AlignWithMargins = True
             Left = 110
-            Top = 92
+            Top = 121
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -390,6 +383,12 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 3
           end
           object dtRegEnd: TDateTimePicker
@@ -408,7 +407,7 @@ inherited viewSales: TviewSales
           object edtNameAsk: TSearchBox
             AlignWithMargins = True
             Left = 110
-            Top = 68
+            Top = 97
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -417,12 +416,18 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 2
           end
-          object edtSupplierAsk: TSearchBox
+          object edtPayMethodAsk: TSearchBox
             AlignWithMargins = True
-            Left = 111
-            Top = 116
+            Left = 363
+            Top = 97
             Width = 145
             Height = 18
             Cursor = crHandPoint
@@ -431,64 +436,55 @@ inherited viewSales: TviewSales
             BevelInner = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
             TabOrder = 4
           end
-          object edtUnAsk: TSearchBox
-            AlignWithMargins = True
-            Left = 363
-            Top = 68
-            Width = 145
-            Height = 18
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            BevelInner = bvNone
-            BorderStyle = bsNone
-            CharCase = ecUpperCase
-            TabOrder = 6
-          end
-          object edtUserRegAsk: TSearchBox
-            AlignWithMargins = True
-            Left = 363
-            Top = 92
-            Width = 145
-            Height = 18
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            BevelInner = bvNone
-            BorderStyle = bsNone
-            CharCase = ecUpperCase
-            TabOrder = 7
-          end
-          object edtUserUpAsk: TSearchBox
-            AlignWithMargins = True
-            Left = 363
-            Top = 116
-            Width = 145
-            Height = 18
-            Cursor = crHandPoint
-            Margins.Left = 10
-            Margins.Right = 10
-            BevelInner = bvNone
-            BorderStyle = bsNone
-            CharCase = ecUpperCase
-            TabOrder = 8
-          end
           object btnConsult: TButton
-            Left = 520
-            Top = 132
+            Left = 521
+            Top = 113
             Width = 97
             Height = 25
             Caption = 'Consult'
-            TabOrder = 9
+            TabOrder = 6
+            OnClick = btnConsultClick
+          end
+          object dtSaleIni: TDateTimePicker
+            Left = 110
+            Top = 68
+            Width = 145
+            Height = 23
+            Cursor = crHandPoint
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Date = 36526.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.909075833333190500
+            TabOrder = 7
+          end
+          object dtSaleEnd: TDateTimePicker
+            Left = 363
+            Top = 68
+            Width = 145
+            Height = 23
+            Cursor = crHandPoint
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Date = 54789.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.909075833333190500
+            TabOrder = 8
           end
         end
         inherited DBGData: TDBGrid
           Left = 4
-          Top = 173
+          Top = 157
           Width = 1097
-          Height = 362
+          Height = 378
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
