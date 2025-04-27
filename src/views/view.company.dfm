@@ -6,9 +6,11 @@ inherited viewCompany: TviewCompany
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
-      Caption = 'Company'
+      Width = 868
+      Height = 35
+      Caption = 'Empresa'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 67
+      ExplicitWidth = 60
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -50,6 +52,7 @@ inherited viewCompany: TviewCompany
         inherited pnlSearch: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblSearch: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end
@@ -59,120 +62,121 @@ inherited viewCompany: TviewCompany
         object Label1: TLabel [0]
           Left = 15
           Top = 83
-          Width = 44
+          Width = 39
           Height = 15
-          Caption = 'ID_COM'
+          Caption = 'C'#243'digo'
           FocusControl = edtIDCom
         end
         object Label2: TLabel [1]
           Left = 15
           Top = 128
-          Width = 97
+          Width = 33
           Height = 15
-          Caption = 'COMPANY_NAME'
+          Caption = 'Nome'
           FocusControl = edtComName
         end
         object Label3: TLabel [2]
           Left = 15
           Top = 176
-          Width = 48
+          Width = 43
           Height = 15
-          Caption = 'FANTASY'
+          Caption = 'Fantasia'
           FocusControl = edtFantasy
         end
         object Label4: TLabel [3]
           Left = 15
           Top = 224
-          Width = 50
+          Width = 27
           Height = 15
-          Caption = 'EIN_CNPJ'
+          Caption = 'CNPJ'
           FocusControl = edtEIN
         end
         object Label5: TLabel [4]
           Left = 215
           Top = 224
-          Width = 40
+          Width = 86
           Height = 15
-          Caption = 'PHONE'
+          Caption = 'Telefone/Celular'
           FocusControl = edtPhone
         end
         object Label6: TLabel [5]
           Left = 15
           Top = 272
-          Width = 34
+          Width = 29
           Height = 15
-          Caption = 'EMAIL'
+          Caption = 'Email'
           FocusControl = edtEmail
         end
         object Label7: TLabel [6]
           Left = 448
           Top = 83
-          Width = 81
+          Width = 72
           Height = 15
-          Caption = 'DATE_REGISTER'
+          Caption = 'Data cadastro'
         end
         object Label8: TLabel [7]
           Left = 448
           Top = 176
-          Width = 37
+          Width = 20
           Height = 15
-          Caption = 'STREET'
+          Caption = 'Rua'
           FocusControl = edtStreet
         end
         object Label9: TLabel [8]
           Left = 484
           Top = 224
-          Width = 24
+          Width = 37
           Height = 15
-          Caption = 'CITY'
+          Caption = 'Cidade'
           FocusControl = edtCity
         end
         object Label10: TLabel [9]
           Left = 448
           Top = 224
-          Width = 30
+          Width = 14
           Height = 15
-          Caption = 'STATE'
+          Caption = 'UF'
           FocusControl = edtState
         end
         object Label11: TLabel [10]
           Left = 448
           Top = 128
-          Width = 17
+          Width = 21
           Height = 15
-          Caption = 'ZIP'
+          Caption = 'CEP'
           FocusControl = edtZip
         end
         object Label13: TLabel [11]
           Left = 15
           Top = 317
-          Width = 21
+          Width = 19
           Height = 15
-          Caption = 'SITE'
+          Caption = 'Site'
           FocusControl = edtSite
         end
         object Label14: TLabel [12]
           Left = 608
           Top = 83
-          Width = 43
+          Width = 40
           Height = 15
-          Caption = 'ID_USER'
+          Caption = 'Usu'#225'rio'
           FocusControl = edtUser
         end
         object Label12: TLabel [13]
           Left = 608
           Top = 128
-          Width = 102
+          Width = 44
           Height = 15
-          Caption = 'ADDRESS_NUMBER'
+          Caption = 'N'#250'mero'
           FocusControl = edtNum
         end
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
-            Caption = 'Register Company'
+            Width = 1005
+            Caption = 'Cadastro da empresa'
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 152
+            ExplicitWidth = 178
           end
         end
         object cbActive: TDBCheckBox
@@ -180,7 +184,7 @@ inherited viewCompany: TviewCompany
           Top = 102
           Width = 61
           Height = 17
-          Caption = 'ACTIVE'
+          Caption = 'Ativo'
           DataField = 'ACTIVE'
           DataSource = DSData
           Enabled = False
@@ -201,7 +205,7 @@ inherited viewCompany: TviewCompany
           Top = 102
           Width = 112
           Height = 17
-          Caption = 'HEADQUARTERS'
+          Caption = 'Matriz'
           DataField = 'HEADQUARTERS'
           DataSource = DSData
           Enabled = False
