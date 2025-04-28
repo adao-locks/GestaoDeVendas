@@ -211,7 +211,7 @@ begin
   ServiceRegister.QRYProduct.Insert;
   ServiceRegister.QRYIDProd.Close;
   ServiceRegister.QRYIDProd.SQL.Text :=
-    'SELECT MAX(PROD_ID) AS MaxID FROM PRODUCT';
+    'SELECT MAX(ID) AS MaxID FROM PRODUCT';
   ServiceRegister.QRYIDProd.Open;
   if not ServiceRegister.QRYIDProd.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDProd.FieldByName('MaxID').AsInteger + 1
@@ -238,7 +238,6 @@ begin
     CardPanelList.ActiveCard := cardSearch;
     ResizeDBGridColumns(DBGData);
     AlighDBGridColumns(DBGData);
-
   end;
 
 end;

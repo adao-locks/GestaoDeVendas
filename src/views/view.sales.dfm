@@ -489,6 +489,7 @@ inherited viewSales: TviewSales
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
+          Font.Height = -11
           ParentFont = False
           TitleFont.Height = -11
           Columns = <
@@ -720,7 +721,7 @@ inherited viewSales: TviewSales
           Width = 62
           Height = 21
           CharCase = ecUpperCase
-          DataField = 'ID_SALE'
+          DataField = 'ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True

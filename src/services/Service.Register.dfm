@@ -4,20 +4,19 @@ object ServiceRegister: TServiceRegister
   object QRYEntity: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE')
+      'SELECT * FROM PEOPLE WHERE ID = :ID')
     Left = 32
     Top = 24
     ParamData = <
       item
-        Name = 'PEOPLE'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
       end>
-    object QRYEntityPEOPLE_ID: TIntegerField
-      AutoGenerateValue = arAutoInc
-      FieldName = 'PEOPLE_ID'
-      Origin = 'PEOPLE_ID'
+    object QRYEntityID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -197,7 +196,7 @@ object ServiceRegister: TServiceRegister
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT'
-      #9'SL.ID_SALE,'
+      #9'SL.ID,'
       #9'SL.ID_CLIENT,'
       #9'PO1.NAME NAME_CLI,'
       #9'SL.ID_EMPLOYEE,'
@@ -214,16 +213,16 @@ object ServiceRegister: TServiceRegister
       'FROM'
       #9'SALE SL'
       'INNER JOIN PEOPLE PO1 ON'
-      #9'SL.ID_CLIENT = PO1.PEOPLE_ID'
+      #9'SL.ID_CLIENT = PO1.ID'
       'INNER JOIN PEOPLE PO2 ON'
-      #9'SL.ID_EMPLOYEE = PO2.PEOPLE_ID'
+      #9'SL.ID_EMPLOYEE = PO2.ID'
       'WHERE'
       #9'1 = 1;')
     Left = 32
     Top = 80
-    object QRYSaleID_SALE: TIntegerField
-      FieldName = 'ID_SALE'
-      Origin = 'ID_SALE'
+    object QRYSaleID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -308,19 +307,19 @@ object ServiceRegister: TServiceRegister
   object QRYProduct: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+      'SELECT * FROM PRODUCT WHERE ID = :ID')
     Left = 32
     Top = 248
     ParamData = <
       item
-        Name = 'PRODUCT'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
       end>
-    object QRYProductPROD_ID: TIntegerField
-      FieldName = 'PROD_ID'
-      Origin = 'PROD_ID'
+    object QRYProductID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -385,7 +384,7 @@ object ServiceRegister: TServiceRegister
   object QRYIDPeople: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT max(PEOPLE_ID) MAXID FROM PEOPLE')
+      'SELECT max(ID) MAXID FROM PEOPLE WHERE 1=1')
     Left = 137
     Top = 24
     object QRYIDPeopleMAXID: TIntegerField
@@ -399,12 +398,12 @@ object ServiceRegister: TServiceRegister
   object QRYIDProd: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT max(PROD_ID) MAXID FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+      'SELECT max(ID) MAXID FROM PRODUCT WHERE ID = :ID')
     Left = 136
     Top = 248
     ParamData = <
       item
-        Name = 'PRODUCT'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
@@ -420,7 +419,7 @@ object ServiceRegister: TServiceRegister
   object QRYIDSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECt max(ID_SALE) MAXID FROM SALE WHERE 1=1')
+      'SELECt max(ID) MAXID FROM SALE WHERE 1=1')
     Left = 137
     Top = 80
     object QRYIDSaleMAXID: TIntegerField
@@ -478,8 +477,8 @@ object ServiceRegister: TServiceRegister
         'SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.B' +
         'RAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_P' +
         'RICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FR' +
-        'OM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_' +
-        'ID WHERE 1=1')
+        'OM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.ID WH' +
+        'ERE 1=1')
     Left = 32
     Top = 136
     object QRYItemsSaleID: TIntegerField

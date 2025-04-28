@@ -5,6 +5,8 @@ inherited viewProducts: TviewProducts
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Produto'
       StyleElements = [seFont, seClient, seBorder]
       ExplicitWidth = 56
@@ -49,6 +51,7 @@ inherited viewProducts: TviewProducts
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 153
           inherited lblSearch: TLabel
+            Width = 1005
             Caption = 'Pesquisa de Produto'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 172
@@ -360,7 +363,6 @@ inherited viewProducts: TviewProducts
               Expanded = False
               FieldName = 'DATE_REGISTER'
               Title.Caption = 'Data Cadastro'
-              Width = 64
               Visible = True
             end
             item
@@ -371,7 +373,6 @@ inherited viewProducts: TviewProducts
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
-              Width = -1
               Visible = False
             end>
         end
@@ -455,6 +456,7 @@ inherited viewProducts: TviewProducts
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             Caption = 'Cadastro de Produtos'
             StyleElements = [seFont, seClient, seBorder]
             ExplicitWidth = 182
@@ -525,7 +527,7 @@ inherited viewProducts: TviewProducts
           Height = 23
           Cursor = crHandPoint
           Ctl3D = True
-          DataField = 'PROD_ID'
+          DataField = 'ID'
           DataSource = DSData
           Enabled = False
           ParentCtl3D = False

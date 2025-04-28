@@ -1,0 +1,45 @@
+unit Service.Stock;
+
+interface
+
+uses
+  System.SysUtils, FireDAC.Comp.Client, Data.DB;
+
+type
+  TStockService = class
+  public
+    class procedure EntradaEstoque(AProdutoID, AQuantidade: Integer);
+  end;
+
+implementation
+
+uses
+  Service.Connection; // Aqui você usa o DataModule que tem a FDConnection
+
+{ TStockService }
+
+class procedure TStockService.EntradaEstoque(AProdutoID, AQuantidade: Integer);
+var
+  Qry: TFDQuery;
+begin
+  if not ServiceConnection.FDConn.Connected then
+    raise Exception.Create('Conexão com o banco de dados não está ativa.');
+
+  Qry := TFDQuery.Create(nil);
+  try
+    Qry.Connection := Service.Connection.ServiceConnection.FDConn;
+    Qry.SQL.Text :=
+      'UPDATE produtos ' +
+      'SET estoque = estoque + :quantidade ' +
+      'WHERE id = :id';
+
+    Qry.ParamByName('quantidade').AsInteger := AQuantidade;
+    Qry.ParamByName('id').AsInteger := AProdutoID;
+    Qry.ExecSQL;
+  finally
+    Qry.Free;
+  end;
+end;
+
+end.
+

@@ -18,7 +18,8 @@ uses
   Service.Colors in 'src\services\Service.Colors.pas',
   view.size in 'src\views\view.size.pas' {viewSize},
   view.color in 'src\views\view.color.pas' {viewColor},
-  Provider.Utils in 'src\providers\Provider.Utils.pas';
+  Provider.Utils in 'src\providers\Provider.Utils.pas',
+  Service.Stock in 'src\services\Service.Stock.pas';
 
 {$R *.res}
 
