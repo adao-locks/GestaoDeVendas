@@ -53,12 +53,6 @@ type
     QRYIDSale: TFDQuery;
     QRYNamePeople: TFDQuery;
     QRYNamePeopleNAME: TStringField;
-    QRYLogsLANCTO: TIntegerField;
-    QRYLogsUSER: TStringField;
-    QRYLogsDATE: TSQLTimeStampField;
-    QRYLogsDESCRIPTION: TStringField;
-    QRYLogsPAGE: TStringField;
-    QRYLogsCOMPANY: TIntegerField;
     QRYEntityCOM_ID: TStringField;
     QRYEntityUSER: TStringField;
     QRYNameProduct: TFDQuery;
@@ -184,6 +178,15 @@ type
     QRYColorDT_CREATED: TSQLTimeStampField;
     QRYIDColor: TFDQuery;
     QRYIDColorMAXID: TIntegerField;
+    QRYLogsLANCTO: TIntegerField;
+    QRYLogsUSER: TStringField;
+    QRYLogsNAME: TStringField;
+    QRYLogsDATE: TSQLTimeStampField;
+    QRYLogsDESCRIPTION: TStringField;
+    QRYLogsPAGE: TStringField;
+    QRYLogsCOMPANY: TIntegerField;
+    QRYLogsACTION: TStringField;
+    QRYLogsKEY: TStringField;
   private
     { Private declarations }
   public

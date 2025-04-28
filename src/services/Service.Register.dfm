@@ -138,7 +138,10 @@ object ServiceRegister: TServiceRegister
   object QRYLogs: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM LOGS WHERE 1=1')
+      
+        'SELECT L.LANCTO, L."USER", U.NAME, L."DATE", L.DESCRIPTION, L.PA' +
+        'GE, L.COMPANY, L."ACTION", L."KEY" FROM logs L LEFT JOIN USERS U' +
+        ' ON U.ID = L."USER" WHERE 1=1')
     Left = 32
     Top = 192
     object QRYLogsLANCTO: TIntegerField
@@ -150,6 +153,14 @@ object ServiceRegister: TServiceRegister
     object QRYLogsUSER: TStringField
       FieldName = 'USER'
       Origin = '"USER"'
+      Size = 100
+    end
+    object QRYLogsNAME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
       Size = 100
     end
     object QRYLogsDATE: TSQLTimeStampField
@@ -169,6 +180,17 @@ object ServiceRegister: TServiceRegister
     object QRYLogsCOMPANY: TIntegerField
       FieldName = 'COMPANY'
       Origin = 'COMPANY'
+    end
+    object QRYLogsACTION: TStringField
+      FieldName = 'ACTION'
+      Origin = '"ACTION"'
+      Size = 100
+    end
+    object QRYLogsKEY: TStringField
+      FieldName = 'KEY'
+      Origin = '"KEY"'
+      Required = True
+      Size = 100
     end
   end
   object QRYSale: TFDQuery

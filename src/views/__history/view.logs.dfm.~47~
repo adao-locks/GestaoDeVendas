@@ -1,22 +1,22 @@
 inherited viewLogs: TviewLogs
+  Align = alClient
   Caption = 'Logs'
   StyleElements = [seFont, seClient, seBorder]
   TextHeight = 15
   inherited pnlTop: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited lblTitleWindow: TLabel
+      Width = 868
+      Height = 35
       Caption = 'Logs'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 33
+      ExplicitWidth = 868
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
     end
     inherited pnlCloseWindow: TPanel
       StyleElements = [seFont, seClient, seBorder]
-      inherited btnCloseWindow: TButton
-        OnClick = btnCloseWindowClick
-      end
     end
   end
   inherited pnlFooter: TPanel
@@ -36,10 +36,15 @@ inherited viewLogs: TviewLogs
     inherited btnDelete: TSpeedButton
       Visible = False
     end
+    inherited btnCloseWindow: TSpeedButton
+      Flat = True
+      OnClick = btnCloseWindowClick
+    end
   end
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
+      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -48,18 +53,19 @@ inherited viewLogs: TviewLogs
           StyleElements = [seFont, seClient, seBorder]
           ExplicitHeight = 121
           inherited lblSearch: TLabel
-            Caption = 'View Logs'
+            Width = 1005
+            Caption = 'Pesquisa de Logs'
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 85
+            ExplicitWidth = 143
           end
           object lblNameAsk: TLabel
             Left = 15
-            Top = 41
+            Top = 72
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Name: '
+            Caption = 'Usu'#225'rio: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -69,12 +75,42 @@ inherited viewLogs: TviewLogs
           end
           object Label1: TLabel
             Left = 15
-            Top = 65
+            Top = 96
             Width = 90
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Description: '
+            Caption = 'Descri'#231#227'o: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblDateRegAsk: TLabel
+            Left = 15
+            Top = 49
+            Width = 90
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'De: '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object lblDateBirthAsk: TLabel
+            Left = 264
+            Top = 49
+            Width = 28
+            Height = 17
+            Alignment = taRightJustify
+            AutoSize = False
+            Caption = 'At'#233': '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -83,22 +119,22 @@ inherited viewLogs: TviewLogs
             ParentFont = False
           end
           object btnConsult: TButton
-            Left = 8
+            Left = 510
             Top = 89
             Width = 97
             Height = 25
             Cursor = crHandPoint
-            Caption = 'Consult'
+            Caption = 'Consultar'
             ParentShowHint = False
             ShowHint = False
             TabOrder = 0
             OnClick = btnConsultClick
           end
-          object edtNameAsk: TSearchBox
+          object edtUser: TSearchBox
             AlignWithMargins = True
             Left = 110
-            Top = 41
-            Width = 145
+            Top = 72
+            Width = 187
             Height = 18
             Cursor = crHandPoint
             Margins.Left = 10
@@ -108,11 +144,11 @@ inherited viewLogs: TviewLogs
             CharCase = ecUpperCase
             TabOrder = 1
           end
-          object SearchBox1: TSearchBox
+          object edtDesc: TSearchBox
             AlignWithMargins = True
             Left = 110
-            Top = 65
-            Width = 145
+            Top = 96
+            Width = 387
             Height = 18
             Cursor = crHandPoint
             Margins.Left = 10
@@ -122,6 +158,32 @@ inherited viewLogs: TviewLogs
             CharCase = ecUpperCase
             TabOrder = 2
           end
+          object edtDate: TDateTimePicker
+            Left = 111
+            Top = 48
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Date = 36526.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.909075833333190500
+            TabOrder = 3
+          end
+          object edtDate2: TDateTimePicker
+            Left = 298
+            Top = 48
+            Width = 145
+            Height = 18
+            Cursor = crHandPoint
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Date = 54789.000000000000000000
+            Format = 'dd/MM/yyyy'
+            Time = 0.909075833333190500
+            TabOrder = 4
+          end
         end
         inherited DBGData: TDBGrid
           Top = 126
@@ -130,36 +192,55 @@ inherited viewLogs: TviewLogs
             item
               Expanded = False
               FieldName = 'LANCTO'
-              Width = 55
+              Title.Caption = 'Lan'#231'amento'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'USER'
-              Width = 35
+              Title.Caption = 'C'#243'digo Usu'#225'rio'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NAME'
+              Title.Caption = 'Nome Usu'#225'rio'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE'
-              Width = 130
+              Title.Caption = 'Data movimento'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRIPTION'
-              Width = 550
+              Title.Caption = 'Descri'#231#227'o'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PAGE'
-              Width = 113
+              Title.Caption = 'P'#225'gina'
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COMPANY'
+              Title.Caption = 'Empresa'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ACTION'
+              Title.Caption = 'A'#231#227'o'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'KEY'
+              Title.Caption = 'Chave'
               Visible = True
             end>
         end
@@ -172,6 +253,7 @@ inherited viewLogs: TviewLogs
         inherited pnlRegister: TPanel
           StyleElements = [seFont, seClient, seBorder]
           inherited lblRegister: TLabel
+            Width = 1005
             StyleElements = [seFont, seClient, seBorder]
           end
         end

@@ -8,15 +8,19 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, view.base.lists, Data.DB,
   System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPanels,
   Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Service.Register, Vcl.WinXCtrls,
-  Provider.Utils;
+  Provider.Utils, Vcl.ComCtrls;
 
 type
   TviewLogs = class(TviewBaseLists)
     btnConsult: TButton;
     lblNameAsk: TLabel;
-    edtNameAsk: TSearchBox;
-    SearchBox1: TSearchBox;
+    edtUser: TSearchBox;
+    edtDesc: TSearchBox;
     Label1: TLabel;
+    lblDateRegAsk: TLabel;
+    lblDateBirthAsk: TLabel;
+    edtDate: TDateTimePicker;
+    edtDate2: TDateTimePicker;
     procedure btnCloseWindowClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
@@ -41,9 +45,39 @@ begin
 end;
 
 procedure TviewLogs.btnConsultClick(Sender: TObject);
+var
+
+  DT1: TDate;
+  DT2: TDate;
+
 begin
   inherited;
-  Get_Logs;
+
+
+  ServiceRegister.QRYLogs.SQL.Text := 'SELECT L.LANCTO, L."USER", U.NAME, L."DATE", L.DESCRIPTION, L.PAGE, L.COMPANY, L."ACTION", L."KEY" FROM logs L LEFT JOIN USERS U ON U.ID = L."USER" WHERE 1=1';
+
+  DT1 := edtDate.Date;
+  DT2 := edtDate2.Date;
+
+  ServiceRegister.QRYLogs.SQL.Add(' AND DATE BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYLogs.ParamByName('DATEI').AsDate := DT1;
+  ServiceRegister.QRYLogs.ParamByName('DATEF').AsDate := DT2;
+
+  if edtUser.Text <> '' then
+  begin
+    ServiceRegister.QRYLogs.SQL.Add(' AND NAME LIKE :NAME');
+    ServiceRegister.QRYLogs.ParamByName('NAME').AsString :=
+      '%' + edtUser.Text + '%';
+  end;
+
+  if edtDesc.Text <> '' then
+  begin
+    ServiceRegister.QRYLogs.SQL.Add(' AND DESCRIPTION LIKE :DESCRIPTION');
+    ServiceRegister.QRYLogs.ParamByName('DESCRIPTION').AsString :=
+      '%' + edtDesc.Text + '%';
+  end;
+
+  ServiceRegister.QRYLogs.Open;
   ResizeDBGridColumns(DBGData);
   AlighDBGridColumns(DBGData);
 end;

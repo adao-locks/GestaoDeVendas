@@ -130,7 +130,7 @@ inherited viewLogs: TviewLogs
             TabOrder = 0
             OnClick = btnConsultClick
           end
-          object edtNameAsk: TSearchBox
+          object edtUser: TSearchBox
             AlignWithMargins = True
             Left = 110
             Top = 72
@@ -144,7 +144,7 @@ inherited viewLogs: TviewLogs
             CharCase = ecUpperCase
             TabOrder = 1
           end
-          object SearchBox1: TSearchBox
+          object edtDesc: TSearchBox
             AlignWithMargins = True
             Left = 110
             Top = 96
@@ -158,7 +158,7 @@ inherited viewLogs: TviewLogs
             CharCase = ecUpperCase
             TabOrder = 2
           end
-          object edtDateReg: TDateTimePicker
+          object edtDate: TDateTimePicker
             Left = 111
             Top = 48
             Width = 145
@@ -171,7 +171,7 @@ inherited viewLogs: TviewLogs
             Time = 0.909075833333190500
             TabOrder = 3
           end
-          object edtDateReg2: TDateTimePicker
+          object edtDate2: TDateTimePicker
             Left = 298
             Top = 48
             Width = 145
@@ -191,44 +191,66 @@ inherited viewLogs: TviewLogs
           Columns = <
             item
               Expanded = False
-              FieldName = 'LANCTO'
-              Title.Caption = 'C'#243'digo'
-              Width = 55
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'USER'
-              Title.Caption = 'Usu'#225'rio'
+              FieldName = 'KEY'
+              Title.Caption = 'Chave'
               Width = 90
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'DATE'
-              Title.Caption = 'Data'
-              Width = 130
+              FieldName = 'USER'
+              Title.Caption = 'C'#243'digo Usu'#225'rio'
+              Width = 90
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'NAME'
+              Title.Caption = 'Nome Usu'#225'rio'
+              Width = 90
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRIPTION'
               Title.Caption = 'Descri'#231#227'o'
-              Width = 550
+              Width = 90
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'LANCTO'
+              Title.Caption = 'Lan'#231'amento'
+              Width = 90
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'DATE'
+              Title.Caption = 'Data movimento'
+              Width = 90
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PAGE'
               Title.Caption = 'P'#225'gina'
-              Width = 113
+              Width = 90
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COMPANY'
               Title.Caption = 'Empresa'
-              Visible = False
+              Width = 90
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ACTION'
+              Title.Caption = 'A'#231#227'o'
+              Width = 90
+              Visible = True
             end>
         end
       end

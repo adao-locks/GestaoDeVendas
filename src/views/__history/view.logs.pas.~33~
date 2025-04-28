@@ -59,9 +59,9 @@ begin
   DT1 := edtDate.Date;
   DT2 := edtDate2.Date;
 
-  ServiceRegister.QRYLogs.SQL.Add(' AND "DATE" BETWEEN :DATEI AND :DATEF');
+  ServiceRegister.QRYLogs.SQL.Add(' AND DATE BETWEEN :DATEI AND :DATEF');
   ServiceRegister.QRYLogs.ParamByName('DATEI').AsDate := DT1;
-  ServiceRegister.QRYLogs.ParamByName('DATEF').AsDate := DT2;
+  ServiceRegister.QRYLogs.ParamByName('DATEF').AsDate2 := DT2;
 
   if edtUser.Text <> '' then
   begin
@@ -94,7 +94,7 @@ begin
 
   ServiceRegister.QRYLogs.Close;
   ServiceRegister.QRYLogs.SQL.Clear;
-  ServiceRegister.QRYLogs.SQL.Add('SELECT L.LANCTO, U.NAME, L."DATE", L.DESCRIPTION, L.PAGE, L.COMPANY, L."ACTION", L."KEY" FROM logs L LEFT JOIN USERS U ON U.ID = L."USER" WHERE 1=1');
+  ServiceRegister.QRYLogs.SQL.Add('SELECT * FROM LOGS WHERE 1=1');
   ServiceRegister.QRYLogs.Open();
 
 end;
