@@ -79,10 +79,12 @@ type
     procedure btnCompanyClick(Sender: TObject);
     procedure btnSizesClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure GET_LineMenu(Sender: TObject);
   public
-
+    procedure CloseSystem(var Msg: TMsg; var Handled: Boolean);
+    procedure CloseAll();
   end;
 
 var
@@ -159,8 +161,34 @@ end;
 procedure TViewPrincipal.Button1Click(Sender: TObject);
 begin
 
-  Application.Terminate;
+  CloseAll;
 
+end;
+
+procedure TViewPrincipal.CloseAll;
+begin
+  Application.Terminate;
+end;
+
+procedure TViewPrincipal.CloseSystem(var Msg: TMsg; var Handled: Boolean);
+begin
+  if (Msg.message = WM_KEYDOWN) then
+  begin
+    if (GetKeyState(VK_CONTROL) < 0) and (Msg.wParam = Ord('W')) then
+    begin
+      if MessageDlg('Deseja fechar o sistema?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+        CloseAll;
+        Handled := True;
+      end else
+        Exit;
+    end;
+  end;
+end;
+
+procedure TViewPrincipal.FormCreate(Sender: TObject);
+begin
+  Application.OnMessage := CloseSystem;
 end;
 
 procedure TViewPrincipal.FormShow(Sender: TObject);

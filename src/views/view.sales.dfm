@@ -177,7 +177,6 @@ inherited viewSales: TviewSales
       Height = 539
       Margins.Left = 1
       Margins.Right = 1
-      ActiveCard = cardItems
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -490,6 +489,7 @@ inherited viewSales: TviewSales
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
+          ParentFont = False
           TitleFont.Height = -11
           Columns = <
             item
@@ -573,14 +573,12 @@ inherited viewSales: TviewSales
               Expanded = False
               FieldName = 'ID_COM'
               Title.Caption = 'C'#243'digo Empresa'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'USER'
               Title.Caption = 'C'#243'digo Usuario'
-              Width = -1
               Visible = False
             end>
         end
@@ -966,6 +964,12 @@ inherited viewSales: TviewSales
           DataSource = DSDataItems
           GradientEndColor = clBtnFace
           GradientStartColor = clBtnFace
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText

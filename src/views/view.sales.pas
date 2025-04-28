@@ -113,7 +113,6 @@ type
     dtSaleEnd: TDateTimePicker;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
-    procedure btnCloseWindowClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -133,6 +132,7 @@ type
     procedure edtEmployeeExit(Sender: TObject);
     procedure edtClientExit(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -206,9 +206,21 @@ begin
   inherited;
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
-    ServiceRegister.QRYSale.Cancel;
-    ServiceRegister.QRYItemsSale.Cancel;
-    CardPanelList.ActiveCard := cardSearch;
+
+    ServiceRegister.QRYItemsSale.Close;
+    ServiceRegister.QRYItemsSale.SQL.Text := 'SELECT * FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
+    ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+    ServiceRegister.QRYItemsSale.Open;
+
+    if not ServiceRegister.QRYItemsSale.IsEmpty then
+    begin
+      ServiceRegister.QRYSale.Cancel;
+      ServiceRegister.QRYItemsSale.Cancel;
+      CardPanelList.ActiveCard := cardSearch;
+    end else
+    begin
+      ShowMessage('Venda possui itens cadastrados, remova-os antes de cancelar a venda.')
+    end;
   end;
 end;
 

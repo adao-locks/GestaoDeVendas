@@ -2128,6 +2128,7 @@ object ViewPrincipal: TViewPrincipal
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
   Position = poDesigned
+  OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 15
   object pnlTop: TPanel
@@ -2424,8 +2425,6 @@ object ViewPrincipal: TViewPrincipal
       ParentDoubleBuffered = False
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitLeft = 35
-      ExplicitWidth = 60
     end
     object pnlShapeMenu: TPanel
       Left = 10
