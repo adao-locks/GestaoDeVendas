@@ -192,43 +192,37 @@ inherited viewLogs: TviewLogs
             item
               Expanded = False
               FieldName = 'LANCTO'
-              Title.Caption = 'C'#243'digo'
               Width = 55
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'USER'
-              Title.Caption = 'Usu'#225'rio'
-              Width = 90
+              Width = 35
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE'
-              Title.Caption = 'Data'
               Width = 130
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DESCRIPTION'
-              Title.Caption = 'Descri'#231#227'o'
               Width = 550
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PAGE'
-              Title.Caption = 'P'#225'gina'
               Width = 113
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COMPANY'
-              Title.Caption = 'Empresa'
-              Visible = False
+              Visible = True
             end>
         end
       end
