@@ -7,9 +7,9 @@ inherited viewEntity: TviewEntity
     inherited lblTitleWindow: TLabel
       Width = 868
       Height = 35
-      Caption = 'Entities'
+      Caption = 'Entidades'
       StyleElements = [seFont, seClient, seBorder]
-      ExplicitWidth = 50
+      ExplicitWidth = 67
     end
     inherited pnlLogo: TPanel
       StyleElements = [seFont, seClient, seBorder]
@@ -43,7 +43,6 @@ inherited viewEntity: TviewEntity
   inherited pnlBackground: TPanel
     StyleElements = [seFont, seClient, seBorder]
     inherited CardPanelList: TCardPanel
-      ActiveCard = cardSearch
       StyleElements = [seFont, seClient, seBorder]
       inherited cardSearch: TCard
         StyleElements = [seFont, seClient, seBorder]
@@ -53,9 +52,9 @@ inherited viewEntity: TviewEntity
           ExplicitHeight = 169
           inherited lblSearch: TLabel
             Width = 1005
-            Caption = 'Search Entity'
+            Caption = 'Pesquisar Entidades'
             StyleElements = [seFont, seClient, seBorder]
-            ExplicitWidth = 109
+            ExplicitWidth = 167
           end
           object lblDateRegAsk: TLabel
             Left = 15
@@ -64,7 +63,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Date Register: '
+            Caption = 'Cadastro De: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -79,7 +78,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Name: '
+            Caption = 'Nome: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -94,7 +93,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Fantasy: '
+            Caption = 'Fantasia: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -109,7 +108,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'ZIP Code: '
+            Caption = 'CEP: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -124,7 +123,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'State: '
+            Caption = 'Estado: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -139,7 +138,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'City: '
+            Caption = 'Cidade: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -154,7 +153,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Between: '
+            Caption = 'At'#233': '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -169,7 +168,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Phone: '
+            Caption = 'Telefone: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -199,7 +198,7 @@ inherited viewEntity: TviewEntity
             Height = 17
             Alignment = taRightJustify
             AutoSize = False
-            Caption = 'Street: '
+            Caption = 'Rua: '
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -13
@@ -324,7 +323,7 @@ inherited viewEntity: TviewEntity
             Top = 132
             Width = 97
             Height = 25
-            Caption = 'Consult'
+            Caption = 'Consultar'
             TabOrder = 8
             OnClick = btnConsultClick
           end
@@ -342,142 +341,168 @@ inherited viewEntity: TviewEntity
             item
               Expanded = False
               FieldName = 'PEOPLE_ID'
+              Title.Caption = 'C'#243'digo'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
+              Title.Caption = 'Nome'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'EIN_CNPJ'
-              Width = 64
+              Title.Caption = 'CPF/CNPJ'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'PHONE'
-              Width = 64
+              Title.Caption = 'Telefone/Celular'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'EMAIL'
-              Width = 64
+              Title.Caption = 'Email'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_BIRTH'
-              Width = 64
+              Title.Caption = 'Nascimento'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_REGISTER'
-              Width = 64
+              Title.Caption = 'Cadastro'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CLIENT'
-              Width = 64
-              Visible = True
+              Title.Caption = 'Cliente'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'EMPLOYEE'
-              Width = 64
-              Visible = True
+              Title.Caption = 'Funcionario'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'SUPPLIER'
-              Width = 64
-              Visible = True
+              Title.Caption = 'Fornecedor'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'TRANSPORT'
-              Width = 64
-              Visible = True
+              Title.Caption = 'Transportadora'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'STREET'
-              Width = 64
+              Title.Caption = 'Rua'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NUMBER_ADDRESS'
-              Width = 64
+              Title.Caption = 'N'#250'mero'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COMPLEMENT'
-              Width = 64
+              Title.Caption = 'Complemento'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CITY'
-              Width = 64
+              Title.Caption = 'Cidade'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NEIGHBORHOOD'
-              Width = 64
+              Title.Caption = 'Bairro'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'STATE'
-              Width = 64
+              Title.Caption = 'Estado'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ZIP_CODE'
+              Title.Caption = 'CEP'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'FANTASY'
-              Width = 64
+              Title.Caption = 'Fantasia'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'OBS'
-              Width = 64
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DATE_UPDATED'
-              Width = 64
+              Title.Caption = 'Alteracao'
+              Width = 60
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'COM_ID'
-              Width = 64
-              Visible = True
+              Title.Caption = 'C'#243'digo Empresa'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'USER'
-              Width = 64
-              Visible = True
+              Title.Caption = 'Usuario'
+              Width = -1
+              Visible = False
             end
             item
               Expanded = False
               FieldName = 'TYPE_PERSON'
-              Width = 64
+              Title.Caption = 'Tipo Entidade'
+              Width = 60
               Visible = True
             end>
         end
@@ -513,32 +538,32 @@ inherited viewEntity: TviewEntity
         object lblPeopleID: TLabel [0]
           Left = 9
           Top = 74
-          Width = 11
+          Width = 39
           Height = 15
-          Caption = 'ID'
+          Caption = 'C'#243'digo'
           FocusControl = edtPeopleID
         end
         object lblName: TLabel [1]
           Left = 115
           Top = 74
-          Width = 32
+          Width = 33
           Height = 15
-          Caption = 'Name'
+          Caption = 'Nome'
           FocusControl = edtName
         end
         object lblBirth: TLabel [2]
           Left = 273
           Top = 119
-          Width = 44
+          Width = 59
           Height = 15
-          Caption = 'Birthday'
+          Caption = 'Anivers'#225'rio'
         end
         object lblRegDate: TLabel [3]
           Left = 369
           Top = 120
-          Width = 69
+          Width = 47
           Height = 15
-          Caption = 'Register Date'
+          Caption = 'Cadastro'
           FocusControl = edtRegDate
         end
         object lblEmail: TLabel [4]
@@ -568,21 +593,21 @@ inherited viewEntity: TviewEntity
         object Label2: TLabel [7]
           Left = 471
           Top = 120
-          Width = 61
+          Width = 50
           Height = 15
-          Caption = 'Last update'
+          Caption = 'Altera'#231#227'o'
           FocusControl = edtUpDate
         end
         object lblTypePeople: TLabel [8]
           AlignWithMargins = True
           Left = 579
           Top = 124
-          Width = 29
+          Width = 28
           Height = 17
           Margins.Left = 5
           Margins.Top = 5
           Margins.Right = 5
-          Caption = 'Type'
+          Caption = 'Tipo'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -594,13 +619,13 @@ inherited viewEntity: TviewEntity
           AlignWithMargins = True
           Left = 9
           Top = 260
-          Width = 49
+          Width = 113
           Height = 17
           Margins.Left = 5
           Margins.Top = 5
           Margins.Right = 5
           AutoSize = False
-          Caption = 'Address'
+          Caption = 'Endere'#231'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -614,7 +639,7 @@ inherited viewEntity: TviewEntity
           Width = 48
           Height = 15
           AutoSize = False
-          Caption = 'ZIP Code'
+          Caption = 'CEP'
           FocusControl = edtZIPCode
         end
         object lblComplement: TLabel [11]
@@ -623,25 +648,25 @@ inherited viewEntity: TviewEntity
           Width = 70
           Height = 15
           AutoSize = False
-          Caption = 'Complement'
+          Caption = 'Complemento'
           FocusControl = edtComplement
         end
         object lblState: TLabel [12]
           Left = 11
           Top = 330
-          Width = 26
+          Width = 34
           Height = 15
           AutoSize = False
-          Caption = 'State'
+          Caption = 'UF'
           FocusControl = edtState
         end
         object lblCity: TLabel [13]
           Left = 51
           Top = 330
-          Width = 21
+          Width = 86
           Height = 15
           AutoSize = False
-          Caption = 'City'
+          Caption = 'Cidade'
           FocusControl = edtCity
         end
         object lblNeighborhood: TLabel [14]
@@ -650,7 +675,7 @@ inherited viewEntity: TviewEntity
           Width = 78
           Height = 15
           AutoSize = False
-          Caption = 'Neighborhood'
+          Caption = 'Bairro'
           FocusControl = edtNeighborhood
         end
         object lblStreet: TLabel [15]
@@ -659,7 +684,7 @@ inherited viewEntity: TviewEntity
           Width = 30
           Height = 15
           AutoSize = False
-          Caption = 'Street'
+          Caption = 'Rua'
           FocusControl = edtStreet
         end
         object lblNumberAddress: TLabel [16]
@@ -668,7 +693,7 @@ inherited viewEntity: TviewEntity
           Width = 89
           Height = 15
           AutoSize = False
-          Caption = 'Number Address'
+          Caption = 'N'#250'mero'
           FocusControl = edtNumberAddress
         end
         object lblEin: TLabel [17]
@@ -791,7 +816,7 @@ inherited viewEntity: TviewEntity
           Top = 119
           Width = 104
           Height = 17
-          Caption = 'Physical Person'
+          Caption = 'Pessoa F'#237'sica'
           Checked = True
           TabOrder = 18
           TabStop = True
@@ -801,7 +826,7 @@ inherited viewEntity: TviewEntity
           Top = 142
           Width = 113
           Height = 17
-          Caption = 'Legal Entity'
+          Caption = 'Pessoa Jur'#237'dica'
           TabOrder = 19
         end
         object cbClient: TDBCheckBox
@@ -814,7 +839,7 @@ inherited viewEntity: TviewEntity
           Margins.Left = 10
           Margins.Top = 5
           Margins.Right = 10
-          Caption = 'CLIENT'
+          Caption = 'Cliente'
           DataField = 'CLIENT'
           DataSource = DSData
           TabOrder = 20
@@ -831,7 +856,7 @@ inherited viewEntity: TviewEntity
           Margins.Left = 10
           Margins.Top = 5
           Margins.Right = 10
-          Caption = 'EMPLOYEE'
+          Caption = 'Funcion'#225'rio'
           DataField = 'EMPLOYEE'
           DataSource = DSData
           TabOrder = 21
@@ -848,7 +873,7 @@ inherited viewEntity: TviewEntity
           Margins.Left = 10
           Margins.Top = 5
           Margins.Right = 10
-          Caption = 'SUPPLIER'
+          Caption = 'Fornecedor'
           DataField = 'SUPPLIER'
           DataSource = DSData
           TabOrder = 22
@@ -865,7 +890,7 @@ inherited viewEntity: TviewEntity
           Margins.Left = 10
           Margins.Top = 5
           Margins.Right = 10
-          Caption = 'TRANSPORT'
+          Caption = 'Transporte'
           DataField = 'TRANSPORT'
           DataSource = DSData
           TabOrder = 23
