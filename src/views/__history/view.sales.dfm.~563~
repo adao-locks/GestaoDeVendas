@@ -177,6 +177,7 @@ inherited viewSales: TviewSales
       Height = 539
       Margins.Left = 1
       Margins.Right = 1
+      ActiveCard = cardItems
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -489,6 +490,8 @@ inherited viewSales: TviewSales
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
+          Font.Height = -11
+          ParentFont = False
           TitleFont.Height = -11
           Columns = <
             item
@@ -572,14 +575,12 @@ inherited viewSales: TviewSales
               Expanded = False
               FieldName = 'ID_COM'
               Title.Caption = 'C'#243'digo Empresa'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'USER'
               Title.Caption = 'C'#243'digo Usuario'
-              Width = -1
               Visible = False
             end>
         end
@@ -721,7 +722,7 @@ inherited viewSales: TviewSales
           Width = 62
           Height = 21
           CharCase = ecUpperCase
-          DataField = 'ID_SALE'
+          DataField = 'ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
@@ -877,7 +878,7 @@ inherited viewSales: TviewSales
           Cursor = crHandPoint
           CharCase = ecUpperCase
           TabOrder = 14
-          Text = 'CASH'
+          Text = 'DINHEIRO'
           Items.Strings = (
             'DINHEIRO'
             'CREDITO'
@@ -892,7 +893,7 @@ inherited viewSales: TviewSales
           Width = 100
           Height = 21
           TabOrder = 15
-          Text = 'PENDING'
+          Text = 'PENDENTE'
           Items.Strings = (
             'PENDENTE'
             'PAGO'
@@ -965,6 +966,12 @@ inherited viewSales: TviewSales
           DataSource = DSDataItems
           GradientEndColor = clBtnFace
           GradientStartColor = clBtnFace
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -975,74 +982,84 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'ID'
-              Width = 30
+              Title.Caption = 'C'#243'digo'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_ITEM'
-              Width = 50
+              Title.Caption = 'C'#243'd. Item'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_SALE'
-              Width = 50
+              Title.Caption = 'C'#243'digo Venda'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_PRODUCT'
-              Title.Caption = 'CODE'
-              Width = 50
+              Title.Caption = 'C'#243'digo Produto'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
-              Width = 170
+              Title.Caption = 'Nome Produto'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'BRAND'
-              Width = 100
+              Title.Caption = 'Marca'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UN'
-              Width = 50
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'QUANTITY'
-              Width = 60
+              Title.Caption = 'Quantidade'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UNIT_PRICE'
-              Width = 60
+              Title.Caption = 'Pre'#231'o Unit'#225'rio'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
-              Width = 60
+              Title.Caption = 'Desconto'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUBTOTAL'
-              Width = 70
+              Title.Caption = 'Subtotal'
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
-              Width = 120
+              Title.Caption = 'Data Cria'#231#227'o'
+              Width = 85
               Visible = True
             end>
         end
@@ -1057,49 +1074,49 @@ inherited viewSales: TviewSales
           object Label13: TLabel
             Left = 75
             Top = 81
-            Width = 41
+            Width = 49
             Height = 13
-            Caption = 'ID_ITEM'
+            Caption = 'C'#243'd. Item'
             FocusControl = edtIDItem
           end
           object Label14: TLabel
             Left = 7
             Top = 81
-            Width = 40
+            Width = 59
             Height = 13
-            Caption = 'ID_SALE'
+            Caption = 'C'#243'd. Venda'
             FocusControl = edtSaleID
           end
           object Label15: TLabel
             Left = 7
             Top = 122
-            Width = 67
+            Width = 83
             Height = 13
-            Caption = 'ID_PRODUCT'
+            Caption = 'C'#243'digo Produto'
             FocusControl = edtCodProd
           end
           object Label16: TLabel
             Left = 83
             Top = 162
-            Width = 51
+            Width = 61
             Height = 13
-            Caption = 'QUANTITY'
+            Caption = 'Quantidade'
             FocusControl = edtQuant
           end
           object Label17: TLabel
             Left = 7
             Top = 162
-            Width = 59
+            Width = 73
             Height = 13
-            Caption = 'UNIT_PRICE'
+            Caption = 'Pre'#231'o Unit'#225'rio'
             FocusControl = edtUnit
           end
           object Label18: TLabel
             Left = 159
             Top = 162
-            Width = 55
+            Width = 49
             Height = 13
-            Caption = 'DISCOUNT'
+            Caption = 'Desconto'
             FocusControl = edtDiscItem
           end
           object Label20: TLabel
@@ -1107,7 +1124,7 @@ inherited viewSales: TviewSales
             Top = 81
             Width = 65
             Height = 13
-            Caption = 'DT_CREATED'
+            Caption = 'Data Cria'#231#227'o'
           end
           object lblConfirmItem: TLabel
             Left = 7
@@ -1121,9 +1138,9 @@ inherited viewSales: TviewSales
           object Label19: TLabel
             Left = 7
             Top = 38
-            Width = 11
+            Width = 38
             Height = 13
-            Caption = 'ID'
+            Caption = 'C'#243'digo'
             FocusControl = edtID
           end
           object edtIDItem: TDBEdit
@@ -1207,7 +1224,7 @@ inherited viewSales: TviewSales
             Top = 205
             Width = 70
             Height = 25
-            Caption = 'Add'
+            Caption = 'Adicionar'
             TabOrder = 7
             OnClick = btnAddProdClick
           end
@@ -1216,7 +1233,7 @@ inherited viewSales: TviewSales
             Top = 205
             Width = 70
             Height = 25
-            Caption = 'Remove'
+            Caption = 'Remover'
             TabOrder = 8
             OnClick = btnRemoveClick
           end
@@ -1225,7 +1242,7 @@ inherited viewSales: TviewSales
             Top = 205
             Width = 70
             Height = 25
-            Caption = 'Confirm'
+            Caption = 'Confirmar'
             Enabled = False
             TabOrder = 9
             OnClick = btnConfirmItemClick
@@ -1235,7 +1252,7 @@ inherited viewSales: TviewSales
             Top = 205
             Width = 70
             Height = 25
-            Caption = 'Cancel'
+            Caption = 'Cancelar'
             Enabled = False
             TabOrder = 10
             OnClick = btnCancelItemClick
@@ -1245,7 +1262,7 @@ inherited viewSales: TviewSales
             Top = 10
             Width = 70
             Height = 25
-            Caption = 'Back'
+            Caption = 'Voltar'
             TabOrder = 11
             OnClick = btnBackItensClick
           end
@@ -1264,6 +1281,7 @@ inherited viewSales: TviewSales
             Top = 138
             Width = 22
             Height = 21
+            Enabled = False
             ImageIndex = 6
             Images = imgList
             TabOrder = 13

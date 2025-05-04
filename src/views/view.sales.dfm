@@ -177,6 +177,7 @@ inherited viewSales: TviewSales
       Height = 539
       Margins.Left = 1
       Margins.Right = 1
+      ActiveCard = cardItems
       StyleElements = [seFont, seClient, seBorder]
       ExplicitLeft = 1
       ExplicitWidth = 1105
@@ -1280,6 +1281,7 @@ inherited viewSales: TviewSales
             Top = 138
             Width = 22
             Height = 21
+            Enabled = False
             ImageIndex = 6
             Images = imgList
             TabOrder = 13

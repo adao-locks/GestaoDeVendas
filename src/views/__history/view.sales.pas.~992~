@@ -113,7 +113,6 @@ type
     dtSaleEnd: TDateTimePicker;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
-    procedure btnCloseWindowClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
     procedure btnNewClick(Sender: TObject);
@@ -133,6 +132,7 @@ type
     procedure edtEmployeeExit(Sender: TObject);
     procedure edtClientExit(Sender: TObject);
     procedure btnConsultClick(Sender: TObject);
+    procedure btnCloseWindowClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -206,9 +206,21 @@ begin
   inherited;
   if ServiceRegister.QRYSale.State in dsEditModes then
   begin
-    ServiceRegister.QRYSale.Cancel;
-    ServiceRegister.QRYItemsSale.Cancel;
-    CardPanelList.ActiveCard := cardSearch;
+
+    ServiceRegister.QRYItemsSale.Close;
+    ServiceRegister.QRYItemsSale.SQL.Text := 'SELECT * FROM SALE_ITEMS WHERE ID_SALE = :ID_SALE';
+    ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsInteger := edtSale.Field.Value;
+    ServiceRegister.QRYItemsSale.Open;
+
+    if not ServiceRegister.QRYItemsSale.IsEmpty then
+    begin
+      ServiceRegister.QRYSale.Cancel;
+      ServiceRegister.QRYItemsSale.Cancel;
+      CardPanelList.ActiveCard := cardSearch;
+    end else
+    begin
+      ShowMessage('Venda possui itens cadastrados, remova-os antes de cancelar a venda.')
+    end;
   end;
 end;
 
@@ -259,7 +271,7 @@ var
 begin
   inherited;
 
-  ServiceRegister.QRYSale.SQL.Text := 'SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1';
+  ServiceRegister.QRYSale.SQL.Text := 'SELECT SL.ID, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.ID WHERE 1 = 1';
 
   DateRegistered1 := dtRegIni.Date;
   DateRegistered2 := dtRegEnd.Date;
@@ -337,7 +349,7 @@ begin
   ServiceRegister.QRYSale.Insert;
   ServiceRegister.QRYIDSale.Close;
   ServiceRegister.QRYIDSale.SQL.Text :=
-    'SELECT MAX(ID_SALE) AS MaxID FROM SALE WHERE 1=1';
+    'SELECT MAX(ID) AS MaxID FROM SALE WHERE 1=1';
   ServiceRegister.QRYIDSale.Open;
   if not ServiceRegister.QRYIDSale.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDSale.FieldByName('MaxID').AsInteger + 1
@@ -550,7 +562,7 @@ begin
   ServiceRegister.QRYItemsSale.SQL.Clear;
   ServiceRegister.QRYItemsSale.SQL.Add('SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.BRAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, ');
   ServiceRegister.QRYItemsSale.SQL.Add('SI.DISCOUNT, ((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED ');
-  ServiceRegister.QRYItemsSale.SQL.Add('FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_ID WHERE ID_SALE = :ID_SALE ORDER BY SI.ID');
+  ServiceRegister.QRYItemsSale.SQL.Add('FROM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.ID WHERE ID_SALE = :ID_SALE ORDER BY SI.ID');
   ServiceRegister.QRYItemsSale.ParamByName('ID_SALE').AsString := edtSale.Text;
   ServiceRegister.QRYItemsSale.Open();
 end;
@@ -560,7 +572,7 @@ begin
   ServiceRegister.QRYSale.Close;
   ServiceRegister.QRYSale.SQL.Clear;
   ServiceRegister.QRYSale.SQL.Add
-    ('SELECT SL.ID_SALE, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.PEOPLE_ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.PEOPLE_ID WHERE 1 = 1');
+    ('SELECT SL.ID, SL.ID_CLIENT, PO1.NAME NAME_CLI, SL.ID_EMPLOYEE, PO2.NAME NAME_EMPL, SL.PAYMENT_METHOD, SL.TOTAL_AMOUNT, SL.DISCOUNT, SL.STATUS, SL.DT_SALE, SL.DT_CREATED, SL.ID_COM, SL."USER", SL.OBSERVATION FROM SALE SL INNER JOIN PEOPLE PO1 ON SL.ID_CLIENT = PO1.ID INNER JOIN PEOPLE PO2 ON SL.ID_EMPLOYEE = PO2.ID WHERE 1 = 1');
   ServiceRegister.QRYSale.Open();
 end;
 

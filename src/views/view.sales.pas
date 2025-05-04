@@ -187,6 +187,7 @@ begin
 
     DT_CREATED.Date := Now;
     edtCodProd.Enabled := True;
+    btnProdConsult.Enabled := True;
     edtUnit.Enabled := True;
     edtQuant.Enabled := True;
     edtDiscItem.Enabled := True;
@@ -236,6 +237,7 @@ begin
     edtUnit.Enabled := False;
     edtQuant.Enabled := False;
     edtDiscItem.Enabled := False;
+    btnProdConsult.Enabled := False;
   end;
 end;
 
@@ -258,6 +260,7 @@ begin
   edtUnit.Enabled := False;
   edtQuant.Enabled := False;
   edtDiscItem.Enabled := False;
+  btnProdConsult.Enabled := False;
 end;
 
 procedure TviewSales.btnConsultClick(Sender: TObject);
