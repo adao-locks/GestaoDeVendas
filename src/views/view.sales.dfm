@@ -954,9 +954,9 @@ inherited viewSales: TviewSales
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 7
-          Top = 256
+          Top = 296
           Width = 1091
-          Height = 276
+          Height = 236
           Cursor = crCross
           Margins.Left = 7
           Margins.Top = 7
@@ -982,84 +982,85 @@ inherited viewSales: TviewSales
             item
               Expanded = False
               FieldName = 'ID'
-              Title.Caption = 'C'#243'digo'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_ITEM'
-              Title.Caption = 'C'#243'd. Item'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_SALE'
-              Title.Caption = 'C'#243'digo Venda'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_PRODUCT'
-              Title.Caption = 'C'#243'digo Produto'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'NAME'
-              Title.Caption = 'Nome Produto'
-              Width = 85
+              FieldName = 'PROD_NAME'
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'BRAND'
-              Title.Caption = 'Marca'
-              Width = 85
+              FieldName = 'ID_COLOR'
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'UN'
-              Width = 85
+              FieldName = 'COLOR_NAME'
+              Width = 70
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ID_SIZE'
+              Width = 70
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SIZE'
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'QUANTITY'
-              Title.Caption = 'Quantidade'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UNIT_PRICE'
-              Title.Caption = 'Pre'#231'o Unit'#225'rio'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
-              Title.Caption = 'Desconto'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUBTOTAL'
-              Title.Caption = 'Subtotal'
-              Width = 85
+              Width = 70
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
-              Title.Caption = 'Data Cria'#231#227'o'
-              Width = 85
+              Width = 70
               Visible = True
             end>
         end
@@ -1067,21 +1068,21 @@ inherited viewSales: TviewSales
           Left = 0
           Top = 0
           Width = 1105
-          Height = 249
+          Height = 289
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 1
           object Label13: TLabel
-            Left = 75
-            Top = 81
+            Left = 143
+            Top = 38
             Width = 49
             Height = 13
             Caption = 'C'#243'd. Item'
             FocusControl = edtIDItem
           end
           object Label14: TLabel
-            Left = 7
-            Top = 81
+            Left = 75
+            Top = 38
             Width = 59
             Height = 13
             Caption = 'C'#243'd. Venda'
@@ -1089,7 +1090,7 @@ inherited viewSales: TviewSales
           end
           object Label15: TLabel
             Left = 7
-            Top = 122
+            Top = 82
             Width = 83
             Height = 13
             Caption = 'C'#243'digo Produto'
@@ -1120,8 +1121,8 @@ inherited viewSales: TviewSales
             FocusControl = edtDiscItem
           end
           object Label20: TLabel
-            Left = 143
-            Top = 81
+            Left = 211
+            Top = 38
             Width = 65
             Height = 13
             Caption = 'Data Cria'#231#227'o'
@@ -1143,9 +1144,25 @@ inherited viewSales: TviewSales
             Caption = 'C'#243'digo'
             FocusControl = edtID
           end
+          object Label23: TLabel
+            Left = 7
+            Top = 122
+            Width = 18
+            Height = 13
+            Caption = 'Cor'
+            FocusControl = edtCor
+          end
+          object Label24: TLabel
+            Left = 169
+            Top = 122
+            Width = 47
+            Height = 13
+            Caption = 'Tamanho'
+            FocusControl = edtTam
+          end
           object edtIDItem: TDBEdit
-            Left = 75
-            Top = 97
+            Left = 143
+            Top = 54
             Width = 62
             Height = 21
             DataField = 'ID_ITEM'
@@ -1154,8 +1171,8 @@ inherited viewSales: TviewSales
             TabOrder = 0
           end
           object edtSaleID: TDBEdit
-            Left = 7
-            Top = 97
+            Left = 75
+            Top = 54
             Width = 62
             Height = 21
             DataField = 'ID_SALE'
@@ -1165,7 +1182,7 @@ inherited viewSales: TviewSales
           end
           object edtCodProd: TDBEdit
             Left = 7
-            Top = 138
+            Top = 98
             Width = 80
             Height = 21
             CharCase = ecUpperCase
@@ -1209,8 +1226,8 @@ inherited viewSales: TviewSales
             TabOrder = 4
           end
           object DT_CREATED_ITEM: TDateTimePicker
-            Left = 143
-            Top = 97
+            Left = 211
+            Top = 54
             Width = 78
             Height = 21
             Date = 45743.000000000000000000
@@ -1278,7 +1295,7 @@ inherited viewSales: TviewSales
           end
           object btnProdConsult: TButton
             Left = 93
-            Top = 138
+            Top = 98
             Width = 22
             Height = 21
             Enabled = False
@@ -1289,12 +1306,50 @@ inherited viewSales: TviewSales
           end
           object edtNameProd: TDBEdit
             Left = 121
-            Top = 138
+            Top = 98
             Width = 184
             Height = 21
             CharCase = ecUpperCase
             Enabled = False
             TabOrder = 14
+          end
+          object edtCor: TDBEdit
+            Left = 7
+            Top = 138
+            Width = 62
+            Height = 21
+            DataField = 'ID_COLOR'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 15
+          end
+          object edtTam: TDBEdit
+            Left = 169
+            Top = 138
+            Width = 62
+            Height = 21
+            DataField = 'ID_SIZE'
+            DataSource = DSDataItems
+            Enabled = False
+            TabOrder = 16
+          end
+          object edtCorNome: TEdit
+            Left = 75
+            Top = 138
+            Width = 88
+            Height = 21
+            Enabled = False
+            TabOrder = 17
+            Text = 'edtCorNome'
+          end
+          object edtTamNome: TEdit
+            Left = 237
+            Top = 138
+            Width = 68
+            Height = 21
+            Enabled = False
+            TabOrder = 18
+            Text = 'Edit1'
           end
         end
       end

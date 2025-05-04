@@ -473,12 +473,31 @@ object ServiceRegister: TServiceRegister
   object QRYItemsSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      
-        'SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.B' +
-        'RAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_P' +
-        'RICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FR' +
-        'OM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.ID WH' +
-        'ERE 1=1')
+      'SELECT'
+      #9'SI.ID,'
+      #9'SI.ID_ITEM,'
+      #9'SI.ID_SALE,'
+      #9'SI.ID_PRODUCT,'
+      #9'P.NAME PROD_NAME,'
+      #9'SI.ID_COLOR,'
+      #9'CL.NAME COLOR_NAME,'
+      #9'SI.ID_SIZE,'
+      #9'SZ."SIZE",'
+      #9'SI.QUANTITY,'
+      #9'SI.UNIT_PRICE,'
+      #9'SI.DISCOUNT,'
+      #9'((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL,'
+      #9'SI.DT_CREATED'
+      'FROM'
+      #9'SALE_ITEMS SI'
+      'LEFT JOIN PRODUCT P ON'
+      #9'SI.ID_PRODUCT = P.ID'
+      'LEFT JOIN "SIZE" SZ ON '
+      #9'SZ.ID = SI.ID_SIZE'
+      'LEFT JOIN COLOR CL ON '
+      #9'CL.ID = SI.ID_COLOR'
+      'WHERE'
+      #9'1 = 1')
     Left = 32
     Top = 136
     object QRYItemsSaleID: TIntegerField
@@ -503,26 +522,36 @@ object ServiceRegister: TServiceRegister
       Required = True
       Size = 50
     end
-    object QRYItemsSaleNAME: TStringField
+    object QRYItemsSalePROD_NAME: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'NAME'
+      FieldName = 'PROD_NAME'
       Origin = 'NAME'
       ProviderFlags = []
       ReadOnly = True
       Size = 150
     end
-    object QRYItemsSaleBRAND: TStringField
+    object QRYItemsSaleID_COLOR: TIntegerField
+      FieldName = 'ID_COLOR'
+      Origin = 'ID_COLOR'
+      Required = True
+    end
+    object QRYItemsSaleCOLOR_NAME: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'BRAND'
-      Origin = 'BRAND'
+      FieldName = 'COLOR_NAME'
+      Origin = 'NAME'
       ProviderFlags = []
       ReadOnly = True
-      Size = 60
+      Size = 100
     end
-    object QRYItemsSaleUN: TStringField
+    object QRYItemsSaleID_SIZE: TIntegerField
+      FieldName = 'ID_SIZE'
+      Origin = 'ID_SIZE'
+      Required = True
+    end
+    object QRYItemsSaleSIZE: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'UN'
-      Origin = 'UN'
+      FieldName = 'SIZE'
+      Origin = '"SIZE"'
       ProviderFlags = []
       ReadOnly = True
       Size = 10

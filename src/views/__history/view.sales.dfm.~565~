@@ -490,6 +490,8 @@ inherited viewSales: TviewSales
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
+          Font.Height = -11
+          ParentFont = False
           TitleFont.Height = -11
           Columns = <
             item
@@ -573,14 +575,12 @@ inherited viewSales: TviewSales
               Expanded = False
               FieldName = 'ID_COM'
               Title.Caption = 'C'#243'digo Empresa'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'USER'
               Title.Caption = 'C'#243'digo Usuario'
-              Width = -1
               Visible = False
             end>
         end
@@ -722,7 +722,7 @@ inherited viewSales: TviewSales
           Width = 62
           Height = 21
           CharCase = ecUpperCase
-          DataField = 'ID_SALE'
+          DataField = 'ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True
@@ -954,9 +954,9 @@ inherited viewSales: TviewSales
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 7
-          Top = 256
+          Top = 296
           Width = 1091
-          Height = 276
+          Height = 236
           Cursor = crCross
           Margins.Left = 7
           Margins.Top = 7
@@ -966,6 +966,12 @@ inherited viewSales: TviewSales
           DataSource = DSDataItems
           GradientEndColor = clBtnFace
           GradientStartColor = clBtnFace
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -977,83 +983,83 @@ inherited viewSales: TviewSales
               Expanded = False
               FieldName = 'ID'
               Title.Caption = 'C'#243'digo'
-              Width = 30
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_ITEM'
               Title.Caption = 'C'#243'd. Item'
-              Width = 50
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_SALE'
               Title.Caption = 'C'#243'digo Venda'
-              Width = 50
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ID_PRODUCT'
               Title.Caption = 'C'#243'digo Produto'
-              Width = 50
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'NAME'
               Title.Caption = 'Nome Produto'
-              Width = 170
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'BRAND'
               Title.Caption = 'Marca'
-              Width = 100
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UN'
-              Width = 50
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'QUANTITY'
               Title.Caption = 'Quantidade'
-              Width = 60
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'UNIT_PRICE'
               Title.Caption = 'Pre'#231'o Unit'#225'rio'
-              Width = 60
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DISCOUNT'
               Title.Caption = 'Desconto'
-              Width = 60
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SUBTOTAL'
               Title.Caption = 'Subtotal'
-              Width = 70
+              Width = 85
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'DT_CREATED'
               Title.Caption = 'Data Cria'#231#227'o'
-              Width = 120
+              Width = 85
               Visible = True
             end>
         end
@@ -1061,7 +1067,7 @@ inherited viewSales: TviewSales
           Left = 0
           Top = 0
           Width = 1105
-          Height = 249
+          Height = 289
           Align = alTop
           BevelOuter = bvNone
           TabOrder = 1
@@ -1275,6 +1281,7 @@ inherited viewSales: TviewSales
             Top = 138
             Width = 22
             Height = 21
+            Enabled = False
             ImageIndex = 6
             Images = imgList
             TabOrder = 13

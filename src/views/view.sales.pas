@@ -111,6 +111,12 @@ type
     Label22: TLabel;
     dtSaleIni: TDateTimePicker;
     dtSaleEnd: TDateTimePicker;
+    Label23: TLabel;
+    edtCor: TDBEdit;
+    Label24: TLabel;
+    edtTam: TDBEdit;
+    edtCorNome: TEdit;
+    edtTamNome: TEdit;
     procedure FormShow(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
@@ -194,6 +200,8 @@ begin
     DT_CREATED_ITEM.Date := Now;
     btnConfirmItem.Enabled := True;
     btnCancelItem.Enabled := True;
+    edtCor.Enabled := True;
+    edtTam.Enabled := True;
 end;
 
 procedure TviewSales.btnBackItensClick(Sender: TObject);
@@ -238,6 +246,8 @@ begin
     edtQuant.Enabled := False;
     edtDiscItem.Enabled := False;
     btnProdConsult.Enabled := False;
+    edtTam.Enabled := False;
+    edtCor.Enabled := False;
   end;
 end;
 
@@ -261,6 +271,8 @@ begin
   edtQuant.Enabled := False;
   edtDiscItem.Enabled := False;
   btnProdConsult.Enabled := False;
+  edtTam.Enabled := False;
+  edtCor.Enabled := False;
 end;
 
 procedure TviewSales.btnConsultClick(Sender: TObject);
