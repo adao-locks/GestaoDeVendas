@@ -4,20 +4,19 @@ object ServiceRegister: TServiceRegister
   object QRYEntity: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM PEOPLE WHERE PEOPLE_ID = :PEOPLE')
+      'SELECT * FROM PEOPLE WHERE ID = :ID')
     Left = 32
     Top = 24
     ParamData = <
       item
-        Name = 'PEOPLE'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
       end>
-    object QRYEntityPEOPLE_ID: TIntegerField
-      AutoGenerateValue = arAutoInc
-      FieldName = 'PEOPLE_ID'
-      Origin = 'PEOPLE_ID'
+    object QRYEntityID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -138,7 +137,10 @@ object ServiceRegister: TServiceRegister
   object QRYLogs: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM LOGS WHERE 1=1')
+      
+        'SELECT L.LANCTO, L."USER", U.NAME, L."DATE", L.DESCRIPTION, L.PA' +
+        'GE, L.COMPANY, L."ACTION", L."KEY" FROM logs L LEFT JOIN USERS U' +
+        ' ON U.ID = L."USER" WHERE 1=1')
     Left = 32
     Top = 192
     object QRYLogsLANCTO: TIntegerField
@@ -150,6 +152,14 @@ object ServiceRegister: TServiceRegister
     object QRYLogsUSER: TStringField
       FieldName = 'USER'
       Origin = '"USER"'
+      Size = 100
+    end
+    object QRYLogsNAME: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NAME'
+      Origin = 'NAME'
+      ProviderFlags = []
+      ReadOnly = True
       Size = 100
     end
     object QRYLogsDATE: TSQLTimeStampField
@@ -170,12 +180,23 @@ object ServiceRegister: TServiceRegister
       FieldName = 'COMPANY'
       Origin = 'COMPANY'
     end
+    object QRYLogsACTION: TStringField
+      FieldName = 'ACTION'
+      Origin = '"ACTION"'
+      Size = 100
+    end
+    object QRYLogsKEY: TStringField
+      FieldName = 'KEY'
+      Origin = '"KEY"'
+      Required = True
+      Size = 100
+    end
   end
   object QRYSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
       'SELECT'
-      #9'SL.ID_SALE,'
+      #9'SL.ID,'
       #9'SL.ID_CLIENT,'
       #9'PO1.NAME NAME_CLI,'
       #9'SL.ID_EMPLOYEE,'
@@ -192,16 +213,16 @@ object ServiceRegister: TServiceRegister
       'FROM'
       #9'SALE SL'
       'INNER JOIN PEOPLE PO1 ON'
-      #9'SL.ID_CLIENT = PO1.PEOPLE_ID'
+      #9'SL.ID_CLIENT = PO1.ID'
       'INNER JOIN PEOPLE PO2 ON'
-      #9'SL.ID_EMPLOYEE = PO2.PEOPLE_ID'
+      #9'SL.ID_EMPLOYEE = PO2.ID'
       'WHERE'
       #9'1 = 1;')
     Left = 32
     Top = 80
-    object QRYSaleID_SALE: TIntegerField
-      FieldName = 'ID_SALE'
-      Origin = 'ID_SALE'
+    object QRYSaleID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -286,19 +307,19 @@ object ServiceRegister: TServiceRegister
   object QRYProduct: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT * FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+      'SELECT * FROM PRODUCT WHERE ID = :ID')
     Left = 32
     Top = 248
     ParamData = <
       item
-        Name = 'PRODUCT'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
       end>
-    object QRYProductPROD_ID: TIntegerField
-      FieldName = 'PROD_ID'
-      Origin = 'PROD_ID'
+    object QRYProductID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -363,7 +384,7 @@ object ServiceRegister: TServiceRegister
   object QRYIDPeople: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT max(PEOPLE_ID) MAXID FROM PEOPLE')
+      'SELECT max(ID) MAXID FROM PEOPLE WHERE 1=1')
     Left = 137
     Top = 24
     object QRYIDPeopleMAXID: TIntegerField
@@ -377,12 +398,12 @@ object ServiceRegister: TServiceRegister
   object QRYIDProd: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT max(PROD_ID) MAXID FROM PRODUCT WHERE PROD_ID = :PRODUCT')
+      'SELECT max(ID) MAXID FROM PRODUCT WHERE ID = :ID')
     Left = 136
     Top = 248
     ParamData = <
       item
-        Name = 'PRODUCT'
+        Name = 'ID'
         DataType = ftInteger
         ParamType = ptInput
         Value = Null
@@ -398,7 +419,7 @@ object ServiceRegister: TServiceRegister
   object QRYIDSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECt max(ID_SALE) MAXID FROM SALE WHERE 1=1')
+      'SELECt max(ID) MAXID FROM SALE WHERE 1=1')
     Left = 137
     Top = 80
     object QRYIDSaleMAXID: TIntegerField
@@ -452,12 +473,31 @@ object ServiceRegister: TServiceRegister
   object QRYItemsSale: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      
-        'SELECT SI.ID, SI.ID_ITEM, SI.ID_SALE, SI.ID_PRODUCT, P.NAME, P.B' +
-        'RAND, P.UN, SI.QUANTITY, SI.UNIT_PRICE, SI.DISCOUNT, ((SI.UNIT_P' +
-        'RICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL, SI.DT_CREATED FR' +
-        'OM SALE_ITEMS SI INNER JOIN PRODUCT P ON SI.ID_PRODUCT = P.PROD_' +
-        'ID WHERE 1=1')
+      'SELECT'
+      #9'SI.ID,'
+      #9'SI.ID_ITEM,'
+      #9'SI.ID_SALE,'
+      #9'SI.ID_PRODUCT,'
+      #9'P.NAME PROD_NAME,'
+      #9'SI.ID_COLOR,'
+      #9'CL.NAME COLOR_NAME,'
+      #9'SI.ID_SIZE,'
+      #9'SZ."SIZE",'
+      #9'SI.QUANTITY,'
+      #9'SI.UNIT_PRICE,'
+      #9'SI.DISCOUNT,'
+      #9'((SI.UNIT_PRICE * SI.QUANTITY) - SI.DISCOUNT) AS SUBTOTAL,'
+      #9'SI.DT_CREATED'
+      'FROM'
+      #9'SALE_ITEMS SI'
+      'LEFT JOIN PRODUCT P ON'
+      #9'SI.ID_PRODUCT = P.ID'
+      'LEFT JOIN "SIZE" SZ ON '
+      #9'SZ.ID = SI.ID_SIZE'
+      'LEFT JOIN COLOR CL ON '
+      #9'CL.ID = SI.ID_COLOR'
+      'WHERE'
+      #9'1 = 1')
     Left = 32
     Top = 136
     object QRYItemsSaleID: TIntegerField
@@ -482,26 +522,36 @@ object ServiceRegister: TServiceRegister
       Required = True
       Size = 50
     end
-    object QRYItemsSaleNAME: TStringField
+    object QRYItemsSalePROD_NAME: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'NAME'
+      FieldName = 'PROD_NAME'
       Origin = 'NAME'
       ProviderFlags = []
       ReadOnly = True
       Size = 150
     end
-    object QRYItemsSaleBRAND: TStringField
+    object QRYItemsSaleID_COLOR: TIntegerField
+      FieldName = 'ID_COLOR'
+      Origin = 'ID_COLOR'
+      Required = True
+    end
+    object QRYItemsSaleCOLOR_NAME: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'BRAND'
-      Origin = 'BRAND'
+      FieldName = 'COLOR_NAME'
+      Origin = 'NAME'
       ProviderFlags = []
       ReadOnly = True
-      Size = 60
+      Size = 100
     end
-    object QRYItemsSaleUN: TStringField
+    object QRYItemsSaleID_SIZE: TIntegerField
+      FieldName = 'ID_SIZE'
+      Origin = 'ID_SIZE'
+      Required = True
+    end
+    object QRYItemsSaleSIZE: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'UN'
-      Origin = 'UN'
+      FieldName = 'SIZE'
+      Origin = '"SIZE"'
       ProviderFlags = []
       ReadOnly = True
       Size = 10

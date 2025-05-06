@@ -263,7 +263,7 @@ begin
   ServiceRegister.QRYEntity.Insert;
   ServiceRegister.QRYIDPeople.Close;
   ServiceRegister.QRYIDPeople.SQL.Text :=
-    'SELECT MAX(PEOPLE_ID) AS MaxID FROM PEOPLE';
+    'SELECT MAX(ID) AS MaxID FROM PEOPLE';
   ServiceRegister.QRYIDPeople.Open;
   if not ServiceRegister.QRYIDPeople.FieldByName('MaxID').IsNull then
     maxID := ServiceRegister.QRYIDPeople.FieldByName('MaxID').AsInteger + 1

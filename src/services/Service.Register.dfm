@@ -433,7 +433,7 @@ object ServiceRegister: TServiceRegister
   object QRYNamePeople: TFDQuery
     Connection = ServiceConnection.FDConn
     SQL.Strings = (
-      'SELECT NAME FROM PEOPLE WHERE PEOPLE_ID = :ID')
+      'SELECT NAME FROM PEOPLE WHERE ID = :ID')
     Left = 256
     Top = 24
     ParamData = <

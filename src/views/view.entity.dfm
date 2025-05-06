@@ -391,28 +391,24 @@ inherited viewEntity: TviewEntity
               Expanded = False
               FieldName = 'CLIENT'
               Title.Caption = 'Cliente'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'EMPLOYEE'
               Title.Caption = 'Funcionario'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'SUPPLIER'
               Title.Caption = 'Fornecedor'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'TRANSPORT'
               Title.Caption = 'Transportadora'
-              Width = -1
               Visible = False
             end
             item
@@ -488,14 +484,12 @@ inherited viewEntity: TviewEntity
               Expanded = False
               FieldName = 'COM_ID'
               Title.Caption = 'C'#243'digo Empresa'
-              Width = -1
               Visible = False
             end
             item
               Expanded = False
               FieldName = 'USER'
               Title.Caption = 'Usuario'
-              Width = -1
               Visible = False
             end
             item
@@ -727,7 +721,7 @@ inherited viewEntity: TviewEntity
           Width = 100
           Height = 23
           Cursor = crHandPoint
-          DataField = 'PEOPLE_ID'
+          DataField = 'ID'
           DataSource = DSData
           Enabled = False
           ReadOnly = True

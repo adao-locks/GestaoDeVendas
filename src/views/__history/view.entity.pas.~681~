@@ -29,7 +29,7 @@ uses
   Data.SqlExpr,
   Vcl.WinXPickers,
   Vcl.CheckLst,
-  Vcl.ComCtrls, Service.Connection;
+  Vcl.ComCtrls, Service.Connection, Provider.Utils;
 
 type
   TviewEntity = class(TviewBaseLists)
@@ -110,7 +110,6 @@ type
   private
   public
     procedure GET_Entity();
-    procedure AjustarColunasDBGrid(DBGrid: TDBGrid);
   end;
 
 var
@@ -210,6 +209,8 @@ begin
   end;
 
   ServiceRegister.QRYEntity.Open;
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 
 end;
 
@@ -368,7 +369,8 @@ procedure TviewEntity.FormShow(Sender: TObject);
 begin
   inherited;
   GET_Entity;
-  AjustarColunasDBGrid(TDBGrid);
+  ResizeDBGridColumns(DBGData);
+  AlighDBGridColumns(DBGData);
 end;
 
 procedure TviewEntity.GET_Entity();
@@ -381,45 +383,5 @@ begin
   ServiceRegister.QRYEntity.Open();
 
 end;
-
-
-procedure AjustarColunasDBGrid(DBGrid: TDBGrid);
-var
-  i, LarguraMaxima, LarguraTitulo, LarguraCelula, j: Integer;
-  Coluna: TColumn;
-begin
-  if not Assigned(DBGrid) or not Assigned(DBGrid.DataSource) or
-     not Assigned(DBGrid.DataSource.DataSet) then
-    Exit;
-
-  DBGrid.DataSource.DataSet.DisableControls;
-  try
-    for i := 0 to DBGrid.Columns.Count - 1 do
-    begin
-      Coluna := DBGrid.Columns[i];
-
-      // Calcula a largura do título
-      LarguraTitulo := DBGrid.Canvas.TextWidth(Coluna.Title.Caption) + 10;
-
-      // Calcula a largura máxima dos dados
-      LarguraMaxima := LarguraTitulo;
-      DBGrid.DataSource.DataSet.First;
-      for j := 0 to DBGrid.DataSource.DataSet.RecordCount - 1 do
-      begin
-        LarguraCelula := DBGrid.Canvas.TextWidth(DBGrid.DataSource.DataSet.FieldByName(Coluna.FieldName).AsString) + 10;
-        if LarguraCelula > LarguraMaxima then
-          LarguraMaxima := LarguraCelula;
-        DBGrid.DataSource.DataSet.Next;
-      end;
-
-      // Define a largura mínima da coluna
-      Coluna.Width := LarguraMaxima;
-    end;
-  finally
-    DBGrid.DataSource.DataSet.EnableControls;
-  end;
-end;
-
-
 
 end.
